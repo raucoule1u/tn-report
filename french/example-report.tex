@@ -89,18 +89,17 @@ L’introduction doit rester accessible à un lecteur non spécialiste du sujet 
 \fi
 
 La technologie blockchain s'est popularisée ces dernières années grâce à l'expansion de la crypto-monnaie Bitcoin à travers le monde. 
-%Depuis le lancement de Bitcoin en 2009, la blockchain n'a cessé d'évoluer et d'étendre son champ d'application.
-Une blockchain est basée sur l'échange d'actifs numériques, réalisé grâce à des transactions signées, et agit comme un registre global où toutes les transactions y sont répertoriées. Elle repose sur des principes de cryptographie afin d'assurer l'intégrité de ces transactions.
-Si la technologie blockchain connaît un tel succès c'est parce qu'elle apporte de nombreux avantages : 
-la décentralisation, qui signifie que la blockchain ne repose pas sur une entité centrale et permet d'enregistrer des données dans un réseau distribué; 
-la transparence, puisque l'état des données conservées par la blockchain est consultable publiquement par tout le monde; 
+Une blockchain est basée sur l'échange d'actifs numériques, réalisé grâce à des transactions signées, et agit comme un registre publique partagé où toutes les transactions y sont répertoriées. Elle repose sur des principes de cryptographie afin d'assurer l'intégrité de ces transactions.
+Si cette technologie connaît un tel succès c'est parce qu'elle apporte de nombreux avantages : 
+la décentralisation, qui signifie que son architecture ne repose pas sur une entité centrale et permet d'enregistrer des données dans un réseau distribué; 
+la transparence, puisque l'état des données conservées est consultable publiquement par tout le monde; 
 l'autonomie, puisqu'elle est basée sur un consensus dans lequel chaque partie prenante peut transférer des données de manière sécurisée et autonome;
 l'immutabilité, en effet toute transaction est persistée définitivement et donc ne peut être effacée;
-l'anonymat, car toute personne utilisant la blockchain est anonyme dans le sens où elle n'est pas désignée par son identité mais uniquement par son adresse sur la blockchain.
+l'anonymat, car toute personne est anonyme dans le sens où elle n'est pas désignée par son identité mais uniquement par une clé publique.
 Depuis le lancement de Bitcoin en 2009, la blockchain n'a cessé d'évoluer et d'étendre son champ d'application.
-Bien qu'à l'origine la blockchain a été conçue pour le transfert de crypto-monnaie, les avantages qu'elle apporte amène aujourd'hui à réfléchir à de multiples cas d'utilisation qui dépassent le cadre initial d'échanges d'actifs.
+Bien qu'à l'origine elle a été conçue pour le transfert de crypto-monnaie, les avantages qu'elle apporte amène aujourd'hui à réfléchir à de multiples cas d'utilisation qui dépassent le cadre initial d'échanges d'actifs.
 
-
+\iffalse
 Dans le cadre d'un règlement de l'Union Européenne (UE) sur l'identification électronique (eID) et les services de confiance pour les transactions électroniques sécurisées au sein de l'UE (eIDAS), la Commission Européenne (CE) a émis un appel à projet qui a pour visée de supporter la mise en œuvre technique du règlement européen. 
 Ce projet de recherche et développement appelé FutureTrust rassemble un consortium de seize partenaires, dont ARHS Spikeseed, engagé dans la réalisation et la mise en application du règlement européen. 
 Le projet FutureTrust répondra au besoin de solutions globales et interopérables, en fournissant des logiciels libres qui faciliteront l'utilisation de l'identification et de la signature électronique. 
@@ -108,20 +107,55 @@ Il vise à étendre l'infrastructure de la liste européenne de services de conf
 
 Dans ce contexte, un stage a été réalisé sur une période de 6 mois au sein de la société ARHS Spikeseed située au Luxembourg. 
 Ce stage de fin d'études a pour objectif d'intégrer la technologie blockchain dans le cadre du projet FutureTrust et plus particulièrement sur le module de gTSL. 
-L'objectif est d'utiliser la technologie blockchain afin de conserver les données relatives à la gTSL de manière sécurisée en utilisant une blockchain en tant que registre. 
+L'objectif est d'utiliser la technologie blockchain afin de conserver les données relatives à la gTSL de manière sécurisée en utilisant une blockchain en tant que registre.
 %où les données sont sécurisées à l'aide de transactions signées et répliquées à travers le réseau. 
 Cela a pour but d'assurer la disponibilité et l'intégrité des informations, puisque les données sont distribuées à travers les nœuds de réseau et sécurisées à l'aide de transactions signées.
+\fi
 
+Dans ce contexte, un stage ingénieur a été réalisé sur une période de 6 mois au sein de la société ARHS Spikeseed située au Luxembourg. 
+Le projet réalisé a été mené par une équipe de quatre personnes dans les locaux de la société.
+Ce stage de fin d'études a pour objectif d'intégrer la technologie blockchain dans le cadre d'un règlement européen. 
+La finalité est d'utiliser cette technologie afin de conserver des données publiques relatives à la confiance électronique de manière sécurisée et décentralisée en utilisant une blockchain en tant que registre.
+Cela a pour but d'assurer la disponibilité et l'intégrité des informations, puisque les données sont distribuées à travers les nœuds de réseau et sécurisées à l'aide de transactions signées. 
+
+Ce mémoire vise à montrer que le champ d'application de la technologie blockchain dépasse son cadre initial et que son utilisation permet de pallier aux problèmes d'architecture et de sécurité des modèles actuels. 
+Dans un premier temps, le contexte du projet sera défini, puis la problématique, qui détaillera les limites des architectures actuelles, sera exposée. 
+Ensuite, sera établit un état de l'art afin de comparer les outils existants et de justifier les choix opérés durant le projet. 
+Après cela, la réalisation du projet sera développée en expliquant: 
+le choix de l'architecture mise en place; 
+l'avantage de persister des données dans un système de fichiers décentralisé; 
+l'intérêt de gérer l'authentification des utilisateurs par la mise en place d'un consensus; 
+l'implémentation d'un système de contrôle de versions et d'un moteur de recherche sur des données stockées dans un réseau décentralisé et distribué. 
+Enfin, les résultats obtenus et les perspectives du projet seront détaillés.
+
+
+REPETITIONS: blockchain, technologie, projet, système
 
 --------- PRESENTATION DU PLAN ---------
 
-\cleardoublepage
-
-\chapter{Le contexte}
+\chapter{Contexte}
 
 
-Ce stage a pour but d'effectuer une refonte de l'architecture actuelle qui a montré ses limites en y apportant des technologies innovantes
+Dans le cadre d'un règlement de l'Union Européenne (UE) sur l'identification électronique (eID) et les services de confiance pour les transactions électroniques sécurisées au sein de l'UE (eIDAS), la Commission Européenne (CE) a émis un appel à projet qui a pour visée de supporter la mise en œuvre technique du règlement européen. 
+Ce projet de recherche et développement appelé FutureTrust rassemble un consortium de seize partenaires, dont ARHS Spikeseed, engagé dans la réalisation et la mise en application du règlement européen. 
+Le projet FutureTrust répondra au besoin de solutions globales et interopérables, en fournissant des logiciels libres qui faciliteront l'utilisation de l'identification et de la signature électronique. 
+Il vise à étendre l'infrastructure de la liste européenne de services de confiance (TSL) vers une liste globale de services de confiance (gTSL), à développer un service de validation ainsi qu'un un service d'archivage pour les signatures et les sceaux électroniques, et à fournir des composants pour les certificats qualifiés et pour la création de signatures et de sceaux dans un environnement mobile.
 
+Ce stage de fin d'études a porté sur l'intégration la technologie blockchain dans le cadre du projet FutureTrust et plus particulièrement sur son intégration dans le module de gTSL. Les autres modules du projet ne seront pas détaillés dans ce document. 
+
+\chapter{Problématique}
+
+La finalité du stage est de d'effectuer une refonte de l'architecture actuelle qui a montré ses limites en y apportant des technologies innovantes.
+
+\chapter{État de l'art}
+
+\chapter{Réalisation}
+
+\chapter{Résultats obtenus}
+
+\chapter{Perspectives}
+
+\chapter{Conclusion}
 
 \cleardoublepage
 

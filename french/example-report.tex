@@ -24,6 +24,7 @@
 \def\place{Luxembourg} % Ville pour la signature pour l'engagement anti-plagiat
 \def\date{\today} % Date pour la signature de l'engagement anti-plagiat
 
+\usepackage{textgreek}
 
 \begin{document}
   
@@ -60,9 +61,15 @@ for this night and all the nights to come.''
 
 \cleardoublepage
 
-\section*{Avant-propos (optionnel)}
-\addcontentsline{toc}{chapter}{Avant-propos (optionnel)}
+\section*{Avant-propos}
+\addcontentsline{toc}{chapter}{Avant-propos}
 
+Ce mémoire résulte d'un stage de fin d'études qui s'est déroulé du 3 avril 2017 au 30 septembre 2017 au sein de l'entreprise Ar{\texteta}s Spikeseed située au Luxembourg. Ce stage vient clôturer et valider la formation d'ingénieur du numérique de l'école TELECOM Nancy que j'ai débuté en septembre 2014. Cette formation qui s'est étendue sur une période de trois ans m'a permis d'acquérir de nombreuses compétences dans les domaines de l'informatique, des mathématiques, du management, de la gestion de projet, de la communication, de l'économie, du droit et des langues. J'ai choisi de me spécialiser en Ingénierie Logicielle au cours du cursus de par ma passion pour la programmation et l'architecture logicielle depuis que j'ai découvert l'informatique lors de mon stage de découverte professionnelle réalisé en classe de troisième.
+
+Au cours de ce stage, j'ai eu le plaisir de travailler sur une technologie à laquelle je m'intéresse depuis deux ans, la blockchain. Dans le cadre d'un projet proposé par la Commission Européenne, nommé FutureTrust, j'ai pu concevoir et implémenter un service de trust list global basé sur la blockchain. Mes tâches ont été de me familiariser avec les principes de la blockchain et les concepts de cryptographie appliquée afin de les mettre en application dans le projet, d'effectuer une analyse des solutions de blockchain existantes afin de réaliser des choix d'implémentation, de concevoir l'architecture du service de trust list global, d'implémenter la solution conçue et de documenter tous les aspects techniques et fonctionnels de la solution implémentée.
+
+Dans ce mémoire est présenté le résultat du stage de fin d'études et est mis en avant l'utilisation de la blockchain dans le cadre d'un projet de confiance numérique d'échelle mondiale. L'intérêt de ce document est dans un premier temps d'expliquer les tâches réalisées au cours du stage et dans un second temps de montrer qu'il est possible d'élargir le champ d'application de la technologie blockchain et des différents aspects qui la composent.
+%de montrer que le champ d'application de la technologie blockchain peut être encore élargi.
 
 \cleardoublepage
 
@@ -76,28 +83,43 @@ for this night and all the nights to come.''
 
 \chapter{Introduction}
 
-\iffalse
-{\em
-L’introduction sert trois objectifs:
+La technologie blockchain s'est popularisée ces dernières années grâce à l'expansion de la crypto-monnaie Bitcoin~\cite{Bitcoin} à travers le monde. 
+En effet, cette technologie a bouleversé aussi bien le monde de l'informatique que le monde de la finance. 
+L'investissement autour de la blockchain a mené à un engouement général pour ce concept. 
+Le Bitcoin a réussi à remettre en cause des acteurs majeurs de notre société tels que les banques ou les géants du Web, en sécurisant des échanges d'actifs sans organe central de contrôle. 
+La révolution qu'il a engendré amène aujourd'hui les gouvernements et autres organisations publiques à réfléchir sur la régulation de la technologie et des crypto-monnaies naissantes.
+Depuis son lancement en 2009, la blockchain n'a cessé d'évoluer et d'étendre son champ d'application.
+Bien qu'à l'origine elle a été conçue pour le transfert de crypto-monnaie, les avantages qu'elle apporte permettent d'imaginer de multiples cas d'utilisation qui dépassent son cadre initial d'échanges d'actifs.
 
-– Elle introduit le sujet. Ceci signifie qu’il faut présenter succinctement le contexte général du travail accompli puis définir le sujet en termes précis et concis ;
-– Elle énonce ensuite succinctement les objectifs du travail, et les moyens mis en œuvre pour tenter de les atteindre ;
-– Elle s’achève sur une présentation claire du plan adopté pour la suite du corps du mémoire.
+\section{Présentation de la technologie blockchain}
 
-L’introduction doit rester accessible à un lecteur non spécialiste du sujet d’étude. Sa taille doit rester modérée ; elle ne saurait guère excéder 2 pages.
-}
-\fi
-
-La technologie blockchain s'est popularisée ces dernières années grâce à l'expansion de la crypto-monnaie Bitcoin à travers le monde. 
-Une blockchain est basée sur l'échange d'actifs numériques, réalisé grâce à des transactions signées, et agit comme un registre publique partagé où toutes les transactions y sont répertoriées. Elle repose sur des principes de cryptographie afin d'assurer l'intégrité de ces transactions.
+Une blockchain est basée sur l'échange d'actifs numériques, réalisé grâce à des transactions signées, et agit comme un registre publique distribué où toutes les transactions y sont répertoriées. Elle repose sur des principes de cryptographie afin d'assurer l'intégrité de ces transactions et sur un protocole décentralisé, dit {\em peer-to-peer}, qui permet à la blockchain d'avoir une disponibilité maximale et d'établir un consensus entre les participants du réseau afin de protéger contre les falsifications.
 Si cette technologie connaît un tel succès c'est parce qu'elle apporte de nombreux avantages : 
 la décentralisation, qui signifie que son architecture ne repose pas sur une entité centrale et permet d'enregistrer des données dans un réseau distribué; 
 la transparence, puisque l'état des données conservées est consultable publiquement par tout le monde; 
 l'autonomie, puisqu'elle est basée sur un consensus dans lequel chaque partie prenante peut transférer des données de manière sécurisée et autonome;
 l'immutabilité, en effet toute transaction est persistée définitivement et donc ne peut être effacée;
 l'anonymat, car toute personne est anonyme dans le sens où elle n'est pas désignée par son identité mais uniquement par une clé publique.
-Depuis le lancement de Bitcoin en 2009, la blockchain n'a cessé d'évoluer et d'étendre son champ d'application.
-Bien qu'à l'origine elle a été conçue pour le transfert de crypto-monnaie, les avantages qu'elle apporte amène aujourd'hui à réfléchir à de multiples cas d'utilisation qui dépassent le cadre initial d'échanges d'actifs.
+
+\section{Définition du cadre et des objectifs du stage}
+
+Dans ce contexte, un stage ingénieur a été réalisé sur une période de 6 mois au sein de la société Arηs Spikeseed située au Luxembourg. 
+Le stage a été réalisé dans les locaux de l'entreprise, la langue officielle du projet pour les communications avec les autres membres du consortium (mails, documents, conférence téléphonique) est l’anglais, il en est de même pour la langue utilisée au sein de l'équipe puisque c'est une équipe multinationale.
+Ce stage de fin d'études a pour objectif d'intégrer la technologie blockchain au sein d'un processus de gestion de listes de confiance dans le cadre d'un règlement européen. 
+La finalité est d'utiliser cette technologie afin de conserver des données publiques relatives à la confiance électronique de manière sécurisée et décentralisée en utilisant une blockchain en tant que registre.
+Cela a pour but d'assurer la disponibilité et l'intégrité des informations, puisque les données sont distribuées à travers les nœuds de réseau et sécurisées à l'aide de transactions signées et vérifiées par une preuve mathématique. 
+
+\section{Mise en exergue du plan}
+
+Ce mémoire vise à montrer que le champ d'application de la technologie blockchain dépasse son cadre initial et que son utilisation permet de pallier aux problèmes d'architecture et de sécurité des modèles actuels. 
+Dans un premier temps, le contexte du projet sera défini, puis la problématique, qui détaillera les limites des architectures actuelles, sera exposée. 
+Ensuite, sera établit un état de l'art afin de comparer les outils existants et de justifier les choix opérés durant le stage. 
+Après cela, la réalisation du projet sera développée en expliquant: 
+le choix de l'architecture mise en place; 
+l'avantage de persister des données dans un système de fichiers décentralisé; 
+l'intérêt de gérer l'authentification des utilisateurs par la mise en place d'un consensus; 
+l'implémentation d'un système de contrôle de versions et d'un moteur de recherche sur des données stockées dans un réseau décentralisé et distribué. 
+Enfin, les résultats obtenus et les perspectives du projet seront détaillés.
 
 \iffalse
 Dans le cadre d'un règlement de l'Union Européenne (UE) sur l'identification électronique (eID) et les services de confiance pour les transactions électroniques sécurisées au sein de l'UE (eIDAS), la Commission Européenne (CE) a émis un appel à projet qui a pour visée de supporter la mise en œuvre technique du règlement européen. 
@@ -112,48 +134,38 @@ L'objectif est d'utiliser la technologie blockchain afin de conserver les donné
 Cela a pour but d'assurer la disponibilité et l'intégrité des informations, puisque les données sont distribuées à travers les nœuds de réseau et sécurisées à l'aide de transactions signées.
 \fi
 
-Dans ce contexte, un stage ingénieur a été réalisé sur une période de 6 mois au sein de la société ARHS Spikeseed située au Luxembourg. 
-Le projet réalisé a été mené par une équipe de quatre personnes dans les locaux de la société.
-Ce stage de fin d'études a pour objectif d'intégrer la technologie blockchain dans le cadre d'un règlement européen. 
-La finalité est d'utiliser cette technologie afin de conserver des données publiques relatives à la confiance électronique de manière sécurisée et décentralisée en utilisant une blockchain en tant que registre.
-Cela a pour but d'assurer la disponibilité et l'intégrité des informations, puisque les données sont distribuées à travers les nœuds de réseau et sécurisées à l'aide de transactions signées. 
+\chapter{Présentation du contexte}
 
-Ce mémoire vise à montrer que le champ d'application de la technologie blockchain dépasse son cadre initial et que son utilisation permet de pallier aux problèmes d'architecture et de sécurité des modèles actuels. 
-Dans un premier temps, le contexte du projet sera défini, puis la problématique, qui détaillera les limites des architectures actuelles, sera exposée. 
-Ensuite, sera établit un état de l'art afin de comparer les outils existants et de justifier les choix opérés durant le projet. 
-Après cela, la réalisation du projet sera développée en expliquant: 
-le choix de l'architecture mise en place; 
-l'avantage de persister des données dans un système de fichiers décentralisé; 
-l'intérêt de gérer l'authentification des utilisateurs par la mise en place d'un consensus; 
-l'implémentation d'un système de contrôle de versions et d'un moteur de recherche sur des données stockées dans un réseau décentralisé et distribué. 
-Enfin, les résultats obtenus et les perspectives du projet seront détaillés.
+\section{L'entreprise Ar{\texteta}s Spikeseed}
 
+Ar{\texteta}s Spikeseed est une entité du groupe Ar{\texteta}s qui est une entreprise de services du numérique (ESN) fondée en 2003 par Jourdan Serderidis. 
+Le groupe est divisé en sociétés réparties au Luxembourg, en Belgique, en Grèce et depuis cette année en Italie. 
+Comme toutes les autres entités du groupe, Ar{\texteta}s Spikeseed vise à délivrer des solutions numériques complexes. Elle a la particularité de réaliser principalement des projets de recherche et développement en s'appuyant sur les pratiques agiles et des technologies de pointe. 
+De plus, Ar{\texteta}s Spikeseed est compétente afin de mettre en œuvre: 
+des solutions liées à la confiance numérique; 
+des systèmes engageant des masses de données grâce à des technologies innovantes et efficaces comme le Web sémantique ou la Business intelligence; 
+des applications destinées aux mobiles et aux objets connectés.
 
-REPETITIONS: blockchain, technologie, projet, système
-
---------- PRESENTATION DU PLAN ---------
-
-\chapter{Contexte}
-
+\section{Le contexte du projet}
 
 Dans le cadre d'un règlement de l'Union Européenne (UE) sur l'identification électronique (eID) et les services de confiance pour les transactions électroniques sécurisées au sein de l'UE (eIDAS), la Commission Européenne (CE) a émis un appel à projet qui a pour visée de supporter la mise en œuvre technique du règlement européen. 
-Ce projet de recherche et développement appelé FutureTrust rassemble un consortium de seize partenaires, dont ARHS Spikeseed, engagé dans la réalisation et la mise en application du règlement européen. 
+Ce projet de recherche et développement appelé FutureTrust rassemble un consortium de seize partenaires, dont Ar{\texteta}s Spikeseed, engagé dans la réalisation et la mise en application du règlement européen. 
 Le projet FutureTrust répondra au besoin de solutions globales et interopérables, en fournissant des logiciels libres qui faciliteront l'utilisation de l'identification et de la signature électronique. 
-Il vise à étendre l'infrastructure de la liste européenne de services de confiance (TSL) vers une liste globale de services de confiance (gTSL), à développer un service de validation ainsi qu'un un service d'archivage pour les signatures et les sceaux électroniques, et à fournir des composants pour les certificats qualifiés et pour la création de signatures et de sceaux dans un environnement mobile.
+Il vise à étendre l'infrastructure de la liste européenne de services de confiance existante vers une liste globale de services de confiance (gTSL), à développer un service de validation ainsi qu'un un service d'archivage pour les signatures et les sceaux électroniques, et à fournir des composants pour les certificats qualifiés et pour la création de signatures et de sceaux dans un environnement mobile.
 
 Ce stage de fin d'études a porté sur l'intégration la technologie blockchain dans le cadre du projet FutureTrust et plus particulièrement sur son intégration dans le module de gTSL. Les autres modules du projet ne seront pas détaillés dans ce document. 
 
-\chapter{Problématique}
+\chapter{Présentation détaillée de la problématique}
 
 La finalité du stage est de d'effectuer une refonte de l'architecture actuelle qui a montré ses limites en y apportant des technologies innovantes.
 
-\chapter{État de l'art}
+\chapter{État de l'art des solutions envisagées}
 
-\chapter{Réalisation}
+\chapter{Analyse du problème et solution élaborée}
 
-\chapter{Résultats obtenus}
+\chapter{Réalisation, présentation et validation de la solution proposée}
 
-\chapter{Perspectives}
+\chapter{Résultats obtenus \& Perspectives}
 
 \chapter{Conclusion}
 

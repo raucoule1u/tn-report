@@ -157,9 +157,32 @@ Ce stage de fin d'études a porté sur l'intégration la technologie blockchain 
 
 \chapter{Présentation détaillée de la problématique}
 
-La finalité du stage est de d'effectuer une refonte de l'architecture actuelle qui a montré ses limites en y apportant des technologies innovantes.
+Détail du sujet
+
+Détailler l'architecture existante :
+"La finalité du stage est de d'effectuer une refonte de l'architecture actuelle qui a montré ses limites en y apportant des technologies innovantes."
+
+décentralisation, pour éviter le single point of failure
+-> actuellement LOTL est le single point of failure
+
+distribué, afin de maintenir les données dans l'ensemble du réseau
+-> actuellement chaque Member State maintient ses propres de données ce qui veut dire que si le noeud d'un Member State tombe, ses données ne sont plus disponibles
+
+sécurité, intégrité des données + consensus
+-> actuellement, une partie des données est stockée dans une BD, l'autre partie sont des fichiers XML répartis sur plusieurs endpoints, difficile de vérifier l'intégrité des données de tous les endpoints en effet si un Member State est corrompu on ne peut pas le savoir
+
+résilience, réseau publique avec +1M de noeuds jamais down
+-> actuellement l'architecture client-serveur repose entièrement sur la LOTL (qui agit comme un point central, donc à éviter) + chaque noeud est indépendant et se gère seul mais pb de résilience "globale" si un noeud est down
+
+
+Enoncer clairement la problématique en une phrase :
+"Décentraliser le modèle actuel afin de résoudre les pbs de résilience, sécurité... grâce à un réseau décentralisé et distribué"
 
 \chapter{État de l'art des solutions envisagées}
+
+Enoncer le principal désavantages de la blockchain qui est son coût (cf. Ethereum \& IPFS integration).
+
+Etat de l'art : Comparison document + Design document
 
 \chapter{Analyse du problème et solution élaborée}
 

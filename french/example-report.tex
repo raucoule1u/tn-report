@@ -91,13 +91,16 @@ Dans ce mémoire est présenté le résultat du stage de fin d'études et est mi
 
 \chapter{Introduction}
 
-La technologie blockchain s'est popularisée ces dernières années grâce à l'expansion de la crypto-monnaie Bitcoin~\cite{Bitcoin} à travers le monde. 
+La technologie blockchain s'est popularisée ces dernières années grâce à l'expansion de la crypto-monnaie (déf en footnote) Bitcoin~\cite{Bitcoin} (déf en footnote) à travers le monde. 
 En effet, cette technologie a bouleversé aussi bien le monde de l'informatique que le monde de la finance. 
 L'investissement autour de la blockchain a mené à un engouement général pour ce concept. 
 Le Bitcoin a réussi à remettre en cause des acteurs majeurs de notre société tels que les banques ou les géants du Web, en sécurisant des échanges d'actifs sans organe central de contrôle. 
 La révolution qu'il a engendré amène aujourd'hui les gouvernements et autres organisations publiques à réfléchir sur la régulation de la technologie et des crypto-monnaies naissantes.
 Depuis son lancement en 2009, la blockchain n'a cessé d'évoluer et d'étendre son champ d'application.
 Bien qu'à l'origine elle a été conçue pour le transfert de crypto-monnaie, les avantages qu'elle apporte permettent d'imaginer de multiples cas d'utilisation qui dépassent son cadre initial d'échanges d'actifs.
+À l'heure où l'ubérisation (déf en footnote) de notre société est en marche, la technologie blockchain amène une approche nouvelle 
+qui permet de se détacher de toute organe central ou tierce partie. 
+La blockchain ira-t-elle jusqu'à ubériser (déf en footnote) Uber (déf en footnote) ?
 
 \section{Présentation de la technologie blockchain}
 
@@ -112,7 +115,7 @@ l'anonymat, car toute personne est anonyme dans le sens où elle n'est pas dési
 \section{Définition du cadre et des objectifs du stage}
 
 Dans ce contexte, un stage ingénieur a été réalisé sur une période de 6 mois au sein de la société Arηs Spikeseed située au Luxembourg. 
-Le stage a été réalisé dans les locaux de l'entreprise, la langue officielle du projet pour les communications avec les autres membres du consortium (mails, documents, conférence téléphonique) est l’anglais, il en est de même pour la langue utilisée au sein de l'équipe puisque c'est une équipe multinationale.
+Le stage a été réalisé dans les locaux de l'entreprise, la langue officielle du projet pour les communications avec les autres membres du consortium (mails, documents, conférence téléphonique) est l’anglais, il en est de même pour la langue utilisée au sein de l'équipe puisque c'est une équipe multinationale. Les documents produits, et présentés dans ce mémoire, ont donc été rédigés en anglais.
 Ce stage de fin d'études a pour objectif d'intégrer la technologie blockchain au sein d'un processus de gestion de listes de services de confiance dans le cadre d'un règlement européen. 
 La finalité est d'utiliser cette technologie afin de conserver des données publiques relatives à la confiance électronique de manière sécurisée et décentralisée en utilisant une blockchain en tant que registre.
 Cela a pour but d'assurer la disponibilité et l'intégrité des informations, puisque les données sont distribuées à travers les nœuds de réseau et sécurisées à l'aide de transactions signées et vérifiées par une preuve mathématique. 
@@ -159,43 +162,50 @@ Ce stage de fin d'études a porté sur l'intégration la technologie blockchain 
 Les architectures logicielles évoluent en suivant les innovations technologiques. Aujourd'hui, le domaine de la recherche apporte des nouvelles technologies ou des améliorations aux concepts existants à une vitesse exponentielle, si bien que 
 le temps de réalisation d'un projet le rend obsolète lors de sa livraison.
 %lorsqu'un projet est livré au client celui-ci est déjà presque obsolète. 
-Le meilleur exemple de ce phénomène est le framework Angular, initié par Google, qui est passé de la version 2 à la version 5 en moins d'une année. C'est la réalité actuelle de l'univers technologique poussé par l'innovation, un monde où les acteurs doivent s'adapter en permanence aux changements.
-À l'heure où l'ubérisation (déf en footnote) de notre société est en marche, la technologie blockchain apporte une approche nouvelle qui permet de se détacher de toute organe central ou tierce partie. Dans ce contexte, l'utilisation de la blockchain a été proposée dans le cadre du projet FutureTrust.
+Le meilleur exemple de ce phénomène est le framework Angular, initié par Google, qui est passé de la version 2 à la version 5 en moins d'une année. C'est la réalité actuelle de l'univers technologique poussé par l'innovation, un monde où les acteurs doivent s'adapter en permanence aux changements. La technologie blockchain s'inscrit dans ces innovations récentes issues de la recherche. Elle amène une nouvelle vision d'un Internet décentralisé sans organe central de contrôle, qui va probablement révolutionner la conception des systèmes d'information dans les prochaines années. Dans ce contexte, l'utilisation de la blockchain a été proposée dans le cadre du projet FutureTrust.
 
 \section{Description du service de trust list global}
 
+%\subsubsection{Business Purpose}
+%\section{Détail }
+
+{\em
 \begin{itemize}
-\item Détail du sujet
-\item (design document 4. Requirements)
-\item (schéma page 15 ETSI 119 612: Structure d'une TSL)
+	\item Détail du sujet
+	\item (design document 4. Requirements)
+	\item (schéma page 15 ETSI 119 612: Structure d'une TSL)
 \end{itemize}
+}
+
+Les États membres de l'UE et d'autres pays européens maintiennent généralement des listes d'autorités de certification et d'autres fournisseurs de services de confiance, nommés Trust Service Providers (TSP) dans un ou plusieurs registres à l'échelle nationale.
+La liste de confiance des États membres de l'UE comprend des informations relatives aux TSPs qualifiés qui sont supervisés par l'État membre compétent, ainsi que des informations relatives aux services de confiance, nommés Trust Services (TS), qu'ils fournissent, conformément aux dispositions prévues par le règlement eIDAS.
+Les listes de confiance sont des éléments essentiels dans la mise en place de la confiance numérique pour les opérateurs du marché électronique, en permettant aux utilisateurs de déterminer le statut qualifié des TSPs et de leurs TSs. En vertu du règlement eIDAS, les listes nationales de confiance ont un effet constitutif.
+En d'autres termes, un fournisseur ou un service ne sera qualifié que s'il apparaît dans les listes de confiance. Par conséquent, les utilisateurs (citoyens, entreprises ou administrations publiques) bénéficieront de l'effet juridique associé à un service de confiance qualifié donné uniquement si ce dernier est répertorié (comme qualifié) dans les listes de confiance.	
+Les États membres peuvent inclure dans les listes de confiance des informations sur les fournisseurs de services de confiance non qualifiés et sur d'autres services de confiance définis au niveau national.
+
+La structure d'une liste de confiance est présentée dans la Figure~\ref{fig:tsl-scheme}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{figures/gTSL-TSLScheme}
+	\caption{gTSL – Structure d'une liste de confiance}
+	\label{fig:tsl-scheme}
+\end{figure}
+
+\clearpage
 
 %\subsection{Stakeholder Requirements}
 \subsection{Exigences générales}
 
 %\subsubsection{Business Purpose}
-\subsubsection{L'intérêt du projet}
+\subsubsection{Intérêt du projet}
 
 L'intérêt d'un service de 
 %liste mondiale des services de confiance 
 gTSL 
-est de favoriser l'établissement de relations de confiance entre les opérateurs du marché en Europe et au-delà. À ce titre, elle étend le schéma actuel de la liste des services de confiance, dont la portée est uniquement européenne. Cette liste a pour but de répertorier les fournisseurs de services de confiance, nommés Trust Service Providers (TSP), ayant un statut qualifié ou non. On entend par statut qualifié que le TSP ait été accrédité par un organisme compétent au sein de l’État membre dans lequel le TSP est déclaré. Le service permet aux utilisateurs finaux de vérifier le statut de ces TSPs et d'accéder à l'ensemble des informations concernant les services de confiance.
+est de favoriser l'établissement de relations de confiance entre les opérateurs du marché en Europe et au-delà. À ce titre, elle étend le schéma actuel de la liste des services de confiance, dont la portée est uniquement européenne. Cette liste a pour but de répertorier les TSPs, ayant un statut qualifié ou non. On entend par statut qualifié que le TSP ait été accrédité par un organisme compétent au sein de l’État membre dans lequel le TSP est déclaré. Le service permet aux utilisateurs finaux de vérifier le statut de ces TSPs et d'accéder à l'ensemble des informations concernant les services de confiance.
 
 %The business purpose of the Global Trust Status List Service specified in the present document is to foster the building of trust relationships between market operators across Europe, and beyond. As such, it extends the current Trust Status List scheme which indicates whether Trust Service Providers have a qualified status or not.
-
-{\em
-EU Member States and other European nations generally maintain lists of CAs and other TSPs in one or more nationally maintained registers.    
-
-EU Member States trusted list as defined in Regulation (EU) No 910/2014 include information related to the qualified trust service providers which are supervised by the competent Member State, together with information related to the qualified trust services provided by them, in accordance with the relevant provisions laid down in the Regulation.
-
-Trusted lists are essential elements in building trust among electronic market operators by allowing users to determine the qualified status and the status history of trust service providers and their services. Under eIDAS Regulation, national trusted lists have a constitutive effect. In other words, a provider/service will be qualified only if it appears in the trusted lists. Consequently, the users (citizens, businesses or public administrations) will benefit from the legal effect associated with a given qualified trust service only if the latter is listed (as qualified) in the trusted lists.
-
-The trusted lists of Member States include, as a minimum, information specified in Articles 1 and 2 of Commission Implementing Decision (EU) 2015/1505 profiling technical specifications defined in ETSI TS 119 612 v2.1.1.
-
-Member States may include in the trusted lists information on non-qualified trust service providers and on other nationally defined trust services.
-
-To allow access to the trusted lists of all Member States in an easy and trustworthy manner, the European Commission publishes a central list with links to the locations where the trusted lists are published as notified by Member States to the EC. This central list, called the List Of Trusted Lists (LOTL), is available as a signed or sealed XML machine-processable form (hereafter the LOTL) at the following URL: %https://ec.europa.eu/information_society/policy/esignature/trusted-list/tl-mp.xml
-}
 
 %\subsubsection{Stakeholders}
 \subsubsection{Parties prenantes}
@@ -205,7 +215,7 @@ Les acteurs principaux de la
 gTSL
 sont:
 \begin{itemize}
-	\item les États membres de l'UE, qui doivet établir, maintenir et publier les listes de confiance, incluant les informations relatives aux TSPs de services déclarés au sein de leur État;
+	\item les États membres de l'UE, qui doivent établir, maintenir et publier les listes de confiance, incluant les informations relatives aux TSPs de services déclarés au sein de leur État;
 	\item les fournisseurs de services de confiance, qui sont destinés à s'appuyer sur le service de gTSL dans lequel sont publiés leur statut qualifié et leurs informations publiques;
 	\item les opérateurs de liste de confiance ne faisant pas partie d'un État membre de l'UE, qui souhaitent intégrer leur liste dans la gTSL;
 	\item les citoyens de l'UE et non UE, qui sont destinés à utiliser le service afin d'accéder aux statuts et aux informations des différents TSPs répertoriés dans la gTSL.
@@ -214,65 +224,88 @@ sont:
 %\subsubsection{Goal and Objective}
 \subsubsection{Objectif du projet}
 
-L'objectif principal de la gTSL est de gérer et de fournir les informations relatives aux fournisseurs de services de confiance qualifiés au sein de l'Union Européenne et au-delà, en étendant le modèle actuel de la liste européenne de services de confiance. De plus, cette réorganisation de l'architecture vise à gérer la gTSL de manière décentralisée dans le but d'en améliorer sa résilience ainsi que sa gestion.
+L'objectif principal de la gTSL est de gérer et de fournir les informations relatives aux TSPs qualifiés au sein de l'Union Européenne et au-delà, en étendant le modèle actuel de la liste européenne de services de confiance. De plus, cette réorganisation de l'architecture vise à gérer la gTSL de manière décentralisée dans le but d'en améliorer sa résilience ainsi que sa gestion.
 
-\subsection{System Requirements}
+\subsection{Exigences du système}
 
-\subsubsection{System Purpose}
+\subsubsection{Objectif du système}
 
-Building upon the Trusted Lists standard defined in (ETSI TS 119 612, 2016), the gTSL aims at solving the current shortcomings of the Trusted List scheme when considered in a globalized context.
-Currently, the European Commission publishes a signed list of pointers (the European List of the Lists - LoTL), each of which being a distribution point for a national list of trust service providers (TSP). Such national lists contain information on qualified and optionally non-qualified trust services providers and on the qualified and non-qualified trust services they provide. Under this scheme, changes performed in the content of a national list induce the need to re-publish the whole national list, while changes performed either on the URL at which the list is distributed, or either on the certificate used to sign it, induce the need to re-publish both the national list and the European list.
-The centralized nature of the Trusted Lists distribution scheme brings a number of potential issues that could emerge across all prospective stakeholders:
--Member States TSLs being retrievable only based on the LoTL, the current scheme is subject to a single point of failure;
--Performance/latency issues can be encountered due to the need to download and validate information from various locations;
--The TSL requires all member states distributing nodes to be up and;
--There are no means for creating and maintaining application-specific TLs, as they are necessary for the e-Apostille application for example.
-Furthermore, the current TSL scheme suffers from a lack of history: amendments made to a TL are not recorded. As such, a new version of a TL completely overrides the previous one, making it possible to lose track of the changes implemented in between versions.
+En s'appuyant sur la norme de listes de confiance définie dans ETSI TS 119 612~\cite{ETSITS119612}, la gTSL vise à résoudre les imperfections actuelles du schéma de liste de confiance lorsqu'il est considéré dans un contexte globalisé. 
+À l'heure actuelle, la Commission européenne publie une liste signée de pointeurs, nommée European List of the Lists (LoTL), dans laquelle chaque pointeur désigne un point de distribution pour une liste nationale de TSPs. 
+Ces listes nationales contiennent des informations sur les TSPs qualifiés et non qualifiés ainsi que sur les services qualifiés ou non qualifiés qu'ils proposent.
+Avec le modèle actuel, les modifications apportées au contenu d'une liste nationale induisent la nécessité de republier toute la liste nationale. De plus, toutes modifications apportées sur l'URL (déf footnote) à laquelle la liste est distribuée ou sur le certificat utilisé pour signer la liste, induisent la nécessité de republier à la fois la liste nationale et la liste européenne.
+Le caractère centralisé du système de distribution des listes de confiance actuel contient des potentiels problèmes qui doivent être résolus dans le cadre de la globalisation des listes de services de confiance:
+\begin{itemize}
+	\item les lites des États membres sont uniquement récupérable en basant sur la LoTL, le schéma actuel est donc sujet à un point individuel de défaillance (déf footnote + anglais);
+	\item des problèmes de performance et de latence peuvent être rencontrés puisqu'il est nécessaire de télécharger et valider l'ensemble des informations qui sont réparties sur différents points de distribution;
+	\item l'architecture actuelle nécessite que l'ensemble des nœuds de distribution des États membres soit actifs car dans le cas contraire les informations des TSPs des États membres dont le nœud n'est pas actif ne sont plus disponibles;
+	\item le schéma actuel ne conserve pas l'historique des modifications, c'est-à-dire qu'une nouvelle publication d'une liste remplace totalement la précédente, ce qui ne permet pas de conserver une trace des modifications mises en œuvre entre les versions.
+\end{itemize}
 
-\subsubsection{System Scope}
+\subsubsection{Portée du système}
 
-The scope of the gTSL is related to the definition of qualified trust services and trust service providers. As such, it will provide the functions necessary for the creation, update and distribution of trust service provider and trust service information.
+La portée de la gTSL concerne la définition de services de confiance qualifiés et de fournisseurs de services de confiance.
+À ce titre, elle fournira les fonctions nécessaires à la création, à la mise à jour et à la distribution des fournisseurs de services de confiance et des informations concernant leurs services de confiance.
 
-\subsubsection{System Overview}
+\subsubsection{Présentation du système}
 
-In order to achieve its purposes, the gTSL will rely on two main open source components: a Global Trust Service Lifecycle Manager and a Global Trust Service Responder. Additionally, the gTSL will rely on an administration interface for daily management functionalities (e.g. trust information updates, certificates updates, etc.).
-These components and the interactions they have with the system’s users are illustrated in Figure~\ref{fig:3tier-archi}.
+Afin d'atteindre ses objectifs, le gTSL s'appuiera sur deux principaux composants open source:
+\begin{itemize}
+	\item Global Trust Service Lifecycle Manager (footnote traduction)
+	\item Global Trust Service Responder (footnote traduction)
+\end{itemize}
+De plus, la gTSL s'appuiera sur une interface d'administration afin de présenter les fonctions de gestion des listes de confiance aux utilisateurs.
+Ces composants et leurs interactions sont illustrés dans la Figure~\ref{fig:3tier-archi}.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics{figures/gTSL-3Tier}
-	\caption{gTSL – 3-Tier Architecture}
+	\caption{gTSL – Architecture 3-Tier}
 	\label{fig:3tier-archi}
 \end{figure}
 
-The purpose of the Global Trust Service Responder will be to allow external applications and users to query the gTSL for information related to the TSPs, in order to verify their status at a given point in time. It will therefore provide the functions necessary for answering to trust status information requests.
-The purpose of the Global Trust Service Lifecycle Manager is to facilitate the handling of the hierarchy of trust services, and to allow updating the status of each TSP over time. As such, it will provide the functions necessary for the creation, update and distribution of trust status information.
+%\clearpage
 
-From an architectural perspective, the gTSL will rely on a 3-layer architecture:
-- The external services layer will expose the system’s external interfaces, i.e. the Global Trust Service Responder and the administration interface;
-- The business layer will be composed of the Global Trust List Service Lifecycle Manager;
-- The data layer will correspond to the interfaces and components that allow connecting the gTSL to a data storage solution.
-As introduced in Section 4.2.1, one of the goals of the gTSL is to part from the current centralised distribution scheme and to adopt a decentralised approach. The recent emergence of block-chain concepts and the accompanying developments in block-chain based data storage solutions bring a set of potential solutions for this decentralisation goal. Section 5.4.2 introduces the different block-chain and block-chain data storage implementations that were considered, and describes the interfaces defined for the system on this layer.
+L'objectif du Global Trust Service Responder est de permettre aux applications externes et aux utilisateurs d'interroger la gTSL afin de récupérer les informations relatives aux TSPs, dans le but de vérifier leur statut à un moment donné. 
+Il fournira donc les fonctions nécessaires pour répondre aux demandes d'information sur les statuts de confiance.
+L'objectif du Global Trust Service Lifecycle Manager est de faciliter la gestion de la hiérarchie des services de confiance, et de permettre la mise à jour du statut des TSPs.
+Il fournira les fonctions nécessaires à la création, à la mise à jour et à la distribution des informations relatives aux statuts de confiance.
 
-\textbf{System Context}
+D'un point de vue architectural, le gTSL s'appuiera sur une architecture à 3 couches:
+\begin{itemize}
+	\item La couche de services externes exposera les interfaces externes du système, i.e. le Global Trust Service Responder et l'interface d'administration;
+	\item La couche métier sera composée du Global Trust List Service Lifecycle Manager;
+	\item La couche de données correspondra aux interfaces et aux composants qui permettent de connecter le gTSL à une solution de stockage de données.
+\end{itemize}
+L'un des objectifs de la gTSL est de s'appuyer sur le modèle de distribution centralisé actuel et de l'adapter à un nouveau modèle décentralisé.
+L'émergence récente du concept de blockchain et les développements qui l'accompagnent dans les solutions de stockage de données basé sur cette technologie apportent un ensemble de solutions potentielles à cet objectif de décentralisation.
 
-Figure~\ref{fig:system-context-diagram} provides a high-level description of the system’s interactions with external entities.
+La Section~\ref{sec:state-of-the-art} présente les différentes implémentations de blockchain et de système de stockage de données décentralisé pouvant s'interfacer avec une blockchain qui ont été considérées et décrit les interfaces définies pour la couche de données.
+
+\clearpage
+
+\subsubsection{Contexte du système}
+
+La Figure~\ref{fig:system-context-diagram} fournit une description de haut niveau des interactions du système avec des entités externes.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.8]{figures/gTSL-SystemContextDiagram}
-	\caption{gTSL System Context Diagram}
+	\caption{gTSL - Schéma du contexte du système}
 	\label{fig:system-context-diagram}
 \end{figure}
 
-The External Users entity represents all external users that are seeking interactions with the system without specific privileges. The Comprehensive Validation Service developed as part of the Future Trust project is an example of such users.
-The Administrator Users entity represents all external users that are allowed to perform management operations on the gTSL, such as updates on Trust Service Providers’ information.
+L'entité External Users (traduction footnote) représente tous les utilisateurs externes qui souhaitent interagir avec le système sans privilèges spécifiques, dans le but de récupérer des informations relatives à la gTSL. Le Validation Service (traduction footnote) développé dans le cadre du projet FutureTrust est un des ces utilisateurs externes.
+L'entité Administrator Users (traduction footnote) représente tous les utilisateurs externes qui sont autorisés à effectuer des opérations de gestion sur la gTSL, comme par exemple mettre à jour les informations d'un TSP.
 
-\textbf{User Characteristics}
+\subsubsection{Caractéristiques des utilisateurs}
 
-Two different types of users have been identified for the gTSL:
-- Administrator users, i.e. platform administrators, which may act on behalf of an EU-Member State, in charge of the system’s daily maintenance and management, e.g. publishing and updating trust status information;
-- External users, i.e. persons and remote applications willing to obtain trust status information for a given TSP, Member State, etc.
+Deux types différents d'utilisateurs ont été identifiés concernant la gTSL:
+\begin{itemize}
+	\item Utilisateurs d'administration, i.e. les administrateurs de plates-formes, qui peuvent agir au nom d'un Etat membre de l'UE et qui sont chargés de la maintenance quotidienne et de la gestion des listes de confiance;
+	\item Utilisateurs externes, i.e. les personnes et les applications externes qui souhaitent obtenir des informations concernant les statuts de confiance pour un TSP, un TS ou un État membre donné.
+\end{itemize}
+
 These users will be offered access to the system through specific interfaces:
 - Administrator users will have access to a platform management interface, which will unambiguously expose the various administration functionalities to which the users must have access to;
 - External users will have access to both a graphical interface and a Web-Service interface, enabling trust status information retrieval based on provided electronic certificates as well as on general information regarding TSPs.
@@ -299,7 +332,7 @@ R5. The gTSL MUST be highly scalable in order to handle large amounts of paralle
 
 R6. The gTSL SHALL expose, through a Web Services interface, the functionalities enabling the retrieval of trust service status information.
 
-\textbf{User Interfaces}
+\subsubsection{User Interfaces}
 
 R7. The gTSL management features should be provided through an intuitive and coherent web interface, enabling its users to operate it unambiguously.
 As such, the user interfaces should remain consistent with the user interfaces of the current TL-Manager application1 while showing no ambiguity in terms of visual hierarchy and content.
@@ -362,6 +395,7 @@ Enoncer clairement la problématique en une phrase :
 - Scrum description
 
 \chapter{État de l'art des solutions envisagées}
+\label{sec:state-of-the-art}
 
 Enoncer le principal désavantages de la blockchain qui est son coût (cf. Ethereum \& IPFS integration).
 

@@ -3,14 +3,15 @@
 %\documentclass[confidential]{tnreport} % If you are writing confidential report
 
 \def\reportTitle{
-	%Implémentation d’un service de liste de confiance globale basé sur la blockchain
+	Implémentation d’un service de liste de confiance globale basé sur la blockchain
 	%Implémentation d’une Global Trust Service Status List basé sur la blockchain
-	Implémentation d'une liste mondiale des services de confiance basée sur la blockchain
+	%Implémentation d'une liste globale des services de confiance basée sur la blockchain
 	%Implémentation d'une liste mondiale de confiance basée sur la blockchain
 } % Titre du mémoire
 \def\reportLongTitle{
+	Implémentation d’un service de liste de confiance globale basé sur la blockchain
 	%Implémentation d’un service de trust list global basé sur la blockchain
-	Implémentation d'un service de liste mondiale des services de confiance basé sur la blockchain
+	%Implémentation d'un service de liste globale des services de confiance basé sur la blockchain
 } % Titre plus long du mémoire
 
 \def\reportAuthor{Yoann Raucoules}
@@ -74,7 +75,7 @@ for this night and all the nights to come.''
 
 Ce mémoire résulte d'un stage de fin d'études qui s'est déroulé du 3 avril 2017 au 30 septembre 2017 au sein de l'entreprise Ar{\texteta}s Spikeseed située au Luxembourg. Ce stage vient clôturer et valider la formation d'ingénieur du numérique de l'école TELECOM Nancy que j'ai débuté en septembre 2014. Cette formation qui s'est étendue sur une période de trois ans m'a permis d'acquérir de nombreuses compétences dans les domaines de l'informatique, des mathématiques, du management, de la gestion de projet, de la communication, de l'économie, du droit et des langues. J'ai choisi de me spécialiser en Ingénierie Logicielle au cours du cursus de par ma passion pour la programmation et l'architecture logicielle depuis que j'ai découvert l'informatique lors de mon stage de découverte professionnelle réalisé en classe de troisième.
 
-Au cours de ce stage, j'ai eu le plaisir de travailler sur une technologie à laquelle je m'intéresse depuis deux ans, la blockchain. Dans le cadre d'un projet proposé par la Commission Européenne, nommé FutureTrust, j'ai pu concevoir et implémenter un service de trust list global basé sur la blockchain. Mes tâches ont été de me familiariser avec les principes de la blockchain et les concepts de cryptographie appliquée afin de les mettre en application dans le projet, d'effectuer une analyse des solutions de blockchain existantes afin de réaliser des choix d'implémentation, de concevoir l'architecture du service de trust list global, d'implémenter la solution conçue et de documenter tous les aspects techniques et fonctionnels de la solution implémentée.
+Au cours de ce stage de fin d'études, j'ai eu le plaisir de travailler sur une technologie à laquelle je m'intéresse depuis deux ans, la blockchain. Dans le cadre d'un projet proposé par la Commission Européenne, nommé FutureTrust, j'ai pu concevoir et implémenter un service de trust list global basé sur la blockchain. Mes tâches ont été de me familiariser avec les principes de la blockchain et les concepts de cryptographie appliquée afin de les mettre en application dans le projet, d'effectuer une analyse des solutions de blockchain existantes afin de réaliser des choix d'implémentation, de concevoir l'architecture du service de liste de confiance globale, d'implémenter la solution conçue et de documenter tous les aspects techniques et fonctionnels de la solution implémentée.
 
 Dans ce mémoire est présenté le résultat du stage de fin d'études et est mis en avant l'utilisation de la blockchain dans le cadre d'un projet de confiance numérique d'échelle mondiale. L'intérêt de ce document est dans un premier temps d'expliquer les tâches réalisées au cours du stage et dans un second temps de montrer qu'il est possible d'élargir le champ d'application de la technologie blockchain et des différents aspects qui la composent.
 %de montrer que le champ d'application de la technologie blockchain peut être encore élargi.
@@ -91,26 +92,34 @@ Dans ce mémoire est présenté le résultat du stage de fin d'études et est mi
 
 \chapter{Introduction}
 
-La technologie blockchain s'est popularisée ces dernières années grâce à l'expansion de la crypto-monnaie (déf en footnote) Bitcoin~\cite{Bitcoin} (déf en footnote) à travers le monde. 
+La technologie blockchain s'est popularisée ces dernières années grâce à l'expansion de la crypto-monnaie\footnote{La crypto-monnaie aussi appelée monnaie cryptographique est une monnaie électronique basé sur les principes de la cryptographie.} Bitcoin\footnote{Bitcoin est une crypto-monnaie et un système de paiement pair-à-pair}~\cite{Bitcoin} à travers le monde. 
 En effet, cette technologie a bouleversé aussi bien le monde de l'informatique que le monde de la finance. 
 L'investissement autour de la blockchain a mené à un engouement général pour ce concept. 
 Le Bitcoin a réussi à remettre en cause des acteurs majeurs de notre société tels que les banques ou les géants du Web, en sécurisant des échanges d'actifs sans organe central de contrôle. 
 La révolution qu'il a engendré amène aujourd'hui les gouvernements et autres organisations publiques à réfléchir sur la régulation de la technologie et des crypto-monnaies naissantes.
 Depuis son lancement en 2009, la blockchain n'a cessé d'évoluer et d'étendre son champ d'application.
 Bien qu'à l'origine elle a été conçue pour le transfert de crypto-monnaie, les avantages qu'elle apporte permettent d'imaginer de multiples cas d'utilisation qui dépassent son cadre initial d'échanges d'actifs.
-À l'heure où l'ubérisation (déf en footnote) de notre société est en marche, la technologie blockchain amène une approche nouvelle 
+À l'heure où l'ubérisation\footnote{L'ubérisation est un phénomène économique désignant l'utilisation de services permettant aux professionnels et aux clients de se mettre en contact direct grâce à l'utilisation des nouvelles technologies} de notre société est en marche, la technologie blockchain amène une approche nouvelle 
 qui permet de se détacher de toute organe central ou tierce partie. 
-La blockchain ira-t-elle jusqu'à ubériser (déf en footnote) Uber (déf en footnote) ?
+La blockchain ira-t-elle jusqu'à ubériser\footnote{Ubériser est le verbe issu du substantif ubériser} Uber\footnote{Uber est l'entreprise qui déclencha ce qu'on appelle l'ubérisation} ?
 
 \section{Présentation de la technologie blockchain}
 
 Une blockchain est basée sur l'échange d'actifs numériques, réalisé grâce à des transactions signées, et agit comme un registre publique distribué où toutes les transactions y sont répertoriées. Elle repose sur des principes de cryptographie afin d'assurer l'intégrité de ces transactions et sur un protocole décentralisé, dit {\em peer-to-peer}, qui permet à la blockchain d'avoir une disponibilité maximale et d'établir un consensus entre les participants du réseau afin de protéger contre les falsifications.
+
 Si cette technologie connaît un tel succès c'est parce qu'elle apporte de nombreux avantages : 
-la décentralisation, qui signifie que son architecture ne repose pas sur une entité centrale et permet d'enregistrer des données dans un réseau distribué; 
-la transparence, puisque l'état des données conservées est consultable publiquement par tout le monde; 
-l'autonomie, puisqu'elle est basée sur un consensus dans lequel chaque partie prenante peut transférer des données de manière sécurisée et autonome;
-l'immutabilité, en effet toute transaction est persistée définitivement et donc ne peut être effacée;
-l'anonymat, car toute personne est anonyme dans le sens où elle n'est pas désignée par son identité mais uniquement par une clé publique.
+\begin{itemize}
+	\item la décentralisation, qui signifie que son architecture ne repose pas sur une entité centrale et permet d'enregistrer des données dans un réseau distribué; 
+	\item la transparence, puisque l'état des données conservées est consultable publiquement par tout le monde; 
+	\item l'autonomie, puisqu'elle est basée sur un consensus dans lequel chaque partie prenante peut transférer des données de manière sécurisée et autonome;
+	\item l'immutabilité, en effet toute transaction est persistée définitivement et donc ne peut être effacée;
+	\item l'anonymat, car toute personne est anonyme dans le sens où elle n'est pas désignée par son identité mais uniquement par une clé publique\footnote{Une clé publique est un encodage rendu public dans le cadre d'un échange d'informations utilisant le principe de la cryptographie asymétrique}.
+\end{itemize}
+%la décentralisation, qui signifie que son architecture ne repose pas sur une entité centrale et permet d'enregistrer des données dans un réseau distribué; 
+%la transparence, puisque l'état des données conservées est consultable publiquement par tout le monde; 
+%l'autonomie, puisqu'elle est basée sur un consensus dans lequel chaque partie prenante peut transférer des données de manière sécurisée et autonome;
+%l'immutabilité, en effet toute transaction est persistée définitivement et donc ne peut être effacée;
+%l'anonymat, car toute personne est anonyme dans le sens où elle n'est pas désignée par son identité mais uniquement par une clé publique.
 
 \section{Définition du cadre et des objectifs du stage}
 
@@ -118,7 +127,7 @@ Dans ce contexte, un stage ingénieur a été réalisé sur une période de 6 mo
 Le stage a été réalisé dans les locaux de l'entreprise, la langue officielle du projet pour les communications avec les autres membres du consortium (mails, documents, conférence téléphonique) est l’anglais, il en est de même pour la langue utilisée au sein de l'équipe puisque c'est une équipe multinationale. Les documents produits, et présentés dans ce mémoire, ont donc été rédigés en anglais.
 Ce stage de fin d'études a pour objectif d'intégrer la technologie blockchain au sein d'un processus de gestion de listes de services de confiance dans le cadre d'un règlement européen. 
 La finalité est d'utiliser cette technologie afin de conserver des données publiques relatives à la confiance électronique de manière sécurisée et décentralisée en utilisant une blockchain en tant que registre.
-Cela a pour but d'assurer la disponibilité et l'intégrité des informations, puisque les données sont distribuées à travers les nœuds de réseau et sécurisées à l'aide de transactions signées et vérifiées par une preuve mathématique. 
+Cela a pour but d'assurer la disponibilité et l'intégrité des informations, puisque les données sont distribuées à travers les nœuds du réseau et sécurisées à l'aide de transactions signées et vérifiées par une preuve mathématique. 
 
 \section{Mise en exergue du plan}
 
@@ -141,19 +150,27 @@ Enfin, les résultats obtenus et les perspectives du projet seront détaillés.
 \section{L'entreprise Ar{\texteta}s Spikeseed}
 
 Ar{\texteta}s Spikeseed est une entité du groupe Ar{\texteta}s qui est une entreprise de services du numérique (ESN) fondée en 2003 par Jourdan Serderidis. 
-Le groupe est divisé en sociétés réparties au Luxembourg, en Belgique, en Grèce et depuis cette année en Italie. 
+Le groupe est divisé en sociétés réparties au Luxembourg, en Belgique, en Grèce et depuis cette année en Italie. Le groupe Ar{\texteta}s possèdent cinq axes de compétences qui sont présentés dans la Figure~\ref{fig:arhs-core-services}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{figures/arhs-core-services}
+	\caption{Axes de compétences du groupe Ar{\texteta}s \cite{annual-report}}
+	\label{fig:arhs-core-services}
+\end{figure}
+
 Comme toutes les autres entités du groupe, Ar{\texteta}s Spikeseed vise à délivrer des solutions numériques complexes. Elle a la particularité de réaliser principalement des projets de recherche et développement en s'appuyant sur les pratiques agiles et des technologies de pointe. 
 De plus, Ar{\texteta}s Spikeseed est compétente afin de mettre en œuvre: 
 des solutions liées à la confiance numérique; 
 des systèmes engageant des masses de données grâce à des technologies innovantes et efficaces comme le Web sémantique ou la Business intelligence; 
 des applications destinées aux mobiles et aux objets connectés.
 
-\section{Le contexte du projet}
+\section{Contexte du projet}
 
-Dans le cadre d'un règlement de l'Union Européenne (UE) sur l'identification électronique (eID) et les services de confiance pour les transactions électroniques sécurisées au sein de l'UE (eIDAS), la Commission Européenne (CE) a émis un appel à projet qui a pour visée de supporter la mise en œuvre technique du règlement européen. 
+Dans le cadre d'un règlement de l'Union Européenne (UE) sur l'identification électronique (eID) et les services de confiance pour les transactions électroniques sécurisées au sein de l'UE (eIDAS), la Commission Européenne (CE) a émis un appel à projet qui a pour visée de supporter la mise en œuvre technique de ce règlement européen. 
 Ce projet de recherche et développement appelé FutureTrust rassemble un consortium de seize partenaires, dont Ar{\texteta}s Spikeseed, engagé dans la réalisation et la mise en application du règlement européen. 
 Le projet FutureTrust répondra au besoin de solutions globales et interopérables, en fournissant des logiciels libres qui faciliteront l'utilisation de l'identification et de la signature électronique. 
-Il vise à étendre l'infrastructure de la liste européenne de services de confiance existante vers une liste mondiale des services de confiance, nommée Global Trust Service Status List (gTSL), à développer un service de validation ainsi qu'un un service d'archivage pour les signatures et les sceaux électroniques, et à fournir des composants pour les certificats qualifiés et pour la création de signatures et de sceaux dans un environnement mobile.
+Il vise à étendre l'infrastructure de la liste européenne de services de confiance existante vers une liste mondiale des services de confiance, nommée Global Trust Service Status List (gTSL), à développer un service de validation ainsi qu'un service d'archivage pour les signatures et les sceaux électroniques, et à fournir des composants pour les certificats qualifiés et pour la création de signatures et de sceaux dans un environnement mobile.
 
 Ce stage de fin d'études a porté sur l'intégration la technologie blockchain dans le cadre du projet FutureTrust et plus particulièrement sur son intégration dans le module de gTSL. Les autres modules du projet ne seront pas détaillés dans ce document. 
 
@@ -177,8 +194,8 @@ Le meilleur exemple de ce phénomène est le framework Angular, initié par Goog
 \end{itemize}
 }
 
-Les États membres de l'UE et d'autres pays européens maintiennent généralement des listes d'autorités de certification et d'autres fournisseurs de services de confiance, nommés Trust Service Providers (TSP) dans un ou plusieurs registres à l'échelle nationale.
-La liste de confiance des États membres de l'UE comprend des informations relatives aux TSPs qualifiés qui sont supervisés par l'État membre compétent, ainsi que des informations relatives aux services de confiance, nommés Trust Services (TS), qu'ils fournissent, conformément aux dispositions prévues par le règlement eIDAS.
+Les États membres de l'UE et d'autres pays européens maintiennent généralement des listes d'autorités de certification et d'autres fournisseurs de services de confiance, désignés Trust Service Providers (TSP), dans un ou plusieurs registres à l'échelle nationale.
+La liste de confiance des États membres de l'UE comprend des informations relatives aux TSPs qualifiés qui sont supervisés par l'État membre compétent, ainsi que des informations relatives aux services de confiance, désignés Trust Services (TS), qu'ils fournissent, conformément aux dispositions prévues par le règlement eIDAS.
 Les listes de confiance sont des éléments essentiels dans la mise en place de la confiance numérique pour les opérateurs du marché électronique, en permettant aux utilisateurs de déterminer le statut qualifié des TSPs et de leurs TSs. En vertu du règlement eIDAS, les listes nationales de confiance ont un effet constitutif.
 En d'autres termes, un fournisseur ou un service ne sera qualifié que s'il apparaît dans les listes de confiance. Par conséquent, les utilisateurs (citoyens, entreprises ou administrations publiques) bénéficieront de l'effet juridique associé à un service de confiance qualifié donné uniquement si ce dernier est répertorié (comme qualifié) dans les listes de confiance.	
 Les États membres peuvent inclure dans les listes de confiance des informations sur les fournisseurs de services de confiance non qualifiés et sur d'autres services de confiance définis au niveau national.
@@ -195,7 +212,7 @@ La structure d'une liste de confiance est présentée dans la Figure~\ref{fig:ts
 \clearpage
 
 %\subsection{Stakeholder Requirements}
-\subsection{Exigences générales}
+\subsection{Besoins générales}
 
 %\subsubsection{Business Purpose}
 \subsubsection{Intérêt du projet}
@@ -226,17 +243,17 @@ sont:
 
 L'objectif principal de la gTSL est de gérer et de fournir les informations relatives aux TSPs qualifiés au sein de l'Union Européenne et au-delà, en étendant le modèle actuel de la liste européenne de services de confiance. De plus, cette réorganisation de l'architecture vise à gérer la gTSL de manière décentralisée dans le but d'en améliorer sa résilience ainsi que sa gestion.
 
-\subsection{Exigences du système}
+\subsection{Besoins du système}
 
 \subsubsection{Objectif du système}
 
 En s'appuyant sur la norme de listes de confiance définie dans ETSI TS 119 612~\cite{ETSITS119612}, la gTSL vise à résoudre les imperfections actuelles du schéma de liste de confiance lorsqu'il est considéré dans un contexte globalisé. 
 À l'heure actuelle, la Commission européenne publie une liste signée de pointeurs, nommée European List of the Lists (LoTL), dans laquelle chaque pointeur désigne un point de distribution pour une liste nationale de TSPs. 
 Ces listes nationales contiennent des informations sur les TSPs qualifiés et non qualifiés ainsi que sur les services qualifiés ou non qualifiés qu'ils proposent.
-Avec le modèle actuel, les modifications apportées au contenu d'une liste nationale induisent la nécessité de republier toute la liste nationale. De plus, toutes modifications apportées sur l'URL (déf footnote) à laquelle la liste est distribuée ou sur le certificat utilisé pour signer la liste, induisent la nécessité de republier à la fois la liste nationale et la liste européenne.
+Avec le modèle actuel, les modifications apportées au contenu d'une liste nationale induisent la nécessité de republier toute la liste nationale. De plus, toutes modifications apportées sur l'URL\footnote{Une URL (acronyme anglais de Uniform Resource Locator) est couramment appelé adresse web.} à laquelle la liste est distribuée ou sur le certificat utilisé pour signer la liste, induisent la nécessité de republier à la fois la liste nationale et la liste européenne.
 Le caractère centralisé du système de distribution des listes de confiance actuel contient des potentiels problèmes qui doivent être résolus dans le cadre de la globalisation des listes de services de confiance:
 \begin{itemize}
-	\item les lites des États membres sont uniquement récupérable en basant sur la LoTL, le schéma actuel est donc sujet à un point individuel de défaillance (déf footnote + anglais);
+	\item les lites des États membres sont uniquement récupérable en basant sur la LoTL, le schéma actuel est donc sujet à un point individuel de défaillance\footnote{Un point individuel de défaillance (single point of failure ou SPOF en anglais) est un point d'un système informatique dont le reste du système est dépendant et dont une panne entraîne l'arrêt complet du système};
 	\item des problèmes de performance et de latence peuvent être rencontrés puisqu'il est nécessaire de télécharger et valider l'ensemble des informations qui sont réparties sur différents points de distribution;
 	\item l'architecture actuelle nécessite que l'ensemble des nœuds de distribution des États membres soit actifs car dans le cas contraire les informations des TSPs des États membres dont le nœud n'est pas actif ne sont plus disponibles;
 	\item le schéma actuel ne conserve pas l'historique des modifications, c'est-à-dire qu'une nouvelle publication d'une liste remplace totalement la précédente, ce qui ne permet pas de conserver une trace des modifications mises en œuvre entre les versions.
@@ -251,8 +268,8 @@ La portée de la gTSL concerne la définition de services de confiance qualifié
 
 Afin d'atteindre ses objectifs, le gTSL s'appuiera sur deux principaux composants open source:
 \begin{itemize}
-	\item Global Trust Service Lifecycle Manager (footnote traduction)
-	\item Global Trust Service Responder (footnote traduction)
+	\item Global Trust Service Lifecycle Manager\footnote{en français, Gestionnaire du cycle de vie}
+	\item Global Trust Service Responder\footnote{en français, Répondeur (dans le sens où il répond aux requêtes des utilisateurs)}
 \end{itemize}
 De plus, la gTSL s'appuiera sur une interface d'administration afin de présenter les fonctions de gestion des listes de confiance aux utilisateurs.
 Ces composants et leurs interactions sont illustrés dans la Figure~\ref{fig:3tier-archi}.
@@ -295,76 +312,79 @@ La Figure~\ref{fig:system-context-diagram} fournit une description de haut nivea
 	\label{fig:system-context-diagram}
 \end{figure}
 
-L'entité External Users (traduction footnote) représente tous les utilisateurs externes qui souhaitent interagir avec le système sans privilèges spécifiques, dans le but de récupérer des informations relatives à la gTSL. Le Validation Service (traduction footnote) développé dans le cadre du projet FutureTrust est un des ces utilisateurs externes.
-L'entité Administrator Users (traduction footnote) représente tous les utilisateurs externes qui sont autorisés à effectuer des opérations de gestion sur la gTSL, comme par exemple mettre à jour les informations d'un TSP.
+L'entité External Users\footnote{en français, utilisateurs externes} représente tous les utilisateurs externes qui souhaitent interagir avec le système sans privilèges spécifiques, dans le but de récupérer des informations relatives à la gTSL. Le Validation Service\footnote{en français, service de validation} développé dans le cadre du projet FutureTrust est un des ces utilisateurs externes.
+L'entité Administrator Users\footnote{en français, utilisateurs d'administration} représente tous les utilisateurs externes qui sont autorisés à effectuer des opérations de gestion sur la gTSL, comme par exemple mettre à jour les informations d'un TSP.
 
 \subsubsection{Caractéristiques des utilisateurs}
 
 Deux types différents d'utilisateurs ont été identifiés concernant la gTSL:
 \begin{itemize}
-	\item Utilisateurs d'administration, i.e. les administrateurs de plates-formes, qui peuvent agir au nom d'un Etat membre de l'UE et qui sont chargés de la maintenance quotidienne et de la gestion des listes de confiance;
+	\item Utilisateurs d'administration, i.e. les administrateurs de plates-formes, qui peuvent agir au nom d'un État membre de l'UE et qui sont chargés de la maintenance quotidienne et de la gestion des listes de confiance;
 	\item Utilisateurs externes, i.e. les personnes et les applications externes qui souhaitent obtenir des informations concernant les statuts de confiance pour un TSP, un TS ou un État membre donné.
 \end{itemize}
 
-These users will be offered access to the system through specific interfaces:
-- Administrator users will have access to a platform management interface, which will unambiguously expose the various administration functionalities to which the users must have access to;
-- External users will have access to both a graphical interface and a Web-Service interface, enabling trust status information retrieval based on provided electronic certificates as well as on general information regarding TSPs.
+Ces utilisateurs auront accès au système à travers des interfaces dédiées:
+\begin{itemize}
+	\item Utilisateurs d'administration auront accès à une plateforme de gestion de la gTSL, qui exposera sans ambiguïté les différentes fonctionnalités d'administration auxquelles les utilisateurs doivent avoir accès;
+	\item Utilisateurs externes auront accès à la fois à une interface graphique et à une seconde interface de web services\footnote{Un web service correspond à l'implémentation d'une ressource identifiée par une URL}, qui permettra la récupération d'informations concernant les statuts des services de confiance sur base de certificats électroniques fournis par l'utilisateur ainsi que des informations générales concernant les TSPs.
+\end{itemize}
 
-\subsubsection{System Functions and Functional Requirements}
+\subsubsection{Besoins fonctionnelles}
 
-The following section provides the list of functional requirements identified for the gTSL.
-R1. The gTSL MUST allow the management of Trust Anchors and Meta-data of Identity Providers
-R2. The gTSL MUST support the international (non-EU) aspects of the eIDAS regulation
-As such, the gTSL must allow the inclusion of trust service providers from non-EU countries, whether qualified (i.e. when a reciprocity agreement is in place regarding qualified trust services) or not.
+Les besoins fonctionnelles identifiés pour la gTSL sont:
+\begin{itemize}
+	\item La gTSL doit permettre la gestion des {\em Trust Anchors and Meta-data of Identity Providers;}
+	\item La gTSL doit supporter l'internationalisation (non-UE) du règlement eIDAS. À ce titre, la gTSL doit permettre l'ajout de TSPs déclarés dans un pays qui n'est pas membre de l'UE, qu'ils soient qualifiés ou non.
+\end{itemize}
 
-\subsubsection{Usability Requirements}
+\subsubsection{Besoins d'utilisation}
 
-The following section provides the list of usability requirements identified for the Global Trust Status List Service.
-R3. The gTSL MUST offer an interface allowing the retrieval as well as the submission of TSP information
-At minimal, to ensure compliance with (ETSI TS 119 612, 2016), the gTSL shall be available through HTTP/1.1, as defined in (RFC 2616, 1999).
+Les besoins d'utilisation identifiés pour la gTSL sont:
+\begin{itemize}
+	\item La gTSL doit offrir une interface permettant la récupération ainsi que la publication d'informations relatives aux TSPs. Au minimum, afin d'assurer la conformité avec le standard ETSI TS 119 612~\cite{ETSITS119612}, la gTSL doit être disponible via le protocole HTTP.
+\end{itemize}
 
-\subsubsection{Performance Requirements}
+\subsubsection{Besoins de performance}
 
-R4. The gTSL MUST include an efficient internal storage for storing status information on TSPs.
-R5. The gTSL MUST be highly scalable in order to handle large amounts of parallel requests efficiently.
+Les besoins de performance identifiés pour la gTSL sont:
+\begin{itemize}
+	\item la gTSL doit apporter un stockage interne efficace pour stocker les informations de statut sur les TSPs.
+	\item la gTSL doit être hautement scalable afin de gérer efficacement de nombreuses quantités de demandes parallèles.
+\end{itemize}
 
-\subsubsection{System Interfaces}
+\subsubsection{Interfaces du système}
 
-R6. The gTSL SHALL expose, through a Web Services interface, the functionalities enabling the retrieval of trust service status information.
+La gTSL doit exposer, grâce à une interface de web services, les fonctionnalités permettant la récupération d'informations concernant les statuts des services de confiance.
 
-\subsubsection{User Interfaces}
+\subsubsection{Interfaces utilisateurs}
 
-R7. The gTSL management features should be provided through an intuitive and coherent web interface, enabling its users to operate it unambiguously.
-As such, the user interfaces should remain consistent with the user interfaces of the current TL-Manager application1 while showing no ambiguity in terms of visual hierarchy and content.
-R8. The gTSL web interfaces should enable users to work in a non-blocking manner.
-More specifically, the functionalities provided through this web interface should be asynchronous and should ensure a high responsivity.
+Les fonctionnalités de gestion de la gTSL doivent être fournies à travers une interface web cohérente et intuitive, permettant aux utilisateurs de l'utiliser sans ambiguïté. 
+Les interfaces utilisateur doivent rester cohérentes avec les interfaces utilisateur de l'application TL-Manager actuelle tout en ne montrant aucune ambiguïté en termes de hiérarchie visuelle et de contenu.
 
-\subsubsection{System Reliability}
+\subsubsection{Fiabilité du système}
 
-R9. The gTSL SHALL be available on a 24 hours a day, 7 days a week basis
-More specifically, in order to comply with (ETSI TS 119 612, 2016), the gTSL Responder must be available on a 24 hours a day and 7 days a week basis, with an availability percentage of minimum 99.9\% over one year periods.
-4.2.9 System Security
-Due to the sensitive nature of the data managed by the gTSL, and to the high availability requirements, the security requirements must ensure that this data is not compromised and that the management of trust services and trust service providers is clearly restricted to authorised persons only.
-R10. The gTSL SHALL not allow unauthorised users to create, edit or delete trust service information or trust service provider information.
-R11. The gTSL SHALL ensure the integrity of the data it handles.
-1 See https://ec.europa.eu/cefdigital/wiki/display/CEFDIGITAL/Manage+a+Trusted+List
+La gTSL doit être disponible sur une base de 24 heures par jour et 7 jours par semaine.
+Plus particulièrement, dans le but d'être conforme avec le standard ETSI TS 119 612~\cite{ETSITS119612}, le Global Trust Service Responder doit être disponible sur une base de 24 heures par jour et 7 jours par semaine, avec une disponibilité annuelle minimum de 99.9\%.
 
-\subsection{Software Requirements}
+\subsubsection{Sécurité du système}
 
-R12. The Global Trust Status List Service MUST be highly scalable in order to handle large amounts of parallel requests.
-R13. The Global Trust Status List Service SHOULD not impose specific requirements for the runtime environment and SHOULD be deployable on any Open Source JEE Application Server.
+En raison de la nature sensible des données gérées par la gTSL, et de la haute disponibilité requise, les besoins en terme de sécurité doivent garantir que ces données ne peuvent être et ne sont pas compromises et que la gestion des services de confiance et des fournisseurs de services de confiance est clairement limitée aux personnes autorisées.
+La gTSL ne doit pas permettre à des personnes non autorisées de créer, modifier ou supprimer des informations relatives à des services de confiance ou des fournisseurs de services de confiance.
+La gTSL doit assurer l'intégrité des données qu'elle traite.
 
-\subsubsection{Standard Compliance}
+\subsection{Besoins logicielles}
 
-R14. The gTSL SHALL comply with standard (ETSI TS 119 612, 2016)
-As such, the gTSL shall comply with:
-- The format and semantics of a TL;
-- The mechanisms to be used to support relying parties locating, accessing and authenticating TLs.
-R15. The gTSL SHALL be able to integrate with the existing LotL-based scheme
-This means that it is able to import the set of TLs referenced in the EU-LotL, highlight the changes as they occur and allow to add additional non-EU TSPs.
-R16. The gTSL SHALL support the management of additional application-specific TLs
-This is important for supporting specific applications, such as the e-Apostille pilot for example.
+\subsubsection{Conformité au standard}
 
+La gTSL doit être conforme avec le standard ETSI TS 119 612~\cite{ETSITS119612}. À ce titre, la gTSL doit respecter:
+\begin{itemize}
+	\item le format et la sémantique d'une liste de confiance;
+	\item les mécanismes à utiliser pour aider les parties prenantes à localiser, à accéder et à authentifier les listes de confiance.
+\end{itemize}
+
+\subsubsection{Rétrocompatibilité}
+
+La gTSL doit pouvoir s'intégrer au schéma existant basé sur la LoTL. Cela signifie qu'elle est capable d'importer l'ensemble des listes de confiance actuellement référencées dans la LoTL, mettre en évidence les changements au fur et à mesure qu'ils se produisent grâce à un historique et permettre d'ajouter d'autres TSPs hors UE.
 
 \section{Limites de l'architecture actuelle}
 %\section{Une architecture à revoir}
@@ -373,7 +393,7 @@ Détailler l'architecture existante :
 "La finalité du stage est de d'effectuer une refonte de l'architecture actuelle qui a montré ses limites en y apportant des technologies innovantes."
 
 décentralisation, pour éviter le single point of failure
--> actuellement LOTL est le single point of failure
+-> actuellement LoTL est le single point of failure
 
 distribué, afin de maintenir les données dans l'ensemble du réseau
 -> actuellement chaque Member State maintient ses propres de données ce qui veut dire que si le noeud d'un Member State tombe, ses données ne sont plus disponibles
@@ -382,7 +402,7 @@ sécurité, intégrité des données + consensus
 -> actuellement, une partie des données est stockée dans une BD, l'autre partie sont des fichiers XML répartis sur plusieurs endpoints, difficile de vérifier l'intégrité des données de tous les endpoints en effet si un Member State est corrompu on ne peut pas le savoir
 
 résilience, réseau publique avec +1M de noeuds jamais down
--> actuellement l'architecture client-serveur repose entièrement sur la LOTL (qui agit comme un point central, donc à éviter) + chaque noeud est indépendant et se gère seul mais pb de résilience "globale" si un noeud est down
+-> actuellement l'architecture client-serveur repose entièrement sur la LoTL (qui agit comme un point central, donc à éviter) + chaque noeud est indépendant et se gère seul mais pb de résilience "globale" si un noeud est down
 
 
 Enoncer clairement la problématique en une phrase :
@@ -415,8 +435,6 @@ Décomposer les modules :
 - 
 
 \chapter{Résultats obtenus \& Perspectives}
-
-\chapter{Conclusion}
 
 \cleardoublepage
 

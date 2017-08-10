@@ -107,6 +107,8 @@ La blockchain ira-t-elle jusqu'à ubériser\footnote{Ubériser est le verbe issu
 
 Une blockchain est basée sur l'échange d'actifs numériques, réalisé grâce à des transactions signées, et agit comme un registre publique distribué où toutes les transactions y sont répertoriées. Elle repose sur des principes de cryptographie afin d'assurer l'intégrité de ces transactions et sur un protocole décentralisé, dit {\em peer-to-peer}, qui permet à la blockchain d'avoir une disponibilité maximale et d'établir un consensus entre les participants du réseau afin de protéger contre les falsifications.
 
+\subsection{Avantages de la blockchain}
+
 Si cette technologie connaît un tel succès c'est parce qu'elle apporte de nombreux avantages : 
 \begin{itemize}
 	\item la décentralisation, qui signifie que son architecture ne repose pas sur une entité centrale et permet d'enregistrer des données dans un réseau distribué; 
@@ -120,6 +122,28 @@ Si cette technologie connaît un tel succès c'est parce qu'elle apporte de nomb
 %l'autonomie, puisqu'elle est basée sur un consensus dans lequel chaque partie prenante peut transférer des données de manière sécurisée et autonome;
 %l'immutabilité, en effet toute transaction est persistée définitivement et donc ne peut être effacée;
 %l'anonymat, car toute personne est anonyme dans le sens où elle n'est pas désignée par son identité mais uniquement par une clé publique.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.25]{figures/blockchain1}
+	\caption{Untitled}
+	\label{fig:blockchain1}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.2]{figures/blockchain2}
+	\caption{Untitled}
+	\label{fig:blockchain2}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{figures/blockchain3}
+	\caption{Untitled}
+	\label{fig:blockchain3}
+\end{figure}
+\clearpage
+
+\subsection{Inconvénients de la blockchain}
 
 \section{Définition du cadre et des objectifs du stage}
 
@@ -181,7 +205,7 @@ le temps de réalisation d'un projet le rend obsolète lors de sa livraison.
 %lorsqu'un projet est livré au client celui-ci est déjà presque obsolète. 
 Le meilleur exemple de ce phénomène est le framework Angular, initié par Google, qui est passé de la version 2 à la version 5 en moins d'une année. C'est la réalité actuelle de l'univers technologique poussé par l'innovation, un monde où les acteurs doivent s'adapter en permanence aux changements. La technologie blockchain s'inscrit dans ces innovations récentes issues de la recherche. Elle amène une nouvelle vision d'un Internet décentralisé sans organe central de contrôle, qui va probablement révolutionner la conception des systèmes d'information dans les prochaines années. Dans ce contexte, l'utilisation de la blockchain a été proposée dans le cadre du projet FutureTrust.
 
-\section{Description du service de trust list global}
+\section{Description du service de liste de confiance globale}
 
 %\subsubsection{Business Purpose}
 %\section{Détail }
@@ -389,42 +413,86 @@ La gTSL doit pouvoir s'intégrer au schéma existant basé sur la LoTL. Cela sig
 \section{Limites de l'architecture actuelle}
 %\section{Une architecture à revoir}
 
+{\em
 Détailler l'architecture existante :
 "La finalité du stage est de d'effectuer une refonte de l'architecture actuelle qui a montré ses limites en y apportant des technologies innovantes."
 
-décentralisation, pour éviter le single point of failure
+\begin{itemize}
+	\item décentralisation, pour éviter le single point of failure
+
 -> actuellement LoTL est le single point of failure
 
-distribué, afin de maintenir les données dans l'ensemble du réseau
+	\item distribué, afin de maintenir les données dans l'ensemble du réseau
+
 -> actuellement chaque Member State maintient ses propres de données ce qui veut dire que si le noeud d'un Member State tombe, ses données ne sont plus disponibles
 
-sécurité, intégrité des données + consensus
+	\item sécurité, intégrité des données + consensus
+
 -> actuellement, une partie des données est stockée dans une BD, l'autre partie sont des fichiers XML répartis sur plusieurs endpoints, difficile de vérifier l'intégrité des données de tous les endpoints en effet si un Member State est corrompu on ne peut pas le savoir
 
-résilience, réseau publique avec +1M de noeuds jamais down
+	\item résilience, réseau publique avec +1M de noeuds jamais down
+
 -> actuellement l'architecture client-serveur repose entièrement sur la LoTL (qui agit comme un point central, donc à éviter) + chaque noeud est indépendant et se gère seul mais pb de résilience "globale" si un noeud est down
 
+\end{itemize}
 
 Enoncer clairement la problématique en une phrase :
 "Décentraliser le modèle actuel afin de résoudre les pbs de résilience, sécurité... grâce à un réseau décentralisé et distribué"
+}
 
-\section{Objectifs et gestion de projet}
+\section{Gestion de projet}
 
-- Objectifs
-- Gantt
-- Scrum description
+\subsection{Méthode de gestion de projet}
+
+La méthode Agile a été utilisée au cours de ce projet. 
+Plus particulièrement, l'équipe s'est appuyée sur le schéma Scrum, qui permet un cadre de travail itératif où les tâches majeures sont décomposées en sous-tâches.
+La méthodologie Scrum est basée sur le découpage d'un projet en sprints\footnote{Un sprint est une période sur laquelle sont réalisées des tâches définies}, qui sont des cycles de livraison très courts.
+Un sprint peut s'étendre sur une durée de quelques heures à un mois. 
+Dans notre cas, nous avons choisi une durée de deux semaines par sprint.
+En début de sprint, une estimation de la durée de chaque tâche est effectuée, ensuite une planification opérationnelle est réalisée.
+Un sprint se termine généralement par une démonstration du travail réalisé suivie d'une rétrospective, afin d'analyser le déroulement du sprint achevé et dans le but d'améliorer les pratiques de l'équipe. 
+Quotidiennement est organisé un scrum meeting\footnote{Un scrum meeting est communément appelé mêlée en français}, réunion courte et énergique, qui permet à l'équipe de discuter de l'avancée du sprint et de lever les points bloquants du projet.
+Afin de suivre la progression des objectifs au fur et à mesure de l’avancement du projet, nous avons utilisé l'outil JIRA. Il a servi notamment à définir les différentes tâches du projet et à répartir le travail entre les membres de l’équipe.
+
+\subsubsection{Les avantages majeures de Scrum}
+
+Scrum apporte des avantages qui sont définies comme étant les trois piliers de la méthodologie:
+\begin{itemize}
+	\item la transparence, par l'utilisation d'un langage commun afin de permettre à tout un chacun d'obtenir rapidement une bonne compréhension du projet et par la garantie que tous les indicateurs relatifs à l’état du développement soient visibles; 
+	\item l'inspection, par l'analyse quotidienne du travail accompli et restant lors des sprints, afin de repérer tout indicateur indésirable;
+	\item l'adaptation, dans le cas d'une dérive après inspection, des ajustements doivent être effectués afin de minimiser les écarts de réalisation.
+\end{itemize}
+
+\subsection{Organisation du temps}
+
+Gantt:
+- familiarisation projet +notions crypto 
+- état de l'art + comparaison et choix des techno 
+- ipfs-poc
+- setup
+- sprint 0
+- sprint 1
+- ...
+- livraison 
+
+ajout de milestones (rendu mémoire, soutenance, livraison comparaison, livraison explications IPFS/Eth, fin stage, début stage, visite festor, livraison projet...)
+
+Explications de chaque phase 
+
 
 \chapter{État de l'art des solutions envisagées}
 \label{sec:state-of-the-art}
 
-Enoncer le principal désavantages de la blockchain qui est son coût (cf. Ethereum \& IPFS integration).
-
-Etat de l'art : Comparison document + Design document
+- On veut une techno pour stocker, gérer et récupérer les données de la gTSL
+- Amener sur le type de techno à utiliser (blockchain, database décentralisée, file system décentralisé...)
+- Enoncer le principal désavantages de la blockchain qui est son coût (cf. Ethereum \& IPFS integration).
+- Etat de l'art : Comparison document + Design document
 
 \chapter{Analyse du problème et solution élaborée}
 
-Document de design de la gTSL (copy/paste)
-(design document 5. Software Architecture)
+- design document (5. Software Architecture)
+- familiarisation projet 
+- s'inspirer du PI
 
 \chapter{Réalisation, présentation et validation de la solution proposée}
 
@@ -435,6 +503,8 @@ Décomposer les modules :
 - 
 
 \chapter{Résultats obtenus \& Perspectives}
+
+\chapter{Conclusion}
 
 \cleardoublepage
 
@@ -551,10 +621,6 @@ Exemple d'illustration :
 La Figure~\ref{fig:logo-tn} représente le logo de \reportSchool{}.
 
 Ceci est une référence bibliographique~\cite{GOT4}.
-
-\cleardoublepage
-
-\chapter{Conclusion}
 
 \cleardoublepage
 \renewcommand{\tocbibname}{Bibliographie / Webographie}

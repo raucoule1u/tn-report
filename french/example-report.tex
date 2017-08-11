@@ -105,7 +105,16 @@ La blockchain ira-t-elle jusqu'à ubériser\footnote{Ubériser est le verbe issu
 
 \section{Présentation de la technologie blockchain}
 
-Une blockchain est basée sur l'échange d'actifs numériques, réalisé grâce à des transactions signées, et agit comme un registre publique distribué où toutes les transactions y sont répertoriées. Elle repose sur des principes de cryptographie afin d'assurer l'intégrité de ces transactions et sur un protocole décentralisé, dit {\em peer-to-peer}, qui permet à la blockchain d'avoir une disponibilité maximale et d'établir un consensus entre les participants du réseau afin de protéger contre les falsifications.
+Une blockchain est basée sur l'échange d'actifs numériques, réalisé grâce à des transactions signées, et agit comme un registre publique distribué où toutes les transactions y sont répertoriées. Elle repose sur des principes de cryptographie afin d'assurer l'intégrité de ces transactions et sur un protocole décentralisé, dit {\em peer-to-peer}, qui permet à la blockchain d'avoir une disponibilité maximale et d'établir un consensus entre les participants du réseau afin de protéger contre les falsifications. La Figure~\ref{fig:blockchain-diagram} représente le processus de création est de validation d'une transaction sur la blockchain.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.2]{figures/blockchain-diagram}
+	\caption{A TRADUIRE ET A REFAIRE FORMAT A4 !!! Processus de création est de validation d'une transaction sur la blockchain}
+	\label{fig:blockchain-diagram}
+\end{figure}
+
+\clearpage
 
 \subsection{Avantages de la blockchain}
 
@@ -123,27 +132,9 @@ Si cette technologie connaît un tel succès c'est parce qu'elle apporte de nomb
 %l'immutabilité, en effet toute transaction est persistée définitivement et donc ne peut être effacée;
 %l'anonymat, car toute personne est anonyme dans le sens où elle n'est pas désignée par son identité mais uniquement par une clé publique.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.25]{figures/blockchain1}
-	\caption{Untitled}
-	\label{fig:blockchain1}
-\end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.2]{figures/blockchain2}
-	\caption{Untitled}
-	\label{fig:blockchain2}
-\end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.3]{figures/blockchain3}
-	\caption{Untitled}
-	\label{fig:blockchain3}
-\end{figure}
-\clearpage
-
 \subsection{Inconvénients de la blockchain}
+
+PRIIIX ?
 
 \section{Définition du cadre et des objectifs du stage}
 
@@ -229,7 +220,7 @@ La structure d'une liste de confiance est présentée dans la Figure~\ref{fig:ts
 \begin{figure}[h]
 	\centering
 	\includegraphics{figures/gTSL-TSLScheme}
-	\caption{gTSL – Structure d'une liste de confiance}
+	\caption{REFAIRE CE SCHEMA !!!!! gTSL – Structure d'une liste de confiance}
 	\label{fig:tsl-scheme}
 \end{figure}
 
@@ -301,7 +292,7 @@ Ces composants et leurs interactions sont illustrés dans la Figure~\ref{fig:3ti
 \begin{figure}[h]
 	\centering
 	\includegraphics{figures/gTSL-3Tier}
-	\caption{gTSL – Architecture 3-Tier}
+	\caption{gTSL – Architecture 3-Tier \cite{design-document}}
 	\label{fig:3tier-archi}
 \end{figure}
 
@@ -332,7 +323,7 @@ La Figure~\ref{fig:system-context-diagram} fournit une description de haut nivea
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.8]{figures/gTSL-SystemContextDiagram}
-	\caption{gTSL - Schéma du contexte du système}
+	\caption{gTSL - Schéma du contexte du système \cite{design-document}}
 	\label{fig:system-context-diagram}
 \end{figure}
 
@@ -465,20 +456,40 @@ Scrum apporte des avantages qui sont définies comme étant les trois piliers de
 
 \subsection{Organisation du temps}
 
-Gantt:
-- familiarisation projet +notions crypto 
-- état de l'art + comparaison et choix des techno 
-- ipfs-poc
-- setup
-- sprint 0
-- sprint 1
-- ...
-- livraison 
+La Figure~\ref{fig:gantt} est un diagramme de Gantt qui expose de manière globale la répartition du travail réalisé. Ce diagramme est volontairement non détaillé puisque l'utilisation de la méthodologie Agile ne permet pas d'organiser à l'avance et avec précision la réalisation des tâches. Il est important de noter que le diagramme se termine à la date de fin du stage mais que la livraison du projet est prévue au 30 novembre 2017.
 
-ajout de milestones (rendu mémoire, soutenance, livraison comparaison, livraison explications IPFS/Eth, fin stage, début stage, visite festor, livraison projet...)
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.67]{figures/gantt-stage-vertical}
+	\caption{Diagramme de Gantt}
+	\label{fig:gantt}
+\end{figure}
 
-Explications de chaque phase 
+\clearpage
 
+Le diagramme de Gantt en Figure~\ref{fig:gantt} permet d'avoir un aperçu de l'organisation du stage. Le stage s'est déroulé sur une période de six mois, du 3 avril 2017 au 30 septembre 2017. Durant cette période, j'ai été amené à réaliser différentes tâches qui seront détaillées dans la suite de ce mémoire. D'un point de vue générale, le stage a été décomposée en cinq parties majeures qui sont décrites ci-après.
+
+\subsubsection{Initiation}
+
+La phase d'initiation a commencé dès le début du stage et a duré environ trois semaines. 
+Elle peut être décomposée en deux sous-parties. Dans un premier temps, j'ai dû me familiariser avec le projet. Pour réaliser cela, j'ai eu accès au document de conception de la gTSL~\cite{design-document} qui explique, d'une manière générale et sans précision de technologies, l'architecture à mettre en place ainsi que les cas d'utilisation à implémenter dans le cadre du projet FutureTrust. J'ai pris connaissance du standard ETSI TS 119 612~\cite{ETSITS119612} qui détaille le format à respecter dans le cadre des listes de confiance. Dans un second temps, j'ai effectué des recherches sur les notions de cryptographie, de signature électronique et de blockchain afin de les mettre en œuvre dans le projet. Cette seconde partie a été la préparation du travail suivant qui est l'état de l'art.
+
+\subsubsection{État de l'art}
+
+La seconde phase, ayant pour objectif d'établir un état de l'art, a suivi la phase d'initiation et s'est étendue sur trois semaines.
+L'état de l'art permet de connaître l'état des connaissances et technologies actuelles dans un domaine spécifique. Pour notre projet, l'état de l'art a porté sur la blockchain ainsi que les systèmes de stockage de données décentralisés. Le but de cette phase a été d'explorer le plus largement possible les technologies pouvant être utilisées dans le projet afin de les comparer et de choisir les solutions répondant à nos besoins. Cette étape a donné lieu à un livrable qui a été inclus dans le document de conception de la gTSL comme le montre le jalon "Comparaison des technologies" dans la Figure~\ref{fig:gantt}. L'état de l'art est détaillé dans la Section~\ref{sec:state-of-the-art}.
+
+\subsubsection{Preuve de concept}
+
+À la suite de l'état de l'art, un choix de technologies a été effectué. L'étape suivante a donc été de prouver que les choix opérés correspondent aux besoins du projet. Pour cela, j'ai pu réaliser une preuve de concept sur une durée de quinze jours. Cette phase a ensuite donné lieu à une démonstration à l'équipe afin de valider de manière définitive les choix technologiques. Le détail de la preuve de concept ainsi que la justification des choix opérés sont présentés dans la Section~\ref{sec:realisation}.
+
+\subsubsection{Analyse / Conception}
+
+La phase d'analyse et conception a été précédée de la preuve de concept qui a permis de valider les technologies à utiliser pour le projet. Dans le cadre de cette phase, nous avons déterminé les modules à implémenter afin de répondre aux besoins exprimés dans le document de conception. L'analyse et la conception ont consisté à réfléchir sur la mise en place d'une architecture décentralisée basée sur une blockchain en étant conforme aux différentes contraintes définies dans le document de conception et en s'appuyant sur les technologies choisies. Cette partie a duré un mois et demi, et est détaillée dans la Section~\ref{sec:analyse}.
+
+\subsubsection{Implémentation}
+
+La dernière phase, et la plus conséquente puisqu'elle s'étend sur de la mi-juillet à fin novembre, est l'implémentation. Elle consiste à développer la solution conçue et imaginée lors de la phase d'analyse et conception. Lors de la rédaction de ce mémoire, cette phase est en cours de réalisation. Cette phase est découpée en sprints d'une durée chacun de deux semaines. L'implémentation est détaillée dans la Section~\ref{sec:realisation}. 
 
 \chapter{État de l'art des solutions envisagées}
 \label{sec:state-of-the-art}
@@ -488,13 +499,22 @@ Explications de chaque phase
 - Enoncer le principal désavantages de la blockchain qui est son coût (cf. Ethereum \& IPFS integration).
 - Etat de l'art : Comparison document + Design document
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.3]{figures/blockchain3}
+	\caption{Untitled}
+	\label{fig:blockchain3}
+\end{figure}
+
 \chapter{Analyse du problème et solution élaborée}
+\label{sec:analyse}
 
 - design document (5. Software Architecture)
 - familiarisation projet 
 - s'inspirer du PI
 
 \chapter{Réalisation, présentation et validation de la solution proposée}
+\label{sec:realisation}
 
 Décomposer les modules :
 - Ethereum smart-contract (déf en footnote) (avec Ethereum explications)

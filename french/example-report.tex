@@ -104,7 +104,7 @@ La blockchain ira-t-elle jusqu'à ubériser\footnote{Ubériser est le verbe issu
 
 \section{Présentation de la technologie blockchain}
 
-Une blockchain est basée sur l'échange d'actifs numériques, réalisé grâce à des transactions signées, et agit comme un registre publique distribué où toutes les transactions y sont répertoriées. Elle repose sur des principes de cryptographie afin d'assurer l'intégrité de ces transactions et sur un protocole décentralisé, dit {\em peer-to-peer}, qui permet à la blockchain d'avoir une disponibilité maximale et d'établir un consensus entre les participants du réseau afin de protéger contre les falsifications. La Figure~\ref{fig:blockchain-diagram} représente le processus de création est de validation d'une transaction sur la blockchain.
+Une blockchain est basée sur l'échange d'actifs numériques, réalisé grâce à des transactions signées, et agit comme un registre publique distribué où toutes les transactions y sont répertoriées. Elle repose sur des principes de cryptographie afin d'assurer l'intégrité de ces transactions et sur un protocole décentralisé, dit {\em peer-to-peer}, qui permet à la blockchain d'avoir une disponibilité maximale et d'établir un consensus entre les participants du réseau afin de protéger contre les falsifications. La Figure~\ref{fig:blockchain-diagram} représente le processus d'émission et de validation d'une transaction sur la blockchain.
 
 \begin{figure}[h]
 	\centering
@@ -112,8 +112,11 @@ Une blockchain est basée sur l'échange d'actifs numériques, réalisé grâce 
 	\caption{Processus de création est de validation d'une transaction sur la blockchain \cite{blockchain}}
 	\label{fig:blockchain-diagram}
 \end{figure}
-
 \clearpage
+
+Les blocs de transaction sont agencés dans un ordre linéaire, c'est-à-dire comme une chaîne, et contiennent une référence au bloc précédent, ainsi qu'un enregistrement des transactions.
+La preuve de travail est le traitement nécessaire pour générer un nouveau bloc basé sur les nouvelles transactions diffusées sur le réseau.
+Les blocs de transaction sont créés par un processus appelé le minage\footnote{mining en anglais}, qui est conçu pour être coûteux en temps et en énergie et pour être complexe à réaliser, et s'appuie sur un consensus pour ajuster la difficulté de créer de nouveaux blocs.
 
 \subsection{Avantages de la blockchain}
 
@@ -268,15 +271,6 @@ En s'appuyant sur la norme de listes de confiance définie dans ETSI TS 119 612~
 À l'heure actuelle, la Commission européenne publie une liste signée de pointeurs, nommée European List of the Lists (LoTL), dans laquelle chaque pointeur désigne un point de distribution pour une liste nationale de TSPs. 
 Ces listes nationales contiennent des informations sur les TSPs qualifiés et non qualifiés ainsi que sur les services qualifiés ou non qualifiés qu'ils proposent.
 
-
-%Avec le modèle actuel, les modifications apportées au contenu d'une liste nationale induisent la nécessité de republier toute la liste nationale. De plus, toutes modifications apportées sur l'URL\footnote{Une URL (acronyme anglais de Uniform Resource Locator) est couramment appelé adresse web.} à laquelle la liste est distribuée ou sur le certificat utilisé pour signer la liste, induisent la nécessité de republier à la fois la liste nationale et la liste européenne. Le caractère centralisé du système de distribution des listes de confiance actuel contient des potentiels problèmes qui doivent être résolus dans le cadre de la globalisation des listes de services de confiance:
-%\begin{itemize}
-%	\item les lites des États membres sont uniquement récupérable en basant sur la LoTL, le schéma actuel est donc sujet à un point individuel de défaillance\footnote{Un point individuel de défaillance (single point of failure ou SPOF en anglais) est un point d'un système informatique dont le reste du système est dépendant et dont une panne entraîne l'arrêt complet du système};
-%	\item des problèmes de performance et de latence peuvent être rencontrés puisqu'il est nécessaire de télécharger et valider l'ensemble des informations qui sont réparties sur différents points de distribution;
-%	\item l'architecture actuelle nécessite que l'ensemble des nœuds de distribution des États membres soit actifs car dans le cas contraire les informations des TSPs des États membres dont le nœud n'est pas actif ne sont plus disponibles;
-%	\item le schéma actuel ne conserve pas l'historique des modifications, c'est-à-dire qu'une nouvelle publication d'une liste remplace totalement la précédente, ce qui ne permet pas de conserver une trace des modifications mises en œuvre entre les versions.
-%\end{itemize}
-
 \subsubsection{Portée du système}
 
 La portée de la gTSL concerne la définition de services de confiance qualifiés et de fournisseurs de services de confiance.
@@ -317,8 +311,6 @@ L'émergence récente du concept de blockchain et les développements qui l'acco
 
 La Section~\ref{sec:state-of-the-art} présente les différentes implémentations de blockchain et de système de stockage de données décentralisé pouvant s'interfacer avec une blockchain qui ont été considérées et décrit les interfaces définies pour la couche de données.
 
-\clearpage
-
 \subsubsection{Contexte du système}
 
 La Figure~\ref{fig:system-context-diagram} fournit une description de haut niveau des interactions du système avec des entités externes.
@@ -330,7 +322,7 @@ La Figure~\ref{fig:system-context-diagram} fournit une description de haut nivea
 	\label{fig:system-context-diagram}
 \end{figure}
 
-L'entité External Users\footnote{en français, utilisateurs externes} représente tous les utilisateurs externes qui souhaitent interagir avec le système sans privilèges spécifiques, dans le but de récupérer des informations relatives à la gTSL. Le Validation Service\footnote{en français, service de validation} développé dans le cadre du projet FutureTrust est un des ces utilisateurs externes.
+L'entité External Users\footnote{en français, utilisateurs externes} représente tous les utilisateurs externes qui souhaitent interagir avec le système sans privilège spécifique, dans le but de récupérer des informations relatives à la gTSL. Le Validation Service\footnote{en français, service de validation} développé dans le cadre du projet FutureTrust est un des ces utilisateurs externes.
 L'entité Administrator Users\footnote{en français, utilisateurs d'administration} représente tous les utilisateurs externes qui sont autorisés à effectuer des opérations de gestion sur la gTSL, comme par exemple mettre à jour les informations d'un TSP.
 
 \subsubsection{Caractéristiques des utilisateurs}
@@ -480,36 +472,246 @@ La phase d'analyse et conception a été précédée de la preuve de concept qui
 
 La dernière phase, et la plus conséquente puisqu'elle s'étend sur de la mi-juillet à fin novembre, est l'implémentation. Elle consiste à développer la solution conçue et imaginée lors de la phase d'analyse et conception. Lors de la rédaction de ce mémoire, cette phase est en cours de réalisation. Cette phase est découpée en sprints d'une durée chacun de deux semaines. L'implémentation est détaillée dans la Section~\ref{sec:realisation}. 
 
-\chapter{État de l'art des solutions envisagées}
+\chapter{État de l'art}
 \label{sec:state-of-the-art}
 
-- On veut une techno pour stocker, gérer et récupérer les données de la gTSL
-- Amener sur le type de techno à utiliser (blockchain, database décentralisée, file system décentralisé...)
-- Enoncer le principal désavantages de la blockchain qui est son coût (cf. Ethereum \& IPFS integration).
-- Etat de l'art : Comparison document + Design document
+\begin{itemize}
+	\item On veut une techno pour stocker, gérer et récupérer les données de la gTSL; 
+	\item Amener sur le type de techno à utiliser (blockchain, database décentralisée, file system décentralisé...);
+	\item Enoncer le principal désavantages de la blockchain qui est son coût (cf. Ethereum \& IPFS integration);
+	\item Validation par une preuve de concept
+\end{itemize}
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.3]{figures/blockchain3}
-	\caption{Untitled}
-	\label{fig:blockchain3}
-\end{figure}
+\section{L'émergence de la blockchain}
+
+\section{La décentralisation du web}
+
+\section{Solutions existantes}
+
+La couche de persistance des données de la gTSL repose sur la blockchain et des concepts de décentralisation. À ce titre, l'objectif est de conserver toutes les informations relatives aux TSPs et aux TSs dans un registre sécurisé, c'est-à-dire dans une liste chaînée de transactions signées, et de répliquer toutes les données de la gTSL à travers un réseau de nœuds.
+Cela permet de garantir à la fois l'intégrité et la disponibilité des informations, puisque chaque chaque donnée est signée avec toutes les données précédentes dans le registre. La distribution de l'information à travers un réseau de nœuds fournit quant à elle une résilience forte contre les attaques par déni de service.
+
+Afin d'atteindre cet objectif qui permettra de pallier aux problèmes de l'architecture actuelle, plusieurs options ont été envisagées :
+\begin{itemize}
+	\item Stocker les données directement dans une blockchain publique existante;
+	\item Stocker les données dans une blockchain privée;
+	\item Stocker les données dans une blockchain privée, et utiliser une blockchain publique pour s'assurer de l'intégrité des données (par exemple en conservant le hash\footnote{Un hash est le résultat d'une fonction de hachage qui permet d'identifier rapidement une donnée.} de la transaction réalisée sur la blockchain privée dans une blockchain publique);
+	\item Stocker les données dans un système décentralisé et distribué, comme par exemple une base de données ou un système de fichiers, et utiliser une blockchain publique pour s'assurer de l'intégrité des données (par exemple en conservant le hashes\footnote{Le terme hashes est le pluriel de du mot hash} ou les références des données).
+\end{itemize}
+
+Cette section présente les technologies qui ont été envisagées en tant que solutions de stockage de données dans le cadre de l'implémentation de la gTSL. On y retrouve des technologies de blockchain, mais aussi des systèmes décentralisés et distribués.
+
+\subsection{Ripple}
+
+Ripple is a crypto-currency relying on a distributed, block-chain based ledger that does not use a proof-of-work system for the addition of blocks. Instead, it relies on a consensus mechanism (The Ripple Protocol Consensus Algorithm, 2014) applied to a sub-network of known, trusted nodes.
+
+\subsection{Tendermint}
+
+Tendermint (Kwon, 2014) is a crypto-currency relying on a distributed, block-chain based ledger that uses a voting consensus algorithm instead of mining. As such, it relies on a set of validator nodes that are responsible for emitting signed votes for, or against, new blocks added to the chain. Ballots are won if two thirds of the validator nodes vote for the acceptance of a new block.
+
+\subsection{Ethereum}
+
+Ethereum (Ethereum, 2013) is a public, distributed computing platform based on block-chain technology and on programs that have their state stored on the block-chain (such programs are called Smart Contracts). It therefore brings the use of block-chain concepts beyond the crypto-currency use case and offers a virtual execution environment that can be used to create decentralised autonomous organisations, i.e. organisations that are managed by rules specified in Smart Contracts.
+Ethereum being designed mainly as a decentralized and autonomous execution environment, it does not offer actual storage functionalities. Although data can be stored as part of smart contracts execution, the cost can rapidly become prohibitive. At the time of writing, the cost of using Ethereum purely as a data storage solution was about 1 750 000 USD for 1GB of data.
+
+\subsection{Swarm}
+
+Swarm (Trón, Fischer, Nagy, Felföldi, \& Johnson, 2016) is a distributed storage platform as well as a content distribution service directly linked to Ethereum. Its initial goal is to serve as a decentralized and redundant store for Ethereum’s public record, however it can also be used as a peer-to-peer storage and serving solution.
+At the time of writing, Swarm was still in its early stages of development, with an “alpha” release available.
+
+\subsection{Hyperledger Fabric}
+
+As described in (Cachin, 2016), Hyperledger Fabric is a distributed ledger platform aimed towards the execution of smart contracts. It is designed with a modular architecture, supports smart contracts (named chaincodes) written in the Go programming language and relies on a network of validating peers (i.e. the nodes responsible for maintaining the ledger) and non-validating peers (i.e. the nodes acting as proxies between the clients issuing transactions and the validating peers).
+Similar to Ethereum, Hyperledger was not designed with data storage as a primary use case, however its modular architecture could allow it
+
+\subsection{Keyless ledger}
+
+Keyless Signature Infrastructure2 (KSI) is a platform offering scalable digital signature based authentication for electronic data, machines and humans. KSI relies solely on hashing functions, its ledger acting as a log record of digital timestamps emitted for hashes of data submitted by users.
+
+\subsection{OpenChain}
+
+OpenChain3 is an open-source distributed ledger that relies solely on the digital signatures that are generated for the transactions it stores. Transactions are directly linked to one another – without using blocks – and can hold data within their value fields.
+OpenChain can have multiple instances replicating each other, however this follows a hierarchy of validator nodes and observer nodes, in which the validator nodes can add and validate transactions to the ledger while the observer nodes can only replicate the data of the upstream validator node to which they are connected. Consequently, it is not possible to implement a purely decentralised network of OpenChain instances.
+
+\subsection{BigchainDB}
+
+According to (McConaghy, 2016), BigchainDB aims at linking the database and block-chain worlds by adding block-chain characteristics such as decentralisation, data immutability and asset transfer to existing NoSQL database implementations.
+It is however still in its early stages of development and currently lacks basic security controls (e.g. a database administrator deleting a database on one node will see this operation being replicated across all other nodes). Additionally, BigChainDB is not Byzantine Fault Tolerant.
+
+\subsection{InterPlanetary File System (IPFS)}
+
+The InterPlanetary File System is “a peer-to-peer distributed file system that seeks to connect all computing devices with the same system of files […]” (Benet, 2014).
+IPFS re-uses block-chain paradigms such as data immutability and decentralisation achieved through peer-to-peer communication, while basing itself on the Git4 version control system.
+
+\subsection{Monax}
+
+Monax5 is an open platform aimed at developers that are willing to build and run block-chain based applications for business ecosystems.
+2 See https://guardtime.com/technology/ksi-technology
+3 See https://www.openchain.org/
+4 See https://git-scm.com
+As such it can be compared with Ethereum, however with permissions that make it legally usable in business environments.
+
+\subsection{Factom}
+
+Factom (Factom - Business Processes Secured by Immutable Audit Trails on the Blockchain, 2014) provides a distributed, decentralised protocol that is running on top of the BitCoin block-chain, and which maintains an unalterable records system.
+
+\subsection{Emercoin}
+
+Emercoin6 is a cryptocurrency that relies on both proof-of-work and proof-of-stake mining. It diverges from “standard” crypto-currencies in the sense that its block-chain is not restricted to a pure transactions ledger use. Besides its use as a crypto-currency, a number of services are also supported such as a decentralised domain name system (EMCDNS), a trusted storage for digital timestamps (ECMSTREAM), etc.
+
+\section{Synthèse}
+
+Storing the data directly in an existing public block-chain, as part of a transaction
+-> car le consensus est plus fort contre les attaques et est composé de noeuds anonymes vérifiant les transactions pour nous, ce qui signifie que l'on a pas de noeuds minant (i.e. consommant de l'énergie) nos propres transactions, par contre il faut payer.
+
+Storing the data in IPFS in order to reduce costs implied by storing a big amount of data on the blockchain.
+-> moins on store de données dans la blockchain moins c'est cher et moins on a besoin de faire des transactions couteuses.
+
+Validation par une preuve de concept
 
 \chapter{Analyse du problème et solution élaborée}
 \label{sec:analyse}
 
 - design document (5. Software Architecture)
-- familiarisation projet 
 - s'inspirer du PI
+
+Petit intro sur l'analyse de la gTSL (s'inspirer de Rod)
+
+%\section{Cas d'utilisation}
+
+\section{Acteurs}
+
+An actor is defined as:
+- A coherent set of roles that users of the system can have when interacting with it;
+- An actor instance can be either an individual or an external system.
+On identifie deux acteurs potentiels dans le contexte de la gTSL.
+
+\subsection{External User}
+
+External User\footnote{en français, utilisateurs externes} représente un utilisateur sans privilège spécifique qui souhaitent interagir avec le système, dans le but de récupérer des informations relatives à la gTSL.
+The External User actor is the actor having access to the Global Trust Service Responder, i.e. any user willing to validate the qualified status of a given Trust Service or Trust Service Provider.
+
+\subsection{Administrator User}
+
+Administrator User\footnote{en français, utilisateurs d'administration} représente tous les utilisateurs externes qui sont autorisés à effectuer des opérations de gestion sur la gTSL, comme par exemple mettre à jour les informations d'un TSP.
+The Administrator User actor is the actor having access to Administrative Interface and its Trust List edition functionalities. The Administrator User extends the External User.
+
+\section{Diagramme de cas d'utilisation}
+
+Figure 9 provides an overview of the identified use cases, grouped by category and reflecting the actors to which they are associated with.
+Les cas d'utilisation de la gTSL sont détaillés dans la Figure~\ref{fig:use-case-diagram}. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.55]{figures/use-case-diagram}
+	\caption{Diagramme de cas d'utilisation}
+	\label{fig:use-case-diagram}
+\end{figure}
+\clearpage
+
+\subsection{Administration}
+\subsubsection{Authentication}
+blabla
+
+\subsection{Trust Service List}
+\subsubsection{Create a new Trust Service List}
+blabla
+\subsubsection{Read Trust Service List information}
+blabla
+\subsubsection{Update a Trust Service List}
+blabla
+\subsubsection{Delete a Trust Service List}
+blabla
+\subsubsection{List all Trust Service Lists}
+blabla
+\subsubsection{Sign a Trust Service List}
+blabla
+\subsubsection{Edit a Draft Trust Service List}
+blabla
+\subsubsection{Import a Trusted Service List}
+blabla
+\subsubsection{Add pointer to other TSL}
+blabla
+\subsubsection{Update pointer to other TSL}
+blabla
+\subsubsection{Delete pointer to other TSL}
+blabla
+
+\subsection{Trust Service Provider}
+\subsubsection{Add new Trust Service Provider}
+blabla
+\subsubsection{Delete a Trust Service Provider}
+blabla
+\subsubsection{Update a Trust Service Provider}
+blabla
+
+\subsection{Trust Service}
+\subsubsection{Add a new Trust Service}
+blabla
+\subsubsection{Update a Trust Service}
+blabla
+\subsubsection{Delete a Trust Service}
+blabla
+\subsubsection{Check Trust Service}
+blabla
+
+\subsection{Notification}
+\subsubsection{Subscribe to receive notifications}
+blabla
+\subsubsection{Unsubscribe}
+blabla
+\subsubsection{Receive notifications}
+blabla
+
+\section{Architecture du système (Module View + Process View)}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.4]{figures/architecture}
+	\caption{Architecture envisagée}
+	\label{fig:architecture}
+\end{figure}
+
+\section{Gestion des données (Data View)}
 
 \chapter{Réalisation, présentation et validation de la solution proposée}
 \label{sec:realisation}
 
+\begin{itemize}
+	\item Voir Compte-rendus 1 et 2
+	\item Voir Integration of Ethereum \& IPFS
+	\item Parler du POC
+\end{itemize}
+
+\section{Réalisation de la solution}
+
+\begin{itemize}
+	\item Détail de l'API REST et de l'implémentation
+	\item Ethereum smart-contract (déf en footnote) (avec Ethereum explications)
+	\item IPFS storage
+	\item Integration of Ethereum \& IPFS
+\end{itemize}
+
 Décomposer les modules :
-- Ethereum smart-contract (déf en footnote) (avec Ethereum explications)
-- IPFS storage
-- 
-- 
+\begin{itemize}
+	\item Un module de gestion des données, utilisant IPFS ;
+	\item Un module de conservation des adresses à l’aide d’un smart-contract déployé dans la blockchain Ethereum ;
+	\item Un module de gestion des utilisateurs, basé sur votes d’un consensus, à l’aide d’un smart-contract déployé dans la blockchain Ethereum ;
+	\item Un module de gestion de versions permettant de conserver l’historique des mises à jour de la gTSL ;
+	\item Un module de recherche sur les données de la gTSL ;
+	\item Un module d’import/export de fichier XML des données ;
+	\item Un module de signature des listes de confiance.
+\end{itemize}
+
+\section{Présentation de la solution}
+
+VUES:
+Voir si on peut mettre des screenshots du tl-browser et du tl-manager en précisant que c'est à titre informatif et que c'est sûrement les vues qui vont être réutilisés mais ce n'est pas moi qui l'aient faites. De plus, les vues ne sont pas encore en dev donc pas de visuel possible pour le moment.
+
+\section{Validation de la solution}
+
+- Tests unitaires
+- Validation par l'équipe
 
 \chapter{Résultats obtenus \& Perspectives}
 

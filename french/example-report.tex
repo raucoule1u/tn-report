@@ -116,7 +116,11 @@ Une blockchain est basée sur l'échange d'actifs numériques, réalisé grâce 
 
 Les blocs de transaction sont agencés dans un ordre linéaire, c'est-à-dire comme une chaîne, et contiennent une référence au bloc précédent, ainsi qu'un enregistrement des transactions.
 La preuve de travail est le traitement nécessaire pour générer un nouveau bloc basé sur les nouvelles transactions diffusées sur le réseau.
-Les blocs de transaction sont créés par un processus appelé le minage\footnote{mining en anglais}, qui est conçu pour être coûteux en temps et en énergie et pour être complexe à réaliser, et s'appuie sur un consensus pour ajuster la difficulté de créer de nouveaux blocs.
+Les blocs de transaction sont créés par un processus appelé le minage\footnote{mining en anglais},
+
+http://www.ethdocs.org/en/latest/mining.html
+
+ qui est conçu pour être coûteux en temps et en énergie et pour être complexe à réaliser, et s'appuie sur un consensus pour ajuster la difficulté de créer de nouveaux blocs.
 
 \subsection{Avantages de la blockchain}
 
@@ -576,92 +580,100 @@ Validation par une preuve de concept
 - s'inspirer du PI
 
 Petit intro sur l'analyse de la gTSL (s'inspirer de Rod)
+Préciser que dans ce chapitre on appelle une liste de confiance Trust Service List (TSL).
 
 %\section{Cas d'utilisation}
 
 \section{Acteurs}
 
-An actor is defined as:
-- A coherent set of roles that users of the system can have when interacting with it;
-- An actor instance can be either an individual or an external system.
-On identifie deux acteurs potentiels dans le contexte de la gTSL.
+Un acteur est défini comme étant un ensemble cohérent de rôles que les utilisateurs du système peuvent avoir lorsqu'ils interagissent avec celui-ci. Un acteur peut être soit un système individuel, soit un système externe. Dans le contexte de la gTSL, on identifie deux acteurs potentiels.
 
 \subsection{External User}
 
-External User\footnote{en français, utilisateurs externes} représente un utilisateur sans privilège spécifique qui souhaitent interagir avec le système, dans le but de récupérer des informations relatives à la gTSL.
-The External User actor is the actor having access to the Global Trust Service Responder, i.e. any user willing to validate the qualified status of a given Trust Service or Trust Service Provider.
+External User\footnote{en français, utilisateurs externes} représente un utilisateur sans privilège spécifique qui souhaitent interagir avec le système, dans le but de récupérer des informations relatives à la gTSL. Il a accès au Global Trust Service Responder et peut donc valider le statut qualifié d'un TS ou d'un TSP donné.
 
 \subsection{Administrator User}
 
-Administrator User\footnote{en français, utilisateurs d'administration} représente tous les utilisateurs externes qui sont autorisés à effectuer des opérations de gestion sur la gTSL, comme par exemple mettre à jour les informations d'un TSP.
-The Administrator User actor is the actor having access to Administrative Interface and its Trust List edition functionalities. The Administrator User extends the External User.
+Administrator User\footnote{en français, utilisateurs d'administration} représente tous les utilisateurs externes qui sont autorisés à effectuer des opérations de gestion sur la gTSL, comme par exemple mettre à jour les informations d'un TSP. Il a accès à l'interface d'administration et à ses fonctionnalités d'édition des listes de confiance. L'utilisateur d'administration étend de l'utilisateur externe du point de vue UML\footnote{UML (acronyme anglais de Unified Modeling Language) est un langage de modélisation utilisé pour la conception de systèmes d'information}.
 
 \section{Diagramme de cas d'utilisation}
 
-Figure 9 provides an overview of the identified use cases, grouped by category and reflecting the actors to which they are associated with.
-Les cas d'utilisation de la gTSL sont détaillés dans la Figure~\ref{fig:use-case-diagram}. 
+La Figure~\ref{fig:use-case-diagram} présente les cas d'utilisation de la gTSL, groupés par catégorie et associés aux acteurs réalisant les actions.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.55]{figures/use-case-diagram}
-	\caption{Diagramme de cas d'utilisation}
+	\caption{EDITER CE DIAGRAMME EN Y AJOUTANT LES FONCTIONNALITES NON REPERTORIEES - Diagramme de cas d'utilisation}
 	\label{fig:use-case-diagram}
 \end{figure}
 \clearpage
 
 \subsection{Administration}
-\subsubsection{Authentication}
-blabla
+\subsubsection{Authentification}
+L'authentification permet aux utilisateurs d'être reconnu par le système comme étant administrateur, c'est-à-dire comme ayant droit d'éditer des listes de confiance. Cette fonctionnalité sera gérée grâce à la blockchain, en effet la clé publique des utilisateurs enregistrés en tant qu'administrateur sera sauvegardée dans la blockchain. Afin de s'authentifier, l'utilisateur devra donc utiliser sa clé privée.
 
 \subsection{Trust Service List}
-\subsubsection{Create a new Trust Service List}
-blabla
-\subsubsection{Read Trust Service List information}
-blabla
-\subsubsection{Update a Trust Service List}
-blabla
-\subsubsection{Delete a Trust Service List}
-blabla
-\subsubsection{List all Trust Service Lists}
-blabla
-\subsubsection{Sign a Trust Service List}
-blabla
-\subsubsection{Edit a Draft Trust Service List}
-blabla
-\subsubsection{Import a Trusted Service List}
-blabla
-\subsubsection{Add pointer to other TSL}
-blabla
-\subsubsection{Update pointer to other TSL}
-blabla
-\subsubsection{Delete pointer to other TSL}
-blabla
+\subsubsection{Créer une nouvelle Trust Service List}
+Un utilisateur authentifié et autorisé peut créer une TSL de confiance pour un territoire donné. Pour cela, il doit créer une nouvelle TSL, remplir tous les champs requis de celle-ci, valider ces champs et enfin la signer. Ensuite, la liste complète sera stockée et répliqué à travers les nœuds du réseau distribué et une nouvelle entrée sera créée dans la blockchain afin de la référencer dans la gTSL.
+\subsubsection{Lire les informations relatives à une Trust Service List}
+Tout utilisateur peut lire et récupérer les informations relatives à une TSL existante afin d'en analyser le contenu. Le système permettra d'effectuer une recherche en se basant sur différents critères comme par exemple le territoire, le type de service, le statut ou un certificat.
+\subsubsection{Éditer une Trust Service List}
+Un utilisateur authentifié et autorisé peut modifier une TSL. Ce processus est similaire à la création sauf que l'utilisateur n'aura pas à saisir toutes les informations car la liste existante lui sera fournie. Une édition peut donner lieu à l'ajout, la suppression ou la modification d'un TSP; l'ajout, la suppression ou la modification d'un TS; la modification d'un champ obligatoire; l'ajout, la suppression ou la modification d'un champ optionnel. Il est important de noter que lors d'une édition, l'utilisateur doit signer à nouveau la TSL.
+\subsubsection{Supprimer une Trust Service List}
+Un utilisateur authentifié et autorisé peut supprimer une TSL. Ce cas d'utilisation correspond à la révocation d'une TSL. Dans la pratique, une TSL n'est jamais supprimée définitivement, elle est simplement considérée comme révoquée et peut être possiblement réhabilitée.
+\subsubsection{Lister toutes les Trust Service Lists}
+Le système permet la récupération de l'ensemble des TSLs afin d'avoir une vue globale de la gTSL.
+\subsubsection{Signer une Trust Service List}
+Cette fonctionnalité permet aux utilisateurs authentifiés et autorisés de signer une TSL lors de la création ou d'une édition.
+\subsubsection{Importer une Trust Service List}
+Le système permet aux utilisateurs d'importer des TSLs au format XML afin de les créer ou les modifier dans la gTSL. Cela pour intérêt d'une part de permettre une édition à la main des utilisateurs, d'autre part d'autoriser un système externe de créer des TSLs. Malgré cela, la TSL doit être valide afin d'être acceptée par le système. Cette fonctionnalité peut aussi être utile en cas de migration. Il est important de noter que le fichier XML doit être signé.
+\subsubsection{Exporter une Trust Service List}
+Le système permet aux utilisateurs d'exporter des TSLs au format XML. Cela pour intérêt de permettre à des systèmes externes de les manipuler et d'y appliquer des modifications. Cette fonctionnalité peut aussi être utile en cas de migration.
+
+\subsection{Draft}
+\subsubsection{Créer un brouillon de Trust Service List}
+Le système permet aux utilisateurs de créer un brouillon\footnote{Draft en anglais} d'une TSL. En effet, un utilisateur peut créer un brouillon d'une liste existante dans le but de la soumettre plus tard. Les brouillons sont stockés dans une base de données locale. Lorsque que l'utilisateur considère son brouillon comme terminé et que le système l'a validé, le brouillon est alors poussé en production et remplace la liste actuelle. On peut assimiler ce fonctionnement à celui des emails, qui peuvent être enregistrés comme brouillon avant d'être envoyés.
+\subsubsection{Éditer un brouillon de Trust Service List}
+Le système permet aux utilisateurs d'éditer un brouillon qui a été enregistré localement mais qui n'a pas été soumis à la production.
+\subsubsection{Supprimer un brouillon de Trust Service List}
+Le système permet aux utilisateurs de supprimer un brouillon qui a été enregistré localement mais qui n'a pas été soumis à la production.
+
+\subsection{Pointer to Other TSL}
+\subsubsection{Ajouter un pointeur vers une autre TSL}
+Dans l'architecture actuelle, il est possible d'ajouter à une TSL un pointeur vers une autre TSL. Un pointeur permet de référencer une liste dans une autre lorsque cela est pertinent. Afin de rester conforme au format actuel de Trust Service List, cette action doit être disponible dans la nouvelle implémentation.
+\subsubsection{Éditer un pointeur vers une autre TSL}
+Un utilisateur authentifié et autorisé peut modifier un pointeur d'une TSL. En effet, si une TSL est modifiée, il est possible que sa référence soit aussi modifiée.
+\subsubsection{Supprimer un pointeur vers une autre TSL}
+Un utilisateur authentifié et autorisé peut supprimer un pointeur d'une TSL. Dans le cas où il n'est plus pertinent de référencer une autre TSL, l'utilisateur peut supprimer le pointeur.
 
 \subsection{Trust Service Provider}
-\subsubsection{Add new Trust Service Provider}
-blabla
-\subsubsection{Delete a Trust Service Provider}
-blabla
-\subsubsection{Update a Trust Service Provider}
-blabla
+\subsubsection{Ajouter un nouveau Trust Service Provider}
+Un utilisateur authentifié et autorisé peut ajouter un TSP dans une TSL. Pour cela, il doit créer un nouveau fournisseur, remplir tous les champs requis pour celui-ci et valider ces champs. Le fournisseur doit obligatoirement proposer au minimum un service de confiance, car dans le cas contraire il ne serait pas pertinent de l'ajouter. La liste sera alors mise à jour. Il est important de noter que l'ajout d'un fournisseur est considéré comme une édition de la liste. Par conséquent, l'utilisateur doit signer à nouveau la TSL.
+\subsubsection{Éditer un Trust Service Provider}
+Un utilisateur authentifié et autorisé peut éditer un TSP dans une TSL. En effet, les informations d'un TSP peut être amené à changer, l'utilisateur a donc la possibilité de les modifier. Une édition peut donner lieu à la modification du nom, de l'adresse électronique ou postale, de l'URI ou d'autres informations optionnelles du TSP. Tout comme l'ajout, l'édition d'un TSP est considéré comme une édition de la liste. Par conséquent, l'utilisateur doit signer à nouveau la TSL.
+\subsubsection{Supprimer un Trust Service Provider}
+Un utilisateur authentifié et autorisé peut supprimer un TSP d'une TSL. Par exemple, un TSP peut être supprimé s'il n'existe plus ou s'il ne répond plus aux critères de confiance. Tout comme l'ajout, la suppression d'un TSP est considéré comme une édition de la liste. Par conséquent, l'utilisateur doit signer à nouveau la TSL.
 
 \subsection{Trust Service}
-\subsubsection{Add a new Trust Service}
-blabla
-\subsubsection{Update a Trust Service}
-blabla
-\subsubsection{Delete a Trust Service}
-blabla
-\subsubsection{Check Trust Service}
-blabla
+\subsubsection{Ajouter un nouveau Trust Service}
+Un utilisateur authentifié et autorisé peut ajouter un TS à un TSP. Il est obligatoire que le TSP ait déjà été créé. Pour cela, il doit créer un nouveau service, remplir tous les champs requis pour celui-ci et valider ces champs. Il est important de noter que l'ajout d'un service est considéré comme une édition de la liste. Par conséquent, l'utilisateur doit signer à nouveau la TSL.
+\subsubsection{Éditer un Trust Service}
+Un utilisateur authentifié et autorisé peut éditer un TS d'un TSP. En effet, les informations d'un TS peut être amené à changer, l'utilisateur a donc la possibilité de les modifier. Une édition peut donner lieu à la modification du nom, du statut, de l'URI ou d'autres informations du TS. Tout comme l'ajout, l'édition d'un TS est considéré comme une édition de la liste. Par conséquent, l'utilisateur doit signer à nouveau la TSL.
+\subsubsection{Supprimer un Trust Service}
+Un utilisateur authentifié et autorisé peut supprimer un TS d'un TSP. Par exemple, un TS peut être supprimé s'il n'est plus proposé par le fournisseur. Tout comme l'ajout, la suppression d'un TS est considéré comme une édition de la liste. Par conséquent, l'utilisateur doit signer à nouveau la TSL.
+\subsubsection{Vérifier un Trust Service}
+Le système permet aux utilisateurs externes de rechercher une 
+trust anchor\footnote{Dans les systèmes cryptographiques à structure hiérarchique, une trust anchor est une autorité pour laquelle la confiance est assumée et non dérivée. Dans le cadre de l'architecture X.509, un certificat racine serait la trust anchor de laquelle toute la chaîne de confiance est dérivée.} 
+à un moment donné. 
+Une opération de recherche peut être effectuée en passant en paramètre un certificat ou le nom associé au service souhaité d'une TSL. La réponse contiendra les informations sur le service identifié.
 
 \subsection{Notification}
 \subsubsection{Subscribe to receive notifications}
-blabla
+Le système permet aux utilisateurs de s'abonner à des notifications concernant les listes de confiance. Par exemple, un utilisateur peut être notifier par email en cas de modification d'une liste donnée.
 \subsubsection{Unsubscribe}
-blabla
+Un utilisateur abonné à des notifications à la possibilité de se désabonner.
 \subsubsection{Receive notifications}
-blabla
+Le système doit envoyer des notifications à tous les utilisateurs abonnés à une liste donnée, lors de la mise à jour de celle-ci.
 
 \section{Architecture du système (Module View + Process View)}
 
@@ -687,16 +699,17 @@ blabla
 
 \begin{itemize}
 	\item Détail de l'API REST et de l'implémentation
-	\item Ethereum smart-contract (déf en footnote) (avec Ethereum explications)
+	\item Ethereum smart-contract (déf en footnote) (avec Ethereum explications) %(http://www.ethdocs.org/en/latest/contracts-and-transactions/contracts.html#what-is-a-contract)
 	\item IPFS storage
 	\item Integration of Ethereum \& IPFS
 \end{itemize}
 
 Décomposer les modules :
 \begin{itemize}
-	\item Un module de gestion des données, utilisant IPFS ;
-	\item Un module de conservation des adresses à l’aide d’un smart-contract déployé dans la blockchain Ethereum ;
+	\item Un module de gestion des données, utilisant IPFS (see IPFS white paper);
+	\item Un module de conservation des adresses à l’aide d’un smart-contract déployé dans la blockchain Ethereum (see Ethereum white paper);
 	\item Un module de gestion des utilisateurs, basé sur votes d’un consensus, à l’aide d’un smart-contract déployé dans la blockchain Ethereum ;
+	\item Un module d'authentification sur la blockchain, à l’aide d’un smart-contract déployé dans la blockchain Ethereum où sont stockées les clés publiques des administrateurs, le mécanisme d'authentification est quasi natif puisque une requête d'authentification (qui est une transaction) permet de reconnaître leur utilisateur puisqu'on peut nativement avoir accès à la clé publique de l'utilisateur émettant la transaction dans le contrat;
 	\item Un module de gestion de versions permettant de conserver l’historique des mises à jour de la gTSL ;
 	\item Un module de recherche sur les données de la gTSL ;
 	\item Un module d’import/export de fichier XML des données ;

@@ -116,11 +116,7 @@ Une blockchain est basée sur l'échange d'actifs numériques, réalisé grâce 
 
 Les blocs de transaction sont agencés dans un ordre linéaire, c'est-à-dire comme une chaîne, et contiennent une référence au bloc précédent, ainsi qu'un enregistrement des transactions.
 La preuve de travail est le traitement nécessaire pour générer un nouveau bloc basé sur les nouvelles transactions diffusées sur le réseau.
-Les blocs de transaction sont créés par un processus appelé le minage\footnote{mining en anglais.},
-
-http://www.ethdocs.org/en/latest/mining.html
-
- qui est conçu pour être coûteux en temps et en énergie et pour être complexe à réaliser, et s'appuie sur un consensus pour ajuster la difficulté de créer de nouveaux blocs.
+Les blocs de transaction sont créés par un processus appelé le minage\footnote{mining en anglais.}, qui est conçu pour être coûteux en temps et en énergie ainsi qu'être complexe à réaliser, et s'appuie sur un consensus pour ajuster la difficulté de créer de nouveaux blocs. Le minage est aussi un moyen de sécuriser le réseau en créant, vérifiant, publiant et propageant les blocs dans la blockchain.
 
 \subsection{Avantages de la blockchain}
 
@@ -143,7 +139,30 @@ Bien que la blockchain apporte de nombreux avantages, elle comporte aussi des in
 	\item la confidentialité, puisque toute information enregistrée dans la blockchain est publique, il est fortement déconseillé d'y stocker des informations confidentielles ou personnelles, même si elles sont chiffrées.
 \end{itemize}
 
-\subsection{Présentation des Smart Contracts ????}
+\subsection{Introduction aux Smart Contracts}
+
+En 1994, Nick Szabo, chercheur juridique et cryptographe, s'est rendu compte que le registre décentralisé pouvait être utilisé pour des smart contracts (contrats intelligents), autrement appelés contrats auto-exécutés, contrats blockchain ou contrats numériques.
+Les contrats peuvent être convertis en code informatique, stockés et répliqués sur le système et supervisés sur le réseau qui exécutent la blockchain.
+Les smart contracts permettent d'échanger de l'argent, des biens, des parts ou n'importe quel  actif de manière transparente, sans conflit et en évitant tout service intermédiaire.
+La Figure~\ref{fig:smart-contracts} représente l'établissement d'un smart-contract entre deux parties, sans service intermédiaire.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.53]{figures/smart-contracts}
+	\caption{Établissement d'un smart-contract \cite{smart-contracts}}
+	\label{fig:smart-contracts}
+\end{figure}
+
+Les smart-contracts apportent de nombreux avantages:
+\begin{itemize}
+	\item l'autonomie, qui signifie que l'accord engendré par le contrat n'a pas besoin d'être confirmé par un intermédiaire tierce comme un notaire ou un avocat; Cela empêche aussi toute manipulation par un tiers sur l'un des parties signataires du contrat puisque l''exécution du contrat est géré automatiquement par le réseau, ce qui empêche tout individu biaisé d'avoir une influence sur le contrat
+	\item la confiance, puisque les documents sont chiffrés dans le registre distribué, il n'y a aucun moyen qu'ils soient perdus;
+	\item la sauvegarde, toutes les informations sont stockées dans la blockchain et sont répliquées à travers de multiples nœuds du réseau qui les maintiennent;
+	\item la sécurité, les concepts de cryptographie utilisés vous permettre de conserver vos contrats en sécurité, ils ne peuvent être modifiés ou usurpés;
+	\item la vitesse, les smart-contracts permettent d'accélérer les procédures, puisque toutes les tâches sont automatisées, réduisant ainsi les heures de travail sur le contrat;
+	\item des économies, en effet se détacher des intermédiaires permet de réduire considérablement les charges administratives engendrées par la plupart des contrats classiques;
+	\item la précision, puisque le contrat est automatisé et exécuté par une machine, si l'on admet que le contrat a été codé correctement, alors tout erreur pouvant être introduite lors d'une rédaction manuelle ne peut être présente dans un smart-contract.
+\end{itemize}
 
 \section{Définition du cadre et des objectifs du stage}
 
@@ -483,20 +502,186 @@ La dernière phase, et la plus conséquente puisqu'elle s'étend sur de la mi-ju
 \chapter{État de l'art}
 \label{sec:state-of-the-art}
 
-S'INSPIRER DU WHITE PAPER ETHEREUM
-
-\begin{itemize}
-	\item On veut une techno pour stocker, gérer et récupérer les données de la gTSL; 
-	\item Amener sur le type de techno à utiliser (blockchain, database décentralisée, file system décentralisé...);
-	\item Enoncer le principal désavantages de la blockchain qui est son coût (cf. Ethereum \& IPFS integration);
-	\item Validation par une preuve de concept
-\end{itemize}
+Dans le cadre du projet FutureTrust, il a été nécessaire d'effectuer un état de l'art afin d'avoir une vue globale de l'état actuelle de la technologie blockchain et des technologies distribuées et décentralisées comme les bases de données ou les systèmes de fichiers. Pour cela, il convient de décrire l'émergence de la blockchain ces dix dernières années, d'expliquer les avantages qu'apporte la décentralisation dans les systèmes actuels et d'établir une liste des technologies existantes. L'état de l'art a pour intérêt de comprendre l'effervescence autour de ces technologies ainsi que d'opérer les meilleurs choix dans la réalisation du module de gTSL. Les solutions existantes présentées en Section~\ref{sec:solutions} ont été envisagées afin de mettre en place un système permettant de conserver, gérer et récupérer les données de la gTSL de manière sécurisée et apportant une forte résilience.
 
 \section{L'émergence de la blockchain}
 
+\subsection{Historique}
+
+Le concept de monnaie numérique décentralisée, ainsi que d'autres applications comme les registres de propriété, existe depuis des décennies. 
+Les protocoles de systèmes de paiement apparus dans les années 1980 et 1990, connus sous le nom de e-cash\cite{ecash}, reposant sur des concepts cryptographiques, avaient pour but de fournir une monnaie avec un degré élevé de confidentialité. La mise en place de ces protocoles a largement échoué à cause de leur dépendance à un intermédiaire centralisé. 
+En 1998, la technologie B-money\cite{bmoney} créé par Wei Dai voit le jour, et devient la première proposition introduisant l'idée de créer de l'argent en résolvant des puzzles informatiques en se basant sur un consensus décentralisé, mais cette proposition a été peu détaillée sur la manière dont le consensus décentralisé pouvait effectivement être mis en œuvre. 
+En 2005, Hal Finney a introduit le concept de preuves de travail réutilisables, un système qui utilise des idées de b-money avec les puzzles Hashcash\cite{hashcash} difficiles à calculer créés par Adam Back afin de créer un concept de crypto-monnaie, mais encore une fois cette proposition n'a pas su être exploité. 
+En 2009, une monnaie décentralisée a été pour la première fois mise en œuvre par Satoshi Nakamoto, combinant les différentes propositions établies pour la gestion de la propriété par l'utilisation de clés publiques avec un algorithme de consensus permettant de suivre l'identité du possesseur de la monnaie, appelé preuve de travail (Proof of Work).
+
+Le mécanisme derrière la preuve de travail a été une avancée car il a simultanément résolu deux problèmes. 
+Tout d'abord, il a fourni un algorithme de consensus simple et modérément efficace, permettant aux nœuds du réseau de convenir collectivement d'un ensemble de mises à jour du registre Bitcoin. 
+Deuxièmement, il a fourni un mécanisme qui permet l'entrée libre d'un nouveau membre dans le processus de consensus, résout le problème engendré par l'influence d'un membre dans le consensus, tout en empêchant les attaques Sybil\footnote{Une attaque Sybil est une attaque informatique qui vise à renverser un système par la création de fausses identités dans un réseau pair-à-pair.}. 
+Dans la preuve de travail, le poids d'un nœud dans le processus de vote par consensus est directement proportionnel aux ressources de calcul que ce nœud apporte. 
+Depuis cela, une approche alternative, appelée preuve d'enjeu (Proof of Stake), initiée par Peercoin\cite{peercoin} a été proposée, dans laquelle le poids d'un nœud est proportionnel à la quantité de crypto-monnaie qu'il détient et non plus aux ressources informatiques qu'il apporte.
+
+%\subsection{Existant de la blockchain}
+
+%Après 2009, une fois que le consensus décentralisé de Bitcoin a été développé, un grand nombre d'applications alternatives ont rapidement commencé à apparaître.
+
+%\begin{enumerate}
+	%\item Namecoin - created in 2010, Namecoin is best described as a decentralized name registration database. In decentralized protocols like Tor, Bitcoin and BitMessage, there needs to be some way 	of identifying accounts so that other people can interact with them, but in all existing solutions the only kind of identifier available is a pseudorandom hash like 1LW79wp5ZBqaHW1jL5TCiBCrhQYtHagUWy. Ideally, one would like to be able to have an account with a name like "george". However, the problem is that if one person can create an account named "george" then someone else can use the same process to register "george" for themselves as well and impersonate them. The only solution is a first-to-file paradigm, where the first registerer succeeds and the second fails - a problem perfectly suited for the Bitcoin consensus protocol. Namecoin is the oldest, and most successful, implementation of a name registration system using such an idea;
+	%\item Colored coins - the purpose of colored coins is to serve as a protocol to allow people to create their own digital currencies - or, in the important trivial case of a currency with one unit, digital tokens, on the Bitcoin blockchain. In the colored coins protocol, one "issues" a new currency by	publicly assigning a color to a specific Bitcoin UTXO, and the protocol recursively defines the color of other UTXO to be the same as the color of the inputs that the transaction creating them spent	(some special rules apply in the case of mixed-color inputs). This allows users to maintain wallets containing only UTXO of a specific color and send them around much like regular bitcoins, backtracking through the blockchain to determine the color of any UTXO that they receive;
+	%\item Metacoins - the idea behind a metacoin is to have a protocol that lives on top of Bitcoin, using Bitcoin transactions to store metacoin transactions but having a different state transition function, APPLY'. Because the metacoin protocol cannot prevent invalid metacoin transactions from appearing in the Bitcoin blockchain, a rule is added that if APPLY'(S,TX) returns an error, the protocol defaults to APPLY'(S,TX) = S. This provides an easy mechanism for creating an arbitrary cryptocurrency protocol, potentially with advanced features that cannot be implemented inside of Bitcoin itself, but with a very low development cost since the complexities of mining and networking are already handled by the Bitcoin protocol. Metacoins have been used to implement some classes of financial contracts, name registration and decentralized exchange.
+%\end{enumerate}
+
+%Thus, in general, there are two approaches toward building a consensus protocol: building an independent network, and building a protocol on top of Bitcoin. The former approach, while reasonably successful in the case of applications like Namecoin, is difficult to implement; each individual implementation needs to bootstrap an independent blockchain, as well as building and testing all of the necessary state transition and networking code. Additionally, we predict that the set of applications for decentralized consensus technology will follow a power law distribution where the vast majority of applications would be too small to warrant their own blockchain, and we note that there exist large classes of decentralized applications, particularly decentralized autonomous organizations, that need to interact with each other.
+
+%The Bitcoin-based approach, on the other hand, has the flaw that it does not inherit the simplified payment verification features of Bitcoin. SPV works for Bitcoin because it can use blockchain depth as a proxy for validity; at some point, once the ancestors of a transaction go far enough back, it is safe to say that they were legitimately part of the state. Blockchain-based meta-protocols, on the other hand, cannot force the blockchain not to include transactions that are not valid within the context of their own protocols. Hence, a fully secure SPV meta-protocol implementation would need to backward scan all the way to the beginning of the Bitcoin blockchain to determine whether or not certain transactions are valid. Currently, all "light" implementations of Bitcoin-based meta-protocols rely on a trusted server to provide the data, arguably a highly suboptimal result especially when one of the primary purposes of a cryptocurrency is to eliminate the need for trust.
+
+\subsection{État actuel et Potentiel futur}
+
+Actuellement deux principaux protocoles publiques se sont démarqués, le premier est bien entendu Bitcoin, le second est Ethereum récemment créé. Malgré cela, les défis et les développements potentiels de la blockchain restent nombreux.
+
+%Complex and rapidly evolving technology…
+Firstly, this is very new technology; it has the vigor of youth but also suffers from teething problems. 
+Although the technical foundation has stabilized as concerns Bitcoin (which has existed since 2009) and its limited uses (mainly cryptocurrency bitcoin and proof of existence), it is not the same for the other blockchains. 
+The scope of the work to be carried out to enable the technology in general to scale and include all the types of work currently imagined is staggering: development of tools for the general public to interact with the chain, improvement of consensus protocols (Proof of Work, Proof of Stake…), increase in the number of transactions processed per second (through improvement to the network such as Segregated Witness on Bitcoin, sharding on Ethereum; by the sidechains or state channels), creation and improvement of development tools, research on good practices for the security of smart contracts, implementation of de-identification protocols for transactions, etc. 
+The list is long, and the task is enormous. 
+But those involved seem eager to take the bull by the horns and research is progressing at a fast pace, giving rise to occasional existential crises (in particular concerning Ethereum), which eventually resolve themselves (cf. antifragile, etc.).
+
+%…which requires a serious effort to achieve understanding
+As a natural consequence of its youth, the technology is also misunderstood. 
+It is possible that you have read 50 articles on the subject without having really understood what it’s all about: this is normal. 
+Blockchain gurus are everywhere, but true experts in the sector are still rare; those who have clearly understood what this technology is and means. 
+Watch out for consultants who bill exorbitant consulting services to desperate companies who have heard of this phenomenon and want to develop a “blockchain project” at all costs, even where this makes no sense at all in the context of their business activities. 
+Learn to recognize them from a combination of all or some of the following clues: they insist on separating the “blockchain” from crypto-currencies and the Bitcoin in particular, which they equate with speculation “like Dutch tulips”, reject any use of a public blockchain, converse in buzzwords 
+(in combination with IoT , big data , deep learning , uberisation of uber…) and focus heavily on 
+1. the supposed complexity of the system which frees them from going into detail, and the 
+2. the threat this incredible invention poses to your business activities…
+
+%A developing ecosystem
+The newness of the technology also explains that of the ecosystem. It wasn’t until 2013/2014 that the first serious crypto-currency exchange platforms and service companies came into being. Currently, the sector is buzzing, with numerous start-ups and also initiatives by major companies. There is still one entirely missing element: identity management. On the public blockchain, everyone is anonymous, or rather pseudonymous, identified by an account number. This is fine for certain types of use, but other uses require an identity that can be certified and associated with a particular account, and that this account can by recovered by its legitimate owner in the event of loss. This is a major complex issue arising from the design of the technology; however, numerous initiatives are on-going in this area (e.g. AEternam, a French initiative, and uPort from ConsenSys).
+Since the advent of Ethereum, this ecosystem also includes emerging entities on the blockchain, i.e. the dApps, or decentralized applications. In 2016 we discovered their potential but also (painfully) experienced their weaknesses during the hack of the DAO. The security of smart contracts is still at an early stage, and considerable efforts will be necessary before envisaging the automatization of very high value added operations. Numerous initiatives have already been initiated in this respect and will continue in 2017: fundamental research, formal analysis software, improvement of the language and even the Ethereum Virtual Machine, etc. It should also be noted that the current issues are not discouraging those working in the sector: numerous dApps projects were funded this year, in particular through ICO (Initial Coin Offerings), and should be launched in 2017 or 2018. We will also be watching planned projects: Augur/Gnosis, Digix, Etherisc, uPort, Golem/iEx.ec, CharityDAO, SingularDTV, Ledgys, etc.
+
+%Challenges of the legal framework…
+Numerous types of blockchain use are thus under development. And, where there is use there must be rules of use, a legal framework… and currently, the law is lacking. We are not speaking here of the law in the sense of a “blockchain law” which would restrict or control the use of this technology (although this will happen soon enough), but rather a form of legal recognition of the new categories created by this technology. In particular, blockchain assets in their most obvious form, cryptocurrency, but also in their derived forms, proof of existence, programmable tokens, votes, etc. Acknowledgement of the unique characteristics of these inscriptions, by local, European law and international treaties, under both general law and by the various regulatory bodies by sector (finance, healthcare, energy), would be a big step forward, which would allow businesses to develop the disruptive types of use which generate wealth.
+We are still a long way off, as the lawmakers and regulatory bodies are taking a wait and see approach, giving rise to a state of complete legal uncertainty! This lack of official recognition also impacts private sector involvement; it is still difficult for those involved in the blockchain sector to open bank accounts, find accountants, etc. If Europe wants to be at the forefront of the “Blockchain revolution”, it must do more, both at the national and international levels.
+In the meantime, the applicable law is explored directly by the law professionals; notably lawyers that are focused on the issues raised by their clients (and notably Fieldfisher LLP firm, of which I am a member).
+
+%…and governance
+Finally, it is impossible to address the “blockchain” without mentioning governance, which designates here the mechanisms which govern the development of public blockchains (in particular technical protocol developments). As we have seen, the governance mechanisms are complex, as the blockchain is a system with diverse participants whose interests do not always converge. This lack of clarity is a legitimate cause for concern. However, an essential part of the technology, its decentralization, is at stake here. A blockchain with a central point of control having sole power to make decisions would find itself with a single point of failure, which is exactly what the technology seeks to avoid… This does not mean that all initiatives aimed at improving the development process for public blockchains are doomed to failure. Projects such as Tezos are based, in particular, on the idea of new governance, as decentralized as the blockchain itself… Is this feasible? Time will tell.
+
+In the future, we will be watching for:
+major technical developments such as the formal verification of smart contracts, proof of stake, sharding, etc.
+recognition by the public and private sector of cryptocurrencies and more generally of blockchain inscriptions.
+projects in development (projects involving blockchain, dApps, off-chain and on-chain services) which will be launched in the short and medium term.
+
 \section{La décentralisation du web}
 
+The original purpose of the web and internet, if you recall, was to build a common neutral network which everyone can participate in equally for the betterment of humanity. Fortunately, there is an emerging movement to bring the web back to this vision and it even involves some of the key figures from the birth of the web. It’s called the Decentralised Web or Web 3.0, and it describes an emerging trend to build services on the internet which do not depend on any single “central” organisation to function.
+
+So what happened to the initial dream of the web? Much of the altruism faded during the first dot-com bubble, as people realised that an easy way to create value on top of this neutral fabric was to build centralised services which gather, trap and monetise information.
+
+Search Engines (e.g. Google), Social Networks (e.g. Facebook), Chat Apps (e.g. WhatsApp) have grown huge by providing centralised services on the internet. For example, Facebook’s future vision of the internet is to provide access only to the subset of centralised services it endorses (Internet.org and Free Basics).
+
+Meanwhile, it disables fundamental internet freedoms such as the ability to link to content via a URL (forcing you to share content only within Facebook) or the ability for search engines to index its contents (other than the Facebook search function).
+
+paltalk-tinychat
+
+The Decentralised Web envisions a future world where services such as communication, currency, publishing, social networking, search, archiving etc are provided not by centralised services owned by single organisations, but by technologies which are powered by the people: their own community. Their users.
+
+The core idea of decentralisation is that the operation of a service is not blindly trusted to any single omnipotent company. Instead, responsibility for the service is shared: perhaps by running across multiple federated servers, or perhaps running across client side apps in an entirely “distributed” peer-to-peer model.
+
+Even though the community may be “byzantine” and not have any reason to trust or depend on each other, the rules that describe the decentralised service’s behaviour are designed to force participants to act fairly in order to participate at all, relying heavily on cryptographic techniques such as Merkle trees and digital signatures to allow participants to hold each other accountable.
+
+There are three fundamental areas that the Decentralised Web necessarily champions:privacy, data portability and security.
+
+Privacy: Decentralisation forces an increased focus on data privacy. Data is distributed across the network and end-to-end encryption technologies are critical for ensuring that only authorized users can read and write. Access to the data itself is entirely controlled algorithmically by the network as opposed to more centralized networks where typically the owner of that network has full access to data, facilitating  customer profiling and ad targeting.
+Data Portability: In a decentralized environment, users own their data and choose with whom they share this data. Moreover they retain control of it when they leave a given service provider (assuming the service even has the concept of service providers). This is important. If I want to move from General Motors to BMW today, why should I not be able to take my driving records with me? The same applies to chat platform history or health records.
+Security: Finally, we live in a world of increased security threats. In a centralized environment, the bigger the silo, the bigger the honeypot is to attract bad actors. Decentralized environments are safer by their general nature against being hacked, infiltrated, acquired, bankrupted or otherwise compromised as they have been built to exist under public scrutiny from the outset.
+
+
+Just as the internet itself triggered a grand re-levelling, taking many disparate unconnected local area networks and providing a new neutral common ground that linked them all, now we see the same pattern happening again as technology emerges to provide a new neutral common ground for higher level services. And much like Web 2.0, the first wave of this Web 3.0 invasion has walked among us for several years already.
+
+Git is wildly successful as an entirely decentralised version control system – almost entirely replacing centralised systems such as Subversion. Bitcoin famously demonstrates how a currency can exist without any central authority, contrasting with a centralised incumbent such as Paypal. Diaspora aims to provide a decentralised alternative to Facebook. Freenet paved the way for decentralised websites, email and file sharing.
+
+Less famously, StatusNet (now called GNU Social) provides a decentralised alternative to Twitter. XMPP was built to provide a decentralised alternative to the messaging silos of AOL Instant Messenger, ICQ, MSN, and others.
+
+Telephone switchboard operators circa 1914. Photo courtesy Flickr and reynermedia.
+Telephone switchboard operators circa 1914. Photo courtesy Flickr and reynermedia.
+
+However, these technologies have always sat on the fringe — favourites for the geeks who dreamt them up and are willing to forgive their mass market shortcomings, but frustratingly far from being mainstream. The tide is turning . The public zeitgeist is finally catching up with the realisation that being entirely dependent on massive siloed community platforms is not entirely in the users’ best interests.
+
+Critically, there is a new generation of Decentralised Startups that have got the attention of the mainstream industry, heralding in the new age for real.
+
+Blockstack and Ethereum show how Blockchain can be so much more than just a cryptocurrency, acting as a general purpose set of building blocks for building decentralised systems that need strong consensus. IPFS and the Dat Project provide entirely decentralised data fabrics, where ownership and responsibility for data is shared by all those accessing it rather than ever being hosted in a single location.
+
+The real step change in the current momentum came in June at the Decentralised Web Summit organised by the Internet Archive. The event brought together many of the original “fathers of the internet and World Wide Web” to discuss ways to “Lock the web open” and reinvent a web “that is more reliable, private, and fun.”
+
+Brewster Kahle, the founder of the Internet Archive, saw first hand the acceleration in decentralisation technologies whilst considering how to migrate the centralised Internet Archive to instead be decentralised: operated and hosted by the community who uses it rather being a fragile and vulnerable single service.
+
+Additionally, the enthusiastic presence of Tim Berners-Lee, Vint Cerf, Brewster himself and many others of the old school of the internet at the summit showed that for the first time the shift to decentralisation had caught the attention and indeed endorsement of the establishment.
+
+Tim Berners-Lee said:
+
+The web was designed to be decentralised so that everybody could participate by having their own domain and having their own webserver and this hasn’t worked out. Instead, we’ve got the situation where individual personal data has been locked up in these silos. […] The proposal is, then, to bring back the idea of a decentralised web.
+
+To bring back power to people. We are thinking we are going to make a social revolution by just tweaking: we’re going to use web technology, but we’re going to use it in such a way that we separate the apps that you use from the data that you use.
+
+We now see the challenge is to mature these new technologies and bring them fully to the mass market. Commercially there is huge value to be had in decentralisation: whilst the current silos may be washed away, new ones will always appear on top of the new common ground, just as happened with the original Web.
+
+Github is the posterchild for this: a \$2 billion company built entirely as a value-added service on top of the decentralised technology of Git — despite users being able to trivially take their data and leave at any point.
+
+Similarly, we expect to see the new wave of companies providing decentralised infrastructure and commercially viable services on top, as new opportunities emerge in this brave new world.
+
+Ultimately, it’s hard to predict what final direction Web 3.0 will take us, and that’s precisely the point. By unlocking the web from the hands of a few players this will inevitably enable a surge in innovation and let services flourish which prioritise the user’s interests.
+
+Apple, Google, Microsoft, and others have their own interests at heart (as they should), but that means that the user can often be viewed purely as a source of revenue, quite literally at the users’ expense.
+
+As the Decentralised Web attracts the interest and passion of the mainstream developer community, there is no telling what new economies will emerge and what kinds of new technologies and services they will invent. The one certainty is they will intrinsically support their communities and user bases just as much as the interests of their creators.
+
+-----
+
+But wait: Isn't the internet already a decentralized network that no one owns? In theory, yes. In practice, a small number of enormous companies control or at least mediate much of the internet. Sure, anyone can publish whatever they want to the web. But without Facebook and Google, will anyone be able to find it? Amazon, meanwhile, controls not just the web's biggest online store but a cloud computing service so large and important that when part of it went offline briefly earlier this year, the internet itself seemed to go down. Similarly, when hackers attacked the lesser-known company Dyn—now owned by tech giant Oracle—last year, large swaths of the internet came crashing down with it. Meanwhile, a handful of telecommunications giants, including Comcast, Charter, and Verizon, control the market for internet access and have the technical capability to block you from accessing particular sites or apps. In some countries, a single state-owned telco controls internet access completely.
+
+Given those very non-utopian realities, people in the real world are also hard at work trying to rebuild the internet in a way that comes closer to the decentralized ideal. They're still pretty far from Richard's utopian vision, but it's already possible to do some of what he describes. Still, it's not enough to just cut out today's internet power players. You also need to build a new internet that people will actually want to use.
+
+Storage Everywhere
+
+On the show, Richard's plan stems from the realization that just about everyone carries around a smartphone with hundreds of times more computing power than the machines that sent humans to the moon. What's more, those phones are just sitting in people's pockets doing nothing for most of the day. Richard proposes to use his fictional compression technology—his big innovation from season one—to free up extra space on people's phones. In exchange for using the app, users would agree to share some of the space they free up with Pied Piper, who will then resell it to companies for far less than they currently pay giants like Amazon.
+
+The closest thing to what's described on Silicon Valley might be Storj, a decentralized cloud storage company. Much like Pied Piper, Storj has built a network of people who sell their unused storage capacity. If you want to buy space on the Storj network, you upload your files and the company splits them up into smaller pieces, encrypts them so that no one but you can read your data, and then distributes those pieces across its network.
+
+"You control your own encryption keys so we have no access to the data," says cofounder John Quinn. "We have no knowledge of what is being stored."
+
+Also like Pied Piper, Storj bills itself as safer than traditional storage systems, because your files will reside on multiple computers throughout the world. Quinn says that in order to lose a file, 21 out of 40 of the computers hosting it would have to go offline.
+
+Storj proves that the Silicon Valley's basic idea is feasible. But unlike Pied Piper, Storj doesn't rely on smartphones. "Phones don't have much storage and the network capability isn't great, so the show's idea is a little fanciful," says Quinn. Someday, 5G wireless networks might make phones a more viable part of the Storj network. If Richard's compression algorithm was real, those smaller files will help too. But for now, the Storj network relies primarily on servers, laptops, and desktop computers. The reality is less grand than the HBO fantasy.
+
+IPFS
+
+As interesting as Storj is, it's not quite what Richard actually described in his pitch. Storj is a storage service, not a whole new internet. A more ambitious project called IPFS (short for "Interplanetary File System") is probably a bit closer to Richard's grand vision of a censorship-resistant internet with privacy features built right in.
+
+The idea behind IPFS is to have web browsers store copies of the pages they visit and then do double-duty as web servers. That way, if the original server disappears, the people who visited the page can still share it with the world. Publishers get improved resilience, and readers get to help support the content they care about. With encryption a part of the protocol, criminals and spies can't in theory see what you're looking at. Eventually, the IPFS team and a gaggle of other groups hope to make it possible to build interactive apps along the lines of Facebook that don't require any centralized servers to run.
+
+You need to build a new internet that people will actually want to use.
+
+But the idea of building a censorship-proof internet by backing up copies throughout the internet isn't without its potential problems. Sometimes publishers want to remove old content. IPFS creator Juan Benet told us last year that the project is trying to work out ways to let publishers "recall" pages that are being shared. But that idea is also fraught. What's to stop a government censor from using the recall feature? What happens if someone creates a version that ignores recalls?
+Then there are moral and legal risks. Tools like Storj and the venerable peer-to-peer sharing system Freenet make it impossible to know just what content you're storing for other people, which means you could be playing host to, say, child pornography. Quinn says that the Storj team is currently working on ways to block known problem users. But it won't be able to completely guarantee that none of its hosts will end up storing illegal content.
+
+IPFS gets around this largely by letting people decide which of the content they've visited they actually want to share. But this means that less popular content, even if it's perfectly legal and ethical, might end up disappearing if too few people share it. Benet and company are working on a system called Filecoin that, not unlike Storj, would compensate people for providing access.
+Even overcoming these trade-offs inherent in decentralization, people may still not want to use these apps. Storj may be able to win over businesses by being cheaper, but even if it is more reliable, the idea of storing data on random machines scattered across the internet instead of in a traditional data center sounds risky compared to, say, the massively robust AWS, backed by Amazon's technical know-how and billions of dollars. Convincing people to use decentralized alternatives to Facebook and Twitter has proven to be a notoriously difficult problem. Getting people to use what amounts to a whole new version of the web could be even harder.
+
+Mesh
+
+Even if IPFS, Storj, or one of the countless other decentralized platforms out there do win people over, they're still technically riding atop the existing internet infrastructure controlled by a shrinking number of telcos. Silicon Valley hasn't addressed this problem yet. But what if you could chain the smart phones and laptops of the world together using WiFi and Bluetooth to create a wireless network that was free and open to everyone, with no need for Big Telecom?
+
+Australian computer scientist Paul Gardner-Stephen tried to do something like that after the Haiti earthquake in 2010. "Mobile phones have the capability to run autonomous networks, it's just that no one had implemented it," he says. Gardner-Stephen helped build Serval, a decentralized messaging app that can spread texts in a peer-to-peer fashion without the need for a traditional telco carrier. But he quickly realized, as the Pied Piper team likely will, that trying to turn people's mobile phones into servers drains their batteries too quickly to be practical. Today, the Serval team relies on solar powered base stations to relay messages.
+
+Serval and similar apps like Firechat aren't meant to replace the internet, just provide communications during disasters or in remote locations. But the idea of creating decentralized wireless networks—mesh networks—still has merit. One such network, Wlan Slovenija, for example, now covers all of Slovenia and is spreading to neighboring countries. But these mesh networks are still a long way from replacing telcos—especially in the US. Even as wireless base stations improve, they can't quite yet compete with the fiber-optic cables that link the nation's telco infrastructure on speed and reliability, and some community networks, such as Guifi in Spain, are bolstering their wireless connections with fiber.
+
+Even then, given a choice, would people really pick a decentralized option over the status quo? Customer service at big broadband companies may be bad to nonexistent, but you can still call someone. For those who would nevertheless prefer to wrest control of the internet from large corporations, these new alternatives will need to be better and faster than the services they hope to displace. Simply being decentralized isn't enough.
+
+It wasn't so long ago that people questioned whether anyone would ever take to the internet at all. As the season finale of Silicon Valley approaches, Pied Piper will find out whether its version of a new internet works and whether there's a demand for it. They just have to build it and see if anyone comes—just like in the real world.
+
 \section{Solutions existantes}
+\label{sec:solutions}
 
 La couche de persistance des données de la gTSL repose sur la blockchain et des concepts de décentralisation. À ce titre, l'objectif est de conserver toutes les informations relatives aux TSPs et aux TSs dans un registre sécurisé, c'est-à-dire dans une liste chaînée de transactions signées, et de répliquer toutes les données de la gTSL à travers un réseau pair-à-pair\footnote{Le pair-à-pair est un modèle de réseau informatique similaire au modèle client-serveur mais où chaque client est aussi un serveur.} décentralisé.
 Cela permet de garantir à la fois l'intégrité et la disponibilité des informations, puisque chaque chaque donnée est signée avec toutes les données précédentes dans le registre. La distribution de l'information à travers un réseau pair-à-pair fournit une résilience forte contre les attaques par déni de service.
@@ -513,15 +698,15 @@ Cette section présente les technologies qui ont été envisagées en tant que s
 
 \subsection{Ripple}
 
-Ripple\footnote{Voir \url{https://ripple.com/}} est une crypto-monnaie s'appuyant sur un registre distribué basé sur une blockchain qui n'utilise pas de système de preuve de travail pour l'ajout de blocs. Au lieu de cela, il repose sur un mécanisme de consensus (The Ripple Protocol Consensus Algorithm, 2014) appliqué à un sous-réseau de nœuds connus et fiables.
+Ripple\footnote{Voir \url{https://ripple.com/}} est une crypto-monnaie s'appuyant sur un registre distribué basé sur une blockchain qui n'utilise pas de système de preuve de travail pour l'ajout de blocs. Au lieu de cela, il repose sur un mécanisme de consensus (The Ripple Protocol Consensus Algorithm, 2014) appliqué à un sous-réseau de nœuds connus et fiables. Cette technologie est surtout orientée vers les paiements, les transactions et les échanges de crypto-monnaie mais ne propose pas de réelle solution pour le stockage des données.
 
 \subsection{Tendermint}
 
-Tendermint\footnote{Voir \url{https://tendermint.com/}} est une crypto-monnaie s'appuyant sur un registre distribué basé sur une blockchain qui utilise un système de votes par un consensus au lieu du minage. À ce titre, Il repose sur un ensemble de nœuds de validation qui sont responsables d'émettre des votes signés pour, ou contre, l'ajout de nouveaux blocs dans la chaîne. Le scrutin est validé si au minimum les deux tiers des nœuds de validation votent pour l'acceptation d'un nouveau bloc.
+Tendermint\footnote{Voir \url{https://tendermint.com/}} est une crypto-monnaie s'appuyant sur un registre distribué basé sur une blockchain qui utilise un système de votes par un consensus au lieu du minage. À ce titre, Il repose sur un ensemble de nœuds de validation qui sont responsables d'émettre des votes signés pour, ou contre, l'ajout de nouveaux blocs dans la chaîne. Le scrutin est validé si au minimum les deux tiers des nœuds de validation votent pour l'acceptation d'un nouveau bloc. Tendermint apporte uniquement une solution concernant l'utilisation d'un système de votes plutôt qu'une preuve de travail.
 
 \subsection{Ethereum}
 
-Ethereum\footnote{Voir \url{https://ethereum.org/}} est une plate-forme publique décentralisée et distribuée basée sur la technologie blockchain. Il repose sur des programmes qui ont leur code (leurs fonctions) et leurs données (leur état) stockés sur la blockchain. Ces programmes s'appellent smart contracts. 
+Ethereum\footnote{Voir \url{https://ethereum.org/}} est une plate-forme publique décentralisée et distribuée basée sur la technologie blockchain. Il repose sur des programmes qui ont leur code (leurs fonctions) et leurs données (leur état) stockés sur la blockchain. Ces programmes s'appellent des smart contracts. 
 Il apporte donc l'utilisation de concepts de blockchain au-delà du cas d'utilisation de la crypto-monnaie et offre un environnement d'exécution virtuel qui peut être utilisé pour créer des organisations autonomes décentralisées, c'est-à-dire des organisations qui sont gérées par des règles spécifiées dans des smart contracts. Ethereum étant conçu principalement comme un environnement d'exécution décentralisé et autonome, il n'offre pas de fonctionnalités de stockage réelles. Bien que les données puissent être stockées dans le cadre de l'exécution des contrats intelligents, le coût peut rapidement devenir prohibitif. En effet, le système est conçu pour calculer le coût des transactions en fonction des ressources nécessaires en termes de calcul, de bande passante et de stockage. L'intention du système de redevances est d'obliger un attaquant à payer proportionnellement pour chaque ressource qu'ils consomment.
 
 \subsection{Swarm}
@@ -534,7 +719,7 @@ Hyperledger Fabric\footnote{Voir \url{https://www.hyperledger.org/projects/fabri
 
 \subsection{Keyless ledger}
 
-Keyless Signature Infrastructure\footnote{Voir \url{https://guardtime.com/technology/ksi-technology}} (KSI) est une plate-forme offrant une authentification basée sur la signature électronique pour les données numériques, les machines et les humains. KSI repose uniquement sur les fonctions de hachage, son registre agit comme un enregistrement de logs\footnote{Le logging est un dispositif permettant de stocker un historique des évènements attachés à un processus.} de timestamps\footnote{Le timestamping, aussi nommé horodatage en français, est un mécanisme qui consiste à associer une date et une heure à un événement, une information ou une donnée informatique.} émis pour les hashes de données soumises par les utilisateurs.
+Keyless Signature Infrastructure\footnote{Voir \url{https://guardtime.com/technology/ksi-technology}} (KSI) est une plate-forme offrant une authentification basée sur la signature électronique pour les données numériques, les machines et les humains. KSI repose uniquement sur les fonctions de hachage, son registre agit comme un enregistrement de logs\footnote{Le logging est un dispositif permettant de stocker un historique des évènements attachés à un processus.} de timestamps\footnote{Le timestamping, aussi nommé horodatage en français, est un mécanisme qui consiste à associer une date et une heure à un événement, une information ou une donnée informatique.} émis pour les hashes de données soumises par les utilisateurs. Son seul intérêt est de fournir des signatures électroniques, selon les développeurs d'une manière plus sécurisée que le Public Key Infrastructure\footnote{La PKI est une infrastructure visant à fournir une garantie de confiance dans la validité d’une identité numérique et utilisant pour cela une pair de clé liée à un certificat.}
 
 \subsection{OpenChain}
 
@@ -542,28 +727,39 @@ OpenChain\footnote{Voir \url{https://www.openchain.org/}} est un registre distri
 
 \subsection{BigchainDB}
 
-BigchainDB\footnote{Voir \url{https://www.bigchaindb.com/}} aims at linking the database and block-chain worlds by adding block-chain characteristics such as decentralisation, data immutability and asset transfer to existing NoSQL database implementations.
-It is however still in its early stages of development and currently lacks basic security controls (e.g. a database administrator deleting a database on one node will see this operation being replicated across all other nodes). Additionally, BigChainDB is not Byzantine Fault Tolerant.
+
+BigchainDB\footnote{Voir \url{https://www.bigchaindb.com/}} vise à interfacer la technologie blockchain et une base de données en ajoutant des caractéristiques de la blockchain comme la décentralisation, l'immutabilité et l'échange d'actifs à une implémentation d'une base de données NoSQL\footnote{NoSQL, pour Not only SQL, est une famille de systèmes de gestion de base de données (SGBD) qui s'écarte du paradigme classique des bases relationnelles.} existante. Cette technologie en est encore à ses débuts de développement et manque actuellement de contrôles de sécurité de base (par exemple, un administrateur de base de données supprimant une base de données sur un noeud verra cette opération être répliquée sur tous les autres noeuds). De plus, BigChainDB n'est pas Byzantine Fault Tolerant\footnote{	La Byzantine fault tolerance (BFT) est la caractéristique d'un système qui tolère la classe de défaillances connue sous le nom du problème des généraux byzantins pour lesquels il existe une preuve de non-solvabilité} (BFT).
 
 \subsection{InterPlanetary File System (IPFS)}
 
-The InterPlanetary File System\footnote{Voir \url{https://ipfs.io/}} is “a peer-to-peer distributed file system that seeks to connect all computing devices with the same system of files […]” (Benet, 2014).
-IPFS re-uses block-chain paradigms such as data immutability and decentralisation achieved through peer-to-peer communication, while basing itself on the Git\footnote{Voir \url{https://ripple.com/}} version control system.
+IPFS \footnote{Voir \url{https://ipfs.io/}} est un système de fichiers distribué pair-à-pair qui cherche à connecter tous les périphériques informatiques avec le même système de fichiers. Il réutilise le paradigme de la blockchain, plus précisément les concepts d'immutabilité des données et de la décentralisation réalisée à travers une communication pair-à-pair, tout en se basant sur le système de contrôle de version Git\footnote{Voir \url{https://ripple.com/}}. Il permet notamment de stocker des informations, de tous types et tous volumes, qui sont répliquées à travers le réseau. 
 
 \subsection{Monax}
 
-Monax\footnote{Voir \url{https://monax.io/}} is an open platform aimed at developers that are willing to build and run block-chain based applications for business ecosystems.
-As such it can be compared with Ethereum, however with permissions that make it legally usable in business environments.
+Monax\footnote{Voir \url{https://monax.io/}} est une plate-forme open-source qui vise les développeurs qui veulent construire et exécuter des applications basée sur la blockchain pour des écosystèmes business. Il peut être comparé à Ethereum, toutefois avec des autorisations qui le rendent juridiquement utilisable dans les environnements commerciaux. Cette technologie a pour intérêt de mettre en place sa propre plate-forme de blockchain dans un environnement business.
 
 \subsection{Factom}
 
-Factom\footnote{Voir \url{https://www.factom.com/}} (Factom - Business Processes Secured by Immutable Audit Trails on the Blockchain, 2014) provides a distributed, decentralised protocol that is running on top of the BitCoin block-chain, and which maintains an unalterable records system.
+Factom\footnote{Voir \url{https://www.factom.com/}} fournit un protocole distribué et décentralisé qui s'exécute sur la blockchain Bitcoin, et qui maintient un registre inaltérable. Cette technologie a pour but de conserver les documents des entreprises de manière sécurisée.
 
 \subsection{Emercoin}
 
-Emercoin\footnote{Voir \url{https://emercoin.com/}} is a cryptocurrency that relies on both proof-of-work and proof-of-stake mining. It diverges from “standard” crypto-currencies in the sense that its block-chain is not restricted to a pure transactions ledger use. Besides its use as a crypto-currency, a number of services are also supported such as a decentralised domain name system (EMCDNS), a trusted storage for digital timestamps (ECMSTREAM), etc.
+Emercoin\footnote{Voir \url{https://emercoin.com/}} est une crypto-monnaire qui utilise un minage qui repose sur la preuve de travail et la preuve par votes\footnote{en anglais, Proof of Stake.}. Il diverge des crypto-monnaies "standard" dans le sens où sa blockchain ne se limite pas à une utilisation de registre de transactions. Hormis l'utilisation de la crypto-monnaie, d'autres services sont supportés comme un système de noms de domaine décentralisé ou un stockage sécurisé pour des timestamps. Malgré tout cela, il n'est pas conçu pour le stockage de données.
 
 \section{Synthèse}
+
+\begin{itemize}
+	\item Énoncer le principal désavantages de la blockchain qui est son coût (cf. Ethereum \& IPFS intégration);
+	\item Validation par une preuve de concept
+\end{itemize}
+
+Justifier le choix opéré en justifiant les points suivants évoqués en intro
+\begin{itemize}
+	\item Stocker les données directement dans une blockchain publique existante;
+	\item Stocker les données dans une blockchain privée;
+	\item Stocker les données dans une blockchain privée, et utiliser une blockchain publique pour s'assurer de l'intégrité des données (par exemple en conservant le hash\footnote{Un hash est le résultat d'une fonction de hachage qui permet d'identifier rapidement une donnée.} de la transaction réalisée sur la blockchain privée dans une blockchain publique);
+	\item Stocker les données dans un système décentralisé et distribué, comme par exemple une base de données ou un système de fichiers, et utiliser une blockchain publique pour s'assurer de l'intégrité des données (par exemple en conservant le hashes\footnote{Le terme hashes est le pluriel du mot hash.} ou les références des données).
+\end{itemize}
 
 Storing the data directly in an existing public block-chain, as part of a transaction
 -> car le consensus est plus fort contre les attaques et est composé de noeuds anonymes vérifiant les transactions pour nous, ce qui signifie que l'on a pas de noeuds minant (i.e. consommant de l'énergie) nos propres transactions, par contre il faut payer.
@@ -740,7 +936,7 @@ Le système doit permettre d'évoluer progressivement ses fonctionnalités et d'
 
 \section{Architecture du système}
 
-DECRIRE LA Figure~\ref{fig:architecture}
+RAJOUTER UNE DB LOCALE POUR LES DRAFTS ET LES NOTIFS à la Figure~\ref{fig:architecture}
 
 {\em
 	Le système mis en place est composé de trois parties, deux clients et un serveur, les clients
@@ -748,8 +944,9 @@ DECRIRE LA Figure~\ref{fig:architecture}
 	données que contiennent les requêtes échangées sont formatées en JSON. On retrouve donc l'application utilisateur au format tablette et l'application administrateur au format web, qui sont les clients, et le serveur. Le schéma suivant récapitule l'ensemble du système :
 }
 
-RAJOUTER UNE DB LOCALE POUR LES DRAFTS ET LES NOTIFS ???
-SI OUI BOUGER LA Figure~\ref{fig:architecture} dans la Section~\ref{sec:realisation-ledger} !!
+{\em
+	Expliquer que ce système sera déployé par tous les administrateurs et ce dans tout l'Europe voire au-delà. De plus, il est envisagé de mettre en place des instances publiques afin que les utilisateurs externes peuvent en récupérer les données. Une dernière solution est que les utilisateurs externes peuvent déployer eux-mêmes leur instance, ils resteront malgré tout utilisateurs externes puisqu'ils n'auront pas accès à la gestion des TSL. A savoir que les utilisateurs externes peuvent créer des drafts mais ne disposeront des droits nécessaires pour publier les TSL; si un utilisateur devient par la suite il pourra tout de même publier les drafts réalisés en tant qu'utilisateur externe.
+}
 
 \begin{figure}[h]
 	\centering
@@ -786,20 +983,36 @@ de configurer, la méthode HTTP a utilisé pour accéder à la fonction du contr
 
 \subsection{IPFS node}
 
-Fais partie du Ledger Manager
-connecté au réseau
-maintien les données
-ipfs-cluster
-Parler de la réplication des données
+Détailler IPFS
+
+\begin{itemize}
+	\item Fais partie du Ledger Manager
+	\item connecté au réseau
+	\item maintien les données
+	\item ipfs-cluster
+	\item Parler de la réplication des données
+\end{itemize}
 
 \subsection{Ethereum node}
 
-Fais partie du Ledger Manager
-connecté au réseau
-assure l'intégrité des données
-permet la récupération de l'état courant de la gTSL
+Détailler Ethereum
+
+\begin{itemize}
+	\item Fais partie du Ledger Manager
+	\item connecté au réseau
+	\item assure l'intégrité des données
+	\item permet la récupération de l'état courant de la gTSL
+\end{itemize}
 
 \subsection{Local database}
+
+\begin{itemize}
+	\item pour stocker les abonnés aux notifs
+	\item pour stocker les drafts de TSL
+	\item on stocke pas dans IPFS ou Ethereum car publique et on conserve des emails pour les notifs que l'on ne veut pas diffuser et que les drafts ne doivent pas non plus être publique
+	\item chaque instance de l'app a une db locale, cela signifie que les utilisateurs doivent pour les notifs s'enregistrer à une instance définie et pour les drafts qu'ils peuvent récupérer leurs drafts uniquement sur cette instance => (cela implique plus de notifs et plus d'accès aux drafts si instance down mais le single point of failure n'est pas engagé pour la gTSL en elle-même et c'est ce pb que l'on voulait résoudre)
+	\item pour les drafts, les admins de la gTSL devront dans tous les cas déployer leur propre instance de l'app car ils auront leur propre Ethereum node (i.e. Ethereum account) et leur propre IPFS node (i.e. Peer ID), cela permettra de forcer encore plus la réplication et donc d'augmenter la résilience; ils auront donc l'autre db dédié avec seulement leurs drafts dans celle-ci
+\end{itemize}
 
 \section{Processus du système ????}
 
@@ -851,6 +1064,15 @@ Liste des sous-modules à répartir dans les modules:
 	\item Versioning
 \end{itemize}
 
+La Figure~\ref{fig:ledger-architecture} présente l'architecture de Ledger Manager.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.45]{figures/architecture}
+	\caption{Architecture du système}
+	\label{fig:ledger-architecture}
+\end{figure}
+
 \subsection{Authentication Provider}
 
 \begin{itemize}
@@ -899,6 +1121,13 @@ Voir si on peut mettre des screenshots du tl-browser et du tl-manager en précis
 - Validation par l'équipe
 
 \chapter{Résultats obtenus \& Perspectives}
+
+Pas définitif parce que deadline 30 nov.
+Mais tous les retours du consortium positifs sur les choix opérés et les doc de design.
+POC à montrer que nos choix étaient faisables et cohérents.
+Rédaction de Integration Ethereum \& IPFS --> Demande de présentation dans un workshop organisé par l'ETSI début 2018.
+Au niveau de la gTSL, les vraies résultats seront connues après la release, mais pour le moment fort enthousiasme de l'utilisation de la blockchain.
+À titre personnel, équipe satisfaite de mon travail ainsi que l'entreprise car proposition de CDI après 1 mois de stage.
 
 \chapter{Conclusion}
 

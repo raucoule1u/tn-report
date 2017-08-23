@@ -34,6 +34,7 @@
 \def\date{\today} % Date pour la signature de l'engagement anti-plagiat
 
 \usepackage{textgreek}
+\usepackage{pdfpages}
 
 \begin{document}
   
@@ -145,7 +146,7 @@ Bien que la blockchain apporte de nombreux avantages, elle comporte aussi des in
 En 1994, Nick Szabo, chercheur juridique et cryptographe, s'est rendu compte que le registre décentralisé pouvait être utilisé pour des smart contracts (contrats intelligents), autrement appelés contrats auto-exécutés, contrats blockchain ou contrats numériques.
 Les contrats peuvent être convertis en code informatique, stockés et répliqués sur le système et supervisés sur le réseau qui exécutent la blockchain.
 Les smart contracts permettent d'échanger de l'argent, des biens, des parts ou n'importe quel  actif de manière transparente, sans conflit et en évitant tout service intermédiaire.
-La Figure~\ref{fig:smart-contracts} représente l'établissement d'un smart-contract entre deux parties, sans service intermédiaire.
+La Figure~\ref{fig:smart-contracts} représente l'établissement d'un smart-contract entre deux parties, sans service intermédiaire. Dans ce mémoire, nous utiliserons le terme de smart contract pour désigner un contrat intelligent car ce terme est le plus répandu.
 
 \begin{figure}[h]
 	\centering
@@ -580,7 +581,7 @@ Les moteurs de recherche comme Google, les réseaux sociaux comme Facebook, les 
 Dans le même temps, ces organisations réduisent les libertés fondamentales de l'Internet telles que la possibilité de lier au contenu via une URL (en forçant les utilisateurs à partager du contenu uniquement sur Facebook) ou la possibilité pour les moteurs de recherche d'indexer son contenu (réduisant les résultats de recherche à du contenu ciblé).
 Le Web décentralisé envisage un monde futur où des services tels que la communication, la monnaie, l'édition, les réseaux sociaux ou la recherche sont fournis non pas par des services centralisés appartenant à des organisations individuelles, mais par des technologies alimentées par la communauté des utilisateurs.
 L'idée principale de la décentralisation est que l'exploitation d'un service n'est pas aveuglément confiée à une seule entreprise omnipotente. Au lieu de cela, la responsabilité du service est partagée soit par une exécution sur plusieurs serveurs fédérés, ou par l'exécution d'applications côté client s'appuyant sur un modèle distribué.
-Les règles qui décrivent le comportement d'un service décentralisé sont conçues pour obliger les participants à agir de manière équitable, grâce à l'utilisation de techniques cryptographiques telles que les arbres de Merkle\footnote{Merkle} et la signature électronique pour permettre aux participants d'être responsables.
+Les règles qui décrivent le comportement d'un service décentralisé sont conçues pour obliger les participants à agir de manière équitable, grâce à l'utilisation de techniques cryptographiques telles que les arbres de Merkle\footnote{Un arbre de Merkle, aussi appelé arbre de hachage, est une structure de données contenant l'empreinte d'un volume de données} et la signature électronique pour permettre aux participants d'être responsables.
 
 Il existe trois concepts fondamentaux que le Web décentralisé prône: la vie privée, la portabilité des données et la sécurité.
 \begin{itemize}
@@ -706,6 +707,45 @@ Malgré cela, l'architecture est complexifier puisque l'on interface deux techno
 Le système de gTSL a été réalisé dans le cadre du projet FutureTrust qui a pour objectif de faciliter l'utilisation de l'identification et de la signature électronique et qui vise plus particulièrement à mettre en application le règlement de l'UE sur l'identification électronique et les services de confiance pour les transactions électroniques sécurisées au sein de l'UE.
 La solution élaborée consiste à étendre l'infrastructure de la liste européenne de services de confiance existante. L'objectif est de mettre en place un système utilisant une architecture décentralisée basée sur la blockchain afin de conserver et distribuer les informations relatives aux listes de confiance, que l'on nommera Trust Service List (TSL) dans ce chapitre. Ci-dessous est détaillée l'analyse correspondant au système à implémenter afin de répondre aux besoins énoncés dans la Section~\ref{sec:description} et de pallier aux problèmes de l'architecture actuelle énoncés dans la Section~\ref{sec:limits}.
 
+\section{Description détaillée des technologies utilisées}
+
+Cette section a pour objectif d'apporter des précisions sur l'utilisation des technologies IPFS et Ethereum afin de comprendre leur fonctionnement.
+
+\subsection{Présentation de Ethereum}
+
+Ethereum est une plate-forme de blockchain open-source qui permet à qui le souhaite de créer et d'utiliser des applications décentralisées qui s'exécutent sur la blockchain. 
+La particularité de la blockchain Ethereum est qu'elle a été conçue pour permettre aux utilisateurs d'écrire et d'exécuter des smart contracts. Un smart contract décrit un code informatique qui permet de faciliter l'échange d'argent, de contenu, de propriété, de partage ou de valeur sur la blockchain.
+Lors de son exécution, le contrat devient un programme informatique autonome qui s'exécute automatiquement lorsque des conditions spécifiques sont remplies. Étant donné que les smart contracts fonctionnent sur la blockchain, ils s'exécutent sans possibilité de censure, de temps d'arrêt ou de fraude. 
+
+L'innovation fondamentale d'Ethereum réside dans sa machine virtuelle appelée Ethereum Virtual Machine (EVM) qui est un système Turing-complet fonctionnant sur le réseau Ethereum. Elle permet à quiconque d'exécuter des smart contracts, quel que soit le langage de programmation, en fournissant suffisamment de temps et de mémoire. Le langage le plus utilisé sur la blockchain Ethereum est Solidity qui une fois compilé peut être exécuté par l'EVM.
+
+L'avantage majeur d'exécuter des applications sur une blockchain est de bénéficier des propriétés suivantes:
+\begin{itemize}
+	\item immuable, puisqu'aucune tierce partie ne peut modifier les données;
+	\item infalsifiable, en effet les applications sont basées sur un réseau reposant sur un consensus, ce qui rend la falsification impossible;
+	\item sécurisé, sans point individuel de défaillance et sécurisé grâce à la cryptographie, les applications sont protégées contre les attaques par déni de service et les activités frauduleuses;
+	\item pleine disponibilité, puisque les applications ne s'arrêtent jamais et ne peuvent jamais être arrêtées.
+\end{itemize}
+
+\subsection{Présentation de IPFS}
+
+IPFS est un système de fichiers distribué pair-à-pair qui vise à connecter tous les périphériques informatiques avec le même système de fichiers. Il expose une plate-forme pour l'écriture et le déploiement d'applications et un nouveau système de distribution pour les grands volumes de données. 
+En d'autres termes, IPFS a pour objectif de fournir un modèle de stockage basé sur des blocs dit "content-addressable" par l'utilisation de hashes calculés sur les données. Il est conçu comme un arbre de Merkle, une structure de données à partir de laquelle il est possible de créer des systèmes de fichiers ou même des blockchains. IPFS ne contient pas de point individuel de défaillance puisqu'il est décentralisé, aucun nœud n'est privilégié et les nœuds n'ont pas besoin de se faire confiance. 
+Chaque nœud maintient une partie des données du réseau dans son espace de stockage local. 
+Les nœuds sont interconnectés et échangent des objets. Ces objets représentent des fichiers et d'autres structures de données.
+
+Le protocole IPFS est divisé en une pile de sous-protocoles responsables de différentes fonctionnalités:
+\begin{enumerate}
+	\item identités, gère la génération et la vérification de l'identité des nœuds;
+	\item réseau, gère les connexions aux autres nœuds et utilise divers protocoles de réseau sous-jacents;
+	\item routage, maintient des informations pour localiser des pairs et répond aux requêtes locales et distantes des utilisateurs;
+	\item échange, est un protocole d'échange de blocs qui contrôle la distribution efficace des blocs;
+	\item objets, est un arbre de Merkle d'objets immuables adressés par leur contenu (hash);
+	\item fichiers, est un système de fichiers hiérarchique inspirée de Git;
+	\item nommage, est un système de nommage mutable auto-signé.
+\end{enumerate}
+Ces sous-systèmes ne sont pas indépendants. Ils sont interfacés et exploitent des propriétés communes.
+
 \section{Acteurs}
 
 Un acteur est défini comme étant un ensemble cohérent de rôles que les utilisateurs du système peuvent avoir lorsqu'ils interagissent avec celui-ci. Un acteur peut être soit un système individuel, soit un système externe. Dans le contexte de la gTSL, on identifie deux acteurs potentiels.
@@ -798,6 +838,7 @@ Un utilisateur abonné à des notifications à la possibilité de se désabonner
 Le système doit envoyer des notifications à tous les utilisateurs abonnés à une liste donnée, lors de la mise à jour de celle-ci.
 
 \section{Modules du système}
+\label{sec:modules}
 
 Comme introduit dans la Section~\ref{sec:system-requirements}, la gTSL est composé principalement d'un
 Global Trust Service Lifecycle Manager et d'un Global Trust Service Responder, tout en mettant à disposition une interface d'administration pour la gestion des listes de confiance.
@@ -867,84 +908,59 @@ Les interfaces internes peuvent être basé sur REST pour les communications int
 Le système doit permettre d'évoluer progressivement ses fonctionnalités et d'inclure plus de formats d'importation de la liste de confiance. En regroupant les fonctionnalités communes, cela apporte une architecture plus souple et permet de réutiliser les fonctionnalités.
 
 \section{Architecture du système}
+\label{sec:architecture}
 
-RAJOUTER UNE DB LOCALE POUR LES DRAFTS ET LES NOTIFS à la Figure~\ref{fig:architecture}
+Le système mis en place est composé de deux parties principales. La première partie est une interface d'administration qui permet aux utilisateurs authentifiés d'opérer facilement des modifications sur la gTSL à l'aide d'une interface graphique. La seconde partie est un nœud de la gTSL qui contient une base de données locale, une instance connectée au réseau IPFS et une instance connectée à la blockchain Ethereum. Ces deux parties communiquent via le protocole HTTP. Les données que contiennent les requêtes échangées sont formatées en JSON. La Figure~\ref{fig:architecture} présente les interactions entre ces différents composants.
 
-{\em
-	Le système mis en place est composé de trois parties, deux clients et un serveur, les clients
-	communiquent avec le serveur via Internet, pour cela est utilisé le protocole HTTP ou HTTPS. Les
-	données que contiennent les requêtes échangées sont formatées en JSON. On retrouve donc l'application utilisateur au format tablette et l'application administrateur au format web, qui sont les clients, et le serveur. Le schéma suivant récapitule l'ensemble du système :
-}
-
-{\em
-	Expliquer que ce système sera déployé par tous les administrateurs et ce dans tout l'Europe voire au-delà. De plus, il est envisagé de mettre en place des instances publiques afin que les utilisateurs externes peuvent en récupérer les données. Une dernière solution est que les utilisateurs externes peuvent déployer eux-mêmes leur instance, ils resteront malgré tout utilisateurs externes puisqu'ils n'auront pas accès à la gestion des TSL. A savoir que les utilisateurs externes peuvent créer des drafts mais ne disposeront des droits nécessaires pour publier les TSL; si un utilisateur devient par la suite il pourra tout de même publier les drafts réalisés en tant qu'utilisateur externe.
-}
+Le système présenté en Figure~\ref{fig:architecture} sera déployé par tous les utilisateurs d'administration dans toute l'Europe et au-delà. En effet, chaque administrateur a besoin de son propre compte Ethereum, c'est-à-dire de son propre nœud Ethereum et de son propre identifiant de nœud IPFS, c'est-à-dire de son propre nœud IPFS. Cela permettra de forcer encore plus la réplication des données et donc d'augmenter la résilience du système. De plus, il est envisagé de mettre en place des instances publiques afin que les utilisateurs externes puissent récupérer les données liées à la gTSL. Ce système est open-source, cela implique que toute personne souhaitant déployer sa propre instance aura la possibilité de le faire, malgré tout il ne lui sera pas possible de modifier la gTSL puisqu'il ne disposera pas des autorisations requises. Toutes ces instances formeront donc un système décentralisé et distribué qui permettra de maintenir l'entièreté des données. 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.45]{figures/architecture}
+	\includegraphics[scale=0.75]{figures/architecture}
 	\caption{Architecture du système}
 	\label{fig:architecture}
 \end{figure}
+\clearpage
 
-\subsection{API REST}
+\subsection{Client d'administration}
 
-fournit les opérations nécessaires à la gTSL
-{\em
-Le serveur fournit donc des web services aux clients, il a été développé en Java en
-s'appuyant sur les frameworks Spring et Hibernate. Pour le développement a été utilisé
-l'environnement de développement Spring Tool Suite, l'application est exécutée dans un
-environnement Apache Tomcat. La réalisation de ce serveur a été produite de manière itérative et
-décomposée en plusieurs étapes.
+Le client d'administration fournit une interface web graphique aux utilisateurs d'administration afin qu'ils puissent gérer la gTSL. Il est développé avec les technologies HTML5, CSS3 et AngularJS. Dans le cadre de ce projet, nous avons décidé de réutiliser l'interface existante, appelée TL Manager. Ce client permet notamment aux utilisateurs de créer des drafts qui peuvent ensuite être publiés dans la gTSL. La Section~\ref{sec:views} présente les différentes vues auxquelles ont accès les utilisateurs.
 
-Le service est la partie traitement des données de l'application, c'est dans
-cette partie que les données sont vérifiées, validées, transformées ou éventuellement rejetées si elles
-sont invalides. Les services sont appelés par les controllers REST, faisant l'objet de la partie
-suivante. Le service fait appel à la couche données après validation des données afin de lire, modifier ou
-écrire dans la base de données. Il peut aussi faire appel à d'autres services si besoin. Les erreurs sont
-gérées dans cette partie, afin de gérer au mieux les erreurs pour le client, le serveur détermine un
-code d'erreur qui permet d'indiquer l'erreur survenue concernant les données. C'est aussi dans les
-services que l'on retrouve les éventuelles exceptions qui peuvent être levées lors de l'exécution.
-Si aucune erreur n'est survenue, c'est le code de
-réponse HTTP 200 OK qui est envoyé.
+\subsection{Interface de programmation applicative REST}
 
-Enfin, la dernière partie concernent les controllers REST, c'est lui est accédé par le client et donc disponible sur le réseau. Pour un controller, il faut définir
-l'URL sur lequel il sera disponible. Ensuite, pour chacune des méthodes du controller il est possible
-de configurer, la méthode HTTP a utilisé pour accéder à la fonction du controller ainsi que l'en-tête et le corps de la requête HTTP.
-}
+L'API\footnote{Une API, acronyme anglais de Application Programming Interface, est une interface de programmation applicative qui a pour but de fournir des services à d'autres logiciels.} REST\footnote{REST, acronyme anglais de REpresentational State Transfer, est un style architectural pour les systèmes distribués.} expose des web services fournissant toutes les opérations nécessaires à la gestion de la gTSL. Il a été développé en Java en s'appuyant sur le framework Spring. Cette interface de programmation encapsule les différents modules introduits en Section~\ref{sec:modules} permettant de gérer les données, d'authentifier les utilisateurs et de s'abonner aux listes de confiance. Elle est décomposée en trois parties comme présenté dans la Figure~\ref{fig:rest-api}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.52]{figures/rest-api}
+	\caption{Interface de programmation applicative}
+	\label{fig:rest-api}
+\end{figure}
+
+\subsubsection{HTTP Handler}
+
+Le HTTP Handler\footnote{en français, gestionnaire HTTP.} a pour rôle d'intercepter et de répondre aux requêtes HTTP. Il est composé des multiples contrôleurs chargés de faire appel à des services qui sont traitent les demandes des utilisateurs. Chaque contrôleur est défini sur une URL précise et expose des méthodes dans lesquelles sont configurés la méthode HTTP à utiliser ainsi que l'en-tête et le corps de la requête. Le HTTP Handler renvoie des réponses HTTP contenant un statut permettant de déterminer le résultat d'une requête ou indiquer au client une erreur. Si aucune erreur n'est survenue, le code de réponse HTTP 200 OK est envoyé.
+
+\subsubsection{Business Layer}
+
+La Business Layer\footnote{en français, couche métier.} est la partie traitement des données de l'application, c'est dans cette partie que les données sont vérifiées, validées, transformées ou éventuellement rejetées si elles sont invalides. Elle est composée de services qui sont appelés par les contrôleurs REST. Les services font appel à la couche de données afin de lire, modifier ou
+écrire dans la base de données. Ils peuvent aussi faire appel à d'autres services si cela est nécessaire. Dans cette partie sont gérées les éventuelles erreurs et exceptions qui peuvent survenir lors du traitement des données.
+
+\subsubsection{Data Layer}
+
+La partie Data Layer\footnote{en français, couche de données.} a pour objectif de gérer les données. La couche de données est composée d'une part du Database Manager et d'autre part du Ledger Manager. Le Database Manager a pour rôle de gérer les insertions, les mises à jour et les récupérations des données concernant les abonnements et les drafts en utilisant la base de données locale. Le Ledger Manager quant à lui joue le rôle d'interface entre le nœud IPFS et le nœud Ethereum, il a aussi à charge de gérer les données liées aux listes de confiance.
 
 \subsection{IPFS node}
 
-Détailler IPFS
-
-\begin{itemize}
-	\item Fais partie du Ledger Manager
-	\item connecté au réseau
-	\item maintien les données
-	\item ipfs-cluster
-	\item Parler de la réplication des données
-\end{itemize}
+Le nœud IPFS est connecté à un réseau pair-à-pair composé d'autres nœuds IPFS anonymes. Il a pour rôle de maintenir les données dans ce réseau en les répliquant à travers les autres nœuds IPFS appartenant au service de gTSL, qui forme ce que l'on appelle un cluster\footnote{Un cluster est un ensemble de serveurs sur un réseau qui agissent dans un but commun.}. Le nœud interagit avec le système via le Ledger Manager qui est chargé de lui communiquer les données à stocker.
 
 \subsection{Ethereum node}
 
-Détailler Ethereum
-
-\begin{itemize}
-	\item Fais partie du Ledger Manager
-	\item connecté au réseau
-	\item assure l'intégrité des données
-	\item permet la récupération de l'état courant de la gTSL
-\end{itemize}
+Le nœud Ethereum est connecté à un réseau pair-à-pair composé d'autres nœuds Ethereum anonymes. Il a pour rôle d'assurer l'intégrité des données grâce au consensus de la blockchain. Le nœud s'interface avec le Ledger Manager à qui il doit fournir l'état courant de la gTSL stocké dans un smart contract. L'état courant correspond à l'ensemble des hashes représentatifs de chaque liste de confiance. Son deuxième rôle est la gestion des utilisateurs, en effet l'authentification est gérée par un smart contract qui maintient les clés publiques des personnes autorisées à modifier la gTSL.
 
 \subsection{Local database}
 
-\begin{itemize}
-	\item pour stocker les abonnés aux notifs
-	\item pour stocker les drafts de TSL
-	\item on stocke pas dans IPFS ou Ethereum car publique et on conserve des emails pour les notifs que l'on ne veut pas diffuser et que les drafts ne doivent pas non plus être publique
-	\item chaque instance de l'app a une db locale, cela signifie que les utilisateurs doivent pour les notifs s'enregistrer à une instance définie et pour les drafts qu'ils peuvent récupérer leurs drafts uniquement sur cette instance => (cela implique plus de notifs et plus d'accès aux drafts si instance down mais le single point of failure n'est pas engagé pour la gTSL en elle-même et c'est ce pb que l'on voulait résoudre)
-	\item pour les drafts, les admins de la gTSL devront dans tous les cas déployer leur propre instance de l'app car ils auront leur propre Ethereum node (i.e. Ethereum account) et leur propre IPFS node (i.e. Peer ID), cela permettra de forcer encore plus la réplication et donc d'augmenter la résilience; ils auront donc l'autre db dédié avec seulement leurs drafts dans celle-ci
-\end{itemize}
+La base de données locale à chaque nœud a pour but de stocker les emails des personnes abonnées aux notifications ainsi que de stocker les drafts de listes de confiance. Les notifications sont donc gérées par le nœud auquel l'utilisateur a souscrit. L'intérêt de conserver les emails dans une base de données locale est de ne pas diffuser publiquement ces emails, ce qui serait le cas si ils étaient stockés dans la blockchain, afin de respecter la vie privée des utilisateurs. Concernant les drafts, on les stocke ni dans IPFS ni dans Ethereum mais bien dans une base de données locale. En effet, on ne veut pas rendre publique un draft puisqu'il peut être incomplet ou contenir des informations non vérifiées. De plus, il n'est pas pertinent de s'assurer de la validité des données d'un draft puisqu'il n'est pas rendu publique. Les utilisateurs d'administration de la gTSL devront dans tous les cas déployer leur propre instance du nœud de gTSL comme expliqué en introduction de la Section~\ref{sec:architecture}, ils auront donc leur base de données dédiée contenant uniquement les drafts qu'ils ont établis.
 
 \section{Processus du système ????}
 
@@ -1000,8 +1016,8 @@ La Figure~\ref{fig:ledger-architecture} présente l'architecture de Ledger Manag
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.45]{figures/architecture}
-	\caption{Architecture du système}
+	\includegraphics[scale=0.45]{figures/poc}
+	\caption{Architecture du Ledger Manager}
 	\label{fig:ledger-architecture}
 \end{figure}
 
@@ -1017,10 +1033,9 @@ La Figure~\ref{fig:ledger-architecture} présente l'architecture de Ledger Manag
 \subsection{Subscription Provider}
 
 \begin{itemize}
-	\item Ethereum smart-contract (avec Ethereum explications)
-	\item Voting system
-	\item PKI native in Ethereum
-	\item Stored as a list of members for each TSL
+	\item a pour rôle de stocker les abonnés en DB
+	\item a pour rôle de gérer les désabonnements
+	\item a pour rôle de notifier les abonnés lors d'un update
 \end{itemize}
 
 \subsection{Trust List Provider}
@@ -1036,7 +1051,8 @@ La Figure~\ref{fig:ledger-architecture} présente l'architecture de Ledger Manag
 \begin{itemize}
 	\item Détail de l'API REST et de l'implémentation
 	\item concerne uniquement les services (business logic), la façon dont tout est géré
-	\item gestion des drafts en db local
+	\item vérification et validation des champs des TSL
+	\item gestion des drafts en db local (A savoir que les utilisateurs externes peuvent créer des drafts mais ne disposeront des droits nécessaires pour publier les TSL; si un utilisateur devient par la suite il pourra tout de même publier les drafts réalisés en tant qu'utilisateur externe.)
 \end{itemize}
 
 \section{Présentation de la solution}
@@ -1045,6 +1061,8 @@ La Figure~\ref{fig:ledger-architecture} présente l'architecture de Ledger Manag
 Présentation des controllers exposées pour la gTSL en indiquant l'utilité de chacun
 
 \subsection{VUES}
+\label{sec:views}
+
 Mettre des screenshots du tl-browser et du tl-manager AVEC COPYRIGHT COMMISSION EUROPÉENNE en précisant que c'est à titre informatif et que c'est sûrement les vues qui vont être réutilisés mais ce n'est pas moi qui l'aient faites. De plus, les vues ne sont pas encore en dev donc pas de visuel possible pour le moment.
 
 \section{Validation de la solution}
@@ -1195,6 +1213,10 @@ Ceci est une référence bibliographique~\cite{GOT4}.
 \lstlistoflistings
 \cleardoublepage
 
+\chapter*{Acronymes}
+\addcontentsline{toc}{chapter}{Liste des acronymes}
+\cleardoublepage
+
 \chapter*{Glossaire}
 \addcontentsline{toc}{chapter}{Glossaire}
 
@@ -1204,13 +1226,19 @@ Ceci est une référence bibliographique~\cite{GOT4}.
 \appendix
 \part*{Annexes}
 \addcontentsline{toc}{part}{Annexes}
-\cleardoublepage
+\clearpage
 
-\chapter{Première Annexe}
-\cleardoublepage
+\chapter{Document de synthèse - Integration of Ethereum \& IPFS}
+\includepdf[pages=-]{pdf/ipfs-ethereum.pdf}
+\clearpage
 
-\chapter{Seconde Annexe}
+\chapter{Analyse - gTSL Search Engine}
+\includepdf[pages=-]{pdf/gtsl-search-engine.pdf}
+\clearpage
 
+\chapter{Documentation - gTSL Setup}
+\includepdf[pages=-]{pdf/gtsl-setup.pdf}
+\clearpage
 
 \cleardoublepage
 \thispagestyle{empty}

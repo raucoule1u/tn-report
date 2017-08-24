@@ -35,6 +35,58 @@
 
 \usepackage{textgreek}
 \usepackage{pdfpages}
+\usepackage{listings}
+
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+\lstdefinelanguage{solidity}{
+	basicstyle=\normalfont\ttfamily,
+	numbers=left,
+	numberstyle=\scriptsize,
+	stepnumber=1,
+	numbersep=8pt,
+	showstringspaces=false,
+	keywords = [1]{contract, struct, mapping, public, for, import, private, event, function, if, else, delete, return, returns, enum, bytes32, bytes, uint},
+	keywordstyle=[1]\color{blue},
+	breaklines=true,
+	frame=lines,
+	backgroundcolor=\color{background},
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{purple}\ttfamily,
+}
+
+\lstdefinelanguage{json}{
+	basicstyle=\normalfont\ttfamily,
+	numbers=left,
+	numberstyle=\scriptsize,
+	stepnumber=1,
+	numbersep=8pt,
+	showstringspaces=false,
+	breaklines=true,
+	frame=lines,
+	backgroundcolor=\color{background},
+	literate=
+	*{0}{{{\color{numb}0}}}{1}
+	{1}{{{\color{numb}1}}}{1}
+	{2}{{{\color{numb}2}}}{1}
+	{3}{{{\color{numb}3}}}{1}
+	{4}{{{\color{numb}4}}}{1}
+	{5}{{{\color{numb}5}}}{1}
+	{6}{{{\color{numb}6}}}{1}
+	{7}{{{\color{numb}7}}}{1}
+	{8}{{{\color{numb}8}}}{1}
+	{9}{{{\color{numb}9}}}{1}
+	{:}{{{\color{punct}{:}}}}{1}
+	{,}{{{\color{punct}{,}}}}{1}
+	{\{}{{{\color{delim}{\{}}}}{1}
+	{\}}{{{\color{delim}{\}}}}}{1}
+	{[}{{{\color{delim}{[}}}}{1}
+	{]}{{{\color{delim}{]}}}}{1},
+}
 
 \begin{document}
   
@@ -199,7 +251,7 @@ Le groupe est divisé en sociétés réparties au Luxembourg, en Belgique, en Gr
 
 \begin{figure}[h]
 	\centering
-	\includegraphics{figures/arhs-core-services}
+	\includegraphics[scale=0.7]{figures/arhs-core-services}
 	\caption{Axes de compétences du groupe Ar{\texteta}s \cite{annual-report}}
 	\label{fig:arhs-core-services}
 \end{figure}
@@ -317,7 +369,7 @@ Ces composants et leurs interactions sont illustrés dans la Figure~\ref{fig:3ti
 
 \begin{figure}[h]
 	\centering
-	\includegraphics{figures/gTSL-3Tier}
+	\includegraphics[scale=0.78]{figures/gTSL-3Tier}
 	\caption{gTSL – Architecture 3-Tier \cite{design-document}}
 	\label{fig:3tier-archi}
 \end{figure}
@@ -347,7 +399,7 @@ La Figure~\ref{fig:system-context-diagram} fournit une description de haut nivea
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.8]{figures/gTSL-SystemContextDiagram}
+	\includegraphics[scale=0.82]{figures/gTSL-SystemContextDiagram}
 	\caption{gTSL - Schéma du contexte du système \cite{design-document}}
 	\label{fig:system-context-diagram}
 \end{figure}
@@ -362,6 +414,7 @@ Deux types différents d'utilisateurs ont été identifiés concernant la gTSL:
 	\item Utilisateurs d'administration, i.e. les administrateurs de plates-formes, qui peuvent agir au nom d'un État membre de l'UE et qui sont chargés de la maintenance quotidienne et de la gestion des listes de confiance;
 	\item Utilisateurs externes, i.e. les personnes et les applications externes qui souhaitent obtenir des informations concernant les statuts de confiance pour un TSP, un TS ou un État membre donné.
 \end{itemize}
+\clearpage
 
 Ces utilisateurs auront accès au système à travers des interfaces dédiées:
 \begin{itemize}
@@ -489,7 +542,7 @@ Elle peut être décomposée en deux sous-parties. Dans un premier temps, j'ai d
 \subsubsection{État de l'art}
 
 La seconde phase, ayant pour objectif d'établir un état de l'art, a suivi la phase d'initiation et s'est étendue sur trois semaines.
-L'état de l'art permet de connaître l'état des connaissances et technologies actuelles dans un domaine spécifique. Pour notre projet, l'état de l'art a porté sur la blockchain ainsi que les systèmes de stockage de données décentralisés. Le but de cette phase a été d'explorer le plus largement possible les technologies pouvant être utilisées dans le projet afin de les comparer et de choisir les solutions répondant à nos besoins. Cette étape a donné lieu à un livrable qui a été inclus dans le document de conception de la gTSL comme le montre le jalon "Comparaison des technologies" dans la Figure~\ref{fig:gantt}. L'état de l'art est détaillé dans la Section~\ref{sec:state-of-the-art}.
+L'état de l'art permet de connaître l'état des connaissances et technologies actuelles dans un domaine spécifique. Pour notre projet, l'état de l'art a porté sur la blockchain ainsi que les systèmes de stockage de données décentralisés. Le but de cette phase a été d'explorer le plus largement possible les technologies pouvant être utilisées dans le projet afin de les comparer et de choisir les solutions répondant à nos besoins. Cette étape a donné lieu à un livrable qui a été inclus dans le document de conception de la gTSL comme le montre le jalon "Comparaison des technologies" dans la Figure~\ref{fig:gantt}. Ce document est disponible en Annexe~\ref{anx:comparison}. L'état de l'art est détaillé dans la Section~\ref{sec:state-of-the-art}.
 
 \subsubsection{Preuve de concept}
 
@@ -775,6 +828,7 @@ La Figure~\ref{fig:use-case-diagram} présente les cas d'utilisation de la gTSL,
 L'authentification permet aux utilisateurs d'être reconnu par le système comme étant administrateur, c'est-à-dire comme ayant droit d'éditer des listes de confiance. Cette fonctionnalité sera gérée grâce à la blockchain, en effet la clé publique des utilisateurs enregistrés en tant qu'administrateur sera sauvegardée dans la blockchain. Afin de s'authentifier, l'utilisateur devra donc utiliser sa clé privée.
 
 \subsection{Trust Service List}
+\label{sec:tsl}
 \subsubsection{Créer une nouvelle Trust Service List}
 Un utilisateur authentifié et autorisé peut créer une TSL de confiance pour un territoire donné. Pour cela, il doit créer une nouvelle TSL, remplir tous les champs requis de celle-ci, valider ces champs et enfin la signer. Ensuite, la liste complète sera stockée et répliqué à travers les nœuds du réseau distribué et une nouvelle entrée sera créée dans la blockchain afin de la référencer dans la gTSL.
 \subsubsection{Lire les informations relatives à une Trust Service List}
@@ -830,6 +884,7 @@ trust anchor\footnote{Dans les systèmes cryptographiques à structure hiérarch
 Une opération de recherche peut être effectuée en passant en paramètre un certificat ou le nom associé au service souhaité d'une TSL. La réponse contiendra les informations sur le service identifié.
 
 \subsection{Notification}
+\label{sec:notification}
 \subsubsection{S'abonner pour recevoir des notifications}
 Le système permet aux utilisateurs de s'abonner à des notifications concernant les listes de confiance. Par exemple, un utilisateur peut être notifier par email en cas de modification d'une liste donnée.
 \subsubsection{Se désabonner}
@@ -907,26 +962,104 @@ Les interfaces internes peuvent être basé sur REST pour les communications int
 
 Le système doit permettre d'évoluer progressivement ses fonctionnalités et d'inclure plus de formats d'importation de la liste de confiance. En regroupant les fonctionnalités communes, cela apporte une architecture plus souple et permet de réutiliser les fonctionnalités.
 
-\section{Architecture du système}
-\label{sec:architecture}
+\section{Processus métier}
 
-Le système mis en place est composé de deux parties principales. La première partie est une interface d'administration qui permet aux utilisateurs authentifiés d'opérer facilement des modifications sur la gTSL à l'aide d'une interface graphique. La seconde partie est un nœud de la gTSL qui contient une base de données locale, une instance connectée au réseau IPFS et une instance connectée à la blockchain Ethereum. Ces deux parties communiquent via le protocole HTTP. Les données que contiennent les requêtes échangées sont formatées en JSON. La Figure~\ref{fig:architecture} présente les interactions entre ces différents composants.
+Cette section contient des diagrammes permettant de décrire le comportement et l'interaction des différents composants, modules et classes du logiciel.
 
-Le système présenté en Figure~\ref{fig:architecture} sera déployé par tous les utilisateurs d'administration dans toute l'Europe et au-delà. En effet, chaque administrateur a besoin de son propre compte Ethereum, c'est-à-dire de son propre nœud Ethereum et de son propre identifiant de nœud IPFS, c'est-à-dire de son propre nœud IPFS. Cela permettra de forcer encore plus la réplication des données et donc d'augmenter la résilience du système. De plus, il est envisagé de mettre en place des instances publiques afin que les utilisateurs externes puissent récupérer les données liées à la gTSL. Ce système est open-source, cela implique que toute personne souhaitant déployer sa propre instance aura la possibilité de le faire, malgré tout il ne lui sera pas possible de modifier la gTSL puisqu'il ne disposera pas des autorisations requises. Toutes ces instances formeront donc un système décentralisé et distribué qui permettra de maintenir l'entièreté des données. 
+\subsection{Édition d'une liste de confiance}
+
+À travers le processus d'édition, un utilisateur d'administration peut effectuer des modifications sur une TSL spécifiée.
+Ce processus est illustré dans le diagramme BPMN1.1\footnote{BPMN, acronyme anglais de Business process model and notation, est une représentation graphique pour spécifier les processus métier dans un modèle de processus métier.} dans la Figure~\ref{fig:edit-flow}.
+La séquence d'actions est décrite dans le cas d'utilisation Section~\ref{sec:tsl}.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.75]{figures/architecture}
-	\caption{Architecture du système}
-	\label{fig:architecture}
+	\includegraphics[scale=0.3]{figures/edit-flow}
+	\caption{Édition d'une liste de confiance \cite{design-document}}
+	\label{fig:edit-flow}
 \end{figure}
+
+\subsection{Import d'une liste de de confiance}
+
+À travers le processus d'import, un utilisateur d'administration peut importer une TSL dans la gTSL. À ce titre, un utilisateur d'administration peut soit importer une TSL existante "en un seul coup", c'est-à-dire en téléchargeant un fichier de TSL, soit définir l'URL d'une TSL distante à inclure dans la gTSL. Ce processus est illustré dans le diagramme BPMN1.1 dans la Figure~\ref{fig:import-flow}. La séquence d'actions est décrite dans le cas d'utilisation Section~\ref{sec:tsl}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.31]{figures/import-flow}
+	\caption{Import d'une liste de de confiance \cite{design-document}}
+	\label{fig:import-flow}
+\end{figure}
+
+\subsection{Gestion des notifications}
+
+À travers le processus de notifications, tous les utilisateurs peuvent souscrire aux notifications d'une TSL. Le système de notifications surveillera les changements opérés sur la gTSL et informera les utilisateurs abonnés lorsque des modifications seront détectées. Ce processus est illustré dans le diagramme BPMN1.1 dans la Figure~\ref{fig:notification-flow}. La séquence d'actions est décrite dans le cas d'utilisation Section~\ref{sec:notification}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.33]{figures/notification-flow}
+	\caption{Gestion des notifications \cite{design-document}}
+	\label{fig:notification-flow}
+\end{figure}
+
+\section{Modèle des données}
+
+Cette section contient des diagrammes UML permettant de décrire les classes de données traités par le logiciel et sa sérialisation pour l'exportation aux formats appropriés, tels que XML ou JSON, par exemple.
+
+Le diagramme de classes UML fournit en Figure~\ref{fig:model} définit les structures de données de base pour les listes de confiance conformément à leur définition dans ETSI TS 119 612~\cite{ETSITS119612}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.51]{figures/model}
+	\caption{Diagramme de classes simplifié \cite{design-document}}
+	\label{fig:model}
+\end{figure}
+
+Les principales entités sont:
+\begin{itemize}
+	\item TrustList: définit la liste de confiance pour un territoire ou une application donné;
+	\item TrustListPointer: est lié uniquement aux listes de confiance des États membres et utilisé uniquement pour la LOTL;
+	\item ServiceProvider: contient les informations d'un fournisseur de services;
+	\item Service: définit un service métier pour un fournisseur identifié par un ensemble d'identités numériques;
+	\item Version: rassemble les informations concernant l'historique de la liste de confiance et des entités associées.
+\end{itemize}
 \clearpage
 
-\subsection{Client d'administration}
+Le modèle de données peut être simplifié par un graphe orienté, comme le montre la Figure~\ref{fig:dependencies}, où les nœuds représentent les entités et les arrêtes représentent les relations entre ces entités.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.42]{figures/dependencies}
+	\caption{Graphe de dépendances des données \cite{design-document}}
+	\label{fig:dependencies}
+\end{figure}
+
+\chapter{Réalisation de la solution proposée}
+\label{sec:realisation}
+
+\section{Architecture mise en place}
+\label{sec:architecture}
+
+Cette partie concerne l'architecture du système et différencie d'une part l'architecture d'un nœud de la gTSL et d'autre part l'architecture globale du système. La première vision permet de détailler au niveau local les différents composants utilisés. La seconde vision permet de comprendre au niveau général la décentralisation et la distribution des informations au travers d'un réseau de multiples nœuds interconnectés de la gTSL agissant dans un but commun.
+
+Cette section présente uniquement l'architecture logicielle du service de gTSL mais ne fournit pas une présentation de la mise en place technique du système. Des explications concernant le déploiement du système (outils utilisés, processus d'installation, etc.) sont détaillées dans le document GTSL - Project Setup Documentation disponible en Annexe~\ref{anx:gtsl-setup}. J'ai eu pour mission de rédiger ce document dans le but de fournir une précision sur le déploiement du module de gTSL. Ce document détaille les différents composants mis en place dans le cadre du déploiement mais ne correspond pas au manuel d'installation utilisateur qui est un autre document intitulé GTSL - Project Setup Guidelines disponible en Annexe~\ref{anx:gtsl-guidelines} que j'ai également rédigé.
+
+\subsection{Architecture d'un nœud de la gTSL}
+
+Le système mis en place est composé de deux parties principales. La première partie est une interface d'administration qui permet aux utilisateurs authentifiés d'opérer facilement des modifications sur la gTSL à l'aide d'une interface graphique. La seconde partie est un nœud de la gTSL qui contient une base de données locale, une instance connectée au réseau IPFS et une instance connectée à la blockchain Ethereum. Ces deux parties communiquent via le protocole HTTP. Les données que contiennent les requêtes échangées sont formatées en JSON. Il est important de noter que l'interface d'administration peut être omise dans le cas où le nœud est déployé à des fins de consultation de la gTSL par des utilisateurs externes uniquement. La Figure~\ref{fig:architecture-node} présente les interactions entre ces différents composants.
+\clearpage
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.42]{figures/architecture}
+	\caption{Architecture du système}
+	\label{fig:architecture-node}
+\end{figure}
+
+\subsubsection{Client d'administration}
 
 Le client d'administration fournit une interface web graphique aux utilisateurs d'administration afin qu'ils puissent gérer la gTSL. Il est développé avec les technologies HTML5, CSS3 et AngularJS. Dans le cadre de ce projet, nous avons décidé de réutiliser l'interface existante, appelée TL Manager. Ce client permet notamment aux utilisateurs de créer des drafts qui peuvent ensuite être publiés dans la gTSL. La Section~\ref{sec:views} présente les différentes vues auxquelles ont accès les utilisateurs.
 
-\subsection{Interface de programmation applicative REST}
+\subsubsection{Interface de programmation applicative REST}
 
 L'API\footnote{Une API, acronyme anglais de Application Programming Interface, est une interface de programmation applicative qui a pour but de fournir des services à d'autres logiciels.} REST\footnote{REST, acronyme anglais de REpresentational State Transfer, est un style architectural pour les systèmes distribués.} expose des web services fournissant toutes les opérations nécessaires à la gestion de la gTSL. Il a été développé en Java en s'appuyant sur le framework Spring. Cette interface de programmation encapsule les différents modules introduits en Section~\ref{sec:modules} permettant de gérer les données, d'authentifier les utilisateurs et de s'abonner aux listes de confiance. Elle est décomposée en trois parties comme présenté dans la Figure~\ref{fig:rest-api}.
 
@@ -937,80 +1070,112 @@ L'API\footnote{Une API, acronyme anglais de Application Programming Interface, e
 	\label{fig:rest-api}
 \end{figure}
 
-\subsubsection{HTTP Handler}
-
 Le HTTP Handler\footnote{en français, gestionnaire HTTP.} a pour rôle d'intercepter et de répondre aux requêtes HTTP. Il est composé des multiples contrôleurs chargés de faire appel à des services qui sont traitent les demandes des utilisateurs. Chaque contrôleur est défini sur une URL précise et expose des méthodes dans lesquelles sont configurés la méthode HTTP à utiliser ainsi que l'en-tête et le corps de la requête. Le HTTP Handler renvoie des réponses HTTP contenant un statut permettant de déterminer le résultat d'une requête ou indiquer au client une erreur. Si aucune erreur n'est survenue, le code de réponse HTTP 200 OK est envoyé.
-
-\subsubsection{Business Layer}
 
 La Business Layer\footnote{en français, couche métier.} est la partie traitement des données de l'application, c'est dans cette partie que les données sont vérifiées, validées, transformées ou éventuellement rejetées si elles sont invalides. Elle est composée de services qui sont appelés par les contrôleurs REST. Les services font appel à la couche de données afin de lire, modifier ou
 écrire dans la base de données. Ils peuvent aussi faire appel à d'autres services si cela est nécessaire. Dans cette partie sont gérées les éventuelles erreurs et exceptions qui peuvent survenir lors du traitement des données.
 
-\subsubsection{Data Layer}
-
 La partie Data Layer\footnote{en français, couche de données.} a pour objectif de gérer les données. La couche de données est composée d'une part du Database Manager et d'autre part du Ledger Manager. Le Database Manager a pour rôle de gérer les insertions, les mises à jour et les récupérations des données concernant les abonnements et les drafts en utilisant la base de données locale. Le Ledger Manager quant à lui joue le rôle d'interface entre le nœud IPFS et le nœud Ethereum, il a aussi à charge de gérer les données liées aux listes de confiance.
 
-\subsection{IPFS node}
+\subsubsection{Nœud IPFS}
 
 Le nœud IPFS est connecté à un réseau pair-à-pair composé d'autres nœuds IPFS anonymes. Il a pour rôle de maintenir les données dans ce réseau en les répliquant à travers les autres nœuds IPFS appartenant au service de gTSL, qui forme ce que l'on appelle un cluster\footnote{Un cluster est un ensemble de serveurs sur un réseau qui agissent dans un but commun.}. Le nœud interagit avec le système via le Ledger Manager qui est chargé de lui communiquer les données à stocker.
 
-\subsection{Ethereum node}
+\subsubsection{Nœud Ethereum}
 
 Le nœud Ethereum est connecté à un réseau pair-à-pair composé d'autres nœuds Ethereum anonymes. Il a pour rôle d'assurer l'intégrité des données grâce au consensus de la blockchain. Le nœud s'interface avec le Ledger Manager à qui il doit fournir l'état courant de la gTSL stocké dans un smart contract. L'état courant correspond à l'ensemble des hashes représentatifs de chaque liste de confiance. Son deuxième rôle est la gestion des utilisateurs, en effet l'authentification est gérée par un smart contract qui maintient les clés publiques des personnes autorisées à modifier la gTSL.
 
-\subsection{Local database}
+\subsubsection{Base de données}
 
 La base de données locale à chaque nœud a pour but de stocker les emails des personnes abonnées aux notifications ainsi que de stocker les drafts de listes de confiance. Les notifications sont donc gérées par le nœud auquel l'utilisateur a souscrit. L'intérêt de conserver les emails dans une base de données locale est de ne pas diffuser publiquement ces emails, ce qui serait le cas si ils étaient stockés dans la blockchain, afin de respecter la vie privée des utilisateurs. Concernant les drafts, on les stocke ni dans IPFS ni dans Ethereum mais bien dans une base de données locale. En effet, on ne veut pas rendre publique un draft puisqu'il peut être incomplet ou contenir des informations non vérifiées. De plus, il n'est pas pertinent de s'assurer de la validité des données d'un draft puisqu'il n'est pas rendu publique. Les utilisateurs d'administration de la gTSL devront dans tous les cas déployer leur propre instance du nœud de gTSL comme expliqué en introduction de la Section~\ref{sec:architecture}, ils auront donc leur base de données dédiée contenant uniquement les drafts qu'ils ont établis.
 
-\section{Processus du système ????}
+\subsection{Architecture globale}
 
-\section{Modèle des données (Data View)}
+Le système présenté en Figure~\ref{fig:architecture-node} sera déployé par tous les utilisateurs d'administration dans toute l'Europe et au-delà. En effet, chaque administrateur a besoin de son propre compte Ethereum, c'est-à-dire de son propre nœud Ethereum et de son propre identifiant de nœud IPFS, c'est-à-dire de son propre nœud IPFS. Cela permettra de forcer encore plus la réplication des données et donc d'augmenter la résilience du système. De plus, il est envisagé de mettre en place des instances publiques afin que les utilisateurs externes puissent récupérer les données liées à la gTSL. Ce système est open-source, cela implique que toute personne souhaitant déployer sa propre instance aura la possibilité de le faire, malgré tout il ne lui sera pas possible de modifier la gTSL puisqu'il ne disposera pas des autorisations requises. Toutes ces instances formeront donc un système décentralisé et distribué qui permettra de maintenir l'entièreté des données. 
 
-Data View
-Ledger manager
+La Figure~\ref{fig:architecture-global} présente l'architecture globale du système, décentralisée et distribuée, composée de plusieurs nœuds de la gTSL. Certains composants ne jouant aucun rôle dans la décentralisation du modèle ont été retirés des nœuds de gTSL dans un soucis de compréhension.
+\clearpage
 
-\chapter{Réalisation, présentation et validation de la solution proposée}
-\label{sec:realisation}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.58]{figures/architecture-global}
+	\caption{Architecture globale}
+	\label{fig:architecture-global}
+\end{figure}
 
-\begin{itemize}
-	\item Voir Compte-rendus 1 et 2
-	\item Voir Integration of Ethereum \& IPFS
-	\item \textbf{Parler du POC}
-\end{itemize}
+On observe dans la Figure~\ref{fig:architecture-global} que la décentralisation se fait d'une part par le réseau IPFS qui maintient les données et d'autre part par le réseau Ethereum chargé de conserver l'état courant de la gTSL dans la blockchain. Il est aussi important de noter que ces réseaux sont publiques, ils existent donc d'autres nœuds anonymes, non engagés au niveau de la gTSL, mais qui participent tout de même à la résilience du système.
 
-\section{Réalisation de la solution}
+\iffalse
+\section{Déploiement et installation de la solution}
 
-Liste des sous-modules à répartir dans les modules:
-\begin{itemize}
-	\item Un module de gestion des données, utilisant IPFS (see IPFS white paper);
-	\item Un module de gestion de versions permettant de conserver l’historique des mises à jour de la gTSL ;
-	\item Un module de conservation des adresses à l’aide d’un smart-contract déployé dans la blockchain Ethereum (see Ethereum white paper);
-	\item Un module de gestion des utilisateurs, basé sur votes d’un consensus, à l’aide d’un smart-contract déployé dans la blockchain Ethereum ;
-	
-	\item Un module d'authentification sur la blockchain, à l’aide d’un smart-contract déployé dans la blockchain Ethereum où sont stockées les clés publiques des administrateurs, le mécanisme d'authentification est quasi natif puisque une requête d'authentification (qui est une transaction) permet de reconnaître leur utilisateur puisqu'on peut nativement avoir accès à la clé publique de l'utilisateur émettant la transaction dans le contrat;
-	\item Un module de gestion des utilisateurs sur base d'un système de votes dans un smart-contract déployé dans la blockchain Ethereum;
-	
-	\item Un module de gestions des drafts
-	
-	\item Un module de gestions des notifications
-	
-	\item Un module de gestion (création, édition, suppression, lecture) d'une TSL
-	\item Un module de validation d'une TSL (validation des champs selon le standard ETSI)
-	\item Un module de recherche sur les données de la gTSL ;
-	\item Un module d’import/export de fichier XML des données ;
-	\item Un module de signature des listes de confiance.
-\end{itemize}
+(cf. Annexe~\ref{anx:gtsl-setup}.)
+
+Cette section fournit une présentation de la mise en place du système à des fins de développement du module gTSL. Elle spécifie aussi les technologies et méthodologies utilisées pour le réaliser. Les explications fournies dans cette partie sont tirées du document GTSL - Project Setup Documentation disponible en Annexe~\ref{anx:gtsl-setup} que j'ai rédigé dans le but de fournir une explication du déploiement du module de gTSL. Ce document détaille les différents composants mis en place dans le cadre du déploiement mais ne correspond pas au manuel d'installation utilisateur qui est un autre document intitulé GTSL - Project Setup Guidelines disponible en Annexe~\ref{anx:gtsl-guidelines}.
+
+\subsection{Présentation des outils}
+
+\begin{tabular}{ |c|c|c|c|  }
+	\hline
+	Outils & Version & Hôte & Description\\
+	\hline
+	Java   & 1.8    & Local & langage de programmation\\
+	Git	& latest &	Local&	versioning control system\\
+	Maven&	latest&	Local&	software project management and comprehension tool\\
+	Docker&	latest&	Local&	open platform to build, ship, and run distributed applications\\
+	Docker-compose&	latest&	Local&	tool for defining and running multi-container Docker applications\\
+	Docker-machine&	latest&	Local& tool that lets you install Docker Engine on virtual hosts\\
+	\hline
+\end{tabular}
+
+\subsection{Processus de l'installation}
+
+The GTSL uses Ethereum as a ledger to keep track of the state of each trusted list it contains. On the other hand, the GTSL uses IPFS in order to store data regarding each trusted list. The application itself is a Spring Boot application.
+
+\subsubsection{Build smart-contracts}
+
+In the project, smart-contracts are written in Solidity and will be used to define the behaviour of the ledger. In order to use those smart-contracts in the application, it is needed that they are generated as Java classes. To achieve this, a process of compiling and generating has been implemented as described in the figure below. The implementation is a bash script that uses Docker containers for the Solc compiler and the Web3j generator.
+
+FIGURE 1
+
+The process is divided into two parts and both parts are applied to all solidity files. First, the script runs a SOLC container that takes as input the solidity source file and creates a binary file and a .abi file which described the smart-contract. Then, those two files are used as input for the WEB3J container that generates a java source file for the smart-contract.
+
+Warning: Only the smart-contracts in the folder src/main/solidity/contracts are generated. Those smart-contracts are "final" smart-contracts (final in the sense that there is no smart-contract which extends it). If you define abstract contracts, you have to put them in a sub-folder.
+
+\subsubsection{Run the dependencies}
+
+For the application to work it is needed that an IPFS node and an Ethereum node are up. The process described in the figure below explains how it is achieved using Docker containers. Before the application starts, the two containers have to be ready. It means an IPFS daemon is started and a private Ethereum blockchain is generated in mining mode. Then, some files are generated into the outputs folder. Those files have to be copied into the gtsl project.
+
+FIGURE 2
+\fi
+
+\section{Implémentation des modules}
 
 \subsection{Ledger Manager}
 \label{sec:realisation-ledger}
 
 \begin{itemize}
 	\item \textbf{Parler du POC}
-	\item Ethereum smart-contract (déf en footnote) (avec Ethereum explications) %(http://www.ethdocs.org/en/latest/contracts-and-transactions/contracts.html#what-is-a-contract)
+	\item Ethereum smart-contract %(http://www.ethdocs.org/en/latest/contracts-and-transactions/contracts.html#what-is-a-contract)
 	\item IPFS storage
 	\item Integration of Ethereum \& IPFS
 	\item Versioning
 \end{itemize}
+Liste des sous-modules:
+\begin{itemize}
+	\item Un module de gestion des données, utilisant IPFS (see IPFS white paper);
+	\item Un module de gestion de versions permettant de conserver l’historique des mises à jour de la gTSL ;
+	\item Un module de conservation des adresses à l’aide d’un smart-contract déployé dans la blockchain Ethereum (see Ethereum white paper);
+\end{itemize}
+
+Dans cette section est décrit la manière d'intégrer Ethereum et IPFS. Dans un premier est exposé l'intérêt d'utiliser ces technologies ensemble, ensuite est présentée l'architecture mise en place afin de les interfacer et enfin est détaillé le système implémenté afin de gérer l'historique des versions de la gTSL.
+
+Les explications fournies dans cette partie sont tirées du document Integration of Ethereum \& IPFS disponible en Annexe~\ref{anx:ipfs-ethereum} que j'ai rédigé dans le but de fournir une explication de l'utilisation de technologies décentralisées et distribuées dans le cadre du module de gTSL.
+
+\subsubsection{The advantage of coupling the two technologies}
+
+A simple way to store the gTSL data is to keep them in a blockchain, this avoiding the need of a decentralized file system. Although a blockchain has a lot of advantages, it also have some drawbacks. One of them is that the deployment of a smart contract within the Ethereum blockchain has to be paid. Furthermore, the size of the smart contract (in terms of operations and memory) is directly linked to the price. Thus, the price follows the amount of data that are stored. A way to reduce the cost is to use a distributed network in order to store the gTSL data and use a blockchain in order to maintain the state of the data. In IPFS, all data are addressed by their hash, making their state easily maintainable. Hence, for each stored gTSL data, the blockchain should only maintain a hash corresponding to the current state of the data. This last solution reducing considerably our costs resulting to our use of the blockchain.
+
+\subsubsection{The way to integrate the two technologies}
 
 La Figure~\ref{fig:ledger-architecture} présente l'architecture de Ledger Manager.
 
@@ -1019,6 +1184,86 @@ La Figure~\ref{fig:ledger-architecture} présente l'architecture de Ledger Manag
 	\includegraphics[scale=0.45]{figures/poc}
 	\caption{Architecture du Ledger Manager}
 	\label{fig:ledger-architecture}
+\end{figure}
+
+As explained in the previous part, only the hash of the data is stored in the blockchain. All the actual data are stored in IPFS, which is called the {\em data layer}. A hash is the address which identifies a particular Trust Service List (TSL). Hence, when a TSL is stored in IPFS, a hash of its data is automatically computed. As expected, this hash is a unique identifier of the TSL. This hash is then stored in a smart contract in which it is attached to the unique non-mutable identifier of the TSL (which is a country code according to \cite{ETSITS119612}). This non-mutable identifier can then be used by end users when they intent to find the hash of a TSL that they need. In contrast to the non mutable identifier of the TSL, the hash of a TSL depends on the data it contains, this making it a mutable identifier of its TSL. Hence, a TSL can be modified by a member state, and its hash must then be updated. As the blockchain saves the current state of the TSL and updating the TSL corresponds to modify the state of the contract, the blockchain is called the {\em state layer}. The smart contract maintains the state of each TSL and allows the users to add, update, remove or fetch a TSL. Note that an authorisation is required for modifying the TSL but reading is publicly available.
+
+An abstraction of the smart contract's implementation is given in Listing 1:
+\begin{lstlisting}[language=solidity, basicstyle=\small, caption={Ledger Contract}, label={lst:ledgerContract}]
+contract Ledger {
+	
+	// Structures
+	struct Tsl {
+		bytes32 code;
+		bytes hash;
+	}
+	
+	// Attributes
+	mapping(bytes32 => Tsl) public gtsl;
+	
+	function addTsl(bytes32 _code, bytes _hash)
+		public
+	{
+		gtsl[_code] = Tsl({
+			code: _code, 
+			hash: _hash
+		});
+	}
+	
+	function updateTsl(bytes32 _code, bytes _hash)
+		public
+	{
+		gtsl[_code].hash = _hash;
+	}
+	
+	function removeTsl(bytes32 _code)
+		public
+	{
+		delete gtsl[_code];
+	}
+
+}
+\end{lstlisting}
+
+\textbf{Note:} A {\em get} function is generated by the compiler for every public attribute.
+
+%------------------------------------------------
+
+\subsubsection{Version control on top of IPFS}
+
+As specified in the gTSL's requirements, a history of each TSL must be kept. To achieve this, the idea is to maintain a linked-list of all the versions for each TSL. This linked-list is stored in IPFS and each node (so-called a {\em commit}) of the list can be viewed as a JSON object, defined as following :
+
+\begin{lstlisting}[language=json, basicstyle=\small, caption={Commit Object}, label={lst:commitObject}]
+{
+	"dataAddress": "QmXXXXXXXXXXXXXX",
+	"parent": "QmYYYYYYYYYYYYYY",
+	"author": "Ada Lovelace ada@lov.cc",
+	"date": "Mon July 24 15:19:12",
+	"signature": {"signature info"}
+}
+\end{lstlisting}
+
+\begin{enumerate}
+	\item dataAddress -- is the IPFS address (hash) pointing to the data of the TSL for the current version. This hash corresponds to the new address of the TSL.
+	\item parent -- is the IPFS address (hash) pointing to the previous version (commit object) of the TSL.
+	\item author -- identifies the user who updated the TSL.
+	\item date -- represents the time-stamp of the commit.
+	%	\item signature -- is the signature used by the user to sign the TSL.
+\end{enumerate}
+
+Instead of saving the hash of the data in the blockchain, it is the hash of the commit object which is saved. This allows the user to retrieve: the data of the TSL; the user who created it; the time at which it was created; and the previous version. This layer on top of the data containing meta-data of the version is called {\em meta-data layer}. 
+
+%------------------------------------------------
+
+\subsubsection{Results}
+
+This following diagram summarizes the version control and the integration of Ethereum \& IPFS:
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.35]{figures/versioning}
+	\caption{Summary diagram tiré de Annexe~\ref{anx:ipfs-ethereum}}
+	\label{fig:versioning}
 \end{figure}
 
 \subsection{Authentication Provider}
@@ -1030,12 +1275,31 @@ La Figure~\ref{fig:ledger-architecture} présente l'architecture de Ledger Manag
 	\item Stored as a list of members for each TSL
 \end{itemize}
 
+Liste des sous-modules:
+\begin{itemize}
+	\item Un module de gestion des utilisateurs, basé sur votes d’un consensus, à l’aide d’un smart-contract déployé dans la blockchain Ethereum ;
+	\item Un module d'authentification sur la blockchain, à l’aide d’un smart-contract déployé dans la blockchain Ethereum où sont stockées les clés publiques des administrateurs, le mécanisme d'authentification est quasi natif puisque une requête d'authentification (qui est une transaction) permet de reconnaître leur utilisateur puisqu'on peut nativement avoir accès à la clé publique de l'utilisateur émettant la transaction dans le contrat;
+	\item Un module de gestion des utilisateurs sur base d'un système de votes dans un smart-contract déployé dans la blockchain Ethereum;
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.7]{figures/user-management-flow}
+	\caption{Gestion des utilisateurs}
+	\label{fig:user-flow}
+\end{figure}
+
 \subsection{Subscription Provider}
 
 \begin{itemize}
 	\item a pour rôle de stocker les abonnés en DB
 	\item a pour rôle de gérer les désabonnements
 	\item a pour rôle de notifier les abonnés lors d'un update
+\end{itemize}
+
+Liste des sous-modules:
+\begin{itemize}
+	\item Un module de gestions des notifications
 \end{itemize}
 
 \subsection{Trust List Provider}
@@ -1046,13 +1310,29 @@ La Figure~\ref{fig:ledger-architecture} présente l'architecture de Ledger Manag
 	\item expliquer les requêtes HTTP
 \end{itemize}
 
+Liste des sous-modules:
+\begin{itemize}
+	\item Un module de gestion des requêtes HTTP (fournit par Spring)
+\end{itemize}
+
 \subsection{Lifecycle Manager}
 
 \begin{itemize}
-	\item Détail de l'API REST et de l'implémentation
+	\item Détail de l'API REST et de l'implémentation des services
 	\item concerne uniquement les services (business logic), la façon dont tout est géré
 	\item vérification et validation des champs des TSL
 	\item gestion des drafts en db local (A savoir que les utilisateurs externes peuvent créer des drafts mais ne disposeront des droits nécessaires pour publier les TSL; si un utilisateur devient par la suite il pourra tout de même publier les drafts réalisés en tant qu'utilisateur externe.)
+	\item recherche dans la gTSL (cf. Annexe~\ref{anx:gtsl-search-engine})
+\end{itemize}
+
+Liste des sous-modules:
+\begin{itemize}
+	\item Un module de gestions des drafts
+	\item Un module de gestion (création, édition, suppression, lecture) d'une TSL
+	\item Un module de validation d'une TSL (validation des champs selon le standard ETSI)
+	\item Un module de recherche sur les données de la gTSL ;
+	\item Un module d’import/export de fichier XML des données ;
+	\item Un module de signature des listes de confiance.
 \end{itemize}
 
 \section{Présentation de la solution}
@@ -1081,141 +1361,21 @@ Au niveau de la gTSL, les vraies résultats seront connues après la release, ma
 
 \chapter{Conclusion}
 
-\cleardoublepage
-
-\chapter{Exemples Listings}
-
-Il est aisé d'insérer du code dans un rapport. Il suffit de définir le langage, la légende à afficher et enfin un Label pour pouvoir y faire référence. Le résultat est donnée dans le listing \ref{lst:premierExemple}. Il est également possible de changer les couleurs, pour cela il faut éditer le lstset dans la classe tnreport.cls.
-
-\begin{lstlisting}[language=c++, caption={Premier Exemple}, label={lst:premierExemple}]
-void CEquation::IniParser()
-{
-	if (!pP){ //if not already initialized...
-		pP = new mu::Parser;
-
-		pP->DefineOprt("%", CEquation::Mod, 6); //deprecated
-		pP->DefineFun("mod", &CEquation::Mod, false);
-		pP->DefineOprt("&", AND, 1); //DEPRECATED
-		pP->DefineOprt("and", AND, 1);
-		pP->DefineOprt("|", OR, 1); //DEPRECATED
-		pP->DefineOprt("or", OR, 1);
-		pP->DefineOprt("xor", XOR, 1);
-		pP->DefineInfixOprt("!", NOT);
-		pP->DefineFun("floor", &CEquation::Floor, false);
-		pP->DefineFun("ceil", &CEquation::Ceil, false);
-		pP->DefineFun("abs", &CEquation::Abs, false);
-		pP->DefineFun("rand", &CEquation::Rand, false);
-		pP->DefineFun("tex", &CEquation::Tex, false);
-	
-		pP->DefineVar("x", &XVar);
-		pP->DefineVar("y", &YVar);
-		pP->DefineVar("z", &ZVar);
-	}
-}
-\end{lstlisting}
-\clearpage
-Il est également possible d'afficher du code directement depuis un fichier source, le résultat de cette opération est visible dans le listing \ref{lst:fromSrc}
-\lstinputlisting[language=c++,caption={Affichage depuis le fichier source},label={lst:fromSrc}]{figures/sourceCode.cpp}
-
-De nombreux languages sont supportés : \\
-ABAP2,4, ACSL, Ada4, Algol4, Ant, Assembler2,4, Awk4, bash, Basic2,4, C\#5, C++4, C4, Caml4, Clean, Cobol4, Comal, csh, Delphi, Eiffel, Elan, erlang, Euphoria, Fortran4, GCL, Gnuplot, Haskell, HTML, IDL4, inform, Java4, JVMIS, ksh, Lisp4, Logo, Lua2, make4, Mathematica1,4, Matlab, Mercury, MetaPost, Miranda, Mizar, ML, Modelica3, Modula-2, MuPAD, NASTRAN, Oberon-2, Objective C5 , OCL4, Octave, Oz, Pascal4, Perl, PHP, PL/I, Plasm, POV, Prolog, Promela, Python, R, Reduce, Rexx, RSL, Ruby, S4, SAS, Scilab, sh, SHELXL, Simula4, SQL, tcl4, TeX4, VBScript, Verilog, VHDL4, VRML4, XML, XSLT.
-\clearpage
-Il est néanmoins possible de définir le sien, il faudra alors ajouter dans la classe tnreport.cls du code resemblant au listing \ref{lst:defLang}. On y définit les différents mots-clés, ainsi que les délimiteurs des chaines de caractère et des commentaires.
-\begin{lstlisting}[language=Tex, caption={Syntaxe définition d'un langage}, label={lst:defLang}]
-\lstdefinelanguage{amf}
-{keywords=
-  {
-    xml,
-    amf,
-    volume,
-    material,
-    coordinates,
-    vertices,
-    vertex,
-    triangle,
-    x,
-    y,
-    z,
-    v1,
-    v2,
-    v3,
-    mesh,
-    object,
-    constellation,
-    metadata,
-    color,
-    texmap,
-    texture,
-    utex1,
-    utex2,
-    utex3,
-    instance,
-    deltax,
-    deltay,
-    deltaz,
-    r,
-    g,
-    b,
-    rx,
-    ry,
-    rz,
-    composite
-  },
-  sensitive=false,
-  morestring=[b]",
-  comment=[s]{<!--}{-->}
-}
-\end{lstlisting}
-\cleardoublepage
-
-\chapter{Autre chapitre}
-
-\section{Autre section}
-
-Green dreams none so dutiful, tread lightly here, sed do spearwife mulled wine
-sandsilk labore et dolore magna aliqua. Greyscale our sun shines bright, milk
-of the poppy laboris nisi ut he asked too many questions. Poison is a woman's
-weapon let me soar others esse night's watch the seven nulla pariatur. Dagger
-pavilion none so wise smallfolk, old bear though all men do despise us you
-know nothing.
-
-
-\subsection{Première sous-section}
-
-\subsubsection{Première sous-sous section}
-
-Exemple d'illustration :
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=10cm]{figures/school-logo}
-  \caption{Logo de TELECOM Nancy}
-  \label{fig:logo-tn}
-\end{figure}
-
-La Figure~\ref{fig:logo-tn} représente le logo de \reportSchool{}.
-
-Ceci est une référence bibliographique~\cite{GOT4}.
+Ceci est un exmeple de conslucions.
 
 \cleardoublepage
 \renewcommand{\tocbibname}{Bibliographie / Webographie}
 \bibliography{example} % See example.bib 
 \bibliographystyle{plain}
 
-\cleardoublepage
-
 \listoffigures
-\cleardoublepage
 
 \listoftables
-\cleardoublepage
 
 \lstlistoflistings
-\cleardoublepage
 
 \chapter*{Acronymes}
-\addcontentsline{toc}{chapter}{Liste des acronymes}
-\cleardoublepage
+\addcontentsline{toc}{chapter}{Acronymes}
 
 \chapter*{Glossaire}
 \addcontentsline{toc}{chapter}{Glossaire}
@@ -1229,16 +1389,48 @@ Ceci est une référence bibliographique~\cite{GOT4}.
 \clearpage
 
 \chapter{Document de synthèse - Integration of Ethereum \& IPFS}
+\label{anx:ipfs-ethereum}
 \includepdf[pages=-]{pdf/ipfs-ethereum.pdf}
 \clearpage
 
 \chapter{Analyse - gTSL Search Engine}
+\label{anx:gtsl-search-engine}
 \includepdf[pages=-]{pdf/gtsl-search-engine.pdf}
 \clearpage
 
-\chapter{Documentation - gTSL Setup}
+\chapter{Documentation - gTSL - Project Setup Documentation}
+\label{anx:gtsl-setup}
 \includepdf[pages=-]{pdf/gtsl-setup.pdf}
 \clearpage
+
+\chapter{Documentation - gTSL - Project Setup Guidelines}
+\label{anx:gtsl-guidelines}
+\includepdf[pages=-]{pdf/gtsl-guidelines.pdf}
+\clearpage
+
+\chapter{Analyse - Comparaison des technologies}
+\label{anx:comparison}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{figures/blockchain-technologies-comparison-part1}
+	\caption{Comparaison des technologies - Partie 1}
+	\label{fig:comparison-part1}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{figures/blockchain-technologies-comparison-part2}
+	\caption{Comparaison des technologies - Partie 2}
+	\label{fig:comparison-part2}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{figures/blockchain-technologies-comparison-part3}
+	\caption{Comparaison des technologies - Partie 3}
+	\label{fig:comparison-part3}
+\end{figure}
 
 \cleardoublepage
 \thispagestyle{empty}

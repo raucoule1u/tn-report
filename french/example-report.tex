@@ -1153,6 +1153,7 @@ FIGURE 2
 \subsection{Ledger Manager}
 \label{sec:realisation-ledger}
 
+\iffalse
 \begin{itemize}
 	\item \textbf{Parler du POC}
 	\item Ethereum smart-contract %(http://www.ethdocs.org/en/latest/contracts-and-transactions/contracts.html#what-is-a-contract)
@@ -1166,29 +1167,39 @@ Liste des sous-modules:
 	\item Un module de gestion de versions permettant de conserver l’historique des mises à jour de la gTSL ;
 	\item Un module de conservation des adresses à l’aide d’un smart-contract déployé dans la blockchain Ethereum (see Ethereum white paper);
 \end{itemize}
+\fi
 
 Dans cette section est décrit la manière d'intégrer Ethereum et IPFS. Dans un premier est exposé l'intérêt d'utiliser ces technologies ensemble, ensuite est présentée l'architecture mise en place afin de les interfacer et enfin est détaillé le système implémenté afin de gérer l'historique des versions de la gTSL.
 
 Les explications fournies dans cette partie sont tirées du document Integration of Ethereum \& IPFS disponible en Annexe~\ref{anx:ipfs-ethereum} que j'ai rédigé dans le but de fournir une explication de l'utilisation de technologies décentralisées et distribuées dans le cadre du module de gTSL.
 
-\subsubsection{The advantage of coupling the two technologies}
+\subsubsection{L'avantage de coupler IPFS \& Ethereum}
 
-A simple way to store the gTSL data is to keep them in a blockchain, this avoiding the need of a decentralized file system. Although a blockchain has a lot of advantages, it also have some drawbacks. One of them is that the deployment of a smart contract within the Ethereum blockchain has to be paid. Furthermore, the size of the smart contract (in terms of operations and memory) is directly linked to the price. Thus, the price follows the amount of data that are stored. A way to reduce the cost is to use a distributed network in order to store the gTSL data and use a blockchain in order to maintain the state of the data. In IPFS, all data are addressed by their hash, making their state easily maintainable. Hence, for each stored gTSL data, the blockchain should only maintain a hash corresponding to the current state of the data. This last solution reducing considerably our costs resulting to our use of the blockchain.
+Un moyen simple de stocker les données gTSL est de les conserver dans une blockchain, cela évite le besoin d'un système de fichiers décentralisé. 
+Bien qu'une blockchain présente beaucoup d'avantages, elle présente également des inconvénients.
+L'un d'eux est que le déploiement d'un smart contract dans la blockchain Ethereum doit être payé.
+De plus, la taille du smart contract (en matière de d'opérations et de mémoire) est directement liée au prix.
+Ainsi, le prix suit la quantité de données stockées.
+Une façon de réduire le coût est d'utiliser un réseau distribué afin de stocker les données gTSL et d'utiliser une blockchain afin de maintenir l'état des données.
+Dans IPFS, toutes les données sont adressées par leur hash, rendant leur état facilement maintenable. Par conséquent, pour chaque donnée de la gTSL stockée, la blockchain ne devrait maintenir qu'un hash correspondant à l'état actuel des données. Cette solution réduit considérablement les coûts d'utilisation de la blockchain.
 
-\subsubsection{The way to integrate the two technologies}
+\subsubsection{L'intégration des technologies}
 
-La Figure~\ref{fig:ledger-architecture} présente l'architecture de Ledger Manager.
+Comme expliqué dans la partie précédente, seul le hash des données est stocké dans la blockchain.
+Toutes les données réelles sont stockées dans IPFS, appelée {\em couche de données}\footnote{en anglais, Data layer}. 
+Un hash est l'adresse qui identifie une TSL en particulier. 
+Par conséquent, lorsqu'une TSL est stocké dans IPFS, un hash unique est automatiquement calculé à partir de ses données. 
+Ce hash est ensuite stocké dans un smart contract dans lequel il est rattaché à un identifiant unique non mutable de la TSL, correspondant au code du pays de la TSL conformément au standard ETSI TS 119 612~\cite{ETSITS119612}.
+Cet identifiant non mutable est ensuite utilisé par le système pour retrouver le hash d'une TSL.
+Contrairement à l'identifiant non mutable d'une TSL, le hash d'une TSL dépend des données qu'elle contient et est donc mutable. 
+Plus particulièrement le hash est recalculé à chaque édition de la TSL par un État membre.
+La blockchain enregistre l'état courant des TSLs et met à jour l'état du contrat, on la désigne donc comme étant la {\em couche d'états}\footnote{en anglais, State layer}. 
+Le smart contract maintient l'état de chaque TSL et permet aux utilisateurs d'ajouter, de mettre à jour, de supprimer ou de récupérer une TSL.
+Il est important de noter qu'une autorisation est nécessaire pour appliquer des changements à une TSL mais que la lecture est disponible publiquement.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.45]{figures/poc}
-	\caption{Architecture du Ledger Manager}
-	\label{fig:ledger-architecture}
-\end{figure}
+Une abstraction de la mise en œuvre du smart contract est fournie dans le Listing~\ref{lst:ledgerContract}.
 
-As explained in the previous part, only the hash of the data is stored in the blockchain. All the actual data are stored in IPFS, which is called the {\em data layer}. A hash is the address which identifies a particular Trust Service List (TSL). Hence, when a TSL is stored in IPFS, a hash of its data is automatically computed. As expected, this hash is a unique identifier of the TSL. This hash is then stored in a smart contract in which it is attached to the unique non-mutable identifier of the TSL (which is a country code according to \cite{ETSITS119612}). This non-mutable identifier can then be used by end users when they intent to find the hash of a TSL that they need. In contrast to the non mutable identifier of the TSL, the hash of a TSL depends on the data it contains, this making it a mutable identifier of its TSL. Hence, a TSL can be modified by a member state, and its hash must then be updated. As the blockchain saves the current state of the TSL and updating the TSL corresponds to modify the state of the contract, the blockchain is called the {\em state layer}. The smart contract maintains the state of each TSL and allows the users to add, update, remove or fetch a TSL. Note that an authorisation is required for modifying the TSL but reading is publicly available.
-
-An abstraction of the smart contract's implementation is given in Listing 1:
+\clearpage
 \begin{lstlisting}[language=solidity, basicstyle=\small, caption={Ledger Contract}, label={lst:ledgerContract}]
 contract Ledger {
 	
@@ -1202,7 +1213,7 @@ contract Ledger {
 	mapping(bytes32 => Tsl) public gtsl;
 	
 	function addTsl(bytes32 _code, bytes _hash)
-		public
+		public onlyAuthorized
 	{
 		gtsl[_code] = Tsl({
 			code: _code, 
@@ -1211,27 +1222,27 @@ contract Ledger {
 	}
 	
 	function updateTsl(bytes32 _code, bytes _hash)
-		public
+		public onlyAuthorized
 	{
 		gtsl[_code].hash = _hash;
 	}
 	
 	function removeTsl(bytes32 _code)
-		public
+		public onlyAuthorized
 	{
 		delete gtsl[_code];
 	}
-
+	
 }
 \end{lstlisting}
 
-\textbf{Note:} A {\em get} function is generated by the compiler for every public attribute.
+À noter qu'une fonction de récupération {\em get} est automatiquement générée par le compilateur pour chaque attribut. Le mot-clé {\em publique} signifie que la fonction est accessible depuis l'extérieur du contrat, mais ne signifie pas que tous les utilisateurs ont la possibilité de l'exécuter. Le mot-clé {\em onlyAuthorized} définit que seulement les personnes autorisées ont la possibilité de l'exécuter. La fonction {\em onlyAuthorized} est ce qu'on appelle un modificateur, il a pour rôle de filtrer l'exécution de la fonction en se basant sur les conditions d'exécution qu'il définit. Le modificateur {\em onlyAuthorized} est présenté dans le contrat de gestion des utilisateurs en Section~\ref{sec:authentication}.
 
-%------------------------------------------------
+\subsubsection{Gestion des versions}
 
-\subsubsection{Version control on top of IPFS}
-
-As specified in the gTSL's requirements, a history of each TSL must be kept. To achieve this, the idea is to maintain a linked-list of all the versions for each TSL. This linked-list is stored in IPFS and each node (so-called a {\em commit}) of the list can be viewed as a JSON object, defined as following :
+Comme spécifié dans les besoins du service de gTSL, un historique de chaque TSL doit être conservé. 
+Pour ce faire, l'idée est de maintenir une liste chaînée de toutes les versions de chaque TSL.
+Cette liste chaînée est stockée dans IPFS et chaque version, que l'on appellera {\em commit}, de la liste peut être considérée comme un objet JSON défini dans le Listing~\ref{lst:commitObject}.
 
 \begin{lstlisting}[language=json, basicstyle=\small, caption={Commit Object}, label={lst:commitObject}]
 {
@@ -1243,31 +1254,36 @@ As specified in the gTSL's requirements, a history of each TSL must be kept. To 
 }
 \end{lstlisting}
 
+Chaque attribut présent dans le Listing~\ref{lst:commitObject} est détaillé ci-dessous:
 \begin{enumerate}
-	\item dataAddress -- is the IPFS address (hash) pointing to the data of the TSL for the current version. This hash corresponds to the new address of the TSL.
-	\item parent -- is the IPFS address (hash) pointing to the previous version (commit object) of the TSL.
-	\item author -- identifies the user who updated the TSL.
-	\item date -- represents the time-stamp of the commit.
-	%	\item signature -- is the signature used by the user to sign the TSL.
+	\item \textit{dataAddress} est l'adresse (hash) IPFS pointant les données de la TSL pour la version actuelle;
+	\item \textit{parent} est l'adresse (hash) IPFS pointant la version (commit) précédente de la TSL;
+	\item \textit{author} identifie l'utilisateur qui a mis à jour le TSL;
+	\item \textit{date} représente l'horodatage du commit;
+	\item \textit{signature} sont des informations concernant la signature de l'utilisateur.
 \end{enumerate}
 
-Instead of saving the hash of the data in the blockchain, it is the hash of the commit object which is saved. This allows the user to retrieve: the data of the TSL; the user who created it; the time at which it was created; and the previous version. This layer on top of the data containing meta-data of the version is called {\em meta-data layer}. 
+Au lieu de sauvegarder le hash des données dans la blockchain, le hash de l'objet de commit est sauvegardé. L'objet commit encapsule le hash des données, le hash de l'objet commit de la version précédente et d'autres informations complémentaires. 
+Cela permet à l'utilisateur de récupérer les données de la TSL, de savoir qui est l'utilisateur qui l'a créé et le moment où elle a été créée et d'accéder à la version précédente. 
+Cette couche supplémentaire au dessus des données contenant des méta-données de la version est désignée comme étant la {\em couche de méta-données}\footnote{en anglais, Meta-data layer}.
 
-%------------------------------------------------
+\subsubsection{Résultat}
 
-\subsubsection{Results}
+La Figure~\ref{fig:versioning} résume la gestion de versions et l'intégration d'Ethereum \& IPFS.
 
-This following diagram summarizes the version control and the integration of Ethereum \& IPFS:
+\clearpage
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.35]{figures/versioning}
-	\caption{Summary diagram tiré de Annexe~\ref{anx:ipfs-ethereum}}
+	\caption{Diagramme explicatif du Ledger Manager tiré de Annexe~\ref{anx:ipfs-ethereum}}
 	\label{fig:versioning}
 \end{figure}
 
 \subsection{Authentication Provider}
+\label{sec:authentication}
 
+\iffalse
 \begin{itemize}
 	\item Ethereum smart-contract (avec Ethereum explications)
 	\item Voting system
@@ -1281,39 +1297,176 @@ Liste des sous-modules:
 	\item Un module d'authentification sur la blockchain, à l’aide d’un smart-contract déployé dans la blockchain Ethereum où sont stockées les clés publiques des administrateurs, le mécanisme d'authentification est quasi natif puisque une requête d'authentification (qui est une transaction) permet de reconnaître leur utilisateur puisqu'on peut nativement avoir accès à la clé publique de l'utilisateur émettant la transaction dans le contrat;
 	\item Un module de gestion des utilisateurs sur base d'un système de votes dans un smart-contract déployé dans la blockchain Ethereum;
 \end{itemize}
+\fi
+
+Dans cette section est décrit le service relatif à l'authentification et la gestion des utilisateurs. Dans un premier est exposé le processus d'authentification des utilisateurs, ensuite est détaillé le processus de gestion des utilisateurs et enfin est présenté le smart contract déployé dans la blockchain Ethereum afin de réaliser ces actions.
+
+\subsubsection{Authentification des utilisateurs}
+
+L'authentification des utilisateurs est uniquement nécessaire pour les administrateurs de la gTSL. Le processus implémenté se détache du modèle classique d'authentification par nom d'utilisateur et mot de passe, qualifié d'authentification à un facteur. À la place, il repose sur une infrastructure à clés publiques qui permet d'authentifier les utilisateurs grâce à un certificat électronique, on qualifie cette authentification comme étant à deux facteurs. Afin de s'authentifier, l'utilisateur utilise sa clé privée, qui vérifiée contre sa clé publique permet de l'identifier.
+
+Dans la pratique, l'authentification se fait via un smart contract déployé dans la blockchain Ethereum. Chaque utilisateur utilisant cette blockchain est identifié sur cette dernière grâce à une paire clé.
+Dans Ethereum, et dans la technologie blockchain en général, lorsqu'un utilisateur émet une transaction il la signe à l'aide de sa clé privée et fournit la clé publique correspondante. Cette clé publique peut être récupérée dans le smart contract. 
+Afin de répertorier les utilisateurs autorisés à procéder à des modifications de la gTSL, le smart contract maintient la liste des clés publiques des utilisateurs autorisées. 
+Lorsqu'un utilisateur souhaite accéder à une fonctionnalité qui requiert une autorisation spécifique, le système va vérifier que sa clé publique est bien présente dans le smart contract de gestion des utilisateurs. Si sa clé publique est bien présente dans la liste des utilisateurs autorisés alors le smart contract exécute la fonction appelée, sinon il refuse l'accès à cette fonction.
+
+\subsubsection{Gestion des utilisateurs}
+
+Cette section concerne uniquement les utilisateurs d'administration, en effet les utilisateurs externes ne sont pas concernés par l'authentification.
+La gestion des utilisateurs concerne le processus par lequel des administrateurs peuvent être ajouter ou révoquer de la liste des utilisateurs autorisés à modifier la gTSL et à gérer les utilisateurs. 
+En opposition avec un modèle classique, le modèle conçu ne repose pas sur un "super-administrateur" qui a le pouvoir de gérer les administrateurs. 
+%Dans notre modèle, tous les administrateurs ont les mêmes pouvoirs et aucun d'entre eux n'a la possibilité d'ajouter ou de retirer un utilisateur de la liste par son unique décision.
+
+Le système mis en place est basé sur un service de votes déployé dans la blockchain Ethereum. Les actions de gestion des utilisateurs reposent sur un consortium d'administrateurs ayant la possibilité de soumettre une proposition d'ajout ou de révocation d'un membre. Le système procède à l'établissement de la proposition, en précisant l'action à effectuer (ajout/suppression), le membre concerné par le vote, la date de création, la date limite du vote ainsi que l'identité de l'initiateur du vote. Pour une proposition donnée, chaque administrateur a la possibilité de voter en faveur ou en défaveur. En outre, tous les membres du consortium disposent du droit de vote et ce vote a le même poids pour chacun d'entre eux, il n'existe aucun privilège pour un votant.
+
+L'avantage majeur de cette conception est que le système ne peut être altéré par un seul et unique utilisateur malhonnête puisqu'il a besoin que la proposition soit validée par la majorité du consortium. Le seul moyen pour un attaquant de corrompre le système ou d'en prendre le contrôle est de réussir à être majoritaire dans le consortium. Pour cela, il faudrait soit qu'il réussisse à dérober les clés privées de plus de la moitié du consortium, soit qu'il réussisse à ajouter des clés publiques qu'ils détient dans la liste des clés autorisées, à hauteur d'au moins le nombre de clés déjà dans la liste pour devenir majoritaire. 
+
+Afin de renforcer la sécurité et la fiabilité du système, il est possible d'imaginer que l'on ne se base pas sur la majorité (50\%) pour accepter la proposition mais sur un pourcentage plus élevé (80\% par exemple). En effet, les actions d'ajout ou de suppression d'un administrateur du consortium sont décidées oralement avant même que l'opération ne soit saisie dans le module de gTSL, augmenter le seuil d'acceptation d'une proposition est donc un moyen efficace de se protéger davantage. De plus, dans le but d'empêcher qu'un utilisateur puisse valider un vote tout seul, une proposition doit atteindre un quorum pour être validé. Ce quorum, tout comme le seuil de validation, peut être augmenté afin d'augmenter la sécurité du système.
+
+Pour une proposition, on différencie trois résultats possibles:
+\begin{itemize}
+	\item Succès, le consortium a approuvé la proposition car le quorum a été réuni, le seuil d'acceptation a été dépassé et la date limite est dépassée, le système procède donc à l'exécution de la proposition;
+	\item Annulé, la date limite a été dépassée mais le quorum n'a pas été réuni, le système abandonne l'exécution;
+	\item Échec, la date limite a été dépassée et le quorum a été réuni, mais le seuil d'acceptation n'a pas été atteint, le système abandonne l'exécution.
+	\newline
+\end{itemize}
+
+La Figure~\ref{fig:user-flow} détaille le processus mis en place dans le cadre d'une proposition de votes initiée par un administrateur.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.7]{figures/user-management-flow}
-	\caption{Gestion des utilisateurs}
+	\caption{Processus de gestion d'une proposition de votes}
 	\label{fig:user-flow}
 \end{figure}
 
+\subsubsection{Implémentation}
+
+Une abstraction de la mise en œuvre du smart contract est fournie dans le Listing~\ref{lst:consortiumContract}. Le code présenté a été simplifié dans un soucis de compréhension et ne représente pas l'ensemble du smart contract implémenté.
+
+\begin{lstlisting}[language=solidity, basicstyle=\small, caption={Consortium Contract}, label={lst:consortiumContract}]
+contract Consortium {
+
+	// Structures
+	struct Member {
+		bool authorized;
+	}	
+	struct Proposal {
+		address member;
+		function (address) action;
+		mapping (address => bool) hasVoted;
+		bool[] votes;
+		bool result;
+		uint deadline;
+	}
+
+	// Attributes
+	mapping (address => Member) public members;
+	Proposal[] proposals;
+
+	// Modifiers
+	modifier onlyAuthorized {
+		require(members[msg.sender].authorized); _;
+	}
+
+	function requestAddMember(address _targetMember, uint _duration)
+		public onlyAuthorized returns (uint proposalID)
+	{
+		return newProposal(_targetMember, addMember, _duration);
+	}
+
+	function requestRemoveMember(address _targetMember, uint _duration)
+		public onlyAuthorized returns (uint proposalID)
+	{
+		return newProposal(_targetMember, removeMember, _duration);
+	}
+
+	function vote(uint _proposalID, bool _inSupport)
+		public onlyAuthorized
+	{
+		Proposal storage p = proposals[_proposalID];
+		require(now < p.deadline && !p.hasVoted[msg.sender]);
+		p.hasVoted[msg.sender] = true;
+		p.votes.push(_inSupport);
+	}
+
+	function executeProposal(uint _proposalID)
+		public onlyAuthorized returns (bool)
+	{
+		Proposal storage p = proposals[_proposalID];
+		require(now >= p.deadline);
+		
+		/* minimum quorum not reached */
+		if (p.votes.length*100 < quorum) { 
+			p.result = false;
+		} else {		
+			/* marjority algorithm not provided here*/
+			p.result = votesFor > votesAgainst;
+		}
+
+		/* execute action */
+		if (p.result) {
+			p.action(p.member);
+		}
+		
+		return p.result;
+	}
+}
+\end{lstlisting}
+
+Les fonctions définies dans le Listing~\ref{lst:consortiumContract} sont détaillés ci-dessous:
+\begin{itemize}
+	\item \textit{onlyAuthorized} est un modificateur qui s'appliquent aux fonctions ayant pour but de vérifier que l'utilisateur appelant la fonction est répertorié dans la liste des administrateurs;
+	\item \textit{requestAddMember} permet de créer une proposition d'ajout d'un nouvel administrateur;
+	\item \textit{requestRemoveMember} permet de créer une proposition de révocation d'un administrateur;
+	\item \textit{vote} permet aux utilisateurs d'administration d'appliquer leur vote à une proposition non expirée;
+	\item \textit{executeProposal} permet de vérifier les votes d'une proposition expirée dans le but d'exécuter l'action associée si la proposition a été approuvée.
+\end{itemize}
+
 \subsection{Subscription Provider}
 
-\begin{itemize}
-	\item a pour rôle de stocker les abonnés en DB
-	\item a pour rôle de gérer les désabonnements
-	\item a pour rôle de notifier les abonnés lors d'un update
-\end{itemize}
+Le service d'abonnement ou de souscription possède trois fonctions qui sont l'abonnement, le désabonnement et la notification. Ce module est similaire au service de newsletter\footnote{Une lettre d'information, newsletter en anglais, est un document d'information transmis par courrier électronique à l'ensemble des abonnés qui y ont souscrit.} que propose de nombreux sites marchands par exemple.
 
-Liste des sous-modules:
-\begin{itemize}
-	\item Un module de gestions des notifications
-\end{itemize}
+\subsubsection{Abonnement}
+
+Tout utilisateur a la possibilité de souscrire au service d'abonnement de la gTSL. Pour cela, il lui suffit de fournir son adresse email et de sélectionner les pays pour lequel il souhaite être notifié. Ces informations sont stockées par le système dans une base de données locale au nœud de souscription. Cela signifie que l'utilisateur est abonné à un nœud en particulier.
+
+\subsubsection{Désabonnement}
+
+Tout utilisateur abonné à une TSL a la possibilité de se désabonner du service d'abonnement. Pour cela, il lui suffit de cliquer sur le lien de désabonnement dans un des emails de notification qu'il a pu recevoir. Il sera alors désabonné de son nœud de souscription.
+
+\subsubsection{Notification}
+
+Le système a pour mission de notifier tous les abonnés aux TSLs. Lorsqu'une modification est effectuée alors tous les nœuds en sont informés. Chaque nœud doit donc extraire dans la base de données la liste des personnes ayant souscrits à la TSL modifiée et se charge ensuite de les en informer par email.
 
 \subsection{Trust List Provider}
 
+Le Trust List Provider a pour rôle d'exposer l'interface de programmation applicative REST. Il se charge d'intercepter les requêtes HTTP des utilisateurs et de les diriger vers le service adapté du Lifecycle Manager. Il correspond à l'ensemble des contrôleurs implémentés grâce au framework\footnote{Un framework est un ensemble de composants développées par un tierce permettant de définir une architecture logicielle.} Spring\footnote{Voir \url{https://spring.io/}}. Cette section présente l'ensemble des contrôleurs définit dans l'implémentation du projet.
+
+La Figure~\ref{fig:rest-controllers} définit l'ensemble des contrôleurs exposés par le Trust List Provider.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.6]{figures/rest-controllers}
+	\caption{Contrôleurs exposés par le Trust List Provider}
+	\label{fig:rest-controllers}
+\end{figure}
+
+Les contrôleurs définies dans la Figure~\ref{fig:rest-controllers} sont détaillés ci-dessous:
 \begin{itemize}
-	\item Détail de l'API REST
-	\item concerne uniquement l'exposition des REST controllers
-	\item expliquer les requêtes HTTP
+	\item Le contrôleur \textit{Administration} permet aux utilisateurs de s'authentifier et aux administrateurs de gérer les utilisateurs;
+	\item Le contrôleur \textit{Notification} permet aux utilisateurs de s'abonner et se désabonner des TSLs;
+	\item Le contrôleur \textit{PointersToOtherTSL} permet aux administrateurs de gérer les pointeurs vers les autres TSLs;
 \end{itemize}
 
-Liste des sous-modules:
-\begin{itemize}
-	\item Un module de gestion des requêtes HTTP (fournit par Spring)
-\end{itemize}
+\subsubsection{Contrôleur de gestion des TSL}
+
+\subsubsection{Contrôleur de gestion des TSP}
+
+\subsubsection{Contrôleur de gestion des TS}
+
+
+
 
 \subsection{Lifecycle Manager}
 

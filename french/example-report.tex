@@ -102,24 +102,15 @@
 \section*{Remerciements}
 \addcontentsline{toc}{chapter}{Remerciements}
 
-{\em
-``Night gathers, and now my watch begins. \\
-It shall not end until my death.
+Je tiens tout d'abord à remercier Madame Carlyne BALCZESAK, Monsieur Sébastien BRAUN et Monsieur Christophe GROSJEAN qui m'ont permis d'intégrer les équipes d'Ar{\texteta}s pendant ces six mois de stage. 
 
-I shall take no wife, hold no lands, father no children. \\
-I shall wear no crowns and win no glory. \\
-I shall live and die at my post.
+Je tiens également à remercier et à témoigner toute ma reconnaissance à mon maître de stage Monsieur Vincent BOUCKAERT pour cette expérience enrichissante et pleine d’intérêt, pour le temps qu’il m'a consacré tout au long de ce stage en répondant à mes interrogations. 
 
-I am the sword in the darkness. \\
-I am the watcher on the walls. \\
-I am the shield that guards the realms of men.
+Je souhaite aussi remercier Thomas LOISE et Francisco ROCHA qui ont contribué à ce projet et qui m'ont notamment aidé pour la rédaction de ce mémoire. 
 
-I pledge my life and honor to the Night's Watch, \\
-for this night and all the nights to come.''
-}
+J'adresse aussi mes remerciements à l'ensemble des collaborateurs d'Ar{\texteta}s qui par leur accueil et leur sympathie m'ont permis d'évoluer en toute sérénité au sein de l'entreprise. 
 
-\hspace{4cm} -- The Night's Watch oath
-
+Enfin, je tiens à remercier mon encadrant universitaire Monsieur Olivier FESTOR pour son intérêt porté au projet, son implication, son suivi tout au long de ce stage ainsi que pour sa visite dans les locaux de l'entreprise.
 
 \cleardoublepage
 
@@ -131,7 +122,6 @@ Ce mémoire résulte d'un stage de fin d'études qui s'est déroulé du 3 avril 
 Au cours de ce stage de fin d'études, j'ai eu le plaisir de travailler sur une technologie à laquelle je m'intéresse depuis deux ans, la blockchain. Dans le cadre d'un projet proposé par la Commission Européenne, nommé FutureTrust, j'ai pu concevoir et implémenter un service de trust list global basé sur la blockchain. Mes tâches ont été de me familiariser avec les principes de la blockchain et les concepts de cryptographie appliquée afin de les mettre en application dans le projet, d'effectuer une analyse des solutions de blockchain existantes afin de réaliser des choix d'implémentation, de concevoir l'architecture du service de liste de confiance globale, d'implémenter la solution conçue et de documenter tous les aspects techniques et fonctionnels de la solution implémentée.
 
 Dans ce mémoire est présenté le résultat du stage de fin d'études et est mis en avant l'utilisation de la blockchain dans le cadre d'un projet de confiance numérique d'échelle mondiale. L'intérêt de ce document est dans un premier temps d'expliquer les tâches réalisées au cours du stage et dans un second temps de montrer qu'il est possible d'élargir le champ d'application de la technologie blockchain et des différents aspects qui la composent.
-%de montrer que le champ d'application de la technologie blockchain peut être encore élargi.
 
 \cleardoublepage
 
@@ -155,19 +145,66 @@ Bien qu'à l'origine elle a été conçue pour le transfert de crypto-monnaie, l
 À l'heure où l'ubérisation\footnote{L'ubérisation est un phénomène économique désignant l'utilisation de services permettant aux professionnels et aux clients de se mettre en contact direct grâce à l'utilisation des nouvelles technologies.} de notre société est en marche, la technologie blockchain amène une approche nouvelle qui permet de se détacher de toute organe central ou tierce partie. 
 La blockchain ira-t-elle jusqu'à ubériser\footnote{Ubériser est le verbe issu du substantif ubériser.} Uber\footnote{Uber est l'entreprise qui déclencha ce qu'on appelle l'ubérisation.} ?
 
+%\section{Définition du cadre et des objectifs du stage}
+
+Dans ce contexte, un stage ingénieur a été réalisé sur une période de 6 mois au sein de la société Arηs Spikeseed située au Luxembourg. 
+Le stage a été réalisé dans les locaux de l'entreprise, la langue officielle du projet pour les communications avec les autres membres du consortium (mails, documents, conférence téléphonique) est l’anglais, il en est de même pour la langue utilisée au sein de l'équipe puisque c'est une équipe multinationale. Les documents produits, et présentés dans ce mémoire, ont donc été rédigés en anglais.
+Ce stage de fin d'études a pour objectif d'intégrer la technologie blockchain au sein d'un processus de gestion de listes de services de confiance dans le cadre d'un règlement européen. 
+La finalité est d'utiliser cette technologie afin de conserver des données publiques relatives à la confiance électronique de manière sécurisée et décentralisée en utilisant une blockchain en tant que registre.
+Cela a pour but d'assurer la disponibilité et l'intégrité des informations, puisque les données sont distribuées à travers les nœuds du réseau et sécurisées à l'aide de transactions signées et vérifiées par une preuve mathématique. 
+
+%\section{Mise en exergue du plan}
+
+Ce mémoire vise à montrer que le champ d'application de la technologie blockchain dépasse son cadre initial et que son utilisation permet de pallier aux problèmes d'architecture et de sécurité des modèles actuels. 
+Dans un premier temps, le contexte du projet sera défini afin de présenter l'entreprise Ar{\texteta}s Spikeseed, d'établir le contexte du projet et de détailler le fonctionnement de la technologie blockchain.
+Ensuite, la problématique sera exposée dans le but de comprendre les différents besoins autour du service de liste de confiance et les limites de l'architecture existante. Ce chapitre détaillera aussi la méthodologie de gestion de projet ainsi que l'organisation du temps au cours du stage.
+À la suite de cela, sera établi un état de l'art afin d'analyser l'émergence de la blockchain et l'intérêt porté aux systèmes décentralisés. Dans ce chapitre est aussi mis en avant la comparaison des outils existants et justification des choix opérés durant le stage. 
+Après cela, la réalisation du projet sera développée en détaillant les technologies utilisées, les acteurs du système, les cas d'utilisation de l'application ainsi que les modules, processus et modèle de données du service de liste de confiance.
+Puis, la réalisation de la solution sera détaillée en mettant en avant l'architecture mise en place, l'implémentation des différents modules ainsi que la présentation et la validation de la solution.
+Enfin, les résultats obtenus et les perspectives du projet seront détaillés.
+
+\chapter{Présentation du contexte}
+
+\section{L'entreprise Ar{\texteta}s Spikeseed}
+
+Ar{\texteta}s Spikeseed est une entité du groupe Ar{\texteta}s qui est une entreprise de services du numérique (ESN) fondée en 2003 par Jourdan Serderidis. 
+Le groupe est divisé en sociétés réparties au Luxembourg, en Belgique, en Grèce et depuis cette année en Italie. Le groupe Ar{\texteta}s possèdent cinq axes de compétences qui sont présentés dans la Figure~\ref{fig:arhs-core-services}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.7]{figures/arhs-core-services}
+	\caption{Axes de compétences du groupe Ar{\texteta}s. Illustration extraite de \textit{Annual Report 2016}~\cite{annual-report}}
+	\label{fig:arhs-core-services}
+\end{figure}
+
+Comme toutes les autres entités du groupe, Ar{\texteta}s Spikeseed vise à délivrer des solutions numériques complexes. Elle a la particularité de réaliser principalement des projets de recherche et développement en s'appuyant sur les pratiques agiles et des technologies de pointe. 
+De plus, Ar{\texteta}s Spikeseed est compétente afin de mettre en œuvre: 
+des solutions liées à la confiance numérique; 
+des systèmes engageant des masses de données grâce à des technologies innovantes et efficaces comme le Web sémantique ou la Business intelligence; 
+des applications destinées aux mobiles et aux objets connectés.
+
+\section{Contexte du projet}
+
+Dans le cadre d'un règlement de l'Union Européenne (UE) sur l'identification électronique (eID) et les services de confiance pour les transactions électroniques sécurisées au sein de l'UE (eIDAS), la Commission Européenne (CE) a émis un appel à projet qui a pour visée de supporter la mise en œuvre technique de ce règlement européen. 
+Ce projet de recherche et développement appelé FutureTrust rassemble un consortium de seize partenaires, dont Ar{\texteta}s Spikeseed, engagé dans la réalisation et la mise en application du règlement européen. 
+Le projet FutureTrust répondra au besoin de solutions globales et interopérables, en fournissant des logiciels libres qui faciliteront l'utilisation de l'identification et de la signature électronique. 
+Il vise à étendre l'infrastructure de la liste européenne de services de confiance existante vers une liste mondiale des services de confiance nommée Global Trust Service Status List (gTSL), à développer un service de validation ainsi qu'un service d'archivage pour les signatures et les sceaux électroniques, et à fournir des composants pour les certificats qualifiés et pour la création de signatures et de sceaux dans un environnement mobile.
+
+Ce stage de fin d'études a porté sur l'intégration la technologie blockchain dans le cadre du projet FutureTrust et plus particulièrement sur son intégration dans le module de gTSL. Les autres modules du projet ne seront pas détaillés dans ce document. 
+
 \section{Présentation de la technologie blockchain}
 
-Une blockchain est basée sur l'échange d'actifs numériques, réalisé grâce à des transactions signées, et agit comme un registre publique distribué où toutes les transactions y sont répertoriées. Elle repose sur des principes de cryptographie afin d'assurer l'intégrité de ces transactions et sur un protocole décentralisé, dit {\em peer-to-peer}, qui permet à la blockchain d'avoir une disponibilité maximale et d'établir un consensus entre les participants du réseau afin de protéger contre les falsifications. La Figure~\ref{fig:blockchain-diagram} représente le processus d'émission et de validation d'une transaction sur la blockchain.
+Une blockchain est basée sur l'échange d'actifs numériques, réalisé grâce à des transactions signées, et agit comme un registre publique distribué où toutes les transactions y sont répertoriées. Elle repose sur des principes de cryptographie afin d'assurer l'intégrité de ces transactions et sur un protocole décentralisé, dit {\em peer-to-peer}. Ce protocole permet à la blockchain d'avoir une disponibilité maximale et d'établir un consensus entre les participants du réseau afin de protéger les transactions contre les falsifications. La Figure~\ref{fig:blockchain-diagram} représente le processus d'émission et de validation d'une transaction sur la blockchain.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.45]{figures/blockchain-diagram}
-	\caption{Processus de création est de validation d'une transaction sur la blockchain \cite{blockchain}}
+	\caption{Processus de création est de validation d'une transaction sur la blockchain. Illustration adaptée de \textit{What is Blockchain Technology ?}~\cite{blockchain}}
 	\label{fig:blockchain-diagram}
 \end{figure}
 \clearpage
 
-Les blocs de transaction sont agencés dans un ordre linéaire, c'est-à-dire comme une chaîne, et contiennent une référence au bloc précédent, ainsi qu'un enregistrement des transactions.
+Les blocs sont agencés dans un ordre linéaire, c'est-à-dire comme une chaîne, et contiennent une référence au bloc précédent, ainsi qu'un enregistrement des transactions.
 La preuve de travail est le traitement nécessaire pour générer un nouveau bloc basé sur les nouvelles transactions diffusées sur le réseau.
 Les blocs de transaction sont créés par un processus appelé le minage\footnote{mining en anglais.}, qui est conçu pour être coûteux en temps et en énergie ainsi qu'être complexe à réaliser, et s'appuie sur un consensus pour ajuster la difficulté de créer de nouveaux blocs. Le minage est aussi un moyen de sécuriser le réseau en créant, vérifiant, publiant et propageant les blocs dans la blockchain.
 
@@ -197,13 +234,13 @@ Bien que la blockchain apporte de nombreux avantages, elle comporte aussi des in
 
 En 1994, Nick Szabo, chercheur juridique et cryptographe, s'est rendu compte que le registre décentralisé pouvait être utilisé pour des smart contracts (contrats intelligents), autrement appelés contrats auto-exécutés, contrats blockchain ou contrats numériques.
 Les contrats peuvent être convertis en code informatique, stockés et répliqués sur le système et supervisés sur le réseau qui exécutent la blockchain.
-Les smart contracts permettent d'échanger de l'argent, des biens, des parts ou n'importe quel  actif de manière transparente, sans conflit et en évitant tout service intermédiaire.
+Les smart contracts permettent d'échanger de l'argent, des biens, des parts ou n'importe quel actif de manière transparente, sans conflit et en évitant tout service intermédiaire.
 La Figure~\ref{fig:smart-contracts} représente l'établissement d'un smart-contract entre deux parties, sans service intermédiaire. Dans ce mémoire, nous utiliserons le terme de smart contract pour désigner un contrat intelligent car ce terme est le plus répandu.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.53]{figures/smart-contracts}
-	\caption{Établissement d'un smart-contract \cite{smart-contracts}}
+	\caption{Établissement d'un smart-contract. Illustration adaptée de \textit{Smart Contracts: The Blockchain Technology That Will Replace Lawyers}~\cite{smart-contracts}}
 	\label{fig:smart-contracts}
 \end{figure}
 
@@ -217,59 +254,6 @@ Les smart-contracts apportent de nombreux avantages:
 	\item des économies, en effet se détacher des intermédiaires permet de réduire considérablement les charges administratives engendrées par la plupart des contrats classiques;
 	\item la précision, puisque le contrat est automatisé et exécuté par une machine, si l'on admet que le contrat a été codé correctement, alors tout erreur pouvant être introduite lors d'une rédaction manuelle ne peut être présente dans un smart-contract.
 \end{itemize}
-
-\section{Définition du cadre et des objectifs du stage}
-
-Dans ce contexte, un stage ingénieur a été réalisé sur une période de 6 mois au sein de la société Arηs Spikeseed située au Luxembourg. 
-Le stage a été réalisé dans les locaux de l'entreprise, la langue officielle du projet pour les communications avec les autres membres du consortium (mails, documents, conférence téléphonique) est l’anglais, il en est de même pour la langue utilisée au sein de l'équipe puisque c'est une équipe multinationale. Les documents produits, et présentés dans ce mémoire, ont donc été rédigés en anglais.
-Ce stage de fin d'études a pour objectif d'intégrer la technologie blockchain au sein d'un processus de gestion de listes de services de confiance dans le cadre d'un règlement européen. 
-La finalité est d'utiliser cette technologie afin de conserver des données publiques relatives à la confiance électronique de manière sécurisée et décentralisée en utilisant une blockchain en tant que registre.
-Cela a pour but d'assurer la disponibilité et l'intégrité des informations, puisque les données sont distribuées à travers les nœuds du réseau et sécurisées à l'aide de transactions signées et vérifiées par une preuve mathématique. 
-
-\section{Mise en exergue du plan}
-
-\textbf{ÉDIT EN FONCTION DU PLAN DÉFINITIF}
-
-\textit{
-Ce mémoire vise à montrer que le champ d'application de la technologie blockchain dépasse son cadre initial et que son utilisation permet de pallier aux problèmes d'architecture et de sécurité des modèles actuels. 
-Dans un premier temps, le contexte du projet sera défini, puis la problématique, qui détaillera les limites des architectures actuelles, sera exposée. 
-Ensuite, sera établit un état de l'art afin de comparer les outils existants et de justifier les choix opérés durant le stage. 
-Après cela, la réalisation du projet sera développée en expliquant: 
-le choix de l'architecture mise en place; 
-l'avantage de persister des données dans un système de fichiers décentralisé; 
-l'intérêt de gérer l'authentification des utilisateurs par la mise en place d'un consensus; 
-l'implémentation d'un système de contrôle de versions et d'un moteur de recherche sur des données stockées dans un réseau décentralisé et distribué. 
-Enfin, les résultats obtenus et les perspectives du projet seront détaillés.
-}
-
-\chapter{Présentation du contexte}
-
-\section{L'entreprise Ar{\texteta}s Spikeseed}
-
-Ar{\texteta}s Spikeseed est une entité du groupe Ar{\texteta}s qui est une entreprise de services du numérique (ESN) fondée en 2003 par Jourdan Serderidis. 
-Le groupe est divisé en sociétés réparties au Luxembourg, en Belgique, en Grèce et depuis cette année en Italie. Le groupe Ar{\texteta}s possèdent cinq axes de compétences qui sont présentés dans la Figure~\ref{fig:arhs-core-services}.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.7]{figures/arhs-core-services}
-	\caption{Axes de compétences du groupe Ar{\texteta}s \cite{annual-report}}
-	\label{fig:arhs-core-services}
-\end{figure}
-
-Comme toutes les autres entités du groupe, Ar{\texteta}s Spikeseed vise à délivrer des solutions numériques complexes. Elle a la particularité de réaliser principalement des projets de recherche et développement en s'appuyant sur les pratiques agiles et des technologies de pointe. 
-De plus, Ar{\texteta}s Spikeseed est compétente afin de mettre en œuvre: 
-des solutions liées à la confiance numérique; 
-des systèmes engageant des masses de données grâce à des technologies innovantes et efficaces comme le Web sémantique ou la Business intelligence; 
-des applications destinées aux mobiles et aux objets connectés.
-
-\section{Contexte du projet}
-
-Dans le cadre d'un règlement de l'Union Européenne (UE) sur l'identification électronique (eID) et les services de confiance pour les transactions électroniques sécurisées au sein de l'UE (eIDAS), la Commission Européenne (CE) a émis un appel à projet qui a pour visée de supporter la mise en œuvre technique de ce règlement européen. 
-Ce projet de recherche et développement appelé FutureTrust rassemble un consortium de seize partenaires, dont Ar{\texteta}s Spikeseed, engagé dans la réalisation et la mise en application du règlement européen. 
-Le projet FutureTrust répondra au besoin de solutions globales et interopérables, en fournissant des logiciels libres qui faciliteront l'utilisation de l'identification et de la signature électronique. 
-Il vise à étendre l'infrastructure de la liste européenne de services de confiance existante vers une liste mondiale des services de confiance, nommée Global Trust Service Status List (gTSL), à développer un service de validation ainsi qu'un service d'archivage pour les signatures et les sceaux électroniques, et à fournir des composants pour les certificats qualifiés et pour la création de signatures et de sceaux dans un environnement mobile.
-
-Ce stage de fin d'études a porté sur l'intégration la technologie blockchain dans le cadre du projet FutureTrust et plus particulièrement sur son intégration dans le module de gTSL. Les autres modules du projet ne seront pas détaillés dans ce document. 
 
 \chapter{Présentation détaillée de la problématique}
 
@@ -313,7 +297,7 @@ La seconde partie est la liste des TSPs qui répertorie l'ensemble des fournisse
 
 La section \textit{Digital Signature} permet de vérifier l'authenticité et l'intégrité de la liste de confiance. En effet, chaque liste doit être signée par l'opérateur prévu à cet effet, défini dans la partie \textit{Scheme Information}. Dans cette section doit être indiquée la signature de l'opérateur ainsi que l'algorithme de génération de celle-ci.
 
-\subsection{Besoins générales}
+\subsection{Besoins généraux}
 
 \subsubsection{Intérêt du projet}
 
@@ -370,7 +354,7 @@ Ces composants et leurs interactions sont illustrés dans la Figure~\ref{fig:3ti
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.78]{figures/gTSL-3Tier}
-	\caption{gTSL – Architecture 3-Tier \cite{design-document}}
+	\caption{Architecture 3 tiers. Illustration extraite de \textit{Design documentation}~\cite{design-document}}
 	\label{fig:3tier-archi}
 \end{figure}
 
@@ -400,7 +384,7 @@ La Figure~\ref{fig:system-context-diagram} fournit une description de haut nivea
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.82]{figures/gTSL-SystemContextDiagram}
-	\caption{gTSL - Schéma du contexte du système \cite{design-document}}
+	\caption{Schéma du contexte du système. Illustration extraite de \textit{Design documentation}~\cite{design-document}}
 	\label{fig:system-context-diagram}
 \end{figure}
 
@@ -414,7 +398,6 @@ Deux types différents d'utilisateurs ont été identifiés concernant la gTSL:
 	\item Utilisateurs d'administration, i.e. les administrateurs de plates-formes, qui peuvent agir au nom d'un État membre de l'UE et qui sont chargés de la maintenance quotidienne et de la gestion des listes de confiance;
 	\item Utilisateurs externes, i.e. les personnes et les applications externes qui souhaitent obtenir des informations concernant les statuts de confiance pour un TSP, un TS ou un État membre donné.
 \end{itemize}
-\clearpage
 
 Ces utilisateurs auront accès au système à travers des interfaces dédiées:
 \begin{itemize}
@@ -610,7 +593,7 @@ Depuis la création d'Ethereum, cet écosystème comprend également des entité
 La sécurité des contrats intelligents est encore à un stade précoce, et des efforts considérables seront nécessaires avant d'envisager l'automatisation des opérations à très forte valeur ajoutée.
 De nombreuses initiatives ont déjà été lancées à cet égard et se poursuivront comme la recherche fondamentale, les logiciels d'analyse formelle, l'amélioration du langage ou encore de la machine virtuelle Ethereum.
 De nombreux projets dApp ont été financés cette année, en particulier par le biais de l'ICO\footnote{
-ICO est le processus par lequel une entité innovante offre aux investisseurs certaines quantités d'une nouvelle crypto-monnaie ou crypto-token en échange d'une quantité de crypto-monnaie existante comme Bitcoin ou Ethereum.} (Initial Coin Offering).
+ICO (acronyme anglais de Initial Coin Offering) est le processus par lequel une entité innovante offre aux investisseurs certaines quantités d'une nouvelle crypto-monnaie ou crypto-token en échange d'une quantité de crypto-monnaie existante comme Bitcoin ou Ethereum.}.
 
 De nombreux types d'utilisation de la blockchain sont donc en cours de développement.
 Ces utilisations ont donc besoin d'avoir des règles d'utilisation détaillées et un cadre juridique défini. Malheureusement dans l'actuel des choses, la loi n'encadre pas la technologie aussi bien sur la reconnaissance juridique des nouveautés apportées par cette technologie que les restrictions ou les contrôles de son utilisation.
@@ -766,23 +749,23 @@ Cette section a pour objectif d'apporter des précisions sur l'utilisation des t
 
 \subsection{Présentation de Ethereum}
 
-Ethereum est une plate-forme de blockchain open-source qui permet à qui le souhaite de créer et d'utiliser des applications décentralisées qui s'exécutent sur la blockchain. 
+Ethereum~\cite{eth} est une plate-forme de blockchain open-source qui permet à qui le souhaite de créer et d'utiliser des applications décentralisées qui s'exécutent sur la blockchain. 
 La particularité de la blockchain Ethereum est qu'elle a été conçue pour permettre aux utilisateurs d'écrire et d'exécuter des smart contracts. Un smart contract décrit un code informatique qui permet de faciliter l'échange d'argent, de contenu, de propriété, de partage ou de valeur sur la blockchain.
 Lors de son exécution, le contrat devient un programme informatique autonome qui s'exécute automatiquement lorsque des conditions spécifiques sont remplies. Étant donné que les smart contracts fonctionnent sur la blockchain, ils s'exécutent sans possibilité de censure, de temps d'arrêt ou de fraude. 
 
 L'innovation fondamentale d'Ethereum réside dans sa machine virtuelle appelée Ethereum Virtual Machine (EVM) qui est un système Turing-complet fonctionnant sur le réseau Ethereum. Elle permet à quiconque d'exécuter des smart contracts, quel que soit le langage de programmation, en fournissant suffisamment de temps et de mémoire. Le langage le plus utilisé sur la blockchain Ethereum est Solidity qui une fois compilé peut être exécuté par l'EVM.
 
 L'avantage majeur d'exécuter des applications sur une blockchain est de bénéficier des propriétés suivantes:
-\begin{itemize}
+\begin{enumerate}
 	\item immuable, puisqu'aucune tierce partie ne peut modifier les données;
 	\item infalsifiable, en effet les applications sont basées sur un réseau reposant sur un consensus, ce qui rend la falsification impossible;
 	\item sécurisé, sans point individuel de défaillance et sécurisé grâce à la cryptographie, les applications sont protégées contre les attaques par déni de service et les activités frauduleuses;
 	\item pleine disponibilité, puisque les applications ne s'arrêtent jamais et ne peuvent jamais être arrêtées.
-\end{itemize}
+\end{enumerate}
 
 \subsection{Présentation de IPFS}
 
-IPFS est un système de fichiers distribué pair-à-pair qui vise à connecter tous les périphériques informatiques avec le même système de fichiers. Il expose une plate-forme pour l'écriture et le déploiement d'applications et un nouveau système de distribution pour les grands volumes de données. 
+IPFS~\cite{ipfs-paper} est un système de fichiers distribué pair-à-pair qui vise à connecter tous les périphériques informatiques avec le même système de fichiers. Il expose une plate-forme pour l'écriture et le déploiement d'applications et un nouveau système de distribution pour les grands volumes de données. 
 En d'autres termes, IPFS a pour objectif de fournir un modèle de stockage basé sur des blocs dit "content-addressable" par l'utilisation de hashes calculés sur les données. Il est conçu comme un arbre de Merkle, une structure de données à partir de laquelle il est possible de créer des systèmes de fichiers ou même des blockchains. IPFS ne contient pas de point individuel de défaillance puisqu'il est décentralisé, aucun nœud n'est privilégié et les nœuds n'ont pas besoin de se faire confiance. 
 Chaque nœud maintient une partie des données du réseau dans son espace de stockage local. 
 Les nœuds sont interconnectés et échangent des objets. Ces objets représentent des fichiers et d'autres structures de données.
@@ -818,7 +801,7 @@ La Figure~\ref{fig:use-case-diagram} présente les cas d'utilisation de la gTSL,
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.55]{figures/use-case-diagram}
-	\caption{EDITER CE DIAGRAMME EN Y AJOUTANT LES FONCTIONNALITES NON REPERTORIEES - Diagramme de cas d'utilisation \cite{design-document}}
+	\caption{EDITER CE DIAGRAMME EN Y AJOUTANT LES FONCTIONNALITES NON REPERTORIEES - Diagramme de cas d'utilisation. Illustration extraite de \textit{Design documentation}~\cite{design-document}}
 	\label{fig:use-case-diagram}
 \end{figure}
 \clearpage
@@ -904,7 +887,7 @@ Cette section décrit la structure et les composants de ces modules de haut nive
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.38]{figures/highlevel-components}
-	\caption{Composants de haut niveau de la gTSL \cite{design-document}}
+	\caption{Composants de haut niveau de la gTSL. Illustration extraite de \textit{Design documentation}~\cite{design-document}}
 	\label{fig:highlevel-components}
 \end{figure}
 
@@ -941,7 +924,7 @@ Les interfaces de la gTSL peuvent être classifiées en deux groupes: externes e
 
 \subsubsection{Interfaces externes}
 
-Les interfaces externes sont basées sur les principes REST.
+Les interfaces externes sont basées sur les principes REST\footnote{REST, acronyme anglais de REpresentational State Transfer, est un style architectural pour les systèmes distribués.}.
 
 \begin{itemize}
 	\item AuthenticationService: est utilisée par le système pour authentifier les utilisateurs;
@@ -975,7 +958,7 @@ La séquence d'actions est décrite dans le cas d'utilisation Section~\ref{sec:t
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.3]{figures/edit-flow}
-	\caption{Édition d'une liste de confiance \cite{design-document}}
+	\caption{Édition d'une liste de confiance. Illustration extraite de \textit{Design documentation}~\cite{design-document}}
 	\label{fig:edit-flow}
 \end{figure}
 
@@ -986,7 +969,7 @@ La séquence d'actions est décrite dans le cas d'utilisation Section~\ref{sec:t
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.31]{figures/import-flow}
-	\caption{Import d'une liste de de confiance \cite{design-document}}
+	\caption{Import d'une liste de de confiance. Illustration extraite de \textit{Design documentation}~\cite{design-document}}
 	\label{fig:import-flow}
 \end{figure}
 
@@ -997,7 +980,7 @@ La séquence d'actions est décrite dans le cas d'utilisation Section~\ref{sec:t
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.33]{figures/notification-flow}
-	\caption{Gestion des notifications \cite{design-document}}
+	\caption{Gestion des notifications. Illustration extraite de \textit{Design documentation}~\cite{design-document}}
 	\label{fig:notification-flow}
 \end{figure}
 
@@ -1010,14 +993,14 @@ Le diagramme de classes UML fournit en Figure~\ref{fig:model} définit les struc
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.51]{figures/model}
-	\caption{Diagramme de classes simplifié \cite{design-document}}
+	\caption{Diagramme de classes simplifié. Illustration extraite de \textit{Design documentation}~\cite{design-document}}
 	\label{fig:model}
 \end{figure}
 
 Les principales entités sont:
 \begin{itemize}
 	\item TrustList: définit la liste de confiance pour un territoire ou une application donné;
-	\item TrustListPointer: est lié uniquement aux listes de confiance des États membres et utilisé uniquement pour la LOTL;
+	\item TrustListPointer: est lié uniquement aux listes de confiance des États membres et utilisé uniquement pour la LoTL;
 	\item ServiceProvider: contient les informations d'un fournisseur de services;
 	\item Service: définit un service métier pour un fournisseur identifié par un ensemble d'identités numériques;
 	\item Version: rassemble les informations concernant l'historique de la liste de confiance et des entités associées.
@@ -1029,7 +1012,7 @@ Le modèle de données peut être simplifié par un graphe orienté, comme le mo
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.42]{figures/dependencies}
-	\caption{Graphe de dépendances des données \cite{design-document}}
+	\caption{Graphe de dépendances des données. Illustration extraite de \textit{Design documentation}~\cite{design-document}}
 	\label{fig:dependencies}
 \end{figure}
 
@@ -1057,11 +1040,11 @@ Le système mis en place est composé de deux parties principales. La première 
 
 \subsubsection{Client d'administration}
 
-Le client d'administration fournit une interface web graphique aux utilisateurs d'administration afin qu'ils puissent gérer la gTSL. Il est développé avec les technologies HTML5, CSS3 et AngularJS. Dans le cadre de ce projet, nous avons décidé de réutiliser l'interface existante, appelée TL Manager. Ce client permet notamment aux utilisateurs de créer des drafts qui peuvent ensuite être publiés dans la gTSL. La Section~\ref{sec:views} présente les différentes vues auxquelles ont accès les utilisateurs.
+Le client d'administration fournit une interface web graphique aux utilisateurs d'administration afin qu'ils puissent gérer la gTSL. Il est développé avec les technologies HTML5, CSS3 et AngularJS. Dans le cadre de ce projet, nous avons décidé de réutiliser l'interface existante, appelée TL Manager. Ce client permet notamment aux utilisateurs de créer des drafts qui peuvent ensuite être publiés dans la gTSL. Ce client n'est pas détaillé dans ce mémoire puisqu'il n'entre pas dans le cadre du stage.
 
 \subsubsection{Interface de programmation applicative REST}
 
-L'API\footnote{Une API, acronyme anglais de Application Programming Interface, est une interface de programmation applicative qui a pour but de fournir des services à d'autres logiciels.} REST\footnote{REST, acronyme anglais de REpresentational State Transfer, est un style architectural pour les systèmes distribués.} expose des web services fournissant toutes les opérations nécessaires à la gestion de la gTSL. Il a été développé en Java en s'appuyant sur le framework Spring. Cette interface de programmation encapsule les différents modules introduits en Section~\ref{sec:modules} permettant de gérer les données, d'authentifier les utilisateurs et de s'abonner aux listes de confiance. Elle est décomposée en trois parties comme présenté dans la Figure~\ref{fig:rest-api}.
+L'API\footnote{Une API, acronyme anglais de Application Programming Interface, est une interface de programmation applicative qui a pour but de fournir des services à d'autres logiciels.} REST expose des web services fournissant toutes les opérations nécessaires à la gestion de la gTSL. Il a été développé en Java en s'appuyant sur le framework Spring. Cette interface de programmation encapsule les différents modules introduits en Section~\ref{sec:modules} permettant de gérer les données, d'authentifier les utilisateurs et de s'abonner aux listes de confiance. Elle est décomposée en trois parties comme présenté dans la Figure~\ref{fig:rest-api}.
 
 \begin{figure}[h]
 	\centering
@@ -1104,49 +1087,6 @@ La Figure~\ref{fig:architecture-global} présente l'architecture globale du syst
 \end{figure}
 
 On observe dans la Figure~\ref{fig:architecture-global} que la décentralisation se fait d'une part par le réseau IPFS qui maintient les données et d'autre part par le réseau Ethereum chargé de conserver l'état courant de la gTSL dans la blockchain. Il est aussi important de noter que ces réseaux sont publiques, ils existent donc d'autres nœuds anonymes, non engagés au niveau de la gTSL, mais qui participent tout de même à la résilience du système.
-
-\iffalse
-\section{Déploiement et installation de la solution}
-
-(cf. Annexe~\ref{anx:gtsl-setup}.)
-
-Cette section fournit une présentation de la mise en place du système à des fins de développement du module gTSL. Elle spécifie aussi les technologies et méthodologies utilisées pour le réaliser. Les explications fournies dans cette partie sont tirées du document GTSL - Project Setup Documentation disponible en Annexe~\ref{anx:gtsl-setup} que j'ai rédigé dans le but de fournir une explication du déploiement du module de gTSL. Ce document détaille les différents composants mis en place dans le cadre du déploiement mais ne correspond pas au manuel d'installation utilisateur qui est un autre document intitulé GTSL - Project Setup Guidelines disponible en Annexe~\ref{anx:gtsl-guidelines}.
-
-\subsection{Présentation des outils}
-
-\begin{tabular}{ |c|c|c|c|  }
-	\hline
-	Outils & Version & Hôte & Description\\
-	\hline
-	Java   & 1.8    & Local & langage de programmation\\
-	Git	& latest &	Local&	versioning control system\\
-	Maven&	latest&	Local&	software project management and comprehension tool\\
-	Docker&	latest&	Local&	open platform to build, ship, and run distributed applications\\
-	Docker-compose&	latest&	Local&	tool for defining and running multi-container Docker applications\\
-	Docker-machine&	latest&	Local& tool that lets you install Docker Engine on virtual hosts\\
-	\hline
-\end{tabular}
-
-\subsection{Processus de l'installation}
-
-The GTSL uses Ethereum as a ledger to keep track of the state of each trusted list it contains. On the other hand, the GTSL uses IPFS in order to store data regarding each trusted list. The application itself is a Spring Boot application.
-
-\subsubsection{Build smart-contracts}
-
-In the project, smart-contracts are written in Solidity and will be used to define the behaviour of the ledger. In order to use those smart-contracts in the application, it is needed that they are generated as Java classes. To achieve this, a process of compiling and generating has been implemented as described in the figure below. The implementation is a bash script that uses Docker containers for the Solc compiler and the Web3j generator.
-
-FIGURE 1
-
-The process is divided into two parts and both parts are applied to all solidity files. First, the script runs a SOLC container that takes as input the solidity source file and creates a binary file and a .abi file which described the smart-contract. Then, those two files are used as input for the WEB3J container that generates a java source file for the smart-contract.
-
-Warning: Only the smart-contracts in the folder src/main/solidity/contracts are generated. Those smart-contracts are "final" smart-contracts (final in the sense that there is no smart-contract which extends it). If you define abstract contracts, you have to put them in a sub-folder.
-
-\subsubsection{Run the dependencies}
-
-For the application to work it is needed that an IPFS node and an Ethereum node are up. The process described in the figure below explains how it is achieved using Docker containers. Before the application starts, the two containers have to be ready. It means an IPFS daemon is started and a private Ethereum blockchain is generated in mining mode. Then, some files are generated into the outputs folder. Those files have to be copied into the gtsl project.
-
-FIGURE 2
-\fi
 
 \section{Implémentation des modules}
 
@@ -1276,7 +1216,7 @@ La Figure~\ref{fig:versioning} résume la gestion de versions et l'intégration 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.35]{figures/versioning}
-	\caption{Diagramme explicatif du Ledger Manager tiré de Annexe~\ref{anx:ipfs-ethereum}}
+	\caption{Ledger Manager. Illustration extraite de \textit{Integration of Ethereum \& IPFS}~\cite{ipfs-ethereum}}
 	\label{fig:versioning}
 \end{figure}
 
@@ -1439,15 +1379,24 @@ Tout utilisateur abonné à une TSL a la possibilité de se désabonner du servi
 
 Le système a pour mission de notifier tous les abonnés aux TSLs. Lorsqu'une modification est effectuée alors tous les nœuds en sont informés. Chaque nœud doit donc extraire dans la base de données la liste des personnes ayant souscrits à la TSL modifiée et se charge ensuite de les en informer par email.
 
-\subsection{Trust List Provider}
+\subsection{Lifecycle Manager}
 
-Le Trust List Provider a pour rôle d'exposer l'interface de programmation applicative REST. Il se charge d'intercepter les requêtes HTTP des utilisateurs et de les diriger vers le service adapté du Lifecycle Manager. Il correspond à l'ensemble des contrôleurs implémentés grâce au framework\footnote{Un framework est un ensemble de composants développées par un tierce permettant de définir une architecture logicielle.} Spring\footnote{Voir \url{https://spring.io/}}. Cette section présente l'ensemble des contrôleurs définit dans l'implémentation du projet.
+Le Lifecycle Manager a pour rôle de gérer le cycle de vie des TSLs. Il se charge de traiter, vérifier et valider les informations relatives aux TSLs, on dit qu'il applique la logique métier. Ce module permet d'une part de gérer les TSLs et d'autre part de gérer les drafts. Concernant les TSLs, il permet de traiter la validation de tous les champs de la TSL conformément au standard ETSI TS 119 612~\cite{ETSITS119612} lors de l'ajout ou de l'édition et offre la possibilité de procéder à des recherches sur les TSLs, d'importer une TSL au format XML et d'exporter une TSL au format XML. Les différentes techniques de recherche sur la gTSL sont évoquées dans le document gTSL Search Engine disponible en Annexe~\ref{anx:gtsl-search-engine}. Concernant les drafts, il gère le processus de création et d'édition des drafts en indiquant pour chacun quels champs sont valides vis-à-vis du standard ETSI TS 119 612~\cite{ETSITS119612}. Un draft peut être enregistré même si il n'est pas valide, mais dans ce cas il ne pourra pas être publié dans la gTSL. À noter que les utilisateurs externes peuvent créer des drafts mais ne disposeront des droits nécessaires pour publier les TSL; si un utilisateur devient par la suite administrateur il pourra tout de même publier les drafts réalisés en tant qu'utilisateur externe.
+
+\section{Présentation de la solution}
+
+Cette section concerne uniquement l'interface de programmation applicative. L'interface graphique d'administration a été réalisée dans la version antérieure du service de gestion des listes de confiance et sera réutilisée sans modification majeure dans le cadre de la gTSL. Cette interface n'entre donc pas dans le cadre du stage et n'est pas présentée dans ce mémoire.
+
+\subsection{Interface de programmation applicative}
+
+L'interface de programmation applicative (API) de la gTSL correspond au module Trust List Provider. L'API implémentée respecte le modèle REST et se charge d'intercepter les requêtes HTTP des utilisateurs et de les diriger vers le service adapté du Lifecycle Manager. Il correspond à l'ensemble des contrôleurs implémentés grâce au framework\footnote{Un framework est un ensemble de composants développées par un tierce permettant de définir une architecture logicielle.} Spring\footnote{Voir \url{https://spring.io/}}. Cette section présente l'ensemble des contrôleurs définit dans l'implémentation du projet.
 
 La Figure~\ref{fig:rest-controllers} définit l'ensemble des contrôleurs exposés par le Trust List Provider.
 
+\clearpage
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.6]{figures/rest-controllers}
+	\includegraphics[scale=0.73]{figures/rest-controllers}
 	\caption{Contrôleurs exposés par le Trust List Provider}
 	\label{fig:rest-controllers}
 \end{figure}
@@ -1457,64 +1406,52 @@ Les contrôleurs définies dans la Figure~\ref{fig:rest-controllers} sont détai
 	\item Le contrôleur \textit{Administration} permet aux utilisateurs de s'authentifier et aux administrateurs de gérer les utilisateurs;
 	\item Le contrôleur \textit{Notification} permet aux utilisateurs de s'abonner et se désabonner des TSLs;
 	\item Le contrôleur \textit{PointersToOtherTSL} permet aux administrateurs de gérer les pointeurs vers les autres TSLs;
+	\item Le contrôleur \textit{TrustServiceList} permet à tous les utilisateurs de lire une TSL particulière ou toutes les TSLs, et permet aux administrateurs de créer, éditer, supprimer, signer ou importer une TSL;
+	\item Le contrôleur \textit{TrustServiceProvider} permet aux administrateurs d'ajouter, éditer ou retirer un TSP d'une TSL.
+	\item Le contrôleur \textit{TrustService} permet aux administrateurs d'ajouter, éditer ou retirer un TS d'un TS, et permet à tous les utilisateurs de vérifier un TS en fonction de critères de filtrage.
 \end{itemize}
-
-\subsubsection{Contrôleur de gestion des TSL}
-
-\subsubsection{Contrôleur de gestion des TSP}
-
-\subsubsection{Contrôleur de gestion des TS}
-
-
-
-
-\subsection{Lifecycle Manager}
-
-\begin{itemize}
-	\item Détail de l'API REST et de l'implémentation des services
-	\item concerne uniquement les services (business logic), la façon dont tout est géré
-	\item vérification et validation des champs des TSL
-	\item gestion des drafts en db local (A savoir que les utilisateurs externes peuvent créer des drafts mais ne disposeront des droits nécessaires pour publier les TSL; si un utilisateur devient par la suite il pourra tout de même publier les drafts réalisés en tant qu'utilisateur externe.)
-	\item recherche dans la gTSL (cf. Annexe~\ref{anx:gtsl-search-engine})
-\end{itemize}
-
-Liste des sous-modules:
-\begin{itemize}
-	\item Un module de gestions des drafts
-	\item Un module de gestion (création, édition, suppression, lecture) d'une TSL
-	\item Un module de validation d'une TSL (validation des champs selon le standard ETSI)
-	\item Un module de recherche sur les données de la gTSL ;
-	\item Un module d’import/export de fichier XML des données ;
-	\item Un module de signature des listes de confiance.
-\end{itemize}
-
-\section{Présentation de la solution}
-
-\subsection{API}
-Présentation des controllers exposées pour la gTSL en indiquant l'utilité de chacun
-
-\subsection{VUES}
-\label{sec:views}
-
-Mettre des screenshots du tl-browser et du tl-manager AVEC COPYRIGHT COMMISSION EUROPÉENNE en précisant que c'est à titre informatif et que c'est sûrement les vues qui vont être réutilisés mais ce n'est pas moi qui l'aient faites. De plus, les vues ne sont pas encore en dev donc pas de visuel possible pour le moment.
 
 \section{Validation de la solution}
 
-- Tests unitaires
-- Validation par l'équipe
+Durant mon stage plusieurs méthodes de validation ont été mises en place. Évidemment, étant
+donné que ce projet est en cours de réalisation, le processus de validation n'est pas terminé et d'autres vérifications sont prévues pour la fin du projet. Dans cette section sont présentées les principales mesures mises en place pour attester de la conformité des travaux effectuées.
+
+Dans un premier temps, la première validation a consisté à valider les choix opérés lors de l'état de l'art en début de stage. Cette étape a été très importante car c'est elle qui nous a permis de valider les technologies à utiliser dans le projet. Pour cela, j'ai réalisé une preuve de concept permettant d'interfacer les technologies Ethereum et IPFS dans le but de stocker des données dans un environnement décentralisé et distribué. Cette preuve de concept a ensuite fait l'objet d'une démonstration à l'équipe qui a pu valider l'utilisation des technologies sur la base du travail que j'ai réalisé.
+
+Ensuite, d'autres points de validation ont eu lieu durant le stage. Tous les jours, une réunion rapide est organisée afin de prendre connaissance du travail réalisé et restant pour chaque membre de l'équipe. Cette réunion qui s'inscrit dans la méthodologie Scrum permet de connaître l'avancement global du projet par chaque membre mais permet aussi de mettre en avant les difficultés rencontrées ou de recevoir des validations orales et informelles dans nos choix d'implémentations. Toujours dans la méthodologie Scrum, à chaque fin de sprint est organisée une réunion. Elle a pour but de faire le bilan des tâches réalisées durant les deux semaines de sprint et d'engager le nouveau sprint, mais elle permet surtout de faire le point sur l'amélioration continue du processus de gestion de projet et de la réalisation des tâches afin de toujours augmenter la performance de l'équipe. 
+
+Une autre validation spécifique à ce projet est la conformité au standard ETSI TS 119 612~\cite{ETSITS119612}. En effet, tout au long du stage il a été important et nécessaire de se référer régulièrement à ce standard puisque l'exigence première du projet est d'être conforme à ce standard. Il a donc été nécessaire de faire valider chaque module lors de la phase de recherche afin de s'assurer que la direction choisie permettait d'aboutir à une fonctionnalité valide.
+
+Enfin, la validation a aussi porté sur l'aspect technique. Au fur et à mesure de l'avancée du projet, des tests unitaires et d'intégration ont été mis en place afin de valider formellement les différentes fonctionnalités du service de gTSL.
 
 \chapter{Résultats obtenus \& Perspectives}
 
-Pas définitif parce que deadline 30 nov.
-Mais tous les retours du consortium positifs sur les choix opérés et les doc de design.
-POC à montrer que nos choix étaient faisables et cohérents.
-Rédaction de Integration Ethereum \& IPFS --> Demande de présentation dans un workshop organisé par l'ETSI début 2018.
-Au niveau de la gTSL, les vraies résultats seront connues après la release, mais pour le moment fort enthousiasme de l'utilisation de la blockchain.
-À titre personnel, équipe satisfaite de mon travail ainsi que l'entreprise car proposition de CDI après 1 mois de stage.
+Les résultats définitifs du stage sont à l'heure actuelle inconnus puisque la date de livraison est prévue pour le 30 novembre 2017. Malgré cela, tous les retours du consortium d'entreprises du projet FutureTrust ont été jusqu'à présent positifs vis-à-vis du travail réalisé par l'équipe notamment concernant les documents de conception et les choix opérés. De plus, il y a un fort enthousiasme autour de la gTSL de par l'utilisation de la blockchain dans un projet européen.
+
+Un autre point a soulevé concernant ce projet est que c'est un projet de recherche et développement. Cela signifie que la Commission Européenne attend de l'innovation dans la conception et la réalisation tout en gardant une simplicité d'utilisation pour les utilisateurs finaux. Le challenge a donc été d'adapter une technologie récente et complexe qu'est la blockchain à un système existant. Notre objectif est que ce projet rencontre un grand succès afin qu'il soit adopté par la Commission Européenne pour remplacer l'architecture actuelle.
+
+Un des résultats qui a su montrer notre capacité à utiliser la blockchain dans le cadre du projet FutureTrust est la preuve de concept que j'ai réalisé après que l'équipe ait validé les choix technologiques que j'ai proposé à la suite de l'état de l'art. À ce moment, le consortium a commencé à s'intéresser à notre conception de la gTSL et à sa mise en place imminente. J'ai donc rédigé un document explicatif de l'utilisation de la blockchain dans le cadre de la gTSL, ce document s'intitule Integration of Ethereum \& IPFS et est disponible en Annexe~\ref{anx:ipfs-ethereum}. À la suite de la lecture de ce document, une personne de l'ETSI a été intéressée par notre travail et a invité l'équipe à venir présenter ce papier à un atelier blockchain qui aura lieu début 2018 au Luxembourg. À l'heure actuelle, la date définitive de cet évènement n'a pas été fixée.
+
+Le dernier point important concernant les résultats de ce stage est la proposition de contrat de travail à durée indéterminée par Ar{\texteta}s. En effet, à ma grande surprise, seulement un mois après le début du stage, l'entreprise m'a proposé de poursuivre ma carrière professionnelle au sein de la société. J'ai accepté cette offre au cours du mois de juin et je suis très heureux d'avoir rejoint cette équipe et cette entreprise.
 
 \chapter{Conclusion}
 
-Ceci est un exmeple de conslucions.
+Ce stage de fin d'études vient conclure la formation de trois ans que j'ai suivie à Télécom Nancy. Cette formation m'a fait acquérir un grand nombre de compétences et connaissances techniques, lesquelles j'ai pu restituer tout au long de ce stage. Ces études m'ont aussi apporté des qualités humaines telles que la gestion du stress, l'évolution en équipe ou encore la logique de raisonnement, et cela notamment grâce aux nombreux projets qui ont été réalisés jusque maintenant.
+
+Après six mois passés à étudier et développer un système s'appuyant sur la technologie blockchain, de nombreux éléments peuvent être mis en avant. Dans un premier temps, l'émergence de la blockchain a réellement bouleversé l'économie mondiale et a amené une prise de conscience générale des limites des systèmes centralisés. Aujourd'hui et plus que jamais les entreprises sont intéressées par la mise en place d'architecture reposant sur la blockchain et plus particulièrement le secteur bancaire qui ne veut pas rater le virage des crypto-monnaies. Le problème persistant actuellement est le manque de régulation de cette technologie, plusieurs pays prévoient d'établir des réglementations autour de la blockchain et de la crypto-monnaie dans les années à venir.
+
+En ce sens, l’initiative du projet FutureTrust quant à l'innovation autour de la confiance électronique à l'échelle mondiale est une excellente idée. 
+Ce projet de recherche et développement ayant pour objectif de mettre en application le règlement de l'Union Européenne sur l'identification électronique et les services de confiance pour les transactions électroniques sécurisées au sein de l'UE a été une réelle opportunité de promouvoir la blockchain.
+En effet, l'Europe souhaite être un acteur majeur et un pionnier de l'utilisation de cette technologie. À ce titre, elle joue un rôle clé dans son développement.
+Malgré cela, il y a une grande nécessité de communication autour de cette technologie, car sa complexité peut freiner l'innovation et à terme entraîner sa disparition.
+Il est vrai qu'au premier abord la blockchain est un concept flou et complexe car son fonctionnement est difficilement compréhensible pour un non initié à l'informatique et à la cryptographie.
+Le challenge pour les années futures se trouve dans la démocratisation de cette technologie par la mise en place de services grand public ergonomiques et simples d'utilisation.
+Le projet réalisé dans le cadre de ce stage permet une première approche de l'intégration d'une blockchain au sein d'un service européen et l'engouement du consortium de FutureTrust est très encourageant pour la suite.
+
+À titre personnel, ce projet a été un immense défi de par son innovation, sa complexité et sa portée. Sa réalisation a demandé de la réflexion, des remises en question et de la force de proposition car j'ai été amené à résoudre des problèmes techniques et scientifiques concernant les architectures décentralisées et l'intégration de la technologie blockchain.
+De plus, je suis convaincu que cette technologie est l’avenir du numérique et
+que les solutions à venir, particulièrement dans le secteur bancaire, vont créer une réelle rupture technologique.
+J’ai par ailleurs décidé de poursuivre ce projet dans l'entreprise Ar{\texteta}s afin de participer à l'élaboration du service de liste de confiance globale jusqu'à sa livraison et de continuer de concevoir des projets d'innovation autour de la blockchain.
 
 \cleardoublepage
 \renewcommand{\tocbibname}{Bibliographie / Webographie}
@@ -1523,15 +1460,64 @@ Ceci est un exmeple de conslucions.
 
 \listoffigures
 
-\listoftables
-
 \lstlistoflistings
 
 \chapter*{Acronymes}
 \addcontentsline{toc}{chapter}{Acronymes}
 
+\begin{enumerate}
+	\item \textbf{API} - Application Programming Interface
+	\item \textbf{BFT} - Byzantine Fault Tolerant
+	\item \textbf{BPMN} - Business Process Model and Notation
+	\item \textbf{dApp} - decentralized Application
+	\item \textbf{eID} - identification électronique
+	\item \textbf{eIDAS} - services de confiance pour les transactions électroniques sécurisées au sein de l'UE
+	\item \textbf{ESN} - Entreprise de Services du Numérique
+	\item \textbf{ETH} - ETHer
+	\item \textbf{ETSI} - European Telecommunications Standards Institute
+	\item \textbf{EVM} - Ethereum Virtual Machine
+	\item \textbf{gTSL} - Global Trust Service status List
+	\item \textbf{HTTP} - HyperText Transfer Protocol 
+	\item \textbf{ICO} - Initial Coin Offering
+	\item \textbf{IPFS} - InterPlanetary File System
+	\item \textbf{JSON} - JavaScript Object Notation
+	\item \textbf{KSI} - Keyless Signature Infrastructure
+	\item \textbf{LoTL} - List of The Lists
+	\item \textbf{REST} - REpresentational State Transfer
+	\item \textbf{TS} - Trust Services
+	\item \textbf{TSL} - Trust Service Lists
+	\item \textbf{TSP} - Trust Service Providers
+	\item \textbf{UE} - Union Europénne
+	\item \textbf{UML} - Unified Modeling Language
+	\item \textbf{URI} - Uniform Resource Identifier
+	\item \textbf{URL} - Uniform Resource Locator
+	\item \textbf{XML} - eXtensible Markup Language
+\end{enumerate}
+
 \chapter*{Glossaire}
 \addcontentsline{toc}{chapter}{Glossaire}
+
+\begin{enumerate}
+	\item \textbf{Bitcoin}: Bitcoin est une crypto-monnaie et un système de paiement pair-à-pair.
+	\item \textbf{cluster}: Un cluster est un ensemble de serveurs sur un réseau qui agissent dans un but commun.
+	\item \textbf{crypto-monnai}e: La crypto-monnaie aussi appelée monnaie cryptographique est une monnaie électronique basé sur les principes de la cryptographie.
+	\item \textbf{design pattern}: Un design pattern, appelé patron de conception en français, est un modèle considéré comme bonne pratique en réponse à un problème de conception d'un logiciel.
+	\item \textbf{framework}: Un framework est un ensemble de composants développées par un tierce permettant de définir une architecture logicielle.
+	\item \textbf{hash}: Un hash est le résultat d'une fonction de hachage qui permet d'identifier rapidement une donnée.
+	\item \textbf{logging}: Le logging est un dispositif permettant de stocker un historique des évènements attachés à un processus.
+	\item \textbf{minage}: Le minage est aussi un moyen de sécuriser le réseau en créant, vérifiant, publiant et propageant les blocs dans la blockchain.
+	\item \textbf{newsletter}: Une newsletter, appelé lettre d'information en français, est un document d'information transmis par courrier électronique à l'ensemble des abonnés qui y ont souscrit.
+	\item \textbf{pair-à-pair}: Le pair-à-pair est un modèle de réseau informatique similaire au modèle client-serveur mais où chaque client est aussi un serveur.
+	\item \textbf{point individuel de défaillance}: Un point individuel de défaillance, appelée single point of failure en anglais, est un point d'un système informatique dont le reste du système est dépendant et dont une panne entraîne l'arrêt complet du système.
+	\item \textbf{scrum meeting}: Un scrum meeting, communément appelé mêlée en français, est une réunion courte et énergique faisant partie de la méthodologie Scrum, qui permet à l'équipe de discuter de l'avancée d'un sprint et de lever les points bloquants du projet.
+	\item \textbf{smart contract}: Les smart contracts, appelés contrats intelligents en français, permettent d'échanger de l'argent, des biens, des parts ou n'importe quel actif de manière transparente, sans conflit et en évitant tout service intermédiaire.
+	\item \textbf{sprint}: Un sprint est une période sur laquelle sont réalisées des tâches définies.
+	\item \textbf{timestamping}: Le timestamping, appelé horodatage en français, est un mécanisme qui consiste à associer une date et une heure à un événement, une information ou une donnée informatique.
+	\item \textbf{Uber}: Uber est l'entreprise qui déclencha ce qu'on appelle l'ubérisation.
+	\item \textbf{ubérisation}: L'ubérisation est un phénomène économique désignant l'utilisation de services permettant aux professionnels et aux clients de se mettre en contact direct grâce à l'utilisation des nouvelles technologies.
+	\item \textbf{ubériser}: Ubériser est le verbe issu du substantif ubériser.
+	\item \textbf{web service}: Un web service correspond à l'implémentation d'une ressource identifiée par une URL.
+\end{enumerate}
 
 \cleardoublepage
 \renewcommand{\thesubsection}{\Roman{subsection}}

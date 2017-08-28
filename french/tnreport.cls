@@ -255,6 +255,9 @@
   \hspace{5cm}{\bf Fait à \place{},     le  \date{}}
 
   \hspace{5cm}{\bf Signature :}
+  
+  \hspace{5cm}{\includegraphics[scale=0.25]{figures/signature}}
+  
 \cleardoublepage
 }
 \makeatother

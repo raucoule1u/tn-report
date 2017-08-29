@@ -117,11 +117,11 @@ Enfin, je tiens à remercier mon encadrant universitaire Monsieur Olivier FESTOR
 \section*{Avant-propos}
 \addcontentsline{toc}{chapter}{Avant-propos}
 
-Ce mémoire résulte d'un stage de fin d'études qui s'est déroulé du 3 avril 2017 au 30 septembre 2017 au sein de l'entreprise Ar{\texteta}s Spikeseed située au Luxembourg. Ce stage vient clôturer et valider la formation d'ingénieur du numérique de l'école TELECOM Nancy que j'ai débuté en septembre 2014. Cette formation qui s'est étendue sur une période de trois ans m'a permis d'acquérir de nombreuses compétences dans les domaines de l'informatique, des mathématiques, du management, de la gestion de projet, de la communication, de l'économie, du droit et des langues. J'ai choisi de me spécialiser en Ingénierie Logicielle au cours du cursus de par ma passion pour la programmation et l'architecture logicielle depuis que j'ai découvert l'informatique lors de mon stage de découverte professionnelle réalisé en classe de troisième.
+Ce mémoire résulte d'un stage de fin d'études qui s'est déroulé du 3 avril 2017 au 30 septembre 2017 au sein de l'entreprise Ar{\texteta}s Spikeseed située au Luxembourg. Ce stage vient clôturer et valider la formation d'ingénieur du numérique de l'école TELECOM Nancy que j'ai débuté en septembre 2014. Cette formation qui s'est étendue sur une période de trois ans m'a permis d'acquérir de nombreuses compétences dans les domaines de l'informatique, des mathématiques, du management, de la gestion de projet, de la communication, de l'économie, du droit et des langues. J'ai choisi de me spécialiser en Ingénierie Logicielle au cours du cursus de par ma passion pour la programmation et l'architecture logicielle qui s'est révélée lorsque je me suis initié à l'informatique lors de mon stage de découverte professionnelle réalisé en classe de troisième.
 
-Au cours de ce stage de fin d'études, j'ai eu le plaisir de travailler sur une technologie à laquelle je m'intéresse depuis deux ans, la blockchain. Dans le cadre d'un projet proposé par la Commission Européenne, nommé FutureTrust, j'ai pu concevoir et implémenter un service de trust list global basé sur la blockchain. Mes tâches ont été de me familiariser avec les principes de la blockchain et les concepts de cryptographie appliquée afin de les mettre en application dans le projet, d'effectuer une analyse des solutions de blockchain existantes afin de réaliser des choix d'implémentation, de concevoir l'architecture du service de liste de confiance globale, d'implémenter la solution conçue et de documenter tous les aspects techniques et fonctionnels de la solution implémentée.
+Au cours de ce stage de fin d'études, j'ai eu le plaisir de travailler sur une technologie à laquelle je m'intéresse depuis deux ans, la blockchain. Dans le cadre d'un projet proposé par la Commission Européenne, nommé FutureTrust, j'ai pu concevoir et implémenter un service de liste de confiance globale basé sur la blockchain. Mes tâches ont été de me familiariser avec les principes de la blockchain et les concepts de cryptographie afin de les mettre en application dans le projet, d'effectuer une analyse des solutions de blockchain existantes afin de réaliser des choix d'implémentation, de concevoir l'architecture du service de liste de confiance globale, d'implémenter la solution conçue et de documenter tous les aspects techniques et fonctionnels de la solution implémentée.
 
-Dans ce mémoire est présenté le résultat du stage de fin d'études et est mis en avant l'utilisation de la blockchain dans le cadre d'un projet de confiance numérique d'échelle mondiale. L'intérêt de ce document est dans un premier temps d'expliquer les tâches réalisées au cours du stage et dans un second temps de montrer qu'il est possible d'élargir le champ d'application de la technologie blockchain et des différents aspects qui la composent.
+Dans ce mémoire est présenté le résultat du stage de fin d'études et est mis en avant l'utilisation de la blockchain dans le cadre d'un projet de confiance numérique d'échelle mondiale. L'intérêt de ce document est dans un premier temps de détailler les tâches réalisées au cours du stage et dans un second temps de montrer qu'il est possible d'élargir le champ d'application de la technologie blockchain et des différents aspects qui la composent.
 
 \cleardoublepage
 
@@ -141,7 +141,7 @@ L'investissement autour de la blockchain a mené à un engouement général pour
 Le Bitcoin a réussi à remettre en cause des acteurs majeurs de notre société tels que les banques ou les géants du Web, en sécurisant des échanges d'actifs sans organe central de contrôle. 
 La révolution qu'il a engendré amène aujourd'hui les gouvernements et autres organisations publiques à réfléchir sur la régulation de la technologie et des crypto-monnaies naissantes.
 Depuis son lancement en 2009, la blockchain n'a cessé d'évoluer et d'étendre son champ d'application.
-Bien qu'à l'origine elle a été conçue pour le transfert de crypto-monnaie, les avantages qu'elle apporte permettent d'imaginer de multiples cas d'utilisation qui dépassent son cadre initial d'échanges d'actifs.
+Bien que conçue à l'origine pour le transfert de crypto-monnaie, les avantages qu'elle apporte permettent d'imaginer de multiples cas d'utilisation qui dépassent son cadre initial.
 À l'heure où l'ubérisation\footnote{L'ubérisation est un phénomène économique désignant l'utilisation de services permettant aux professionnels et aux clients de se mettre en contact direct grâce à l'utilisation des nouvelles technologies.} de notre société est en marche, la technologie blockchain amène une approche nouvelle qui permet de se détacher de toute organe central ou tierce partie. 
 La blockchain ira-t-elle jusqu'à ubériser\footnote{Ubériser est le verbe issu du substantif ubériser.} Uber\footnote{Uber est l'entreprise qui déclencha ce qu'on appelle l'ubérisation.} ?
 
@@ -157,9 +157,9 @@ Cela a pour but d'assurer la disponibilité et l'intégrité des informations, p
 
 Ce mémoire vise à montrer que le champ d'application de la technologie blockchain dépasse son cadre initial et que son utilisation permet de pallier aux problèmes d'architecture et de sécurité des modèles actuels. 
 Dans un premier temps, le contexte du projet sera défini afin de présenter l'entreprise Ar{\texteta}s Spikeseed, d'établir le contexte du projet et de détailler le fonctionnement de la technologie blockchain.
-Ensuite, la problématique sera exposée dans le but de comprendre les différents besoins autour du service de liste de confiance et les limites de l'architecture existante. Ce chapitre détaillera aussi la méthodologie de gestion de projet ainsi que l'organisation du temps au cours du stage.
-À la suite de cela, sera établi un état de l'art afin d'analyser l'émergence de la blockchain et l'intérêt porté aux systèmes décentralisés. Dans ce chapitre est aussi mis en avant la comparaison des outils existants et justification des choix opérés durant le stage. 
-Après cela, la réalisation du projet sera développée en détaillant les technologies utilisées, les acteurs du système, les cas d'utilisation de l'application ainsi que les modules, processus et modèle de données du service de liste de confiance.
+Ensuite, la problématique sera exposée dans le but de comprendre les différents besoins autour du service de liste de confiance globale et les limites de l'architecture existante. Ce chapitre détaillera aussi la méthodologie de gestion de projet ainsi que l'organisation du temps au cours du stage.
+À la suite de cela, sera établi un état de l'art afin d'analyser l'émergence de la blockchain et l'intérêt porté aux systèmes décentralisés. Dans ce chapitre sont aussi mis en avant la comparaison des outils existants et la justification des choix opérés durant le stage. 
+Après cela, la réalisation du projet sera développée en détaillant les technologies utilisées, les acteurs du système, les cas d'utilisation de l'application ainsi que les modules, processus et modèle de données du service de liste de confiance globale.
 Puis, la réalisation de la solution sera détaillée en mettant en avant l'architecture mise en place, l'implémentation des différents modules ainsi que la présentation et la validation de la solution.
 Enfin, les résultats obtenus et les perspectives du projet seront détaillés.
 
@@ -185,7 +185,7 @@ des applications destinées aux mobiles et aux objets connectés.
 
 \section{Contexte du projet}
 
-Dans le cadre d'un règlement de l'Union Européenne (UE) sur l'identification électronique (eID) et les services de confiance pour les transactions électroniques sécurisées au sein de l'UE (eIDAS), la Commission Européenne (CE) a émis un appel à projet qui a pour visée de supporter la mise en œuvre technique de ce règlement européen. 
+Dans le cadre d'un règlement de l'Union Européenne (UE) sur l'identification électronique (eID) et les services de confiance pour les transactions électroniques sécurisées au sein de l'UE (eIDAS), la Commission Européenne (CE) a proposé un projet qui a pour visée de supporter la mise en œuvre technique de ce règlement européen. 
 Ce projet de recherche et développement appelé FutureTrust rassemble un consortium de seize partenaires, dont Ar{\texteta}s Spikeseed, engagé dans la réalisation et la mise en application du règlement européen. 
 Le projet FutureTrust répondra au besoin de solutions globales et interopérables, en fournissant des logiciels libres qui faciliteront l'utilisation de l'identification et de la signature électronique. 
 Il vise à étendre l'infrastructure de la liste européenne de services de confiance existante vers une liste mondiale des services de confiance nommée Global Trust Service Status List (gTSL), à développer un service de validation ainsi qu'un service d'archivage pour les signatures et les sceaux électroniques, et à fournir des composants pour les certificats qualifiés et pour la création de signatures et de sceaux dans un environnement mobile.
@@ -275,7 +275,7 @@ La structure d'une liste de confiance est présentée dans la Figure~\ref{fig:ts
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.65]{figures/tsl-scheme}
-	\caption{gTSL – Structure d'une liste de confiance}
+	\caption{Structure d'une liste de confiance}
 	\label{fig:tsl-scheme}
 \end{figure}
 
@@ -800,8 +800,8 @@ La Figure~\ref{fig:use-case-diagram} présente les cas d'utilisation de la gTSL,
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.55]{figures/use-case-diagram}
-	\caption{EDITER CE DIAGRAMME EN Y AJOUTANT LES FONCTIONNALITES NON REPERTORIEES - Diagramme de cas d'utilisation. Illustration extraite de \textit{Design documentation}~\cite{design-document}}
+	\includegraphics[scale=0.53]{figures/use-case-diagram}
+	\caption{Diagramme de cas d'utilisation. Illustration adaptée de \textit{Design documentation}~\cite{design-document}}
 	\label{fig:use-case-diagram}
 \end{figure}
 \clearpage
@@ -1577,50 +1577,32 @@ J’ai par ailleurs décidé de poursuivre ce projet dans l'entreprise Ar{\texte
 \section*{Résumé}
 \addcontentsline{toc}{chapter}{Résumé}
 
-No foe may pass amet, sun green dreams, none so dutiful no song so sweet et
-dolore magna aliqua. Ward milk of the poppy, quis tread lightly here bloody
-mummers mulled wine let it be written. Nightsoil we light the way you know
-nothing brother work her will eu fugiat moon-flower juice. Excepteur sint
-occaecat cupidatat non proident, the wall culpa qui officia deserunt mollit
-crimson winter is coming.
+La technologie blockchain s'est popularisée ces dernières années et va être largement utilisée dans le futur proche.
+Bien que beaucoup de personnes se sont intéressées à cette technologie, très peu en ont réellement saisi le potentiel.
+Pourtant, les propriétés innovantes qu'apporte la blockchain en font un outil idéal pour les architectures de sécurité.
+Dans le cadre d'un règlement de l'Union Européenne sur l'identification électronique (eID) et les services de confiance pour les transactions électroniques sécurisées au sein de l'UE (eIDAS), la Commission Européenne a proposé un projet, s'inscrivant dans le programme européen de Recherche et d'Innovation Horizon 2020, qui a pour visée de supporter la mise en œuvre technique de ce règlement en Europe et au-delà.
+Ce projet, appelé FutureTrust, rassemble un consortium de seize partenaires, dont l'entreprise Ar{\texteta}s Spikeseed, engagé dans la réalisation et la mise en application du règlement.
+Le présent document détaille l'implémentation d'un service de liste de confiance globale basé sur la blockchain.
+Plus particulièrement, il présente la révision de l’architecture actuelle des listes de confiance et expose les avantages de l'utilisation d'une blockchain dans le contexte de la confiance numérique.
+Le service développé a pour rôle de gérer des listes de confiance conforme au standard ETSI 119 612 et de permettre à toute partie intéressée de déterminer si un service de confiance respecte les exigences du standard.
+D'un point de vue technique, le système mis en place a pour vocation de stocker des données relatives à la confiance numérique dans un registre publique immuable par l'utilisation d'un réseau pair-à-pair décentralisé et distribué, offrant l'intégrité et la disponibilité des informations ainsi qu'une résilience forte contre les attaques par déni de service.
 
-Moon and stars lacus. Nulla gravida orci a dagger. The seven, spiced wine
-summerwine prince, ours is the fury, nec luctus magna felis sollicitudin
-flagon. As high as honor full of terrors. He asked too many questions arbor
-gold. Honeyed locusts in his cups. Mare's milk. Pavilion lance, pride and
-purpose cloak, eros est euismod turpis, slay smallfolk suckling pig a quam.
-Our sun shines bright. Green dreams. None so fierce your grace. Righteous in
-wrath, others mace, commodo eget, old bear, brothel. Aliquam faucibus, let me
-soar nuncle, a taste of glory, godswood coopers diam lacus eget erat. Night's
-watch the wall. Trueborn ironborn. Never resting. Bloody mummers chamber,
-dapibus quis, laoreet et, dwarf sellsword, fire. Honed and ready, mollis maid,
-seven hells, manhood in, king. Throne none so wise dictumst.
-
-{\bf Mots-clés :}
+{\bf Mots-clés : eIDAS, blockchain, décentralisation, confiance numérique} 
 
 
 \section*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 
-Green dreams mulled wine. Feed it to the goats. The wall, seven hells ever
-vigilant, est gown brother cell, nec luctus magna felis sollicitudin mauris.
-Take the black we light the way. Honeyed locusts ours is the fury smallfolk.
-Spare me your false courtesy. The seven. Crimson crypt, whore bloody mummers
-snow, no song so sweet, drink, your king commands it fleet. Raiders fermentum
-consequat mi. Night's watch. Pellentesque godswood nulla a mi. Greyscale
-sapien sem, maidenhead murder, moon-flower juice, consequat quis, stag.
-Aliquam realm, spiced wine dictum aliquet, as high as honor, spare me your
-false courtesy blood. Darkness mollis arbor gold. Nullam arcu. Never resting.
-Sandsilk green dreams, mulled wine, betrothed et, pretium ac, nuncle. Whore
-your grace, mollis quis, suckling pig, clansmen king, half-man. In hac
-baseborn old bear.
+The blockchain technology emerged over the last few years and will be widely deployed in the near future.
+Although many people are being interested in this technology, just a few of them have considered all its potential.
+However, the innovative properties of blockchain make it an ideal tool for security architectures.
+Against the background of an EU regulation on electronic identification (eID) and trusted services for electronic transactions in the internal market (eIDAS), the European Commission initiated a project, which is funded within the EU Research and Innovation programme Horizon 2020, which aims at supporting the practical implementation of the regulation in Europe and beyond.
+This project, known as FutureTrust, gathers a consortium of sixteen partners, including Ar{\texteta}s Spikeseed, which is engaged in the implementation and the enforcement of this regulation.
+The present document specifies the requirements for a blockchain-based global trust service list.
+More specifically, it introduces the redesign of the current architecture regarding the trusted lists and highlights the advantages of the use of blockchain within the context of digital trust.
+The developed service aims at managing the trusted lists to be compliant with ETSI 119 612 and enables any interested party to determine whether a trust service is or was operating in compliance with relevant requirements.
+Technically, the implemented system is used for storing data related to digital trust in a immutable public ledger by using a peer-to-peer decentralized and distributed network, providing integrity and availability of the information while improving the resiliency against denial of service attacks.
 
-Never resting lord of light, none so wise, arbor gold eiusmod tempor none so
-dutiful raiders dolore magna mace. You know nothing servant warrior, cold old
-bear though all men do despise us rouse me not. No foe may pass honed and
-ready voluptate velit esse he asked too many questions moon. Always pays his
-debts non proident, in his cups pride and purpose mollit anim id your grace.
-
-{\bf Keywords :}
+{\bf Keywords : eIDAS, blockchain, decentralization, digital trust}
 
 \end{document}

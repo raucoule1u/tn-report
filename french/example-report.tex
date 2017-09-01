@@ -142,14 +142,14 @@ Le Bitcoin a réussi à remettre en cause des acteurs majeurs de notre société
 La révolution qu'il a engendré amène aujourd'hui les gouvernements et autres organisations publiques à réfléchir sur la régulation de la technologie et des crypto-monnaies naissantes.
 Depuis son lancement en 2009, la blockchain n'a cessé d'évoluer et d'étendre son champ d'application.
 Bien que conçue à l'origine pour le transfert de crypto-monnaie, les avantages qu'elle apporte permettent d'imaginer de multiples cas d'utilisation qui dépassent son cadre initial.
-À l'heure où l'ubérisation\footnote{L'ubérisation est un phénomène économique désignant l'utilisation de services permettant aux professionnels et aux clients de se mettre en contact direct grâce à l'utilisation des nouvelles technologies.} de notre société est en marche, la technologie blockchain amène une approche nouvelle qui permet de se détacher de toute organe central ou tierce partie. 
+À l'heure où l'ubérisation\footnote{L'ubérisation est un phénomène économique désignant l'utilisation de services permettant aux professionnels et aux clients de se mettre en contact direct grâce à l'utilisation des nouvelles technologies.} de notre société est en marche, la technologie blockchain amène une approche nouvelle qui permet de se détacher de tout organe central ou tierce partie. 
 La blockchain ira-t-elle jusqu'à ubériser\footnote{Ubériser est le verbe issu du substantif ubérisation.} Uber\footnote{Uber est l'entreprise qui déclencha l'ubérisation.} ?
 
 %\section{Définition du cadre et des objectifs du stage}
 
-Dans ce contexte, un stage ingénieur a été réalisé sur une période de 6 mois au sein de la société Arηs Spikeseed située au Luxembourg. 
-Le stage a été réalisé dans les locaux de l'entreprise et la langue officielle du projet pour les communications avec les autres membres du consortium (mails, documents, conférences téléphoniques) a été l’anglais. La langue utilisée au sein de l'équipe a aussi été l'anglais puisque c'est une équipe multinationale. Les documents produits dans le cadre du projet ont été rédigés en anglais et sont présentés en langue originale dans ce mémoire.
-Ce stage de fin d'études a eu pour objectif d'intégrer la technologie blockchain au sein d'un processus de gestion de listes de services de confiance dans le cadre d'un règlement européen. 
+Dans ce contexte, un stage ingénieur a été réalisé sur une période de six mois au sein de la société Arηs Spikeseed située au Luxembourg. 
+Le stage a été réalisé dans les locaux de l'entreprise et la langue officielle du projet pour les communications avec les autres membres du consortium (mails, documents, conférences téléphoniques) a été l’anglais. La langue utilisée au sein de l'équipe a aussi été l'anglais, ceci étant dû au caractère multinational de celle-ci. Les documents produits dans le cadre du projet ont été rédigés en anglais et sont présentés en langue originale dans ce mémoire.
+Ce stage de fin d'études a eu pour objectif d'intégrer la technologie blockchain au sein d'un processus de gestion de listes de services de confiance dans le cadre de la mise en place d'un nouveau règlement européen. 
 La finalité a été d'utiliser cette technologie afin de conserver des données publiques relatives à la confiance électronique de manière sécurisée et décentralisée en utilisant une blockchain en tant que registre.
 Cela a pour but d'assurer la disponibilité et l'intégrité des informations, puisque les données sont distribuées à travers les nœuds d'un réseau pair-à-pair et sécurisées à l'aide de transactions signées et vérifiées par une preuve mathématique. 
 
@@ -157,7 +157,7 @@ Cela a pour but d'assurer la disponibilité et l'intégrité des informations, p
 
 Ce mémoire vise à montrer que le champ d'application de la technologie blockchain dépasse son cadre initial et que son utilisation permet de pallier aux problèmes d'architecture et de sécurité des modèles actuels. 
 Dans un premier temps, le contexte du projet sera défini afin de présenter l'entreprise Ar{\texteta}s Spikeseed, d'établir le contexte du projet et de détailler le fonctionnement de la technologie blockchain.
-Ensuite, la problématique sera exposée dans le but de comprendre les différents besoins autour du service de liste de confiance globale et les limites de l'architecture existante. Ce chapitre détaillera aussi la méthodologie de gestion de projet ainsi que l'organisation du temps au cours du stage.
+Ensuite, la problématique sera exposée dans le but de comprendre les différents besoins autour du service de liste de confiance globale et les limites de l'architecture actuelle. Ce chapitre détaillera aussi la méthodologie de gestion de projet ainsi que l'organisation du temps au cours du stage.
 À la suite de cela, sera établi un état de l'art afin d'analyser l'émergence de la blockchain et l'intérêt porté aux systèmes décentralisés. Dans ce chapitre seront aussi mis en avant la comparaison des outils existants et la justification des choix opérés durant le stage. 
 Après cela, une analyse du problème sera développée en exposant les technologies utilisées, les acteurs du système, les cas d'utilisation de l'application ainsi que les modules, processus et modèle de données du service de liste de confiance globale.
 Puis, la réalisation de la solution sera détaillée en mettant en avant l'architecture mise en place, l'implémentation des différents modules ainsi que la présentation et la validation de la solution.
@@ -187,10 +187,12 @@ des applications destinées aux mobiles et aux objets connectés.
 
 \section{Contexte du projet}
 
-Les architectures logicielles évoluent en suivant les innovations technologiques. Le domaine de la recherche apporte des nouvelles technologies ou des améliorations aux concepts existants à une vitesse exponentielle. L'univers technologique poussé par l'innovation oblige les acteurs du numérique à s'adapter en permanence aux changements. La technologie blockchain s'inscrit dans ces innovations récentes issues de la recherche. Elle amène une nouvelle vision d'un Internet décentralisé sans organe central de contrôle, qui va probablement révolutionner la conception des systèmes d'information dans les prochaines années.
+Les architectures logicielles évoluent en suivant les innovations technologiques. Le domaine de la recherche apporte de nouvelles technologies et des améliorations aux concepts existants à une vitesse exponentielle. L'univers technologique poussé par l'innovation oblige les acteurs du numérique à s'adapter en permanence aux changements. La technologie blockchain s'inscrit dans ces innovations récentes issues de la recherche. Elle amène une nouvelle vision d'un Internet décentralisé, sans organe central de contrôle, qui va probablement révolutionner la conception des systèmes d'information dans les prochaines années.
 
-Dans le cadre d'un règlement de l'Union Européenne (UE) sur l'identification électronique (eID) et les services de confiance pour les transactions électroniques sécurisées au sein de l'UE (eIDAS), la Commission Européenne (CE) a proposé un projet qui a pour visée de supporter la mise en œuvre technique de ce règlement européen. 
-Ce projet de recherche et développement appelé FutureTrust rassemble un consortium de seize partenaires, dont Ar{\texteta}s Spikeseed, engagé dans la réalisation et la mise en application du règlement européen. 
+Dans le cadre de la mise en place d'un règlement de l'Union Européenne (UE) sur l'identification électronique (eID) et les services de confiance pour les transactions électroniques sécurisées au sein de l'UE (eIDAS), la Commission Européenne (CE) a proposé un projet qui a pour visée de supporter la mise en œuvre technique de ce règlement européen. 
+Le règlement eIDAS~\cite{eIDAS} a pour but d'établir un cadre d’interopérabilité pour les systèmes mis en place au sein de l'UE afin de promouvoir le développement d’un marché de la confiance numérique, et d'instaurer un mécanisme de reconnaissance mutuelle des moyens d’identification électronique des États membres sur l’ensemble des services fournit par d'autres États membres.
+
+Ce projet de recherche et développement appelé FutureTrust rassemble un consortium de seize partenaires, dont Ar{\texteta}s Spikeseed. 
 Le projet FutureTrust répondra au besoin de solutions globales et interopérables, en fournissant des logiciels libres qui faciliteront l'utilisation de l'identification et de la signature électronique. 
 Il vise à étendre l'infrastructure de la liste européenne de services de confiance existante vers une liste mondiale des services de confiance nommée Global Trust Service Status List (gTSL), à développer un service de validation ainsi qu'un service d'archivage pour les signatures et les sceaux électroniques, et à fournir des composants pour les certificats qualifiés et pour la création de signatures et de sceaux dans un environnement mobile.
 
@@ -198,7 +200,7 @@ Dans ce contexte, l'intégration de la blockchain a été proposée dans le cadr
 
 \section{Présentation de la technologie blockchain}
 
-Une blockchain est basée sur l'échange d'actifs numériques, réalisé grâce à des transactions signées, et agit comme un registre publique distribué où toutes les transactions y sont répertoriées. Elle repose sur des principes de cryptographie afin d'assurer l'intégrité de ces transactions et sur un protocole décentralisé, dit {\em peer-to-peer}. Ce protocole permet à la blockchain d'avoir une disponibilité maximale et d'établir un consensus entre les participants du réseau afin de protéger les transactions contre les falsifications. La Figure~\ref{fig:blockchain-diagram} représente le processus d'émission et de validation d'une transaction sur la blockchain.
+Une blockchain est une technologie basée sur l'échange d'actifs numériques, réalisé grâce à des transactions signées, et agit comme un registre publique distribué où toutes les transactions émises sont répertoriées. Elle repose sur des principes de cryptographie afin d'assurer l'intégrité de ces transactions et sur un protocole décentralisé, dit "peer-to-peer". Ce protocole permet à la blockchain d'avoir une disponibilité maximale et d'établir un consensus entre les participants du réseau afin de protéger les transactions contre les falsifications. La Figure~\ref{fig:blockchain-diagram} représente le processus d'émission et de validation d'une transaction sur la blockchain.
 
 \begin{figure}[h]
 	\centering
@@ -208,16 +210,16 @@ Une blockchain est basée sur l'échange d'actifs numériques, réalisé grâce 
 \end{figure}
 \clearpage
 
-Les blocs sont agencés dans un ordre linéaire, à la manière de maillons dans une chaîne, et contiennent une référence au bloc précédent, ainsi qu'un enregistrement des transactions.
+Dans la Figure~\ref{fig:blockchain-diagram}, nous remarquons que les blocs sont agencés dans un ordre linéaire, à la manière de maillons dans une chaîne, et contiennent une référence au bloc précédent, ainsi qu'un enregistrement des transactions.
 La preuve de travail est le traitement nécessaire pour générer un nouveau bloc basé sur les nouvelles transactions diffusées sur le réseau.
 Les blocs de transaction sont créés par un processus appelé le minage\footnote{mining en anglais.}, qui est conçu pour être coûteux en temps et en énergie ainsi qu'être complexe à réaliser, et s'appuie sur un consensus pour ajuster la difficulté de créer de nouveaux blocs. Le minage est aussi un moyen de sécuriser le réseau en créant, vérifiant, publiant et propageant les blocs dans la blockchain.
 
 \subsection{Introduction aux Smart Contracts}
 
 En 1994, Nick Szabo, chercheur juridique et cryptographe, s'est rendu compte que le registre décentralisé pouvait être utilisé pour des smart contracts (contrats intelligents), autrement appelés contrats auto-exécutés, contrats blockchain ou contrats numériques.
-Les contrats peuvent être convertis en code informatique, stockés et répliqués sur le système et supervisés sur le réseau qui exécutent la blockchain.
+Les contrats peuvent être convertis en code informatique, stockés et répliqués sur le système.
 Les smart contracts permettent d'échanger de l'argent, des biens, des parts ou n'importe quel actif de manière transparente, sans conflit et en évitant tout service intermédiaire.
-La Figure~\ref{fig:smart-contracts} représente l'établissement d'un smart-contract entre deux parties, sans service intermédiaire. Dans ce mémoire, nous utiliserons le terme de smart contract pour désigner un contrat intelligent car ce terme est le plus répandu.
+La Figure~\ref{fig:smart-contracts} représente l'établissement d'un smart-contract entre deux parties, sans service intermédiaire. Dans ce mémoire, nous utilisons le terme de smart contract pour désigner un contrat intelligent car ce terme est le plus répandu.
 
 \begin{figure}[h]
 	\centering
@@ -227,7 +229,7 @@ La Figure~\ref{fig:smart-contracts} représente l'établissement d'un smart-cont
 \end{figure}
 
 \clearpage
-Les smart-contracts apportent de nombreux avantages:
+Les smart-contracts apportent de nombreux avantages pour leurs utilisateurs:
 \begin{itemize}
 	\item l'autonomie, qui signifie que l'accord engendré par le contrat n'a pas besoin d'être confirmé par un intermédiaire tierce comme un notaire ou un avocat; Cela empêche aussi toute manipulation par un tiers sur l'un des parties signataires du contrat puisque l''exécution du contrat est géré automatiquement par le réseau, ce qui empêche tout individu biaisé d'avoir une influence sur le contrat;
 	\item la confiance, puisque les documents sont encodés dans le registre distribué, il n'y a aucun moyen qu'ils soient perdus;
@@ -245,9 +247,14 @@ Dans ce chapitre, nous présentons les besoins liés au service de liste de conf
 \section{Description des besoins du service de liste de confiance globale}
 \label{sec:description}
 
-Les États membres de l'UE et d'autres pays européens maintiennent généralement des listes d'autorités de certification et d'autres fournisseurs de services de confiance, désignés Trust Service Providers (TSP), dans un ou plusieurs registres à l'échelle nationale.
+Les États membres de l'UE et d'autres pays européens maintiennent généralement des listes d'informations sur des autorités de certification, ainsi que des listes d'informations sur des fournisseurs de services
+%d'autorités de certification et d'autres fournisseurs de services de confiance, 
+désignés Trust Service Providers (TSP), dans un ou plusieurs registres à l'échelle nationale.
+
 La liste de confiance des États membres de l'UE comprend des informations relatives aux TSPs qualifiés qui sont supervisés par l'État membre compétent, ainsi que des informations relatives aux services de confiance, désignés Trust Services (TS), qu'ils fournissent, conformément aux dispositions prévues par le règlement eIDAS.
-Les listes de confiance sont des éléments essentiels dans la mise en place de la confiance numérique pour les opérateurs du marché électronique, en permettant aux utilisateurs de déterminer le statut qualifié des TSPs et de leurs TSs. En vertu du règlement eIDAS, les listes nationales de confiance ont un effet constitutif.
+En effet, les listes de confiance sont des éléments essentiels dans la mise en place de la confiance numérique pour les opérateurs du marché électronique, en permettant aux utilisateurs de déterminer le statut qualifié des TSPs et de leurs TSs.
+
+En vertu du règlement eIDAS, les listes nationales de confiance ont un effet constitutif.
 En d'autres termes, un fournisseur ou un service ne sera qualifié que s'il apparaît dans les listes de confiance. Par conséquent, les utilisateurs (citoyens, entreprises ou administrations publiques) bénéficieront de l'effet juridique associé à un service de confiance qualifié uniquement si ce dernier est répertorié (comme qualifié) dans les listes de confiance.	
 Les États membres peuvent inclure dans les listes de confiance des informations sur les fournisseurs de services de confiance non qualifiés et sur d'autres services de confiance définis au niveau national.
 
@@ -271,16 +278,16 @@ La section \textit{Tag}, et plus particulièrement son attribut \textit{TSL Tag}
 \subsubsection{Information}
 
 La section \textit{Information} peut-être divisée en deux parties. 
-La première partie, nommée \textit{Scheme Information}, répertorie toutes les informations relatives à la liste de confiance comme par exemple sa version, le nom et l'adresse de l'opérateur de la liste ou encore le pays pour lequel la liste est définie. Il est important de noter que dans la Figure~\ref{fig:tsl-scheme} la liste des informations n'est pas exhaustive. 
-La seconde partie est la liste des TSPs qui répertorie l'ensemble des fournisseurs approuvés par l'État membre. Pour chacun des TSPs, on retrouve ses informations ainsi que la liste des services de confiances qu'il fournit.
+La première partie, nommée \textit{Scheme Information}, répertorie toutes les informations relatives à la liste de confiance comme par exemple sa version, le nom et l'adresse de l'opérateur de la liste ou encore le pays pour lequel la liste est définie. Il est important de noter que dans la Figure~\ref{fig:tsl-scheme}, la liste des informations citées n'est pas exhaustive. 
+La seconde partie est la liste des TSPs qui répertorie l'ensemble des fournisseurs approuvés par l'État membre. Pour chacun des TSPs, on y retrouve ses informations ainsi que la liste des services de confiances qu'il fournit.
 
 \subsubsection{Digital Signature}
 
-La section \textit{Digital Signature} permet de vérifier l'authenticité et l'intégrité de la liste de confiance. En effet, chaque liste doit être signée par l'opérateur prévu à cet effet et défini dans la partie \textit{Scheme Information}. Dans cette section doit être indiquée la signature de l'opérateur ainsi que l'algorithme de génération de celle-ci.
+La section \textit{Digital Signature} permet de vérifier l'authenticité et l'intégrité de la liste de confiance. En effet, chaque liste doit être signée par un opérateur désigné et défini dans la partie \textit{Scheme Information}. Dans cette section doit être indiquée la signature de l'opérateur ainsi que l'algorithme de génération de celle-ci.
 
 \subsection{Besoins généraux}
 
-\subsubsection{Objectif du projet}
+\subsubsection{Résumé des objectifs du projet}
 
 L'intérêt du service de gTSL est de favoriser l'établissement de relations de confiance entre les opérateurs du marché en Europe et au-delà. Cette liste a pour but de répertorier les TSPs, ayant un statut qualifié ou non. On entend par statut qualifié que le TSP ait été accrédité par un organisme compétent au sein de l’État membre dans lequel le TSP est déclaré. Le service permet aux utilisateurs finaux de vérifier le statut de ces TSPs et d'accéder à l'ensemble des informations concernant les services de confiance. À ce titre, elle étend le schéma actuel de la liste des services de confiance, dont la portée est uniquement européenne. De plus, cette réorganisation de l'architecture vise à gérer la gTSL de manière décentralisée dans le but d'en améliorer sa résilience.
 
@@ -290,7 +297,7 @@ Les acteurs principaux de la gTSL sont:
 \begin{itemize}
 	\item les États membres de l'UE, qui doivent établir, maintenir et publier les listes de confiance, incluant les informations relatives aux TSPs déclarés au sein de leur État;
 	\item les fournisseurs de services de confiance, qui sont destinés à s'appuyer sur le service de gTSL dans lequel sont publiés leur statut qualifié et leurs informations publiques;
-	\item les opérateurs de liste de confiance ne faisant pas partie d'un État membre de l'UE, qui souhaitent intégrer leur liste dans la gTSL;
+	\item les opérateurs de listes de confiance ne faisant pas partie d'un État membre de l'UE, qui souhaitent intégrer leur liste dans la gTSL;
 	\item les citoyens de l'UE et non UE, qui sont destinés à utiliser le service afin d'accéder aux statuts et aux informations des différents TSPs répertoriés dans la gTSL.
 	\newline
 \end{itemize}
@@ -300,7 +307,7 @@ Les acteurs principaux de la gTSL sont:
 
 \subsubsection{Objectif du système}
 
-En s'appuyant sur la norme de listes de confiance définie dans ETSI TS 119 612~\cite{ETSITS119612}, la gTSL vise à résoudre les imperfections actuelles du schéma de liste de confiance, énoncées dans la Section~\ref{sec:limits}. 
+En s'appuyant sur la norme régissant les listes de confiance définie dans ETSI TS 119 612~\cite{ETSITS119612}, la gTSL vise à résoudre les imperfections actuelles du schéma de liste de confiance, énoncées dans la Section~\ref{sec:limits}. 
 À l'heure actuelle, la Commission européenne publie une liste signée de pointeurs, nommée European List of the Lists (LoTL), dans laquelle chaque pointeur désigne un point de distribution pour une liste nationale de TSPs. 
 Ces listes nationales contiennent des informations sur les TSPs qualifiés et non qualifiés ainsi que sur les TSs qualifiés ou non qualifiés qu'ils proposent.
 %\subsubsection{Portée du système}
@@ -366,15 +373,15 @@ Ces utilisateurs ont accès au système à travers des interfaces dédiées:
 
 \subsubsection{Besoins fonctionnelles}
 
-La gTSL doit supporter l'internationalisation (non-UE) du règlement eIDAS. À ce titre, la gTSL doit permettre l'ajout de TSPs déclarés dans un pays qui n'est pas membre de l'UE, qu'ils soient qualifiés ou non.
+La gTSL doit supporter l'internationalisation (non-UE) prévue dans le règlement eIDAS. À ce titre, la gTSL doit permettre l'ajout de TSPs déclarés dans un pays qui n'est pas membre de l'UE, qu'ils soient qualifiés ou non.
 
 \subsubsection{Besoins d'utilisation}
 
-La gTSL doit offrir une interface permettant la récupération ainsi que la publication d'informations relatives aux TSPs. Au minimum, afin d'assurer la conformité avec le standard ETSI TS 119 612~\cite{ETSITS119612}, la gTSL doit être disponible via le protocole HTTP.
+La gTSL doit offrir une interface permettant la récupération ainsi que la publication d'informations relatives aux TSPs. L'objectif minimum à remplir pour assurer la conformité avec le standard ETSI TS 119 612~\cite{ETSITS119612} est que la gTSL doit être disponible via le protocole HTTP.
 
 \subsubsection{Besoins de performance}
 
-La gTSL doit apporter un stockage interne efficace pour stocker les informations concernant les TSPs et doit être hautement scalable afin de gérer efficacement de nombreuses quantités de demandes parallèles.
+La gTSL doit apporter un stockage interne efficace pour stocker les informations concernant les TSPs et doit être hautement évolutif afin de gérer efficacement de nombreuses quantités de demandes parallèles.
 
 \subsubsection{Interfaces du système}
 
@@ -388,19 +395,18 @@ Les interfaces utilisateur doivent rester cohérentes avec les interfaces utilis
 \subsubsection{Fiabilité du système}
 
 Le système doit être disponible sur une base de 24 heures par jour et 7 jours par semaine. Plus
-particulièrement, dans le but d’être conforme avec le standard ETSI TS 119 612~\cite{ETSITS119612}, le Global Trust Service Responder doit être disponible sur une base de 24 heures par jour et 7 jours par
-semaine, avec une disponibilité annuelle minimum de 99.9\%.
+particulièrement, le standard ETSI TS 119 612~\cite{ETSITS119612} impose que la récupération des informations concernant les listes de confiance soit disponible sur une base de 24 heures par jour et 7 jours par semaine, avec une disponibilité annuelle minimum de 99.9\%.
 
 \subsubsection{Sécurité du système}
 
 En raison de la nature sensible des données gérées par la gTSL, et de la haute disponibilité requise, les besoins en terme de sécurité doivent garantir que ces données ne peuvent être et ne sont pas compromises. De plus, il est primordial que la gestion des services de confiance et des fournisseurs de services de confiance soit limitée aux personnes autorisées.
-La gTSL ne doit pas permettre à des personnes non autorisées de créer, modifier ou supprimer des informations relatives aux listes de confiance et doit assurer l'intégrité des données qu'elle traite.
+En effet, la gTSL ne doit pas permettre à des personnes non autorisées de créer, modifier ou supprimer des informations relatives aux listes de confiance et doit assurer l'intégrité des données qu'elle traite.
 
 \subsection{Besoins logicielles}
 
 \subsubsection{Conformité au standard}
 
-La gTSL doit respecter le format et la sémantique d'une liste de confiance définis dans le standard ETSI TS 119 612~\cite{ETSITS119612}.
+La gTSL doit respecter la syntaxe et la sémantique d'une liste de confiance définies dans le standard ETSI TS 119 612~\cite{ETSITS119612}.
 
 \subsubsection{Rétrocompatibilité}
 
@@ -409,19 +415,20 @@ La gTSL doit pouvoir s'intégrer au schéma existant basé sur la LoTL. Cela sig
 \section{Limites de l'architecture actuelle}
 \label{sec:limits}
 
-Avec le modèle actuel, les modifications apportées au contenu d'une liste nationale induisent la nécessité de republier toute la liste nationale. De plus, toutes modifications apportées sur l'URL\footnote{Une URL (acronyme anglais de Uniform Resource Locator) est couramment appelé adresse web.} à laquelle la liste est distribuée ou sur le certificat utilisé pour signer la liste, induisent la nécessité de republier à la fois la liste nationale et la liste européenne.
-Le caractère centralisé du système de distribution des listes de confiance actuel contient des potentiels problèmes qui doivent être résolus dans le cadre de la globalisation des listes de services de confiance:
+Dans le modèle actuel, chaque modification apportée au contenu d'une liste nationale induisent la nécessité de republier l'entièreté de cette liste. De plus, toutes modifications apportées sur l'URL\footnote{Une URL (acronyme anglais de Uniform Resource Locator) est couramment appelé adresse web.} à laquelle la liste est distribuée ou sur le certificat utilisé pour signer la liste, induisent la nécessité de republier à la fois la liste nationale et la liste européenne.
+Le caractère centralisé du système de distribution des listes de confiance actuel contient des 
+problèmes éventuels qui doivent être résolus dans le cadre de la globalisation des listes de services de confiance:
 \begin{itemize}
-	\item les listes de confiance des États membres sont uniquement récupérables en se basant sur la LoTL, le schéma actuel est donc sujet à un point individuel de défaillance\footnote{Un point individuel de défaillance (single point of failure ou SPOF en anglais) est un point d'un système informatique dont le reste du système est dépendant et dont une panne entraîne l'arrêt complet du système.};
+	\item les listes de confiance des États membres sont uniquement récupérables après inspection préalable de la LoTL, le schéma actuel est donc sujet à un point individuel de défaillance\footnote{Un point individuel de défaillance (single point of failure ou SPOF en anglais) est un point d'un système informatique dont le reste du système est dépendant et dont une panne entraîne l'arrêt complet du système.};
 	\item chaque État membre maintient les données relatives à sa liste de confiance, cela signifie que l'arrêt du nœud de distribution d'un État membre rend ses données non consultables;
-	\item l'architecture existante est exposée à un problème de résilience puisqu'elle nécessite que l'ensemble des nœuds de distribution des États membres soit actifs afin que la liste globale soit considérée complète et donc fiable;
-	\item l'intégrité des données peut être compromise, en effet si les données d'un État membre sont corrompues localement sur son nœud de distribution, alors l'intégrité globale est compromise puisqu'on se fie uniquement à ce nœud de distribution;
+	\item l'architecture existante est exposée à un problème de résilience puisqu'elle nécessite que l'ensemble des nœuds de distribution des États membres soient actifs afin que la liste globale soit considérée complète et donc fiable;
+	\item l'intégrité des données peut être compromise, car si les données d'un État membre sont corrompues localement sur son nœud de distribution, alors l'intégrité globale est compromise puisque la confiance accordée peut être brisée par un seul point défaillant;
 	\item des problèmes de performance et de latence peuvent être rencontrés puisqu'il est nécessaire de télécharger et valider l'ensemble des informations qui sont réparties sur différents points de distribution;
-	\item le schéma actuel ne conserve pas l'historique des modifications, c'est-à-dire qu'une nouvelle publication d'une liste remplace totalement la précédente, ce qui ne permet pas de conserver une trace des modifications mises en œuvre entre les versions.
+	\item le schéma actuel ne conserve pas l'historique des modifications, c'est-à-dire qu'une nouvelle publication d'une liste remplace totalement la précédente, ce qui ne permet pas de conserver une trace des modifications mises en œuvre entre les versions, ni de revenir en arrière en cas de problème.
 	\newline
 \end{itemize}
 
-L'objectif de la gTSL est d'effectuer une refonte de l'architecture actuelle qui a montré ses limites en y apportant des technologies innovantes. Pour cela, il est nécessaire d'adopter un modèle décentralisé et distribué qui permet de résoudre les problèmes de résilience et de point individuel de défaillance. La technologie blockchain apporte en plus des avantages qui permettent d'assurer l'intégrité des données ainsi que la sécurité du système.
+L'objectif de la gTSL est d'effectuer une refonte de l'architecture actuelle qui a montré ses limites en y apportant des technologies innovantes. Pour cela, il est nécessaire d'adopter un modèle décentralisé et distribué qui permet de résoudre les problèmes de résilience et de point individuel de défaillance sus-cités. Par ailleurs, la technologie blockchain apporte des avantages permettant d'assurer l'intégrité des données ainsi que la sécurité du système.
 
 \section{Gestion de projet}
 
@@ -430,14 +437,14 @@ Cette section a pour objectif d'introduire la méthode Agile qui a été utilis�
 \subsection{Méthode de gestion de projet}
 
 La méthode Agile a été utilisée au cours de ce projet. 
-Plus particulièrement, l'équipe s'est appuyée sur le schéma Scrum, qui permet un cadre de travail itératif où les tâches majeures sont décomposées en sous-tâches.
+Plus particulièrement, l'équipe s'est appuyée sur le schéma Scrum, qui permet un cadre de travail itératif et incrémental où les tâches majeures sont décomposées en sous-tâches.
 La méthodologie Scrum est basée sur le découpage d'un projet en sprints\footnote{Un sprint est une période sur laquelle sont réalisées des tâches définies.}, qui sont des cycles de livraison très courts.
 Un sprint peut s'étendre sur une durée de quelques heures à un mois. 
-Dans notre cas, nous avons choisi une durée de deux semaines par sprint.
-En début de sprint, une estimation de la durée de chaque tâche est effectuée, ensuite une planification opérationnelle est réalisée.
+Dans notre cas, nous avons choisi une durée de deux semaines par sprint, qui est la durée préconisée dans la méthode.
+En début de sprint, une estimation de la durée de chaque tâche est effectuée. Ensuite une planification opérationnelle est réalisée.
 Un sprint se termine généralement par une démonstration du travail réalisé, suivie d'une rétrospective afin d'analyser le déroulement du sprint achevé dans le but d'améliorer les pratiques de l'équipe. 
 Quotidiennement est organisé un scrum meeting\footnote{Un scrum meeting est communément appelé mêlée en français.}, réunion courte et énergique, qui permet à l'équipe de discuter de l'avancée du sprint et de lever les points bloquants du projet.
-Afin de suivre la progression des objectifs au fur et à mesure de l’avancement du projet, nous avons utilisé l'outil JIRA. Il a servi notamment à définir les différentes tâches du projet et à répartir le travail entre les membres de l’équipe.
+Afin de suivre la progression des objectifs au fur et à mesure de l’avancement du projet, nous avons utilisé l'outil JIRA\footnote{Voir \url{https://fr.atlassian.com/software/jira}}, qui est un système de gestion de projets. Il a servi notamment à définir les différentes tâches du projet et à répartir le travail entre les membres de l’équipe.
 
 \subsubsection{Les avantages majeures de Scrum}
 
@@ -450,7 +457,7 @@ Scrum apporte des avantages qui sont définis comme étant les trois piliers de 
 
 \subsection{Organisation du temps}
 
-La Figure~\ref{fig:gantt} est un diagramme de Gantt qui expose de manière globale la répartition du travail réalisé. Ce diagramme est volontairement non détaillé puisque l'utilisation de la méthodologie Agile ne permet pas d'organiser à l'avance et avec précision la réalisation des tâches. Il est important de noter que le diagramme se termine à la date de fin du stage mais que la livraison du projet est prévue au 30 novembre 2017.
+La Figure~\ref{fig:gantt} présente un diagramme de Gantt qui expose de manière globale la répartition du travail réalisé. Ce diagramme est volontairement non détaillé puisque l'utilisation de la méthodologie Agile ne permet pas d'organiser à l'avance et avec précision la réalisation des tâches. Il est important de noter que le diagramme se termine à la date de fin du stage mais que la livraison du projet est prévue au 30 novembre 2017.
 
 \begin{figure}[h]
 	\centering
@@ -471,24 +478,24 @@ Elle peut être décomposée en deux sous-parties. Dans un premier temps, j'ai d
 \subsubsection{État de l'art}
 
 La seconde phase, ayant pour objectif d'établir un état de l'art, a suivi la phase d'initiation et s'est étendue sur trois semaines.
-L'état de l'art permet de connaître l'état des connaissances et technologies actuelles dans un domaine spécifique. Pour notre projet, l'état de l'art a porté sur la blockchain ainsi que les systèmes  décentralisés. Le but de cette phase a été d'explorer le plus largement possible les technologies pouvant être utilisées dans le projet afin de les comparer et de choisir les solutions répondant à nos besoins. Cette étape a donné lieu à un livrable qui a été inclus dans le document de conception de la gTSL comme le montre le jalon "Comparaison des technologies" dans la Figure~\ref{fig:gantt}. Ce document est disponible en Annexe~\ref{anx:comparison}. L'état de l'art est détaillé dans la Section~\ref{sec:state-of-the-art}.
+L'état de l'art est un processus qui vise à explorer l'état des connaissances et technologies actuelles dans un domaine spécifique. Pour notre projet, l'état de l'art a porté sur la blockchain ainsi que les systèmes  décentralisés. Le but de cette phase a été d'explorer le plus largement possible les technologies pouvant être utilisées dans le projet afin de les comparer pour choisir par la suite la solution la plus adaptée à nos besoins. Cette étape a donné lieu à un livrable qui a été inclus dans le document de conception de la gTSL comme le montre le jalon "Comparaison des technologies" dans la Figure~\ref{fig:gantt}. Ce document est disponible en Annexe~\ref{anx:comparison}. L'état de l'art est détaillé dans la Chapitre~\ref{chap:state-of-the-art}.
 
 \subsubsection{Preuve de concept}
 
-À la suite de l'état de l'art, un choix technologique a été effectué. L'étape suivante a donc été de prouver que les choix opérés correspondent aux besoins du projet. Pour cela, j'ai pu réaliser une preuve de concept sur une durée de quinze jours. Cette phase a ensuite donné lieu à une démonstration à l'équipe afin de valider de manière définitive les choix technologiques. Le détail de la preuve de concept ainsi que la justification des choix opérés sont présentés dans la Section~\ref{sec:realisation}.
+À la suite de l'état de l'art, un choix technologique a été effectué. L'étape suivante a donc consisté à prouver que les choix opérés correspondent aux besoins du projet. Pour cela, j'ai pu réaliser une preuve de concept sur une durée de quinze jours. Cette phase a ensuite donné lieu à une démonstration à l'équipe afin de valider de manière définitive les choix technologiques. Le détail de la preuve de concept ainsi que la justification des choix opérés sont présentés dans la Chapitre~\ref{chap:realisation}.
 
 \subsubsection{Analyse / Conception}
 
-La phase d'analyse et conception a été précédée de la preuve de concept qui a permis de valider les technologies à utiliser pour le projet. Dans le cadre de cette phase, nous avons déterminé les modules à implémenter afin de répondre aux besoins exprimés dans le document de conception. L'analyse et la conception ont consisté à réfléchir sur la mise en place d'une architecture décentralisée basée sur une blockchain en étant conforme aux différentes contraintes définies dans le document de conception et en s'appuyant sur les technologies choisies. Cette partie a duré un mois et demi, et est détaillée dans la Section~\ref{sec:analyse}.
+La phase d'analyse et conception a été précédée de la preuve de concept qui a permis de valider les technologies à utiliser pour le projet. Dans le cadre de cette phase, nous avons déterminé les modules à implémenter afin de répondre aux besoins exprimés dans le document de conception. L'analyse et la conception ont consisté à imaginer des potentielles solutions quant à la mise en place d'une architecture décentralisée basée sur une blockchain en étant conforme aux différentes contraintes définies dans le document de conception et en s'appuyant sur les technologies choisies. Cette partie a duré un mois et demi, et est détaillée dans la Chapitre~\ref{chap:analyse}.
 
 \subsubsection{Implémentation}
 
-La dernière phase, et la plus conséquente, est l'implémentation. Elle consiste à développer la solution conçue et imaginée lors de la phase d'analyse et conception. Lors de la rédaction de ce mémoire, cette phase est en cours de réalisation. Cette phase est découpée en sprints d'une durée de deux semaines. L'implémentation est détaillée dans la Section~\ref{sec:realisation}. 
+La dernière phase, et la plus conséquente, est l'implémentation. Elle consiste à développer la solution conçue et imaginée lors de la phase d'analyse et conception. Lors de la rédaction de ce mémoire, cette phase est en cours de réalisation. Cette phase est découpée en sprints d'une durée de deux semaines. L'implémentation est détaillée dans la Chapitre~\ref{chap:realisation}. 
 
 \chapter{État de l'art}
-\label{sec:state-of-the-art}
+\label{chap:state-of-the-art}
 
-Dans le cadre du projet FutureTrust, il a été nécessaire d'effectuer un état de l'art afin d'avoir une vue globale de l'état actuelle de la technologie blockchain et des technologies distribuées et décentralisées comme les bases de données ou les systèmes de fichiers. Pour cela, il convient de décrire l'émergence de la blockchain ces dix dernières années, d'expliquer les avantages qu'apporte la décentralisation dans les systèmes actuels et d'établir une liste des technologies existantes. L'état de l'art a pour intérêt de comprendre l'effervescence autour de ces technologies ainsi que d'opérer les meilleurs choix dans la réalisation du module de gTSL. Les solutions existantes présentées en Section~\ref{sec:solutions} ont été envisagées afin de mettre en place un système permettant de conserver, gérer et récupérer les données de la gTSL de manière sécurisée et apportant une forte résilience.
+Dans le cadre du projet FutureTrust, il a été nécessaire d'effectuer un état de l'art afin d'avoir une vue globale de l'état actuelle de la technologie blockchain et des technologies distribuées et décentralisées comme les bases de données ou les systèmes de fichiers. Pour cela, il convient de décrire l'émergence de la blockchain ces dix dernières années, d'expliquer les avantages qu'apporte la décentralisation dans les systèmes actuels et d'établir une liste des technologies existantes. L'état de l'art a pour intérêt de soulever l'effervescence autour de ces technologies ainsi que d'opérer les meilleurs choix dans la réalisation du module de gTSL. Les solutions existantes présentées en Section~\ref{sec:solutions} ont été envisagées afin de mettre en place un système permettant de conserver, gérer et récupérer les données de la gTSL de manière sécurisée et apportant une forte résilience.
 
 \section{L'émergence de la blockchain}
 
@@ -498,11 +505,11 @@ Cette section a pour objectif de comprendre l'origine de la blockchain en détai
 
 Le concept de monnaie numérique, ainsi que d'autres applications comme les registres de propriété, existent depuis des décennies. 
 Les protocoles de paiement apparus dans les années 1980 et 1990, connus sous le nom de e-cash\cite{ecash} et reposant sur des concepts cryptographiques, avaient pour but de fournir une monnaie avec un degré élevé de confidentialité. La mise en place de ces protocoles a largement échoué à cause de leur dépendance à un intermédiaire centralisé. 
-En 1998, la technologie B-money\cite{bmoney} créé par Wei Dai voit le jour, et devient la première proposition introduisant l'idée de créer de l'argent en résolvant des puzzles informatiques en se basant sur un consensus décentralisé, mais cette proposition a été peu détaillée sur la manière dont le consensus décentralisé pouvait effectivement être mis en œuvre. 
-En 2005, Hal Finney a introduit le concept de preuves de travail réutilisables, un système qui utilise des idées de b-money avec les puzzles Hashcash\cite{hashcash} difficiles à calculer créés par Adam Back, afin de créer un concept de crypto-monnaie, mais encore une fois cette proposition n'a pas su être exploitée. 
+En 1998, la technologie B-money\cite{bmoney} créé par Wei Dai voit le jour, et devient la première proposition introduisant l'idée de créer de l'argent en résolvant des puzzles informatiques en se basant sur un consensus décentralisé. Cependant, cette proposition a été peu détaillée sur la manière dont le consensus décentralisé pouvait effectivement être mis en œuvre. 
+En 2005, Hal Finney a introduit le concept de preuves de travail réutilisables, un système basé sur des idées de b-money en les combinant aux puzzles Hashcash\cite{hashcash} difficiles à calculer créés par Adam Back, afin de créer un concept de crypto-monnaie. Mais encore une fois, cette proposition n'a pas su être exploitée. 
 En 2009, une monnaie décentralisée a été pour la première fois mise en œuvre par Satoshi Nakamoto, combinant les différentes propositions établies pour la gestion de la propriété par l'utilisation de clés publiques avec un algorithme de consensus permettant de suivre l'identité du possesseur de la monnaie, appelé preuve de travail (Proof of Work).
 
-Le mécanisme derrière la preuve de travail a été une avancée car il a simultanément résolu deux problèmes. 
+Le mécanisme derrière la preuve de travail a été une avancée car il résout simultanément deux problèmes. 
 Tout d'abord, il a fourni un algorithme de consensus simple et modérément efficace, permettant aux nœuds du réseau de convenir collectivement d'un ensemble de mises à jour du registre Bitcoin. 
 Deuxièmement, il a fourni un mécanisme qui permet l'entrée libre d'un nouveau membre dans le processus de consensus, ce qui résout le problème engendré par l'influence d'un membre dans le consensus, tout en empêchant les attaques Sybil\footnote{Une attaque Sybil est une attaque informatique qui vise à renverser un système par la création de fausses identités dans un réseau pair-à-pair.}. 
 Dans la preuve de travail, le poids d'un nœud dans le processus de vote par consensus est directement proportionnel aux ressources de calcul que ce nœud apporte. 
@@ -510,17 +517,17 @@ Depuis cela, une approche alternative, appelée preuve d'enjeu (Proof of Stake),
 
 \subsection{État actuel et potentiel futur}
 
-Actuellement deux principaux protocoles publiques se sont démarqués, le premier est bien entendu Bitcoin, le second est le récemment créé Ethereum. 
-Malgré cela, les défis et les développements potentiels de la blockchain restent nombreux.
-Premièrement, c'est une technologie très récente, complexe et évoluant rapidement autour de laquelle une effervescence a été créée depuis quelques années mais qui souffre encore de problèmes de maturité.
+Actuellement deux principaux protocoles publiques se sont démarqués. Le premier est bien entendu Bitcoin et le second est le récemment créé Ethereum. 
+Malgré les solutions qu'ils apportent, les défis et les développements potentiels de la blockchain restent nombreux.
+Premièrement, c'est une technologie très récente, complexe et évoluant rapidement, de laquelle une effervescence a été créée depuis quelques années mais qui souffre encore de problèmes de maturité.
 Bien que l'implémentation de Bitcoin soit stabilisée, ce n'est pas le cas pour les technologies émergentes comme Ethereum.
 
 Le travail à effectuer pour permettre à la technologie de se stabiliser et de se populariser reste colossale:
 \begin{itemize}
-	\item le développement d'outils pour le grand public permettant d'interagir facilement avec la blockchain;
+	\item le développement d'outils à destination le grand public permettant d'interagir facilement avec la blockchain;
 	\item l'amélioration des protocoles de consensus (preuve de travail, preuve d'enjeu, etc.);
 	\item l'augmentation du nombre de transactions traitées par seconde;
-	\item la création et l'amélioration d'outils de développement;
+	\item la création et l'amélioration d'outils pour le développement d'applications basées sur l'utilisation de la blockchain;
 	\item la recherche sur les bonnes pratiques pour la sécurité des contrats intelligents;
 	\item la mise en place de protocoles de désidentification pour les transactions.
 	\newline
@@ -531,12 +538,12 @@ Malgré tout, les personnes impliquées sur les différents projets de blockchai
 Comme conséquence naturelle de sa nouveauté, la technologie est également mal comprise.
 Il est possible d'avoir lu de nombreux articles sur le sujet sans en avoir réellement compris le fonctionnement ou l'intérêt.
 En effet, il existe énormément d'informations sur la blockchain et notamment sur les possibilités de son utilisation mais peu d'articles expliquent clairement et de manière détaillée son fonctionnement.
-La nouveauté de la technologie explique également celle de l'écosystème, ce n'est qu'en 2013 que les premières plate-formes d'échange de crypto-monnaie sont apparues.
-À l'heure actuelle, le secteur est en plein essor, avec de nombreuses start-ups ainsi que des initiatives de grandes entreprises.
+La nouveauté de la technologie explique également celle de son écosystème, ce n'est qu'en 2013 que les premières plate-formes d'échange de crypto-monnaie sont apparues.
+À l'heure actuelle, le secteur est en plein essor, et de nombreuses start-ups ainsi que des initiatives de grandes entreprises ont été lancées.
 Dans cet environnement, il existe encore un élément totalement manquant qui est la gestion de l'identité.
-Sur une blockchain publique, tout le monde est anonyme, puisqu'il est uniquement identifié par une clé publique et non par son identité.
+Sur une blockchain publique, tout le monde est anonyme. En effet, un utilisateur est uniquement identifié par une clé publique et non par son identité.
 L'anonymat est un avantage dans certains types d'utilisation, mais d'autres utilisations nécessitent une identité qui peut être certifiée et associée à un compte en particulier. Il est donc nécessaire que ce compte puisse être récupéré par son propriétaire légitime en cas de perte.
-Il s'agit d'une question complexe majeure découlant de la conception de la technologie. Cependant, de nombreuses initiatives sont en cours dans ce domaine comme par exemple AEternam\footnote{Voir \url{http://aeternam.life/}} qui est une initiative française ou uPort\footnote{Voir \url{https://www.uport.me/}} de ConsenSys\footnote{Voir \url{https://consensys.net/}}.
+Il s'agit d'une question complexe majeure découlant de la conception de la technologie. Cependant, de nombreuses initiatives sont en cours dans ce domaine comme par exemple uPort\footnote{Voir \url{https://www.uport.me/}, uPort est un système d'identité entièrement autonome basé sur Ethereum.} de ConsenSys\footnote{Voir \url{https://consensys.net/}, ConsenSys est une entreprise développant des applications décentralisées et des outils pour le développement d'applications basées sur l'utilisation de la blockchain.}.
 Depuis la création d'Ethereum, cet écosystème comprend également des entités émergentes sur la blockchain, à savoir les applications décentralisées, plus communément appelées dApp\footnote{acronyme anglais de decentralized application}.
 La sécurité des contrats intelligents est encore à un stade précoce, et des efforts considérables seront nécessaires avant d'envisager l'automatisation des opérations à très forte valeur ajoutée.
 De nombreuses initiatives ont déjà été lancées à cet égard et se poursuivront comme la recherche fondamentale, les logiciels d'analyse formelle, l'amélioration du langage ou encore de la machine virtuelle Ethereum.
@@ -544,12 +551,12 @@ De nombreux projets dApp ont été financés cette année, en particulier par le
 ICO (acronyme anglais de Initial Coin Offering) est le processus par lequel une entité innovante offre aux investisseurs certaines quantités d'une nouvelle crypto-monnaie ou crypto-token en échange d'une quantité de crypto-monnaie existante comme Bitcoin ou Ethereum.}.
 
 De nombreux types d'utilisation de la blockchain sont donc en cours de développement.
-Ces utilisations ont donc besoin d'avoir des règles détaillées et un cadre juridique défini. Malheureusement, dans l'état actuel des choses, la loi n'encadre pas la technologie aussi bien au niveau de la reconnaissance juridique des nouveautés apportées qu'au niveau des restrictions ou des contrôles de son utilisation.
+Ces utilisations ont besoin d'avoir des règles détaillées et un cadre juridique défini. Malheureusement, dans l'état actuel des choses, la loi n'encadre pas la technologie aussi bien au niveau de la reconnaissance juridique des nouveautés apportées qu'au niveau des restrictions ou des contrôles de son utilisation.
 La reconnaissance de ces caractéristiques par le droit local, européen et les traités internationaux serait une avancée majeure dans de nombreux secteurs comme la finance, la santé ou l'énergie, et permettrait aux entreprises de créer des systèmes innovants.
 Ce manque de reconnaissance officielle a également une incidence sur la participation du secteur privé.
-Si l'Europe veut être précurseur de la révolution blockchain, elle doit s'impliquer davantage, tant au niveau national qu'international.
+Si l'Europe veut être un précurseur de la révolution blockchain, elle doit s'impliquer davantage, tant au niveau national qu'international.
 
-Dans le futur, il est important de s'intéresser aux point suivants:
+Dans le futur, il sera important de s'intéresser aux point suivants:
 \begin{itemize}
 	\item les développements techniques majeurs tels que la vérification formelle des contrats intelligents, la preuve d'enjeu ou la gestion de l'identité;
 	\item la reconnaissance par le secteur public et privé des crypto-monnaies et plus généralement des enregistrements dans la blockchain;
@@ -558,43 +565,43 @@ Dans le futur, il est important de s'intéresser aux point suivants:
 
 \section{La décentralisation du Web}
 
-Le but initial du web et de l'internet était de créer un réseau neutre commun auquel chacun puisse participer de manière égale pour améliorer l'humanité. Heureusement, il existe un mouvement émergent pour ramener le web à cette vision et implique même certains des éléments clés de la naissance du web. C'est ce qu'on appelle le Web décentralisé ou le Web 3.0. Il décrit une tendance émergente pour la création de services sur Internet qui ne dépendent pas d'une seule organisation centrale.
+Le but initial du web et de l'internet était de créer un réseau neutre commun auquel chacun puisse participer de manière égale afin d'améliorer l'humanité. Heureusement, il existe un mouvement émergent pour ramener le web à cette vision et implique même certains des éléments clés de la naissance du web. C'est ce qu'on appelle le Web décentralisé ou le Web 3.0. Il décrit une tendance émergente pour la création de services sur Internet qui ne dépendent pas d'une seule organisation centrale.
 La participation égale sur Internet s'est rapidement effondrée lorsque des personnes se sont rendues compte qu'un moyen simple de créer de la valeur sur ce réseau était de construire des services centralisés qui rassemblent, piègent et monétisent des informations.
 Les moteurs de recherche comme Google, les réseaux sociaux comme Facebook, les applications de discussion comme WhatsApp se sont imposés en fournissant des services centralisés sur Internet.
 
-Dans le même temps, ces organisations réduisent les libertés fondamentales de l'Internet telles que la possibilité de lier du contenu via une URL (en forçant les utilisateurs à partager du contenu uniquement sur Facebook) ou la possibilité pour les moteurs de recherche d'indexer son contenu (réduisant les résultats de recherche à du contenu ciblé).
+Dans le même temps, ces organisations réduisent les libertés fondamentales de l'Internet telles que la possibilité de lier du contenu via une URL ou la possibilité pour les moteurs de recherche d'indexer son contenu.
 Le Web décentralisé envisage un monde futur où des services tels que la communication, la monnaie, l'édition, les réseaux sociaux ou la recherche sont fournis non pas par des services centralisés appartenant à des organisations individuelles, mais par des technologies alimentées par la communauté des utilisateurs.
-L'idée principale de la décentralisation est que l'exploitation d'un service n'est pas aveuglément confiée à une seule entreprise omnipotente. Au lieu de cela, la responsabilité du service est partagée soit par une exécution sur plusieurs serveurs fédérés, ou par l'exécution d'applications côté client s'appuyant sur un modèle distribué.
-Les règles qui décrivent le comportement d'un service décentralisé sont conçues pour obliger les participants à agir de manière équitable, grâce à l'utilisation de techniques cryptographiques telles que les arbres de Merkle\footnote{Un arbre de Merkle, aussi appelé arbre de hachage, est une structure de données contenant l'empreinte d'un volume de données} et la signature électronique pour permettre aux participants d'être responsables.
+L'idée principale de la décentralisation est que l'exploitation d'un service n'est pas confiée à une seule entreprise omnipotente. Au lieu de cela, la responsabilité du service est partagée soit par une exécution sur plusieurs serveurs fédérés, ou par l'exécution d'applications côté client s'appuyant sur un modèle distribué.
+Les règles qui décrivent le comportement d'un service décentralisé sont conçues pour obliger les participants à agir de manière équitable, grâce à l'utilisation de techniques cryptographiques telles que les arbres de Merkle\footnote{Un arbre de Merkle, aussi appelé arbre de hachage, est une structure de données contenant l'empreinte d'un volume de données.} et la signature électronique pour favoriser la responsabilité des participants.
 
 Il existe trois concepts fondamentaux que le Web décentralisé prône:
 \begin{itemize}
-	\item la confidentialité, en effet la décentralisation impose une attention accrue à la confidentialité des données. Les données sont réparties sur le réseau et les technologies de chiffrement sont essentielles pour garantir que seuls les utilisateurs autorisés puissent lire et écrire. L'accès aux données est entièrement contrôlé par le réseau grâce à des algorithmes. Ce modèle montre une césure avec les réseaux centralisés où le propriétaire du réseau a un accès complet aux données, et donc facilite l'établissement du profil du client et le ciblage publicitaire;
+	\item la confidentialité, en effet la décentralisation impose une attention accrue à la confidentialité des données. Les données sont réparties sur le réseau et les technologies de chiffrement sont essentielles pour garantir que seuls les utilisateurs autorisés puissent modifier les données qui leurs appartiennent. L'accès aux données est entièrement contrôlé par le réseau grâce à des algorithmes. Ce modèle montre une césure avec les réseaux centralisés où le propriétaire du réseau a un accès complet aux données, et donc facilite l'établissement du profil du client et le ciblage publicitaire;
 	\item la portabilité des données, dans un environnement décentralisé, les utilisateurs possèdent leurs données et choisissent avec qui ils partagent ces données. En outre, ils en conservent le contrôle et ils peuvent les transférer d'un service à un autre librement.
 	\item la sécurité, les environnements décentralisés sont plus sûrs contre le piratage, l'infiltration, l'acquisition et les pannes que les environnements centralisés, car ils ont été construits pour être exposés publiquement dès le départ.
 	\newline
 \end{itemize}
 
-De nombreux services auparavant centralisés et aujourd'hui remplacés par des services décentralisés ont montré que cette technologie peut être mise en œuvre et qu'une alternative du web existant entièrement décentralisée est réalisable. 
+De nombreux services auparavant centralisés et aujourd'hui remplacés par des services décentralisés ont montré que cette approche peut être mise en œuvre et qu'une alternative du web existant entièrement décentralisée est réalisable. 
 Parmi les systèmes décentralisés qui ont connu un grand succès on peut par exemple citer Git, un système de gestion de versions entièrement décentralisé, remplaçant presque totalement des systèmes centralisés tels que Subversion. 
 Au même titre, Bitcoin a démontré qu'une monnaie peut exister sans autorité centrale, en contraste avec un service centralisé tel que Paypal. 
 Diaspora vise quant à lui à fournir une alternative décentralisée à Facebook.
-Cependant, la plupart de ces technologies ont toujours été laissées de côté par le grand public. Mais aujourd'hui, les utilisateurs se rendent compte que la dépendance aux plates-formes communautaires massives qui contrôle Internet n'est pas dans l'intérêt des utilisateurs.
+Cependant, la plupart de ces technologies ont toujours été laissées de côté par le grand public. Mais aujourd'hui, les utilisateurs se rendent compte que la dépendance aux plates-formes communautaires massives qui contrôlent Internet n'est pas dans leurs intérêts.
 
-Il existe déjà une nouvelle génération de systèmes décentralisés qui ont attiré l'attention de l'industrie traditionnelle ces derniers temps.
-Blockstack\footnote{Voir \url{https://blockstack.org/}} et Ethereum\footnote{Voir \url{https://ethereum.org/}} montrent comment la blockchain peut être plus qu'une simple crypto-monnaie. IPFS\footnote{Voir \url{https://ipfs.io/}} et le projet Dat\footnote{Voir \url{https://datproject.org/}} fournissent également des gestionnaires de données entièrement décentralisés, où la propriété et la responsabilité des données sont partagées par tous ceux qui y accèdent, ne reposant plus sur un hébergement centralisé.
+Il existe déjà une nouvelle génération de systèmes décentralisés qui ont attiré l'attention de l'industrie traditionnelle.
+Blockstack\footnote{Voir \url{https://blockstack.org/}, Blockstack est la première implémentation de système de noms de domaine décentralisé s'exécutant sur la blockchain Bitcoin.} et Ethereum montrent que la blockchain peut être plus qu'une simple crypto-monnaie. IPFS et le projet Dat\footnote{Voir \url{https://datproject.org/}, Dat est un outil de partage de données distribuées.} fournissent également des gestionnaires de données entièrement décentralisés, où la propriété et la responsabilité des données sont partagées par tous ceux qui y accèdent, ne reposant plus sur un hébergement centralisé.
 
-Bien que le Web décentralisé attire l'intérêt et la passion de la communauté des développeurs, il est actuellement impossible de dire quelles nouvelles économies émergeront et quelles sortes de nouvelles technologies et services vont être inventés. La seule certitude est que la décentralisation du Web est une réalité et que les personnes actives autour de cette révolution soutiendront les intérêts de leurs utilisateurs.
+Bien que le Web décentralisé attire l'intérêt et la passion de la communauté des développeurs, il est actuellement impossible de dire quelles nouvelles économies émergeront et quelles sortes de nouvelles technologies et services vont être inventés. La seule certitude que nous ayons est que la décentralisation du Web est une réalité et que les personnes actives autour de cette révolution soutiendront les intérêts de leurs utilisateurs.
 
 \section{Solutions existantes}
 \label{sec:solutions}
 
 La couche de persistance des données de la gTSL repose sur la blockchain et des concepts de décentralisation. À ce titre, l'objectif est de conserver toutes les informations relatives aux TSPs et aux TSs dans un registre sécurisé, c'est-à-dire dans une liste chaînée de transactions signées, et de répliquer toutes les données de la gTSL à travers un réseau pair-à-pair\footnote{Le pair-à-pair est un modèle de réseau informatique similaire au modèle client-serveur mais où chaque client est aussi un serveur.} décentralisé.
-Cela permet de garantir à la fois l'intégrité et la disponibilité des informations, puisque chaque donnée est signée avec toutes les données précédentes dans le registre. La distribution de l'information à travers un réseau pair-à-pair fournit une résilience forte contre les attaques par déni de service.
+Cela permet de garantir à la fois l'intégrité et la disponibilité des informations, puisque chaque donnée est signée et est accompagnée de toutes les données qui la précédent dans le registre. La distribution de l'information à travers un réseau pair-à-pair fournit une résilience forte contre les attaques par déni de service.
 
 Afin d'atteindre cet objectif qui permettra de pallier aux problèmes de l'architecture actuelle, plusieurs options ont été envisagées :
 \begin{itemize}
-	\item stocker les données directement dans une blockchain publique existante;
+	\item stocker les données dans une blockchain publique existante;
 	\item stocker les données dans une blockchain privée;
 	\item stocker les données dans une blockchain privée, et utiliser une blockchain publique pour s'assurer de l'intégrité des données (par exemple en conservant le hash\footnote{Un hash est le résultat d'une fonction de hachage qui permet d'identifier rapidement une donnée.} de la transaction réalisée sur la blockchain privée dans une blockchain publique);
 	\item stocker les données dans un système décentralisé et distribué, comme par exemple une base de données ou un système de fichiers, et utiliser une blockchain publique pour s'assurer de l'intégrité des données (par exemple en conservant le hashes\footnote{Le terme hashes est le pluriel du mot hash.} ou les références des données).
@@ -609,24 +616,25 @@ Ripple\footnote{Voir \url{https://ripple.com/}} est une crypto-monnaie s'appuyan
 
 \subsection{Tendermint}
 
-Tendermint\footnote{Voir \url{https://tendermint.com/}} est une crypto-monnaie s'appuyant sur un registre distribué basé sur une blockchain qui utilise un système de votes par un consensus au lieu du minage. À ce titre, Il repose sur un ensemble de nœuds de validation qui sont responsables d'émettre des votes signés pour ou contre l'ajout de nouveaux blocs dans la chaîne. Le scrutin est validé si au minimum les deux tiers des nœuds de validation votent pour l'acceptation d'un nouveau bloc. Tendermint apporte uniquement une solution concernant l'utilisation d'un système de votes à la place d'une preuve de travail.
+Tendermint\footnote{Voir \url{https://tendermint.com/}} est une crypto-monnaie s'appuyant sur un registre distribué basé sur une blockchain qui utilise un système de votes par un consensus au lieu du minage. À ce titre, Il repose sur un ensemble de nœuds de validation dont la responsabilité est d'émettre des votes signés pour ou contre l'ajout de nouveaux blocs dans la chaîne. Le scrutin est validé si au minimum les deux tiers des nœuds de validation votent pour l'acceptation d'un nouveau bloc. Tendermint apporte uniquement une solution concernant l'utilisation d'un système de votes à la place d'une preuve de travail.
 
 \subsection{Ethereum}
 \label{sec:ethereum}
-Ethereum\footnote{Voir \url{https://ethereum.org/}} est une plate-forme publique décentralisée et distribuée basée sur la technologie blockchain. Il repose sur des programmes qui ont leur code (leurs fonctions) et leurs données (leur état) stockés sur la blockchain. Ces programmes s'appellent des smart contracts. 
-Il apporte donc l'utilisation de concepts de blockchain au-delà du cas d'utilisation de la crypto-monnaie et offre un environnement d'exécution virtuel qui peut être utilisé pour créer des organisations autonomes décentralisées, c'est-à-dire des organisations qui sont gérées par des règles spécifiées dans des smart contracts. Ethereum étant conçu principalement comme un environnement d'exécution décentralisé et autonome, il n'offre pas de fonctionnalités de stockage réelles. Bien que les données peuvent être stockées dans le cadre de l'exécution des contrats intelligents, le coût peut rapidement devenir prohibitif. En effet, le système est conçu pour calculer le coût des transactions en fonction des ressources nécessaires en termes de calcul, de bande passante et de stockage. Un système de redevances est mis en place dans le but d'obliger un attaquant à payer proportionnellement pour chaque ressource qu'ils consomment.
+
+Ethereum\footnote{Voir \url{https://ethereum.org/}} est une plate-forme publique décentralisée et distribuée basée sur la technologie blockchain. Elle repose sur des programmes dont le code et les données sont stockés sur la blockchain. Ces programmes s'appellent des smart contracts. 
+Ethereum apporte donc l'utilisation de concepts de blockchain au-delà du cas d'utilisation de la crypto-monnaie et offre un environnement d'exécution virtuel qui peut être utilisé pour créer des organisations autonomes décentralisées, i.e. des organisations qui sont gérées par des règles spécifiées dans des smart contracts. Ethereum étant conçu principalement comme un environnement d'exécution décentralisé et autonome, il n'offre pas de fonctionnalités de stockage réelles. En effet, bien que les données puissent être stockées dans le cadre de l'exécution des contrats intelligents, le coût de son utilisation peut rapidement devenir prohibitif. En effet, le système est conçu pour calculer le coût des transactions en fonction des ressources nécessaires en termes de calcul, de bande passante et de stockage.
 
 \subsection{Swarm}
 
-Swarm\footnote{Voir \url{http://swarm-gateways.net/bzz:/swarm-gateways.eth/}} est une plate-forme de stockage distribuée ainsi qu'un service de distribution de contenu directement lié à Ethereum. Son objectif initial est de servir de solution de stockage décentralisé et redondant pour les enregistrements dans le registre publique d'Ethereum, mais il peut également être utilisé comme une solution de stockage et de service pair-à-pair. Au moment de la rédaction de ce mémoire, Swarm était encore à ses débuts de développement, avec uniquement une version "alpha" disponible.
+Swarm\footnote{Voir \url{http://swarm-gateways.net/bzz:/swarm-gateways.eth/}} est une plate-forme de stockage distribuée ainsi qu'un service de distribution de contenu directement lié à Ethereum. Son objectif initial est de servir de solution de stockage décentralisé et redondant pour les enregistrements dans le registre publique d'Ethereum, mais il peut également être utilisé comme solution de stockage à part entière et de service pair-à-pair. Au moment de la rédaction de ce mémoire, Swarm était encore à ses débuts de développement, avec uniquement une version "alpha" disponible.
 
 \subsection{Hyperledger Fabric}
 
-Hyperledger Fabric\footnote{Voir \url{https://www.hyperledger.org/projects/fabric}} est une plate-forme de registre distribué destinée à l'exécution de smart contracts. Il est conçu avec une architecture modulaire, prend en charge les contrats intelligents écrit dans le langage de programmation Go et repose sur un réseau de pairs de validation (c'est-à-dire les nœuds responsables du maintien du registre) et de pairs de non validation. À l'instar d'Ethereum, Hyperledger ne gère pas le stockage de données nativement et simplement, mais son architecture modulaire pourrait le permettre.
+Hyperledger Fabric\footnote{Voir \url{https://www.hyperledger.org/projects/fabric}} est une plate-forme reposant sur un registre distribué destinée à l'exécution de smart contracts. Il est conçu selon une architecture modulaire, prend en charge les contrats intelligents écrits dans le langage de programmation Go et repose sur un réseau de pairs de validation (c'est-à-dire les nœuds responsables du maintien du registre) et de pairs de non validation. À l'instar d'Ethereum, Hyperledger ne gère pas le stockage de données nativement et simplement, mais son architecture modulaire pourrait le permettre.
 
 \subsection{Keyless ledger}
 
-Keyless Signature Infrastructure\footnote{Voir \url{https://guardtime.com/technology/ksi-technology}} (KSI) est une plate-forme offrant une authentification basée sur la signature électronique pour les données numériques, les machines et les humains. KSI repose uniquement sur les fonctions de hachage, son registre agit comme un enregistrement de logs\footnote{Le logging est un dispositif permettant de stocker un historique des évènements attachés à un processus.} de timestamps\footnote{Le timestamping, aussi nommé horodatage en français, est un mécanisme qui consiste à associer une date et une heure à un événement, une information ou une donnée informatique.} émis pour les hashes de données soumises par les utilisateurs. Son seul intérêt est de fournir des signatures électroniques, et selon les dires des développeurs d'une manière plus sécurisée que la Public Key Infrastructure\footnote{La PKI est une infrastructure visant à fournir une garantie de confiance dans la validité d’une identité numérique et utilisant pour cela une pair de clé liée à un certificat.} (PKI).
+Keyless Signature Infrastructure\footnote{Voir \url{https://guardtime.com/technology/ksi-technology}} (KSI) est une plate-forme offrant une authentification basée sur la signature électronique pour les données numériques, les machines et les humains. KSI repose uniquement sur les fonctions de hachage, son registre agit comme un enregistrement de timestamps\footnote{Le timestamping, aussi nommé horodatage en français, est un mécanisme qui consiste à associer une date et une heure à un événement, une information ou une donnée informatique.} émis pour les hashes de données soumises par les utilisateurs. Son intérêt est de fournir des signatures électroniques, et selon les dires des développeurs d'une manière plus sécurisée que la Public Key Infrastructure\footnote{La PKI est une infrastructure visant à fournir une garantie de confiance dans la validité d’une identité numérique et utilisant pour cela une pair de clé liée à un certificat.} (PKI).
 
 \subsection{OpenChain}
 
@@ -711,16 +719,16 @@ Ce système permet donc de réduire les coûts puisque l'on stocke uniquement un
 Malgré cela, l'architecture est complexifiée puisque l'on interface deux technologies distribuées et il est donc nécessaire de déployer à la fois un nœud IPFS et un nœud Ethereum.
 
 \chapter{Analyse du problème et solution élaborée}
-\label{sec:analyse}
+\label{chap:analyse}
 
 Le système de gTSL a été réalisé dans le cadre du projet FutureTrust qui a pour objectif de faciliter l'utilisation de l'identification et de la signature électronique, et qui vise plus particulièrement à mettre en application le règlement de l'UE sur l'identification électronique et les services de confiance pour les transactions électroniques sécurisées au sein de l'UE.
-La solution élaborée consiste à étendre l'infrastructure de la liste européenne de services de confiance existante. L'objectif est de mettre en place un système utilisant une architecture décentralisée basée sur la blockchain afin de conserver et de distribuer les informations relatives aux listes de confiance, nommées Trust Service List (TSL). Dans ce chapitre est détaillée l'analyse correspondant au système à implémenter afin de répondre aux besoins énoncés dans la Section~\ref{sec:description} et de pallier aux problèmes de l'architecture actuelle énoncés dans la Section~\ref{sec:limits}. Dans un premier temps, nous détaillons les technologies résultantes du choix opéré présenté en Section~\ref{sec:choice}. Ensuite, nous exposons les différents acteurs du système ainsi que leur rôle. Puis, nous présentons les cas d'utilisation de la gTSL. Enfin, les modules du système, les processus métier ainsi que le modèle de données sont développés.
+La solution élaborée consiste à étendre l'infrastructure de la liste européenne de services de confiance existante. L'objectif est de mettre en place un système utilisant une architecture décentralisée basée sur la blockchain afin de conserver et de distribuer les informations relatives aux listes de confiance, nommées Trust Service List (TSL). Dans ce chapitre est détaillée l'analyse correspondant au système à implémenter afin de répondre aux besoins énoncés dans la Section~\ref{sec:description} et de pallier aux problèmes de l'architecture actuelle énoncés dans la Section~\ref{sec:limits}. Dans un premier temps, nous détaillons les technologies résultantes du choix opéré présenté en Section~\ref{sec:choice}. Ensuite, nous exposons les différents acteurs du système ainsi que leurs rôles. Puis, nous présentons les cas d'utilisation de la gTSL. Enfin, les modules du système, les processus métier ainsi que le modèle de données sont développés.
 
 \section{Description détaillée des technologies utilisées}
 
 Cette section a pour objectif d'apporter des précisions sur l'utilisation des technologies IPFS et Ethereum afin de comprendre leur fonctionnement.
 
-\subsection{Présentation de Ethereum}
+\subsection{Ethereum}
 
 Ethereum~\cite{eth} est une plate-forme de blockchain open-source qui permet à qui le souhaite de créer et d'utiliser des applications décentralisées qui s'exécutent sur la blockchain. 
 La particularité de la blockchain Ethereum est qu'elle a été conçue pour permettre aux utilisateurs d'écrire et d'exécuter des smart contracts. Un smart contract décrit un code informatique qui permet de faciliter l'échange d'argent, de contenu, de propriété, de partage ou de valeur sur la blockchain.
@@ -736,9 +744,9 @@ L'avantage majeur d'exécuter des applications sur une blockchain est de bénéf
 	\item pleine disponibilité, puisque les applications ne s'arrêtent jamais et ne peuvent jamais être arrêtées.
 \end{itemize}
 
-\subsection{Présentation de IPFS}
+\subsection{IPFS}
 
-IPFS~\cite{ipfs-paper} est un système de fichiers distribué pair-à-pair qui vise à connecter tous les périphériques informatiques avec le même système de fichiers. Il expose une plate-forme pour l'écriture et le déploiement d'applications, et un nouveau système de distribution pour les grands volumes de données. 
+IPFS~\cite{ipfs-paper} est un système de fichiers distribué pair-à-pair qui vise à connecter tous les périphériques informatiques avec un même système de fichiers. Il expose une plate-forme pour l'écriture et le déploiement d'applications, et un nouveau système de distribution pour les grands volumes de données. 
 En d'autres termes, IPFS a pour objectif de fournir un modèle de stockage basé sur des blocs dit "content-addressable" par l'utilisation de hashes calculés sur les données. Il est conçu comme un arbre de Merkle, une structure de données à partir de laquelle il est possible de créer des systèmes de fichiers ou même des blockchains. IPFS ne contient pas de point individuel de défaillance puisqu'il est décentralisé, aucun nœud n'est privilégié et les nœuds n'ont pas besoin de se faire confiance. 
 Chaque nœud maintient une partie des données du réseau dans son espace de stockage local. 
 Les nœuds sont interconnectés et échangent des objets. Ces objets représentent des fichiers et d'autres structures de données.
@@ -984,7 +992,7 @@ Le modèle de données peut être simplifié par un graphe orienté, comme le mo
 \end{figure}
 
 \chapter{Réalisation de la solution proposée}
-\label{sec:realisation}
+\label{chap:realisation}
 
 Dans ce chapitre, nous détaillons l'architecture mise en place ainsi que l'implémentation des modules. Ce chapitre présente aussi la solution et les validations qui ont été effectuées sur celle-ci.
 
@@ -1376,9 +1384,7 @@ Les résultats définitifs du stage sont à l'heure actuelle inconnus puisque la
 
 Un autre point a soulevé concernant ce projet est que c'est un projet de recherche et développement. Cela signifie que la Commission Européenne attend de l'innovation dans la conception et la réalisation tout en gardant une simplicité d'utilisation pour les utilisateurs finaux. Le challenge a donc été d'adapter une technologie récente et complexe qu'est la blockchain à un système existant. Notre objectif est que ce projet rencontre un grand succès afin qu'il soit adopté par la Commission Européenne pour remplacer l'architecture actuelle.
 
-Un des résultats qui a su montrer notre capacité à utiliser la blockchain dans le cadre du projet FutureTrust est la preuve de concept que j'ai réalisé après que l'équipe ait validé les choix technologiques que j'ai proposé à la suite de l'état de l'art. À ce moment, le consortium a commencé à s'intéresser à notre conception de la gTSL et à sa mise en place imminente. J'ai donc rédigé un document explicatif de l'utilisation de la blockchain dans le cadre de la gTSL, ce document s'intitule Integration of Ethereum \& IPFS et est disponible en Annexe~\ref{anx:ipfs-ethereum}. À la suite de la lecture de ce document, une personne de l'ETSI a été intéressée par notre travail et a invité l'équipe à venir présenter ce papier à un atelier blockchain qui aura lieu début 2018 au Luxembourg. À l'heure actuelle, la date définitive de cet évènement n'a pas été fixée.
-
-Le dernier point important concernant les résultats de ce stage est la proposition de contrat de travail à durée indéterminée par Ar{\texteta}s. En effet, à ma grande surprise, seulement un mois après le début du stage, l'entreprise m'a proposé de poursuivre ma carrière professionnelle au sein de la société. J'ai accepté cette offre au cours du mois de juin et je suis très heureux d'avoir rejoint cette équipe et cette entreprise.
+Un des résultats qui a su montrer notre capacité à utiliser la blockchain dans le cadre du projet FutureTrust est la preuve de concept que j'ai réalisée après que l'équipe ait validé les choix technologiques que j'ai proposés à la suite de l'état de l'art. À ce moment, le consortium a commencé à s'intéresser à notre conception de la gTSL et à sa mise en place imminente. J'ai donc rédigé un document explicatif de l'utilisation de la blockchain dans le cadre de la gTSL. Ce document s'intitule Integration of Ethereum \& IPFS et est disponible en Annexe~\ref{anx:ipfs-ethereum}. À la suite de la lecture de ce document, un membre de l'ETSI a montré son intérêt pour notre travail et a invité l'équipe à venir présenter ce papier à un atelier blockchain qui aura lieu début 2018 au Luxembourg. À l'heure actuelle, la date définitive de cet évènement n'a pas été fixée.
 
 \chapter{Conclusion}
 
@@ -1390,7 +1396,7 @@ En ce sens, l’initiative du projet FutureTrust quant à l'innovation autour de
 Ce projet de recherche et développement ayant pour objectif de mettre en application le règlement de l'Union Européenne sur l'identification électronique et les services de confiance pour les transactions électroniques sécurisées au sein de l'UE a été une réelle opportunité de promouvoir la blockchain.
 En effet, l'Europe souhaite être un acteur majeur et un pionnier de l'utilisation de cette technologie. À ce titre, elle joue un rôle clé dans son développement.
 Malgré cela, il y a une grande nécessité de communication autour de cette technologie, car sa complexité peut freiner l'innovation et à terme entraîner sa disparition.
-Il est vrai qu'au premier abord la blockchain est un concept flou et complexe car son fonctionnement est difficilement compréhensible pour un non initié à l'informatique et à la cryptographie.
+Il est vrai qu'au premier abord, la blockchain est un concept flou et complexe car son fonctionnement est difficilement compréhensible pour un non initié à l'informatique et à la cryptographie.
 Le challenge pour les années futures se trouve dans la démocratisation de cette technologie par la mise en place de services grand public ergonomiques et simples d'utilisation.
 Le projet réalisé dans le cadre de ce stage permet une première approche de l'intégration d'une blockchain au sein d'un service européen et l'engouement du consortium de FutureTrust est très encourageant pour la suite.
 

@@ -318,10 +318,10 @@ L'émergence récente de la technologie blockchain ainsi que l'engouement géné
 
 Afin d'atteindre ses objectifs, la gTSL s'appuie sur quatre principaux composants:
 \begin{itemize}	
-	\item le Global Trust Service Responder\footnote{en français, Répondeur (dans le sens où il répond aux requêtes des utilisateurs).} qui permet aux applications externes et aux utilisateurs d'interroger la gTSL afin de récupérer les informations relatives aux TSPs;
+	\item le \textit{Global Trust Service Responder}\footnote{en français, Répondeur (dans le sens où il répond aux requêtes des utilisateurs).} qui permet aux applications externes et aux utilisateurs d'interroger la gTSL afin de récupérer les informations relatives aux TSPs;
 	\item l'interface d'administration qui a pour objectif de fournir une interface graphique ergonomique aux opérateurs afin qu'ils puissent facilement procéder à des modifications sur les listes de confiance;
-	\item le Global Trust Service Lifecycle Manager\footnote{en français, Gestionnaire du cycle de vie.} qui a pour vocation de faciliter la gestion des services de confiance à travers une interface permettant la création, la mise à jour et la distribution des informations relatives aux statuts de confiance;
-	\item le Ledger Manager qui a pour rôle de manipuler et de stocker les données.
+	\item le \textit{Global Trust Service Lifecycle Manager}\footnote{en français, Gestionnaire du cycle de vie.} qui a pour vocation de faciliter la gestion des services de confiance à travers une interface permettant la création, la mise à jour et la distribution des informations relatives aux statuts de confiance;
+	\item le \textit{Ledger Manager} qui a pour rôle de manipuler et de stocker les données.
 	\newline
 \end{itemize}
 Ces composants et leurs interactions sont illustrés dans la Figure~\ref{fig:3tier-archi}.
@@ -337,8 +337,8 @@ Ces composants et leurs interactions sont illustrés dans la Figure~\ref{fig:3ti
 
 D'un point de vue architectural, la gTSL s'appuie sur une architecture à trois couches:
 \begin{itemize}
-	\item la couche de services externes qui expose les interfaces externes du système, i.e. le Global Trust Service Responder et l'interface d'administration;
-	\item la couche métier qui est composée du Global Trust List Service Lifecycle Manager;
+	\item la couche de services externes qui expose les interfaces externes du système, i.e. le \textit{Global Trust Service Responder} et l'interface d'administration;
+	\item la couche métier qui est composée du \textit{Global Trust List Service Lifecycle Manager};
 	\item la couche de données qui correspond aux interfaces et aux composants qui permettent de connecter la gTSL à une solution de stockage de données.
 \end{itemize}
 
@@ -773,11 +773,11 @@ Un acteur est défini comme étant un ensemble cohérent de rôles que les utili
 
 \subsection{External User}
 
-External User\footnote{en français, utilisateur externe.} représente un utilisateur sans privilège spécifique qui souhaitent interagir avec le système, dans le but de récupérer des informations relatives à la gTSL. Il a accès au Global Trust Service Responder et peut donc valider le statut qualifié d'un TS ou d'un TSP donné.
+\textit{External User}\footnote{en français, utilisateur externe.} représente un utilisateur sans privilège spécifique qui souhaitent interagir avec le système, dans le but de récupérer des informations relatives à la gTSL. Il a accès au \textit{Global Trust Service Responder} et peut donc valider le statut qualifié d'un TS ou d'un TSP donné.
 
 \subsection{Administrator User}
 
-Administrator User\footnote{en français, utilisateur d'administration.} représente un utilisateur externe disposant des droits requis et nécessaires pour effectuer des opérations de gestion sur la gTSL, comme par exemple mettre à jour les informations d'un TSP. Il a accès à l'interface d'administration et à ses fonctionnalités d'édition des listes de confiance. L'utilisateur d'administration hérite de l'utilisateur externe du point de vue UML\footnote{UML (acronyme anglais de Unified Modeling Language) est un langage de modélisation utilisé pour la conception de systèmes d'information.}.
+\textit{Administrator User}\footnote{en français, utilisateur d'administration.} représente un utilisateur externe disposant des droits requis et nécessaires pour effectuer des opérations de gestion sur la gTSL, comme par exemple mettre à jour les informations d'un TSP. Il a accès à l'interface d'administration et à ses fonctionnalités d'édition des listes de confiance. L'utilisateur d'administration hérite de l'utilisateur externe du point de vue UML\footnote{UML (acronyme anglais de Unified Modeling Language) est un langage de modélisation utilisé pour la conception de systèmes d'information.}.
 
 \section{Diagramme de cas d'utilisation}
 
@@ -793,12 +793,12 @@ La Figure~\ref{fig:use-case-diagram} présente les cas d'utilisation de la gTSL,
 
 \subsection{Administration}
 \subsubsection{Authentification}
-L'authentification permet aux utilisateurs d'être reconnus par le système comme étant administrateur, c'est-à-dire comme ayant droit d'éditer des listes de confiance. Cette fonctionnalité est gérée grâce à la blockchain, en effet la clé publique des utilisateurs enregistrés en tant qu'administrateur est sauvegardée dans la blockchain. Afin de s'authentifier, l'utilisateur doit donc utiliser sa clé privée.
+L'authentification permet aux utilisateurs d'être reconnus par le système comme étant administrateur, c'est-à-dire comme ayant droit d'éditer des listes de confiance. Cette fonctionnalité est gérée grâce à la blockchain, en effet les clés publiques des utilisateurs enregistrés en tant qu'administrateur sont sauvegardées dans la blockchain. Afin de s'authentifier, l'utilisateur doit donc utiliser sa clé privée.
 
 \subsection{Trust Service List}
 \label{sec:tsl}
 \subsubsection{Créer une nouvelle Trust Service List}
-Un utilisateur authentifié et autorisé peut créer une TSL de confiance pour un territoire donné. Pour cela, il doit créer une nouvelle TSL, remplir tous les champs requis de celle-ci, valider ces champs et enfin la signer. Ensuite, la liste complète est stockée et répliquée à travers les nœuds du réseau distribué et une nouvelle entrée est créée dans la blockchain afin de la référencer dans la gTSL.
+Un utilisateur authentifié et autorisé peut créer une TSL pour un territoire donné. Pour cela, il doit créer une nouvelle TSL, remplir tous les champs requis de celle-ci, valider ces champs et enfin la signer. Ensuite, la liste complète est stockée et répliquée à travers les nœuds du réseau distribué et une nouvelle entrée est créée dans la blockchain afin de la référencer dans la gTSL.
 \subsubsection{Lire les informations relatives à une Trust Service List}
 Tout utilisateur peut lire et récupérer les informations relatives à une TSL existante afin d'en analyser le contenu. Le système permet d'effectuer une recherche en se basant sur différents critères comme par exemple le territoire, le type de service, le statut ou un certificat.
 \subsubsection{Éditer une Trust Service List}
@@ -863,9 +863,7 @@ Le système doit envoyer des notifications à tous les utilisateurs abonnés à 
 \section{Modules du système}
 \label{sec:modules}
 
-%Comme introduit dans la Section~\ref{sec:system-requirements}, la gTSL est composée principalement d'un Global Trust Service Lifecycle Manager et d'un Global Trust Service Responder, tout en mettant à disposition une interface d'administration pour la gestion des listes de confiance. De plus, la gTSL inclut un module appelé Ledger\footnote{en français, on parle de registre.} Manager qui est chargé de traiter les interactions avec la couche de données.
-
-Cette section décrit la structure et les composants de ces modules de haut niveau. La Figure~\ref{fig:highlevel-components} présente les différents modules.
+Cette section décrit la structure et les composants de haut niveau. La Figure~\ref{fig:highlevel-components} présente les différents modules.
 
 \begin{figure}[h]
 	\centering
@@ -878,54 +876,22 @@ Cette section décrit la structure et les composants de ces modules de haut nive
 
 Ce composant est le cœur de la gTSL. Il fournit les fonctionnalités nécessaires à la gestion des listes de confiance et de leurs informations. Il est composé de quatre sous-composants:
 \begin{itemize}
-	\item TrustListHandler, qui communique avec le Ledger Manager, et expose les fonctionnalités requises à la création, l'édition, la suppression et la récupération des informations concernant les TSPs et les TSs conservées dans la gTSL;
-	\item TrustInformationImporter, qui fournit les fonctionnalités requises à l'import et à l'export de listes de confiance;
-	\item UpdateObserver, implémentant un design pattern Observer\footnote{Le design pattern (que l'on peut traduire par patron de conception) observateur est utilisé pour envoyer un signal à tous les observateurs lorsqu'une condition est remplie sur le module dit observé, la condition peut être par exemple la mise à jour d'une donnée.}, qui a pour rôle de notifier les utilisateurs abonnés lorsqu'un changement s'est produit sur la gTSL;
-	\item TrustComposer, qui gère la logique métier associée à la gestion des services de confiance et des certificats qualifiés.
+	\item \textit{TrustListHandler}, qui communique avec le \textit{Ledger Manager}, et expose les fonctionnalités requises à la création, l'édition, la suppression et la récupération des informations concernant les TSPs et les TSs conservées dans la gTSL;
+	\item \textit{TrustInformationImporter}, qui fournit les fonctionnalités requises à l'import et à l'export de listes de confiance;
+	\item \textit{UpdateObserver}, implémentant un design pattern Observer\footnote{Le design pattern (que l'on peut traduire par patron de conception) observateur est utilisé pour envoyer un signal à tous les observateurs lorsqu'une condition est remplie sur le module dit observé, la condition peut être par exemple la mise à jour d'une donnée.}, qui a pour rôle de notifier les utilisateurs abonnés lorsqu'un changement se produit sur la gTSL;
+	\item \textit{TrustComposer}, qui gère la logique métier associée à la gestion des services de confiance et des certificats qualifiés.
 \end{itemize}
 
-De plus, le Lifecycle Manager est interfacé avec des composants externes:
+De plus, le \textit{Lifecycle Manager} est interfacé avec des composants externes:
 \begin{itemize}
-	\item TrustListProvider, qui gérer les opérations relatives aux listes de confiance et qui est interfacé avec le Lifecycle Manager à travers le TSLService
-	\item SubscriptionProvider, qui est un composant externe interfacé avec le module UpdateObserver à travers le SubscriptionService, qui fournit aux abonnés des fonctionnalités de notifications;
-	\item AuthenticationProvider, qui traite les opérations d'authentification et qui est interfacé avec le Lifecycle Manager à travers le AuthenticationService.
+	\item \textit{TrustListProvider}, qui gérer les opérations relatives aux listes de confiance et qui est interfacé avec le \textit{Lifecycle Manager} à travers le \textit{TSLService}
+	\item \textit{SubscriptionProvider}, qui est un composant externe interfacé avec le module \textit{UpdateObserver} à travers le \textit{SubscriptionService}, qui fournit aux abonnés des fonctionnalités de notifications;
+	\item \textit{AuthenticationProvider}, qui traite les opérations d'authentification et qui est interfacé avec le \textit{Lifecycle Manager} à travers le \textit{AuthenticationService}.
 \end{itemize}
-
-%\subsection{Global Trust Service Responder}
-%Ce composant a pour rôle de répondre aux requêtes des clients concernant les informations sur les TSP et les services de confiance. Il est directement interfacé avec le module TrustListHandler décrit dans la section précédente, qui permet de récupérer les informations dans la couche de données.
 
 \subsection{Ledger Manager}
 
-Le Ledger Manager est le module qui gère toutes les interactions avec la solution de stockage sur laquelle repose la gTSL pour conserver les données. Ce module s'appuie sur une interface définissant les fonctions permettant de manipuler la solution de stockage de données.
-
-\iffalse
-\subsection{Interfaces}
-
-Les interfaces de la gTSL peuvent être classifiées en deux groupes: externes et internes.
-
-%\subsubsection{Interfaces externes}
-
-Les interfaces externes sont basées sur les principes REST\footnote{REST, acronyme anglais de REpresentational State Transfer, est un style architectural pour les systèmes distribués.}.
-
-\begin{itemize}
-	\item AuthenticationServic: est utilisée par le système pour authentifier les utilisateurs;
-	\item TSLService est utilisée par les utilisateurs authentifiés pour réaliser des opérations concernant la gestion des liste de confiance. Il permet aussi la récupération des informations liées aux TSLs par les utilisateurs externes;
-	\item SubscriptionService est utilisée par les utilisateurs externes afin qu'il puisse s'abonner aux notifications d'une liste de confiance donnée.
-\end{itemize}
-
-%\subsubsection{Interfaces internes}
-
-Les interfaces internes peuvent être basées sur REST pour les communications intra-composants ou bien juste être une librairie.
-
-\begin{itemize}
-	\item TrustListOperations permet de créer, éditer, supprimer ou rechercher une liste de confiance;
-	\item ImportTSLOperations permet d'importer et d'exporter une liste de confiance dans un format donné;
-	\item ComposeOperations est utilisée pour gérer les TSPs et les trust anchors;
-	\item NotificationsOperations rassemble les opérations chargées de détecter les changements dans une liste de confiance et de notifier les utilisateurs abonnés.
-\end{itemize}
-
-Le système doit permettre d'évoluer progressivement ses fonctionnalités et d'inclure plus de formats d'importation de la liste de confiance. En regroupant les fonctionnalités communes, cela apporte une architecture plus souple et permet de réutiliser les fonctionnalités.
-\fi
+Le\textit{ Ledger Manager} est le module qui gère toutes les interactions avec la solution de stockage sur laquelle repose la gTSL pour conserver les données. Ce module s'appuie sur une interface définissant les fonctions permettant de manipuler la solution de stockage de données.
 
 \section{Processus métier}
 
@@ -978,11 +944,11 @@ Cette section contient des diagrammes permettant de décrire les classes implém
 
 Les principales entités sont:
 \begin{itemize}
-	\item TrustList, qui définit la liste de confiance pour un territoire donné;
-	\item TrustListPointer, qui est lié uniquement aux listes de confiance des États membres et utilisé uniquement pour la LoTL;
-	\item ServiceProvider, qui contient les informations d'un fournisseur de services;
-	\item Service, qui définit un service métier pour un fournisseur identifié par un ensemble d'identités numériques;
-	\item Version, qui rassemble les informations concernant l'historique de la liste de confiance et des entités associées.
+	\item \textit{TrustList}, qui définit la liste de confiance pour un territoire donné;
+	\item \textit{TrustListPointer}, qui est lié uniquement aux listes de confiance des États membres et utilisé uniquement pour la LoTL;
+	\item \textit{ServiceProvider}, qui contient les informations d'un fournisseur de services;
+	\item \textit{Service}, qui définit un service métier pour un fournisseur identifié par un ensemble d'identités numériques;
+	\item \textit{Version}, qui rassemble les informations concernant l'historique de la liste de confiance et des entités associées.
 \end{itemize}
 \clearpage
 
@@ -1003,13 +969,13 @@ Dans ce chapitre, nous détaillons l'architecture mise en place ainsi que l'impl
 \section{Architecture mise en place}
 \label{sec:architecture}
 
-Cette partie concerne l'architecture du système et différencie d'une part l'architecture d'un nœud de la gTSL et d'autre part l'architecture globale du système. La première vision permet de détailler au niveau local les différents composants utilisés. La seconde vision permet de comprendre au niveau général la décentralisation et la distribution des informations à travers un réseau de multiples nœuds interconnectés de la gTSL agissant dans un but commun.
+Cette partie concerne l'architecture du système et différencie d'une part l'architecture d'un nœud de la gTSL et d'autre part l'architecture globale du système. La première vision permet de détailler au niveau local les différents composants utilisés. La seconde vision permet de comprendre au niveau général la décentralisation et la distribution des informations à travers un réseau de multiples nœuds interconnectés de la gTSL, agissant dans un but commun.
 
-Cette section présente uniquement l'architecture logicielle du service de gTSL mais ne fournit pas une présentation de la mise en place technique du système. Des explications concernant le déploiement du système (outils utilisés, processus d'installation, etc.) sont détaillées dans le document GTSL - Project Setup Documentation disponible en Annexe~\ref{anx:gtsl-setup}. J'ai eu pour mission de rédiger ce document dans le but de fournir une précision sur le déploiement du module de gTSL. Ce document détaille les différents composants mis en place dans le cadre du déploiement mais ne correspond pas au manuel d'installation utilisateur qui est un autre document intitulé GTSL - Project Setup Guidelines disponible en Annexe~\ref{anx:gtsl-guidelines} que j'ai également rédigé.
+Cette section présente uniquement l'architecture logicielle du service de gTSL mais ne fournit pas la documentation de la mise en place technique du système. Des explications concernant le déploiement du système (outils utilisés, processus d'installation, etc.) sont détaillées dans le document GTSL - Project Setup Documentation disponible en Annexe~\ref{anx:gtsl-setup}. J'ai eu pour mission de rédiger ce document dans le but de fournir une précision sur le déploiement du module de gTSL. Néanmoins, ce document correspond pas au manuel d'installation utilisateur qui fait l'objet d'un second document intitulé GTSL - Project Setup Guidelines disponible en Annexe~\ref{anx:gtsl-guidelines} que j'ai également rédigé.
 
 \subsection{Architecture d'un nœud de la gTSL}
 
-Le système mis en place est composé de deux parties principales. La première partie est une interface d'administration qui permet aux utilisateurs authentifiés d'opérer facilement des modifications sur la gTSL à l'aide d'une interface graphique. La seconde partie est un nœud de la gTSL qui contient une base de données locale, une instance connectée au réseau IPFS et une instance connectée à la blockchain Ethereum. Ces deux parties communiquent via le protocole HTTP. Les données que contiennent les requêtes échangées sont formatées en JSON. Il est important de noter que l'interface d'administration peut être omise dans le cas où le nœud est déployé à des fins de consultation de la gTSL par des utilisateurs externes uniquement. La Figure~\ref{fig:architecture-node} présente les interactions entre ces différents composants.
+Le système mis en place est composé de deux parties principales. La première partie est une interface d'administration qui permet aux utilisateurs authentifiés d'opérer facilement des modifications sur la gTSL à l'aide d'une interface graphique. La seconde partie est un nœud de la gTSL qui contient un serveur d'applications, une base de données locale, une instance connectée au réseau IPFS et une instance connectée à la blockchain Ethereum. Ces deux parties communiquent via le protocole HTTP. Les données que contiennent les requêtes échangées sont formatées en JSON. Il est important de noter que l'interface d'administration peut être omise dans le cas où le nœud est déployé à des fins de consultation de la gTSL par des utilisateurs externes uniquement. La Figure~\ref{fig:architecture-node} présente les interactions entre ces différents composants.
 \clearpage
 
 \begin{figure}[h]
@@ -1034,28 +1000,28 @@ L'API\footnote{Une API, acronyme anglais de Application Programming Interface, e
 	\label{fig:rest-api}
 \end{figure}
 
-Le HTTP Handler\footnote{en français, gestionnaire HTTP.} a pour rôle d'intercepter et de répondre aux requêtes HTTP. Il est composé des multiples contrôleurs chargés de faire appel à des services qui traitent les demandes des utilisateurs. Chaque contrôleur est défini sur une URL précise et expose des méthodes dans lesquelles sont configurés la méthode HTTP à utiliser ainsi que l'en-tête et le corps de la requête. Le HTTP Handler renvoie des réponses HTTP contenant un statut permettant de déterminer le résultat d'une requête ou indiquer au client une erreur. Si aucune erreur n'est survenue, le code de réponse HTTP 200 OK est envoyé.
+Le \textit{HTTP Handler}\footnote{en français, gestionnaire HTTP.} a pour rôle d'intercepter et de répondre aux requêtes HTTP. Il est composé de multiples contrôleurs chargés de faire appel à des services qui traitent les demandes des utilisateurs. Chaque contrôleur est défini sur une URL précise et expose des méthodes dans lesquelles sont configurés la méthode HTTP à utiliser ainsi que l'en-tête et le corps de la requête. Le \textit{HTTP Handler} renvoie des réponses HTTP contenant un statut permettant de déterminer le résultat d'une requête ou d'indiquer au client une erreur. Si aucune erreur n'est survenue, le code de réponse HTTP 200 OK est envoyé.
 
-La Business Layer\footnote{en français, couche métier.} est la partie traitement des données de l'application, c'est dans cette partie que les données sont vérifiées, validées, transformées ou éventuellement rejetées si elles sont invalides. Elle est composée de services qui sont appelés par les contrôleurs REST. Les services font appel à la couche de données afin de lire, modifier ou
+La \textit{Business Layer}\footnote{en français, couche métier.} est la partie traitement des données de l'application, c'est dans cette partie que les données sont vérifiées, validées, transformées ou éventuellement rejetées si elles sont invalides. Elle est composée de services qui sont appelés par les contrôleurs REST. Les services font appel à la couche de données afin de lire, modifier ou
 écrire dans la base de données. Ils peuvent aussi faire appel à d'autres services si cela est nécessaire. Dans cette partie sont gérées les éventuelles erreurs et exceptions qui peuvent survenir lors du traitement des données.
 
-La partie Data Layer\footnote{en français, couche de données.} a pour objectif de gérer les données. La couche de données est composée d'une part du Database Manager et d'autre part du Ledger Manager. Le Database Manager a pour rôle de gérer les insertions, les mises à jour et les récupérations des données concernant les abonnements et les drafts en utilisant la base de données locale. Le Ledger Manager quant à lui joue le rôle d'interface entre le nœud IPFS et le nœud Ethereum, il a aussi à charge de gérer les données liées aux listes de confiance.
+La partie \textit{Data Layer}\footnote{en français, couche de données.} a pour objectif de gérer les données. La couche de données est composée d'une part du \textit{Database Manager} et d'autre part du \textit{Ledger Manager}. Le \textit{Database Manager} a pour rôle de gérer les insertions, les mises à jour et les récupérations des données concernant les abonnements et les drafts en utilisant la base de données locale. Le \textit{Ledger Manager} quant à lui joue le rôle d'interface entre le nœud IPFS et le nœud Ethereum, il a aussi à charge de gérer les données liées aux listes de confiance.
 
 \subsubsection{Nœud IPFS}
 
-Le nœud IPFS est connecté à un réseau pair-à-pair composé d'autres nœuds IPFS anonymes. Il a pour rôle de maintenir les données dans ce réseau en les répliquant à travers les autres nœuds IPFS appartenant au service de gTSL, qui forme ce que l'on appelle un cluster\footnote{Un cluster est un ensemble de serveurs sur un réseau qui agissent dans un but commun.}. Le nœud interagit avec le système via le Ledger Manager qui est chargé de lui communiquer les données à stocker.
+Le nœud IPFS est connecté à un réseau pair-à-pair composé d'autres nœuds IPFS anonymes. Il a pour rôle de maintenir les données dans ce réseau en les répliquant à travers les autres nœuds IPFS appartenant au service de gTSL, qui forme ce que l'on appelle un cluster\footnote{Un cluster est un ensemble de serveurs sur un réseau qui agissent dans un but commun.}. Le nœud interagit avec le système via le \textit{Ledger Manager} qui est chargé de lui communiquer les données à stocker.
 
 \subsubsection{Nœud Ethereum}
 
-Le nœud Ethereum est connecté à un réseau pair-à-pair composé d'autres nœuds Ethereum anonymes. Il a pour rôle d'assurer l'intégrité des données grâce au consensus de la blockchain. Le nœud s'interface avec le Ledger Manager à qui il doit fournir l'état courant de la gTSL stocké dans un smart contract. L'état courant correspond à l'ensemble des hashes représentatifs de chaque liste de confiance. Son deuxième rôle est la gestion des utilisateurs, en effet l'authentification est gérée par un smart contract qui maintient les clés publiques des personnes autorisées à modifier la gTSL.
+Le nœud Ethereum est connecté à un réseau pair-à-pair composé d'autres nœuds Ethereum anonymes. Il a pour rôle d'assurer l'intégrité des données grâce au consensus de la blockchain. Le nœud s'interface avec le \textit{Ledger Manager} à qui il doit fournir l'état courant de la gTSL stocké dans un smart contract. L'état courant correspond à l'ensemble des hashes représentatifs de chaque liste de confiance. Son deuxième rôle est la gestion des utilisateurs, en effet l'authentification est gérée par un smart contract qui maintient les clés publiques des personnes autorisées à modifier la gTSL.
 
 \subsubsection{Base de données}
 
-La base de données locale à chaque nœud a pour but de stocker les emails des personnes abonnées aux notifications ainsi que de stocker les drafts de listes de confiance. Les notifications sont donc gérées par le nœud auquel l'utilisateur a souscrit. L'intérêt de conserver les emails dans une base de données locale est de ne pas diffuser publiquement ces emails, ce qui serait le cas si ils étaient stockés dans la blockchain, afin de respecter la vie privée des utilisateurs. Concernant les drafts, on les stocke ni dans IPFS ni dans Ethereum mais bien dans une base de données locale. En effet, on ne veut pas rendre publique un draft puisqu'il peut être incomplet ou contenir des informations non vérifiées. De plus, il n'est pas pertinent de s'assurer de la validité des données d'un draft puisqu'il n'est pas rendu publique. Les utilisateurs d'administration de la gTSL doivent dans tous les cas déployer leur propre instance du nœud de gTSL comme expliqué en introduction de la Section~\ref{sec:architecture}, ils auront donc leur base de données dédiée contenant uniquement les drafts qu'ils ont établis.
+La base de données locale à chaque nœud a pour but de stocker les emails des personnes abonnées aux notifications ainsi que les drafts de listes de confiance. Les notifications sont donc gérées par le nœud auquel l'utilisateur a souscrit. L'intérêt de conserver les emails dans une base de données locale est de ne pas diffuser publiquement ces emails, ce qui serait le cas si ils étaient stockés dans la blockchain, afin de respecter la vie privée des utilisateurs. Concernant les drafts, on les stocke ni dans IPFS ni dans Ethereum mais bien dans une base de données locale. En effet, on ne veut pas rendre publique un draft puisqu'il peut être incomplet ou contenir des informations non vérifiées. De plus, il n'est pas pertinent de s'assurer de la validité des données d'un draft puisqu'il n'est pas rendu publique. Les utilisateurs d'administration de la gTSL doivent dans tous les cas déployer leur propre instance du nœud de gTSL comme expliqué en introduction de la Section~\ref{sec:architecture}, ils auront donc leur base de données dédiée contenant uniquement les drafts qu'ils ont établis.
 
 \subsection{Architecture globale}
 
-Le système présenté en Figure~\ref{fig:architecture-node} sera déployé par tous les utilisateurs d'administration dans toute l'Europe et au-delà. En effet, chaque administrateur a besoin de son propre compte Ethereum, c'est-à-dire de son propre nœud Ethereum et de son propre identifiant de nœud IPFS, c'est-à-dire de son propre nœud IPFS. Cela permet de forcer encore plus la réplication des données et donc d'augmenter la résilience du système. De plus, il est envisagé de mettre en place des instances publiques afin que les utilisateurs externes puissent récupérer les données liées à la gTSL. Ce système est open-source, cela implique que toute personne souhaitant déployer sa propre instance aura la possibilité de le faire, malgré tout il ne lui est pas possible de modifier la gTSL puisqu'il ne dispose pas des autorisations requises. Toutes ces instances forment donc un système décentralisé et distribué qui permettra de maintenir l'entièreté des données. 
+Le système présenté en Figure~\ref{fig:architecture-node} sera déployé par tous les utilisateurs d'administration dans toute l'Europe et au-delà. En effet, chaque administrateur a besoin de son propre compte Ethereum, c'est-à-dire de son propre nœud Ethereum et de son propre identifiant de nœud IPFS, c'est-à-dire de son propre nœud IPFS. Cela permet d'augmenter le nombre de réplica des données et donc d'améliorer la résilience du système. De plus, il est envisagé de mettre en place des instances publiques afin que les utilisateurs externes puissent récupérer les données liées à la gTSL. Ce système est open-source, cela implique que toute personne souhaitant déployer sa propre instance aura la possibilité de le faire. Malgré tout, il ne lui est pas possible de modifier la gTSL puisqu'il ne dispose pas des autorisations requises. Toutes ces instances forment donc un système décentralisé et distribué qui permettra de maintenir l'entièreté des données. 
 
 La Figure~\ref{fig:architecture-global} présente l'architecture globale du système, décentralisée et distribuée, composée de plusieurs nœuds de la gTSL. Certains composants ne jouant aucun rôle dans la décentralisation du modèle ont été retirés des nœuds de gTSL dans un soucis de compréhension.
 \clearpage
@@ -1076,13 +1042,13 @@ Cette section présente les différents modules de la gTSL, et plus particulièr
 \subsection{Ledger Manager}
 \label{sec:realisation-ledger}
 
-Dans cette section est décrite la manière d'intégrer Ethereum et IPFS. Dans un premier temps est exposé l'intérêt d'utiliser ces technologies ensemble, ensuite est présentée la structure de données mise en place afin de les interfacer et enfin est détaillé le système implémenté afin de gérer l'historique des versions de la gTSL.
+Dans cette section est décrite la manière d'intégrer Ethereum et IPFS. Dans un premier temps est exposé l'intérêt d'utiliser ces technologies ensemble. Ensuite est présentée la structure de données mise en place afin de les interfacer. Enfin est détaillé le système implémenté afin de gérer l'historique des versions de la gTSL.
 
 Les explications fournies dans cette partie sont tirées du document Integration of Ethereum \& IPFS disponible en Annexe~\ref{anx:ipfs-ethereum} que j'ai rédigé dans le but de fournir une explication de l'utilisation de technologies décentralisées et distribuées dans le cadre du module de gTSL.
 
 \subsubsection{L'avantage de coupler IPFS \& Ethereum}
 
-Un moyen simple de stocker les données gTSL est de les conserver dans une blockchain, cela évite le besoin d'un système de fichiers décentralisé. 
+Un moyen simple de stocker les données de la gTSL est de les conserver dans une blockchain, cela évite le besoin d'un système de fichiers décentralisé. 
 Bien qu'une blockchain présente beaucoup d'avantages, elle présente également des inconvénients.
 L'un d'eux est que le déploiement d'un smart contract dans la blockchain Ethereum doit être payé.
 De plus, la taille du smart contract (en matière de d'opérations et de mémoire) est directement liée au prix.
@@ -1094,7 +1060,7 @@ Dans IPFS, toutes les données sont adressées par leur hash, rendant leur état
 
 Comme expliqué dans la partie précédente, seul le hash des données est stocké dans la blockchain.
 Toutes les données réelles sont stockées dans IPFS, désigné comme étant la {\em couche de données}\footnote{en anglais, Data layer}. 
-Un hash est l'adresse qui identifie une TSL en particulier. 
+Un hash est l'adresse qui identifie une TSL donnée. 
 Par conséquent, lorsqu'une TSL est stocké dans IPFS, un hash unique est automatiquement calculé à partir de ses données. 
 Ce hash est ensuite stocké dans un smart contract dans lequel il est rattaché à un identifiant unique non mutable de la TSL, correspondant au code du pays de la TSL conformément au standard ETSI TS 119 612~\cite{ETSITS119612}.
 Cet identifiant non mutable est ensuite utilisé par le système pour retrouver le hash d'une TSL.
@@ -1140,7 +1106,7 @@ contract Ledger {
 
 Comme spécifié dans les besoins du service de gTSL, un historique de chaque TSL doit être conservé. 
 Pour ce faire, l'idée est de maintenir une liste chaînée de toutes les versions de chaque TSL.
-Cette liste chaînée est stockée dans IPFS et chaque version, que l'on appellera {\em commit}, de la liste peut être considérée comme un objet JSON défini dans le Listing~\ref{lst:commitObject}.
+Cette liste chaînée est stockée dans IPFS et chaque version, que l'on appellera {\em commit}, de la liste peut être considérée comme un objet JSON, défini dans le Listing~\ref{lst:commitObject}.
 
 \begin{lstlisting}[language=json, basicstyle=\small, caption={Commit Object}, label={lst:commitObject}]
 {
@@ -1215,11 +1181,11 @@ La gestion des utilisateurs concerne le processus par lequel des administrateurs
 En opposition avec un modèle classique, le modèle conçu ne repose pas sur un "super-administrateur" qui a le pouvoir de gérer les administrateurs. 
 %Dans notre modèle, tous les administrateurs ont les mêmes pouvoirs et aucun d'entre eux n'a la possibilité d'ajouter ou de retirer un utilisateur de la liste par son unique décision.
 
-Le système mis en place est basé sur un service de votes déployé dans la blockchain Ethereum. Les actions de gestion des utilisateurs reposent sur un consortium d'administrateurs ayant la possibilité de soumettre une proposition d'ajout ou de révocation d'un membre. Le système procède à l'établissement de la proposition, en précisant l'action à effectuer (ajout/suppression), le membre concerné par le vote, la date de création, la date limite du vote ainsi que l'identité de l'initiateur du vote. Pour une proposition donnée, chaque administrateur a la possibilité de voter en faveur ou en défaveur. En outre, tous les membres du consortium disposent du droit de vote et ce vote a le même poids pour chacun d'entre eux, il n'existe aucun privilège pour un votant.
+Le système mis en place est basé sur un service de votes déployé dans la blockchain Ethereum. Les actions de gestion des utilisateurs reposent sur un consortium d'administrateurs ayant la possibilité de soumettre une proposition d'ajout ou de révocation d'un membre. Pour cela, l'utilisateur établit une proposition de votes, en précisant l'action à effectuer (ajout/suppression), le membre concerné par le vote ainsi que la date limite du vote. Pour une proposition donnée, chaque administrateur a la possibilité de voter en faveur ou en défaveur. En outre, tous les membres du consortium disposent du droit de vote et ce vote a le même poids pour chacun d'entre eux, il n'existe aucun privilège pour un votant.
 
-L'avantage majeur de cette conception est que le système ne peut être altéré par un seul et unique utilisateur malhonnête puisqu'il a besoin que la proposition soit validée par la majorité du consortium. Le seul moyen pour un attaquant de corrompre le système ou d'en prendre le contrôle est de réussir à être majoritaire dans le consortium. Pour cela, il faudrait soit qu'il réussisse à dérober les clés privées de plus de la moitié du consortium, soit qu'il réussisse à ajouter des clés publiques qu'ils détient dans la liste des clés autorisées, à hauteur d'au moins le nombre de clés déjà dans la liste pour devenir majoritaire. 
+L'avantage majeur de cette conception est que le système ne peut être altéré par un seul et unique utilisateur malhonnête, puisqu'il est nécessaire que la proposition soit validée par la majorité du consortium. Le seul moyen pour un attaquant de corrompre le système ou d'en prendre le contrôle est de réussir à être majoritaire dans le consortium. Pour cela, il faudrait soit qu'il réussisse à dérober les clés privées de plus de la moitié du consortium, soit qu'il réussisse à ajouter des clés publiques qu'ils détient dans la liste des clés autorisées, à hauteur d'au moins le nombre de clés déjà présentes dans la liste pour devenir majoritaire. 
 
-Afin de renforcer la sécurité du système et de se protéger des attaques Sybil, il est possible d'imaginer que l'on ne se base pas sur la majorité (50\%) pour accepter la proposition mais sur un pourcentage plus élevé (80\% par exemple). En effet, les actions d'ajout ou de suppression d'un administrateur du consortium sont décidées oralement avant même que l'opération ne soit saisie dans le module de gTSL, augmenter le seuil d'acceptation d'une proposition est donc un moyen efficace de se protéger davantage. De plus, dans le but d'empêcher qu'un utilisateur puisse valider un vote tout seul, une proposition doit atteindre un quorum pour être validé. Ce quorum, tout comme le seuil de validation, peut être augmenté afin d'augmenter la sécurité du système.
+Afin de renforcer la sécurité du système et de se protéger des attaques Sybil, il est possible d'imaginer que l'on ne se base pas sur la majorité (50\%) pour accepter la proposition mais sur un pourcentage plus élevé (80\% par exemple). En effet, les actions d'ajout ou de suppression d'un administrateur du consortium sont décidées oralement entre les États membres, avant même que l'opération ne soit saisie dans le module de gTSL. L'intérêt d'augmenter la majorité d'une proposition est de protéger davantage le système. De plus, dans le but d'empêcher qu'un utilisateur puisse valider un vote tout seul, une proposition doit atteindre un quorum pour être validé. Ce quorum, tout comme le seuil de majorité, peut être augmenté afin d'augmenter la sécurité du système.
 
 Pour une proposition, on différencie trois résultats possibles:
 \begin{itemize}
@@ -1339,7 +1305,7 @@ Le système a pour mission de notifier tous les abonnés aux TSLs. Lorsqu'une mo
 
 \subsection{Lifecycle Manager}
 
-Le Lifecycle Manager a pour rôle de gérer le cycle de vie des TSLs. Il se charge de traiter, vérifier et valider les informations relatives aux TSLs, on dit qu'il applique la logique métier. Ce module permet d'une part de gérer les TSLs et d'autre part de gérer les drafts. Concernant les TSLs, il permet de traiter la validation de tous les champs de la TSL conformément au standard ETSI TS 119 612~\cite{ETSITS119612} lors de l'ajout ou de l'édition et offre la possibilité de procéder à des recherches sur les TSLs, d'importer une TSL au format XML et d'exporter une TSL au format XML. Les différentes techniques de recherche sur la gTSL sont évoquées dans le document gTSL Search Engine disponible en Annexe~\ref{anx:gtsl-search-engine}. Concernant les drafts, il gère le processus de création et d'édition des drafts en indiquant pour chacun quels champs sont valides vis-à-vis du standard ETSI TS 119 612~\cite{ETSITS119612}. Un draft peut être enregistré même s'il n'est pas valide, mais dans ce cas il ne pourra pas être publié dans la gTSL. À noter que les utilisateurs externes peuvent créer des drafts mais ne disposent des droits nécessaires pour publier les TSLs. Si un utilisateur devient par la suite administrateur il pourra tout de même publier les drafts réalisés en tant qu'utilisateur externe.
+Le \textit{Lifecycle Manager} a pour rôle de gérer le cycle de vie des TSLs. Il se charge de traiter, vérifier et valider les informations relatives aux TSLs, on dit qu'il applique la logique métier. Ce module permet d'une part de gérer les TSLs et d'autre part de gérer les drafts. Concernant les TSLs, il permet de traiter la validation de tous les champs de la TSL conformément au standard ETSI TS 119 612~\cite{ETSITS119612} lors de l'ajout ou de l'édition. Il offre aussi la possibilité de procéder à des recherches sur les TSLs, d'importer une TSL au format XML et d'exporter une TSL au format XML. Les différentes techniques de recherche envisagées sur la gTSL sont évoquées dans le document gTSL Search Engine disponible en Annexe~\ref{anx:gtsl-search-engine}. Concernant les drafts, il gère le processus de création et d'édition des drafts en indiquant pour chacun quels champs sont valides vis-à-vis du standard ETSI TS 119 612~\cite{ETSITS119612}. Un draft peut être enregistré même s'il n'est pas valide, mais dans ce cas il ne pourra pas être publié dans la gTSL. À noter que les utilisateurs externes peuvent créer des drafts mais ne disposent des droits nécessaires pour publier les TSLs. Si un utilisateur externe est promu administrateur par la suite, il pourra tout de même publier les drafts réalisés en tant qu'utilisateur externe.
 
 \section{Présentation de la solution}
 
@@ -1347,9 +1313,9 @@ Cette section concerne uniquement l'interface de programmation applicative. L'in
 
 \subsection{Interface de programmation applicative}
 
-L'interface de programmation applicative (API) de la gTSL correspond au module Trust List Provider. L'API implémentée respecte le modèle REST et se charge d'intercepter les requêtes HTTP des utilisateurs afin de les diriger vers le service adapté du Lifecycle Manager. Il correspond à l'ensemble des contrôleurs implémentés grâce au framework\footnote{Un framework est un ensemble de composants développées par un tierce permettant de définir une architecture logicielle.} Spring\footnote{Voir \url{https://spring.io/}}. Cette section présente l'ensemble des contrôleurs définit dans l'implémentation du projet.
+L'interface de programmation applicative (API) de la gTSL correspond au module \textit{Trust List Provider}. L'API implémentée respecte le modèle REST et se charge d'intercepter les requêtes HTTP des utilisateurs afin de les diriger vers le service adapté du \textit{Lifecycle Manager}. Il correspond à l'ensemble des contrôleurs implémentés grâce au framework\footnote{Un framework est un ensemble de composants développées par un tierce permettant de définir une architecture logicielle.} Spring\footnote{Voir \url{https://spring.io/}}. Cette section présente l'ensemble des contrôleurs définit dans l'implémentation du projet.
 
-La Figure~\ref{fig:rest-controllers} définit l'ensemble des contrôleurs exposés par le Trust List Provider.
+La Figure~\ref{fig:rest-controllers} définit l'ensemble des contrôleurs exposés par le \textit{Trust List Provider}.
 
 \clearpage
 \begin{figure}[h]
@@ -1366,7 +1332,7 @@ Les contrôleurs définies dans la Figure~\ref{fig:rest-controllers} sont détai
 	\item Le contrôleur \textit{PointersToOtherTSL} permet aux administrateurs de gérer les pointeurs vers les autres TSLs;
 	\item Le contrôleur \textit{TrustServiceList} permet à tous les utilisateurs de lire une TSL particulière ou toutes les TSLs, et permet aux administrateurs de créer, éditer, supprimer, signer ou importer une TSL;
 	\item Le contrôleur \textit{TrustServiceProvider} permet aux administrateurs d'ajouter, éditer ou retirer un TSP d'une TSL.
-	\item Le contrôleur \textit{TrustService} permet aux administrateurs d'ajouter, éditer ou retirer un TS d'un TS, et permet à tous les utilisateurs de vérifier un TS en fonction de critères de filtrage.
+	\item Le contrôleur \textit{TrustService} permet aux administrateurs d'ajouter, éditer ou retirer un TS d'un TSP, et permet à tous les utilisateurs de vérifier un TS en fonction de critères de filtrage.
 \end{itemize}
 
 \section{Validation de la solution}
@@ -1374,11 +1340,13 @@ Les contrôleurs définies dans la Figure~\ref{fig:rest-controllers} sont détai
 Durant mon stage, plusieurs méthodes de validation ont été mises en place. Évidemment, étant
 donné que ce projet est en cours de réalisation, le processus de validation n'est pas terminé et d'autres vérifications sont prévues pour la fin du projet. Dans cette section sont présentées les principales mesures mises en place pour attester de la conformité des travaux effectuées.
 
-Dans un premier temps, la première validation a consisté à valider les choix opérés lors de l'état de l'art en début de stage. Cette étape a été très importante car c'est elle qui nous a permis de valider les technologies à utiliser dans le projet. Pour cela, j'ai réalisé une preuve de concept permettant d'interfacer les technologies Ethereum et IPFS dans le but de stocker des données dans un environnement décentralisé et distribué. Cette preuve de concept a ensuite fait l'objet d'une démonstration à l'équipe de projet qui a pu valider l'utilisation des technologies sur la base du travail que j'ai réalisé.
+Dans un premier temps, la première validation a consisté à valider les choix opérés à la suite de l'état de l'art en début de stage. Cette étape a été très importante car c'est elle qui nous a permis de valider les technologies à utiliser dans le projet. Pour cela, j'ai réalisé une preuve de concept permettant d'interfacer les technologies Ethereum et IPFS dans le but de stocker des données dans un environnement décentralisé et distribué. Cette preuve de concept a ensuite fait l'objet d'une démonstration à l'équipe de projet qui a pu valider l'utilisation des technologies sur la base du travail que j'ai réalisé.
 
-Ensuite, d'autres points de validation ont eu lieu durant le stage. Tous les jours, une réunion rapide a été organisée afin de prendre connaissance du travail réalisé et restant pour chaque membre de l'équipe. Cette réunion qui s'inscrit dans la méthodologie Scrum permet de connaître l'avancement global du projet pour chaque membre mais permet aussi de mettre en avant les difficultés rencontrées ou de recevoir des validations orales et informelles dans nos choix d'implémentation. Toujours dans la méthodologie Scrum, à chaque fin de sprint est organisée une réunion. Elle a pour but de faire le bilan des tâches réalisées durant les deux semaines de sprint et d'engager le nouveau sprint, mais elle permet surtout de faire le point sur l'amélioration continue du processus de gestion de projet et de la réalisation des tâches afin de toujours augmenter la performance de l'équipe. 
+Ensuite, d'autres points de validation ont eu lieu durant le stage. Tous les jours, une réunion rapide a été organisée afin de prendre connaissance du travail réalisé et restant pour chaque membre de l'équipe. Cette réunion qui s'inscrit dans la méthodologie Scrum permet de connaître l'avancement du projet pour chaque membre et permet aussi de mettre en avant les difficultés rencontrées ou de recevoir des validations orales et informelles dans nos choix d'implémentation. 
 
-Une autre validation spécifique à ce projet est la conformité au standard ETSI TS 119 612~\cite{ETSITS119612}. En effet, tout au long du stage il a été important et nécessaire de se référer régulièrement à ce standard puisque l'exigence première du projet est d'être conforme à ce standard. Il a donc été nécessaire de faire valider chaque module lors de la phase de recherche afin de s'assurer que la direction choisie permettait d'aboutir à une fonctionnalité valide.
+Toujours dans la méthodologie Scrum, à chaque fin de sprint est organisée une réunion. Elle a pour but de faire le bilan des tâches réalisées durant les deux semaines de sprint et d'engager le nouveau sprint. Par ailleurs, elle permet de faire le point sur l'amélioration continue du processus de gestion de projet et de la réalisation des tâches afin de toujours augmenter la performance de l'équipe. 
+
+Une autre validation spécifique à ce projet est la conformité au standard ETSI TS 119 612~\cite{ETSITS119612}. En effet, tout au long du stage il a été important et nécessaire de se référer régulièrement à ce standard puisque l'exigence première du projet est d'être conforme à celui-ci. Il a donc été nécessaire de faire valider chaque module en s'appuyant sur le standard lors de la phase de recherche, afin de s'assurer que la direction choisie permettait d'aboutir à une fonctionnalité valide.
 
 Enfin, la validation a aussi porté sur l'aspect technique. Au fur et à mesure de l'avancée du projet, des tests unitaires et d'intégration ont été mis en place afin de valider formellement les différentes fonctionnalités du service de gTSL.
 
@@ -1386,7 +1354,7 @@ Enfin, la validation a aussi porté sur l'aspect technique. Au fur et à mesure 
 
 Les résultats définitifs du stage sont à l'heure actuelle inconnus puisque la date de livraison est prévue pour le 30 novembre 2017. Malgré cela, tous les retours du consortium d'entreprises du projet FutureTrust ont été jusqu'à présent positifs vis-à-vis du travail réalisé par l'équipe notamment concernant les documents de conception et les choix opérés. De plus, il y a un fort enthousiasme autour de la gTSL de par l'utilisation de la blockchain dans un projet européen.
 
-Un autre point a soulevé concernant ce projet est que c'est un projet de recherche et développement. Cela signifie que la Commission Européenne attend de l'innovation dans la conception et la réalisation tout en gardant une simplicité d'utilisation pour les utilisateurs finaux. Le challenge a donc été d'adapter une technologie récente et complexe qu'est la blockchain à un système existant. Notre objectif est que ce projet rencontre un grand succès afin qu'il soit adopté par la Commission Européenne pour remplacer l'architecture actuelle.
+Un autre point a soulevé concernant ce projet est que c'est un projet de recherche et développement. Cela signifie que la Commission Européenne attend de l'innovation dans la conception et la réalisation tout en conservant une simplicité d'utilisation pour les utilisateurs finaux. Le challenge a donc été d'adapter une technologie récente et complexe qu'est la blockchain à un système existant. Notre objectif est que ce projet rencontre un grand succès afin qu'il soit adopté par la Commission Européenne pour remplacer l'architecture actuelle.
 
 Un des résultats qui a su montrer notre capacité à utiliser la blockchain dans le cadre du projet FutureTrust est la preuve de concept que j'ai réalisée après que l'équipe ait validé les choix technologiques que j'ai proposés à la suite de l'état de l'art. À ce moment, le consortium a commencé à s'intéresser à notre conception de la gTSL et à sa mise en place imminente. J'ai donc rédigé un document explicatif de l'utilisation de la blockchain dans le cadre de la gTSL. Ce document s'intitule Integration of Ethereum \& IPFS et est disponible en Annexe~\ref{anx:ipfs-ethereum}. À la suite de la lecture de ce document, un membre de l'ETSI a montré son intérêt pour notre travail et a invité l'équipe à venir présenter ce papier à un atelier blockchain qui aura lieu début 2018 au Luxembourg. À l'heure actuelle, la date définitive de cet évènement n'a pas été fixée.
 

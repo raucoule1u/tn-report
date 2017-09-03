@@ -218,7 +218,7 @@ Les blocs de transaction sont créés par un processus appelé le minage\footnot
 
 En 1994, Nick Szabo, chercheur juridique et cryptographe, s'est rendu compte que le registre décentralisé pouvait être utilisé pour des smart contracts (contrats intelligents), autrement appelés contrats auto-exécutés, contrats blockchain ou contrats numériques.
 Les contrats peuvent être convertis en code informatique, stockés et répliqués sur le système.
-Les smart contracts permettent d'échanger de l'argent, des biens, des parts ou n'importe quel actif de manière transparente, sans conflit et en évitant tout service intermédiaire.
+Les smart contracts permettent d'échanger de l'argent, des biens, des parts ou n'importe quel actif de manière transparente, sans conflits et en évitant tout service intermédiaire.
 La Figure~\ref{fig:smart-contracts} représente l'établissement d'un smart-contract entre deux parties, sans service intermédiaire. Dans ce mémoire, nous utilisons le terme de smart contract pour désigner un contrat intelligent car ce terme est le plus répandu.
 
 \begin{figure}[h]
@@ -241,6 +241,7 @@ Les smart-contracts apportent de nombreux avantages pour leurs utilisateurs:
 \end{itemize}
 
 \chapter{Présentation détaillée de la problématique}
+\label{chap:prob}
 
 Dans ce chapitre, nous présentons les besoins liés au service de liste de confiance globale ainsi que les limites de l'architecture actuelle. Ce chapitre introduit aussi les concepts relatifs à la gestion de projet, plus précisément la méthodologie utilisée et l'organisation du temps au cours du stage.
 
@@ -773,7 +774,7 @@ Un acteur est défini comme étant un ensemble cohérent de rôles que les utili
 
 \subsection{External User}
 
-\textit{External User}\footnote{en français, utilisateur externe.} représente un utilisateur sans privilège spécifique qui souhaitent interagir avec le système, dans le but de récupérer des informations relatives à la gTSL. Il a accès au \textit{Global Trust Service Responder} et peut donc valider le statut qualifié d'un TS ou d'un TSP donné.
+\textit{External User}\footnote{en français, utilisateur externe.} représente un utilisateur sans privilèges spécifiques qui souhaitent interagir avec le système, dans le but de récupérer des informations relatives à la gTSL. Il a accès au \textit{Global Trust Service Responder} et peut donc valider le statut qualifié d'un TS ou d'un TSP donné.
 
 \subsection{Administrator User}
 
@@ -964,14 +965,14 @@ Le modèle de données peut être simplifié par un graphe orienté, comme le mo
 \chapter{Réalisation de la solution proposée}
 \label{chap:realisation}
 
-Dans ce chapitre, nous détaillons l'architecture mise en place ainsi que l'implémentation des modules. Ce chapitre présente aussi la solution et les validations qui ont été effectuées sur celle-ci.
+Dans ce chapitre, nous détaillons l'architecture mise en place ainsi que l'implémentation des modules présentés au Chapitre~\ref{chap:analyse}. Ce chapitre présente aussi la solution et les validations qui ont été effectuées sur celle-ci.
 
 \section{Architecture mise en place}
 \label{sec:architecture}
 
 Cette partie concerne l'architecture du système et différencie d'une part l'architecture d'un nœud de la gTSL et d'autre part l'architecture globale du système. La première vision permet de détailler au niveau local les différents composants utilisés. La seconde vision permet de comprendre au niveau général la décentralisation et la distribution des informations à travers un réseau de multiples nœuds interconnectés de la gTSL, agissant dans un but commun.
 
-Cette section présente uniquement l'architecture logicielle du service de gTSL mais ne fournit pas la documentation de la mise en place technique du système. Des explications concernant le déploiement du système (outils utilisés, processus d'installation, etc.) sont détaillées dans le document GTSL - Project Setup Documentation disponible en Annexe~\ref{anx:gtsl-setup}. J'ai eu pour mission de rédiger ce document dans le but de fournir une précision sur le déploiement du module de gTSL. Néanmoins, ce document correspond pas au manuel d'installation utilisateur qui fait l'objet d'un second document intitulé GTSL - Project Setup Guidelines disponible en Annexe~\ref{anx:gtsl-guidelines} que j'ai également rédigé.
+Cette section présente uniquement l'architecture logicielle du service de gTSL mais ne fournit pas la documentation de la mise en place technique du système. Des explications concernant le déploiement du système (outils utilisés, processus d'installation, etc.) sont détaillées dans le document GTSL - Project Setup Documentation disponible en Annexe~\ref{anx:gtsl-setup}. J'ai eu pour mission de rédiger ce document dans le but de fournir une précision sur le déploiement du module de gTSL. Néanmoins, ce document ne correspond pas au manuel d'installation utilisateur qui fait l'objet d'un second document intitulé GTSL - Project Setup Guidelines disponible en Annexe~\ref{anx:gtsl-guidelines} que j'ai également rédigé.
 
 \subsection{Architecture d'un nœud de la gTSL}
 
@@ -987,7 +988,7 @@ Le système mis en place est composé de deux parties principales. La première 
 
 \subsubsection{Interface d'administration}
 
-Le client d'administration fournit une interface web graphique aux utilisateurs d'administration afin qu'ils puissent gérer la gTSL. Il est développé avec les technologies HTML5, CSS3 et AngularJS. Dans le cadre de ce projet, nous avons décidé de réutiliser l'interface existante, appelée TL Manager. Ce client permet notamment aux utilisateurs de créer des drafts qui peuvent ensuite être publiés dans la gTSL. Ce client n'est pas détaillé dans ce mémoire puisqu'il n'entre pas dans le cadre du stage.
+L'interface d'administration fournit une interface web graphique aux utilisateurs d'administration afin qu'ils puissent gérer la gTSL. Il est développé avec les technologies HTML5, CSS3 et AngularJS. Dans le cadre de ce projet, nous avons décidé de réutiliser l'interface existante, appelée TL Manager. Cette interface permet notamment aux utilisateurs de créer des drafts qui peuvent ensuite être publiés dans la gTSL. Néanmoins, il n'est pas détaillé dans ce mémoire puisqu'il n'entre pas dans le cadre du stage.
 
 \subsubsection{Interface de programmation applicative REST}
 
@@ -1002,18 +1003,18 @@ L'API\footnote{Une API, acronyme anglais de Application Programming Interface, e
 
 Le \textit{HTTP Handler}\footnote{en français, gestionnaire HTTP.} a pour rôle d'intercepter et de répondre aux requêtes HTTP. Il est composé de multiples contrôleurs chargés de faire appel à des services qui traitent les demandes des utilisateurs. Chaque contrôleur est défini sur une URL précise et expose des méthodes dans lesquelles sont configurés la méthode HTTP à utiliser ainsi que l'en-tête et le corps de la requête. Le \textit{HTTP Handler} renvoie des réponses HTTP contenant un statut permettant de déterminer le résultat d'une requête ou d'indiquer au client une erreur. Si aucune erreur n'est survenue, le code de réponse HTTP 200 OK est envoyé.
 
-La \textit{Business Layer}\footnote{en français, couche métier.} est la partie traitement des données de l'application, c'est dans cette partie que les données sont vérifiées, validées, transformées ou éventuellement rejetées si elles sont invalides. Elle est composée de services qui sont appelés par les contrôleurs REST. Les services font appel à la couche de données afin de lire, modifier ou
+La \textit{Business Layer}\footnote{en français, couche métier.} est la partie traitement des données de l'application. C'est dans cette partie que les données sont vérifiées, validées, transformées ou éventuellement rejetées si elles sont invalides. Elle est composée de services qui sont appelés par les contrôleurs REST. Les services font appel à la couche de données afin de lire, modifier ou
 écrire dans la base de données. Ils peuvent aussi faire appel à d'autres services si cela est nécessaire. Dans cette partie sont gérées les éventuelles erreurs et exceptions qui peuvent survenir lors du traitement des données.
 
 La partie \textit{Data Layer}\footnote{en français, couche de données.} a pour objectif de gérer les données. La couche de données est composée d'une part du \textit{Database Manager} et d'autre part du \textit{Ledger Manager}. Le \textit{Database Manager} a pour rôle de gérer les insertions, les mises à jour et les récupérations des données concernant les abonnements et les drafts en utilisant la base de données locale. Le \textit{Ledger Manager} quant à lui joue le rôle d'interface entre le nœud IPFS et le nœud Ethereum, il a aussi à charge de gérer les données liées aux listes de confiance.
 
 \subsubsection{Nœud IPFS}
 
-Le nœud IPFS est connecté à un réseau pair-à-pair composé d'autres nœuds IPFS anonymes. Il a pour rôle de maintenir les données dans ce réseau en les répliquant à travers les autres nœuds IPFS appartenant au service de gTSL, qui forme ce que l'on appelle un cluster\footnote{Un cluster est un ensemble de serveurs sur un réseau qui agissent dans un but commun.}. Le nœud interagit avec le système via le \textit{Ledger Manager} qui est chargé de lui communiquer les données à stocker.
+Le nœud IPFS est connecté à un réseau pair-à-pair composé d'autres nœuds IPFS anonymes. Il a pour rôle de maintenir les données dans ce réseau en les répliquant à travers les autres nœuds IPFS appartenant au service de gTSL, ce qui forme ce que l'on appelle un cluster\footnote{Un cluster est un ensemble de serveurs sur un réseau qui agissent dans un but commun.}. Le nœud interagit avec le système via le \textit{Ledger Manager} qui est chargé de lui communiquer les données à stocker.
 
 \subsubsection{Nœud Ethereum}
 
-Le nœud Ethereum est connecté à un réseau pair-à-pair composé d'autres nœuds Ethereum anonymes. Il a pour rôle d'assurer l'intégrité des données grâce au consensus de la blockchain. Le nœud s'interface avec le \textit{Ledger Manager} à qui il doit fournir l'état courant de la gTSL stocké dans un smart contract. L'état courant correspond à l'ensemble des hashes représentatifs de chaque liste de confiance. Son deuxième rôle est la gestion des utilisateurs, en effet l'authentification est gérée par un smart contract qui maintient les clés publiques des personnes autorisées à modifier la gTSL.
+Le nœud Ethereum est connecté à un réseau pair-à-pair composé d'autres nœuds Ethereum anonymes. Il a pour rôle d'assurer l'intégrité des données grâce au consensus de la blockchain. Le nœud s'interface avec le \textit{Ledger Manager} à qui il doit fournir l'état courant de la gTSL stocké dans un smart contract. L'état courant correspond à l'ensemble des hashes représentatifs de chaque liste de confiance. Son deuxième rôle est la gestion des utilisateurs. En effet, l'authentification est gérée par un smart contract qui maintient les clés publiques des personnes autorisées à modifier la gTSL.
 
 \subsubsection{Base de données}
 
@@ -1021,9 +1022,9 @@ La base de données locale à chaque nœud a pour but de stocker les emails des 
 
 \subsection{Architecture globale}
 
-Le système présenté en Figure~\ref{fig:architecture-node} sera déployé par tous les utilisateurs d'administration dans toute l'Europe et au-delà. En effet, chaque administrateur a besoin de son propre compte Ethereum, c'est-à-dire de son propre nœud Ethereum et de son propre identifiant de nœud IPFS, c'est-à-dire de son propre nœud IPFS. Cela permet d'augmenter le nombre de réplica des données et donc d'améliorer la résilience du système. De plus, il est envisagé de mettre en place des instances publiques afin que les utilisateurs externes puissent récupérer les données liées à la gTSL. Ce système est open-source, cela implique que toute personne souhaitant déployer sa propre instance aura la possibilité de le faire. Malgré tout, il ne lui est pas possible de modifier la gTSL puisqu'il ne dispose pas des autorisations requises. Toutes ces instances forment donc un système décentralisé et distribué qui permettra de maintenir l'entièreté des données. 
+Le système présenté en Figure~\ref{fig:architecture-node} sera déployé par tous les utilisateurs d'administration dans toute l'Europe et au-delà. En effet, chaque administrateur a besoin de son propre compte Ethereum, c'est-à-dire de son propre nœud Ethereum et de son propre identifiant de nœud IPFS, c'est-à-dire de son propre nœud IPFS. Cela permet d'augmenter le nombre de réplica des données et donc d'améliorer la résilience du système. De plus, il est envisagé de mettre en place des instances publiques afin que les utilisateurs externes puissent récupérer les données liées à la gTSL. Dans ce cas, l'interface d'administration n'est pas nécessaire. Ce système est open-source, cela implique que toute personne souhaitant déployer sa propre instance aura la possibilité de le faire. Malgré tout, il ne lui est pas possible de modifier la gTSL puisqu'il ne dispose pas des autorisations requises. Toutes ces instances forment ensemble un système décentralisé et distribué qui permet de maintenir l'entièreté des données. 
 
-La Figure~\ref{fig:architecture-global} présente l'architecture globale du système, décentralisée et distribuée, composée de plusieurs nœuds de la gTSL. Certains composants ne jouant aucun rôle dans la décentralisation du modèle ont été retirés des nœuds de gTSL dans un soucis de compréhension.
+La Figure~\ref{fig:architecture-global} présente l'architecture globale du système, décentralisée et distribuée, composée de plusieurs nœuds de la gTSL. Certains composants ne jouant aucun rôle dans la décentralisation du modèle, ils ont été retirés des nœuds de gTSL dans un soucis de compréhension.
 \clearpage
 
 \begin{figure}[h]
@@ -1048,13 +1049,13 @@ Les explications fournies dans cette partie sont tirées du document Integration
 
 \subsubsection{L'avantage de coupler IPFS \& Ethereum}
 
-Un moyen simple de stocker les données de la gTSL est de les conserver dans une blockchain, cela évite le besoin d'un système de fichiers décentralisé. 
+Un moyen simple de stocker les données de la gTSL est de les conserver dans une blockchain, cela évite la mise en place d'un système de fichiers décentralisé. 
 Bien qu'une blockchain présente beaucoup d'avantages, elle présente également des inconvénients.
 L'un d'eux est que le déploiement d'un smart contract dans la blockchain Ethereum doit être payé.
-De plus, la taille du smart contract (en matière de d'opérations et de mémoire) est directement liée au prix.
+De plus, le prix augmente proportionnellement avec la taille du smart contract, c'est-à-dire son nombre d'opérations et la taille des données qu'il contient.
 Ainsi, le prix suit la quantité de données stockées.
 Une façon de réduire le coût est d'utiliser un réseau distribué afin de stocker les données gTSL et d'utiliser une blockchain afin de maintenir l'état des données.
-Dans IPFS, toutes les données sont adressées par leur hash, rendant leur état facilement maintenable. Par conséquent, pour chaque donnée de la gTSL stockée, la blockchain ne maintient qu'un hash correspondant à l'état actuel des données. Cette solution réduit considérablement les coûts d'utilisation de la blockchain.
+Dans IPFS, toutes les données sont adressées par leur hash, ce qui rend leur état facilement maintenable. Par conséquent, pour toutes les données d'une TSL, la blockchain ne maintient qu'un hash correspondant à l'état actuel de ces données. Cette solution réduit considérablement les coûts d'utilisation de la blockchain.
 
 \subsubsection{L'intégration des technologies}
 
@@ -1163,21 +1164,21 @@ Liste des sous-modules:
 \end{itemize}
 \fi
 
-Dans cette section est décrit le service relatif à l'authentification et la gestion des utilisateurs. Dans un premier temps est exposé le processus d'authentification des utilisateurs, ensuite est détaillé le processus de gestion des utilisateurs et enfin est présenté le smart contract déployé dans la blockchain Ethereum afin de réaliser ces actions.
+Dans cette section sont décrits le service dédié à l'authentification et la gestion des utilisateurs. Dans un premier temps est exposé le processus d'authentification des utilisateurs. Ensuite est détaillé le processus de gestion des utilisateurs. Enfin est présenté le smart contract déployé dans la blockchain Ethereum, utilisé dans le but de réaliser ces actions.
 
 \subsubsection{Authentification des utilisateurs}
 
-L'authentification des utilisateurs est uniquement nécessaire pour les administrateurs de la gTSL. Le processus implémenté se détache du modèle classique d'authentification par nom d'utilisateur et mot de passe, qualifié d'authentification à un facteur. À la place, il repose sur une infrastructure à clés publiques qui permet d'authentifier les utilisateurs grâce à un certificat électronique, on qualifie cette authentification comme étant à deux facteurs. Afin de s'authentifier, l'utilisateur utilise sa clé privée, qui vérifiée contre sa clé publique permet de l'identifier.
+L'authentification des utilisateurs est nécessaire uniquement pour les administrateurs de la gTSL. Le processus implémenté se détache du modèle classique d'authentification par nom d'utilisateur et mot de passe, qualifié d'authentification à un facteur. À la place, il repose sur une infrastructure à clés publiques qui permet d'authentifier les utilisateurs grâce à un certificat électronique, on qualifie cette authentification comme étant à deux facteurs. Afin de s'authentifier, l'utilisateur utilise sa clé privée, qui vérifiée contre sa clé publique permet de l'identifier.
 
-Dans la pratique, l'authentification se fait via un smart contract déployé dans la blockchain Ethereum. Chaque utilisateur utilisant cette blockchain est identifié sur cette dernière grâce à une paire clé.
-Dans Ethereum, et dans la technologie blockchain en général, lorsqu'un utilisateur émet une transaction il la signe à l'aide de sa clé privée et fournit la clé publique correspondante. Cette clé publique peut être récupérée dans le smart contract. 
-Afin de répertorier les utilisateurs autorisés à procéder à des modifications de la gTSL, le smart contract maintient la liste des clés publiques des utilisateurs autorisées. 
-Lorsqu'un utilisateur souhaite accéder à une fonctionnalité qui requiert une autorisation spécifique, le système va vérifier que sa clé publique est bien présente dans le smart contract de gestion des utilisateurs. Si sa clé publique est bien présente dans la liste des utilisateurs autorisés alors le smart contract exécute la fonction appelée, sinon il refuse l'accès à cette fonction.
+Dans la pratique, l'authentification se fait via un smart contract déployé dans la blockchain Ethereum. Chaque utilisateur utilisant cette blockchain est identifié sur cette dernière grâce à une paire de clés.
+Dans Ethereum, et dans la technologie blockchain en général, lorsqu'un utilisateur émet une transaction, il la signe à l'aide de sa clé privée et fournit la clé publique dans le corps de la transaction. Cette clé publique peut être récupérée dans le smart contract, afin de répertorier les utilisateurs autorisés à procéder à des modifications de la gTSL. 
+Le smart contract maintient la liste des clés publiques des utilisateurs autorisées. 
+Lorsqu'un utilisateur souhaite accéder à une fonctionnalité qui requiert une autorisation spécifique, le système va vérifier que sa clé publique est bien présente dans le smart contract de gestion des utilisateurs. Si sa clé publique est bien présente dans la liste des utilisateurs autorisés, alors le smart contract exécute la fonction appelée, sinon il refuse l'accès à cette fonction.
 
 \subsubsection{Gestion des utilisateurs}
 
-Cette section concerne uniquement les utilisateurs d'administration, en effet les utilisateurs externes ne sont pas concernés par l'authentification.
-La gestion des utilisateurs concerne le processus par lequel des administrateurs peuvent être ajouter ou révoquer de la liste des utilisateurs autorisés à modifier la gTSL et à gérer les utilisateurs. 
+Cette section concerne uniquement les utilisateurs d'administration. En effet les utilisateurs externes ne sont pas concernés par l'authentification.
+La gestion des utilisateurs concerne le processus par lequel des administrateurs peuvent être ajoutés ou révoqués de la liste des utilisateurs autorisés à modifier la gTSL et à gérer les utilisateurs. 
 En opposition avec un modèle classique, le modèle conçu ne repose pas sur un "super-administrateur" qui a le pouvoir de gérer les administrateurs. 
 %Dans notre modèle, tous les administrateurs ont les mêmes pouvoirs et aucun d'entre eux n'a la possibilité d'ajouter ou de retirer un utilisateur de la liste par son unique décision.
 
@@ -1185,7 +1186,7 @@ Le système mis en place est basé sur un service de votes déployé dans la blo
 
 L'avantage majeur de cette conception est que le système ne peut être altéré par un seul et unique utilisateur malhonnête, puisqu'il est nécessaire que la proposition soit validée par la majorité du consortium. Le seul moyen pour un attaquant de corrompre le système ou d'en prendre le contrôle est de réussir à être majoritaire dans le consortium. Pour cela, il faudrait soit qu'il réussisse à dérober les clés privées de plus de la moitié du consortium, soit qu'il réussisse à ajouter des clés publiques qu'ils détient dans la liste des clés autorisées, à hauteur d'au moins le nombre de clés déjà présentes dans la liste pour devenir majoritaire. 
 
-Afin de renforcer la sécurité du système et de se protéger des attaques Sybil, il est possible d'imaginer que l'on ne se base pas sur la majorité (50\%) pour accepter la proposition mais sur un pourcentage plus élevé (80\% par exemple). En effet, les actions d'ajout ou de suppression d'un administrateur du consortium sont décidées oralement entre les États membres, avant même que l'opération ne soit saisie dans le module de gTSL. L'intérêt d'augmenter la majorité d'une proposition est de protéger davantage le système. De plus, dans le but d'empêcher qu'un utilisateur puisse valider un vote tout seul, une proposition doit atteindre un quorum pour être validé. Ce quorum, tout comme le seuil de majorité, peut être augmenté afin d'augmenter la sécurité du système.
+Afin de renforcer la sécurité du système et de le protéger des attaques Sybil, il est possible d'imaginer que l'on ne se base pas sur la majorité (50\%) pour accepter la proposition mais sur un pourcentage plus élevé (80\% par exemple). En effet, les actions d'ajout ou de suppression d'un administrateur du consortium sont décidées oralement entre les États membres, avant même que l'opération ne soit saisie dans le module de gTSL. L'intérêt d'augmenter la majorité d'une proposition est de protéger davantage le système. De plus, dans le but d'empêcher qu'un utilisateur puisse valider un vote tout seul, une proposition doit atteindre un quorum pour être validé. Ce quorum, tout comme le seuil de majorité, peut être augmenté afin d'améliorer la sécurité du système.
 
 Pour une proposition, on différencie trois résultats possibles:
 \begin{itemize}
@@ -1289,31 +1290,31 @@ Les fonctions définies dans le Listing~\ref{lst:consortiumContract} sont détai
 
 \subsection{Subscription Provider}
 
-Le service d'abonnement possède trois fonctions qui sont l'abonnement, le désabonnement et la notification. Ce module est similaire à un service de newsletter\footnote{Une lettre d'information, newsletter en anglais, est un document d'information transmis par courrier électronique à l'ensemble des abonnés qui y ont souscrit.} que propose de nombreux sites marchands par exemple.
+Le service d'abonnement possède trois fonctions qui sont l'abonnement, le désabonnement et la notification. Ce module est similaire à un service de newsletter\footnote{Une lettre d'information, newsletter en anglais, est un document d'information transmis par courrier électronique à l'ensemble des abonnés qui y ont souscrit.} que proposent de nombreux sites marchands par exemple.
 
 \subsubsection{Abonnement}
 
-Tout utilisateur a la possibilité de souscrire au service d'abonnement de la gTSL. Pour cela, il lui suffit de fournir son adresse email et de sélectionner le pays pour lequel il souhaite être notifié. Ces informations sont stockées par le système dans une base de données locale au nœud de souscription. Cela signifie que l'utilisateur est abonné à un nœud en particulier.
+Tout utilisateur a la possibilité de souscrire au service d'abonnement de la gTSL. Pour cela, il lui suffit de fournir son adresse email et de sélectionner les pays pour lesquels il souhaite être notifié. Ces informations sont stockées par le système dans une base de données locale au nœud de souscription. Cela signifie que l'utilisateur est abonné à un nœud en particulier.
 
 \subsubsection{Désabonnement}
 
-Tout utilisateur abonné à une TSL a la possibilité de se désabonner du service d'abonnement. Pour cela, il lui suffit de cliquer sur le lien de désabonnement dans un des emails de notification qu'il a pu recevoir. Il sera alors désabonné de son nœud de souscription.
+Tout utilisateur abonné à une TSL a la possibilité de se désabonner du service de notifications. Pour cela, il lui suffit de cliquer sur le lien de désabonnement dans un des emails de notification qu'il a pu recevoir. Il sera alors désabonné de son nœud de souscription.
 
 \subsubsection{Notification}
 
-Le système a pour mission de notifier tous les abonnés aux TSLs. Lorsqu'une modification est effectuée alors tous les nœuds en sont informés. Chaque nœud doit donc extraire dans la base de données la liste des personnes ayant souscrits à la TSL modifiée et se charge ensuite de les en informer par email.
+Le système a pour mission de notifier tous les abonnés aux TSLs. Lorsqu'une modification est effectuée, alors tous les nœuds en sont informés. Chaque nœud doit donc extraire dans la base de données la liste des personnes ayant souscrits à la TSL modifiée et se charge ensuite de les en informer par email.
 
 \subsection{Lifecycle Manager}
 
-Le \textit{Lifecycle Manager} a pour rôle de gérer le cycle de vie des TSLs. Il se charge de traiter, vérifier et valider les informations relatives aux TSLs, on dit qu'il applique la logique métier. Ce module permet d'une part de gérer les TSLs et d'autre part de gérer les drafts. Concernant les TSLs, il permet de traiter la validation de tous les champs de la TSL conformément au standard ETSI TS 119 612~\cite{ETSITS119612} lors de l'ajout ou de l'édition. Il offre aussi la possibilité de procéder à des recherches sur les TSLs, d'importer une TSL au format XML et d'exporter une TSL au format XML. Les différentes techniques de recherche envisagées sur la gTSL sont évoquées dans le document gTSL Search Engine disponible en Annexe~\ref{anx:gtsl-search-engine}. Concernant les drafts, il gère le processus de création et d'édition des drafts en indiquant pour chacun quels champs sont valides vis-à-vis du standard ETSI TS 119 612~\cite{ETSITS119612}. Un draft peut être enregistré même s'il n'est pas valide, mais dans ce cas il ne pourra pas être publié dans la gTSL. À noter que les utilisateurs externes peuvent créer des drafts mais ne disposent des droits nécessaires pour publier les TSLs. Si un utilisateur externe est promu administrateur par la suite, il pourra tout de même publier les drafts réalisés en tant qu'utilisateur externe.
+Le \textit{Lifecycle Manager} a pour rôle de gérer le cycle de vie des TSLs. Il se charge de traiter, vérifier et valider les informations relatives aux TSLs, on dit qu'il applique la logique métier. Ce module permet d'une part de gérer les TSLs et d'autre part de gérer les drafts. Concernant les TSLs, il permet de traiter la validation de tous les champs de la TSL conformément au standard ETSI TS 119 612~\cite{ETSITS119612} lors de l'ajout ou de l'édition. Il offre aussi la possibilité de procéder à des recherches sur les TSLs, d'importer une TSL au format XML et d'exporter une TSL au format XML. Les différentes techniques de recherche envisagées sur la gTSL sont évoquées dans le document gTSL Search Engine disponible en Annexe~\ref{anx:gtsl-search-engine}. Concernant les drafts, il gère le processus de création et d'édition des drafts en indiquant pour chacun quels champs sont valides vis-à-vis du standard ETSI TS 119 612~\cite{ETSITS119612}. Un draft peut être enregistré même s'il n'est pas valide, mais dans ce cas il ne pourra pas être publié dans la gTSL. À noter que les utilisateurs externes peuvent créer des drafts mais ne disposent pas des droits nécessaires pour publier les TSLs. Si un utilisateur externe est promu administrateur par la suite, il pourra tout de même publier les drafts réalisés en tant qu'utilisateur externe.
 
 \section{Présentation de la solution}
 
-Cette section concerne uniquement l'interface de programmation applicative. L'interface graphique d'administration a été réalisée dans la version antérieure du service de gestion des listes de confiance et sera réutilisée sans modification majeure dans le cadre de la gTSL. Cette interface n'entre donc pas dans le cadre du stage et n'est pas présentée dans ce mémoire.
+Cette section concerne uniquement l'interface de programmation applicative. L'interface graphique d'administration a été réalisée dans la version antérieure du service de gestion des listes de confiance et sera réutilisée sans modifications majeures dans le cadre de la gTSL. Cette interface n'entre donc pas dans le cadre du stage et n'est pas présentée dans ce mémoire.
 
 \subsection{Interface de programmation applicative}
 
-L'interface de programmation applicative (API) de la gTSL correspond au module \textit{Trust List Provider}. L'API implémentée respecte le modèle REST et se charge d'intercepter les requêtes HTTP des utilisateurs afin de les diriger vers le service adapté du \textit{Lifecycle Manager}. Il correspond à l'ensemble des contrôleurs implémentés grâce au framework\footnote{Un framework est un ensemble de composants développées par un tierce permettant de définir une architecture logicielle.} Spring\footnote{Voir \url{https://spring.io/}}. Cette section présente l'ensemble des contrôleurs définit dans l'implémentation du projet.
+L'interface de programmation applicative (API) de la gTSL correspond au module \textit{Trust List Provider}. L'API implémentée respecte le modèle REST et se charge d'intercepter les requêtes HTTP des utilisateurs afin de les diriger vers le service adapté du \textit{Lifecycle Manager}. Il correspond à l'ensemble des contrôleurs implémentés grâce au framework\footnote{Un framework est un ensemble de composants développées par un tierce permettant de définir une architecture logicielle.} Spring\footnote{Voir \url{https://spring.io/}, sur ce site sont notamment disponibles des tutoriels d'utilisation du framework}. Cette section présente l'ensemble des contrôleurs définis dans l'implémentation du projet.
 
 La Figure~\ref{fig:rest-controllers} définit l'ensemble des contrôleurs exposés par le \textit{Trust List Provider}.
 
@@ -1325,10 +1326,10 @@ La Figure~\ref{fig:rest-controllers} définit l'ensemble des contrôleurs expos�
 	\label{fig:rest-controllers}
 \end{figure}
 
-Les contrôleurs définies dans la Figure~\ref{fig:rest-controllers} sont détaillés ci-dessous:
+Les contrôleurs définis dans la Figure~\ref{fig:rest-controllers} sont détaillés ci-dessous:
 \begin{itemize}
-	\item Le contrôleur \textit{Administration} permet aux utilisateurs de s'authentifier et aux administrateurs de gérer les utilisateurs;
-	\item Le contrôleur \textit{Notification} permet aux utilisateurs de s'abonner et se désabonner des TSLs;
+	\item Le contrôleur \textit{Administration} permet aux administrateurs de s'authentifier pour ensuite pouvoir gérer les utilisateurs;
+	\item Le contrôleur \textit{Notification} permet aux utilisateurs de s'abonner et de se désabonner des TSLs;
 	\item Le contrôleur \textit{PointersToOtherTSL} permet aux administrateurs de gérer les pointeurs vers les autres TSLs;
 	\item Le contrôleur \textit{TrustServiceList} permet à tous les utilisateurs de lire une TSL particulière ou toutes les TSLs, et permet aux administrateurs de créer, éditer, supprimer, signer ou importer une TSL;
 	\item Le contrôleur \textit{TrustServiceProvider} permet aux administrateurs d'ajouter, éditer ou retirer un TSP d'une TSL.
@@ -1337,8 +1338,8 @@ Les contrôleurs définies dans la Figure~\ref{fig:rest-controllers} sont détai
 
 \section{Validation de la solution}
 
-Durant mon stage, plusieurs méthodes de validation ont été mises en place. Évidemment, étant
-donné que ce projet est en cours de réalisation, le processus de validation n'est pas terminé et d'autres vérifications sont prévues pour la fin du projet. Dans cette section sont présentées les principales mesures mises en place pour attester de la conformité des travaux effectuées.
+Durant ce stage, plusieurs méthodes de validation ont été mises en place. 
+Étant donné que le projet est encore en réalisation au moment de la rédaction de ce mémoire, le processus de validation ne peut être considéré comme complet. Cependant, nous avons tout de même mis en place plusieurs mesures de vérification, dans le but d'attester de la conformité des travaux effectués avec les besoins initiaux présentés au Chapitre~\ref{chap:prob}.
 
 Dans un premier temps, la première validation a consisté à valider les choix opérés à la suite de l'état de l'art en début de stage. Cette étape a été très importante car c'est elle qui nous a permis de valider les technologies à utiliser dans le projet. Pour cela, j'ai réalisé une preuve de concept permettant d'interfacer les technologies Ethereum et IPFS dans le but de stocker des données dans un environnement décentralisé et distribué. Cette preuve de concept a ensuite fait l'objet d'une démonstration à l'équipe de projet qui a pu valider l'utilisation des technologies sur la base du travail que j'ai réalisé.
 
@@ -1348,33 +1349,33 @@ Toujours dans la méthodologie Scrum, à chaque fin de sprint est organisée une
 
 Une autre validation spécifique à ce projet est la conformité au standard ETSI TS 119 612~\cite{ETSITS119612}. En effet, tout au long du stage il a été important et nécessaire de se référer régulièrement à ce standard puisque l'exigence première du projet est d'être conforme à celui-ci. Il a donc été nécessaire de faire valider chaque module en s'appuyant sur le standard lors de la phase de recherche, afin de s'assurer que la direction choisie permettait d'aboutir à une fonctionnalité valide.
 
-Enfin, la validation a aussi porté sur l'aspect technique. Au fur et à mesure de l'avancée du projet, des tests unitaires et d'intégration ont été mis en place afin de valider formellement les différentes fonctionnalités du service de gTSL.
+Enfin, la validation a aussi porté sur l'aspect technique. Au fur et à mesure de l'avancée du projet, des tests unitaires et d'intégration ont été mis en place afin de valider les différentes fonctionnalités du service de gTSL.
 
 \chapter{Résultats obtenus \& Perspectives}
 
 Les résultats définitifs du stage sont à l'heure actuelle inconnus puisque la date de livraison est prévue pour le 30 novembre 2017. Malgré cela, tous les retours du consortium d'entreprises du projet FutureTrust ont été jusqu'à présent positifs vis-à-vis du travail réalisé par l'équipe notamment concernant les documents de conception et les choix opérés. De plus, il y a un fort enthousiasme autour de la gTSL de par l'utilisation de la blockchain dans un projet européen.
 
-Un autre point a soulevé concernant ce projet est que c'est un projet de recherche et développement. Cela signifie que la Commission Européenne attend de l'innovation dans la conception et la réalisation tout en conservant une simplicité d'utilisation pour les utilisateurs finaux. Le challenge a donc été d'adapter une technologie récente et complexe qu'est la blockchain à un système existant. Notre objectif est que ce projet rencontre un grand succès afin qu'il soit adopté par la Commission Européenne pour remplacer l'architecture actuelle.
+Un autre point à soulever concernant ce projet est que c'est un projet de recherche et développement. Cela signifie que la Commission Européenne attend de l'innovation dans la conception et la réalisation tout en conservant une simplicité d'utilisation pour les utilisateurs finaux. Le challenge a donc été d'adapter une technologie récente et complexe qu'est la blockchain à un système existant. Notre objectif est que ce projet rencontre un grand succès afin qu'il soit adopté par la Commission Européenne pour remplacer l'architecture actuelle.
 
-Un des résultats qui a su montrer notre capacité à utiliser la blockchain dans le cadre du projet FutureTrust est la preuve de concept que j'ai réalisée après que l'équipe ait validé les choix technologiques que j'ai proposés à la suite de l'état de l'art. À ce moment, le consortium a commencé à s'intéresser à notre conception de la gTSL et à sa mise en place imminente. J'ai donc rédigé un document explicatif de l'utilisation de la blockchain dans le cadre de la gTSL. Ce document s'intitule Integration of Ethereum \& IPFS et est disponible en Annexe~\ref{anx:ipfs-ethereum}. À la suite de la lecture de ce document, un membre de l'ETSI a montré son intérêt pour notre travail et a invité l'équipe à venir présenter ce papier à un atelier blockchain qui aura lieu début 2018 au Luxembourg. À l'heure actuelle, la date définitive de cet évènement n'a pas été fixée.
+Un des résultats préliminaires du projet est la démonstration de notre capacité à utiliser la blockchain dans le cadre du projet FutureTrust suite à la preuve de concept que j'ai réalisée. Cette étape a eu lieu après que l'équipe ait validé les choix technologiques que j'ai proposés à la suite de l'état de l'art. À ce moment, le consortium a commencé à s'intéresser à notre conception de la gTSL et à sa mise en place imminente. J'ai donc rédigé un document explicatif de l'utilisation de la blockchain dans le cadre de la gTSL. Ce document s'intitule Integration of Ethereum \& IPFS et est disponible en Annexe~\ref{anx:ipfs-ethereum}. À la suite de la lecture de ce document, un membre de l'ETSI a montré un très grand intérêt pour notre travail et a invité l'équipe à venir présenter ce papier à un atelier blockchain qui aura lieu début 2018 au Luxembourg.
 
 \chapter{Conclusion}
 
 Ce stage de fin d'études vient conclure la formation de trois ans que j'ai suivie à Télécom Nancy. Cette formation m'a fait acquérir un grand nombre de compétences et connaissances techniques, lesquelles j'ai pu restituer tout au long de ce stage. Ces études m'ont aussi apporté des qualités humaines telles que la gestion du stress, l'évolution en équipe ou encore la logique de raisonnement, et cela notamment grâce aux nombreux projets qui ont été réalisés jusque maintenant.
 
-Après six mois passés à étudier et développer un système s'appuyant sur la technologie blockchain, de nombreux éléments peuvent être mis en avant. Dans un premier temps, l'émergence de la blockchain a réellement bouleversé l'économie mondiale et a amené une prise de conscience générale des limites des systèmes centralisés. Aujourd'hui et plus que jamais, les entreprises sont intéressées par la mise en place d'architecture reposant sur la blockchain et plus particulièrement le secteur bancaire qui ne veut pas rater le virage des crypto-monnaies. Le problème persistant actuellement est le manque de régulation de cette technologie, plusieurs pays prévoient d'établir des réglementations autour de la blockchain et de la crypto-monnaie dans les années à venir.
+
+Après avoir eu l'occasion d'étudier et d'exploiter la technologie blockchain pendant ce stage, je résumerais les défis de notre étude par les points suivants. Dans un premier temps, l'émergence de la blockchain a réellement bouleversé l'économie mondiale et a amené une prise de conscience générale des limites des systèmes centralisés. Aujourd'hui et plus que jamais, les entreprises sont intéressées par la mise en place d'architectures reposant sur la blockchain et plus particulièrement le secteur bancaire qui ne veut pas rater le virage des crypto-monnaies. Le problème persistant actuellement est le manque de régulation de cette technologie, plusieurs pays prévoient d'établir des réglementations autour de la blockchain et de la crypto-monnaie dans les années à venir.
 
 En ce sens, l’initiative du projet FutureTrust quant à l'innovation autour de la confiance électronique à l'échelle mondiale est une excellente idée. 
 Ce projet de recherche et développement ayant pour objectif de mettre en application le règlement de l'Union Européenne sur l'identification électronique et les services de confiance pour les transactions électroniques sécurisées au sein de l'UE a été une réelle opportunité de promouvoir la blockchain.
 En effet, l'Europe souhaite être un acteur majeur et un pionnier de l'utilisation de cette technologie. À ce titre, elle joue un rôle clé dans son développement.
-Malgré cela, il y a une grande nécessité de communication autour de cette technologie, car sa complexité peut freiner l'innovation et à terme entraîner sa disparition.
+Malgré cela, une grande nécessité de communication autour de cette technologie persiste, car sa complexité peut freiner l'innovation et à terme entraîner sa disparition.
 Il est vrai qu'au premier abord, la blockchain est un concept flou et complexe car son fonctionnement est difficilement compréhensible pour un non initié à l'informatique et à la cryptographie.
 Le challenge pour les années futures se trouve dans la démocratisation de cette technologie par la mise en place de services grand public ergonomiques et simples d'utilisation.
-Le projet réalisé dans le cadre de ce stage permet une première approche de l'intégration d'une blockchain au sein d'un service européen et l'engouement du consortium de FutureTrust est très encourageant pour la suite.
+Le projet réalisé dans le cadre de ce stage propose une première approche d'intégration d'une blockchain au sein d'un service européen. De plus, l'engouement du consortium de FutureTrust, concernant les résultats déjà obtenus, est très encourageant pour la suite.
 
 À titre personnel, ce projet a été un immense défi de par son innovation, sa complexité et sa portée. Sa réalisation a demandé de la réflexion, des remises en question et de la force de proposition car j'ai été amené à résoudre des problèmes techniques et scientifiques concernant les architectures décentralisées et l'intégration de la technologie blockchain.
-De plus, je suis convaincu que cette technologie est l’avenir du numérique et
-que les solutions à venir, particulièrement dans le secteur bancaire, vont créer une réelle rupture technologique.
+De plus, je suis convaincu que cette technologie est l’avenir du numérique et que les solutions à venir, particulièrement dans le secteur bancaire, vont créer une réelle rupture technologique.
 J’ai par ailleurs décidé de poursuivre ce projet dans l'entreprise Ar{\texteta}s afin de participer à l'élaboration du service de liste de confiance globale jusqu'à sa livraison et de continuer de concevoir des projets innovants autour de la blockchain.
 
 \cleardoublepage
@@ -1434,7 +1435,7 @@ J’ai par ailleurs décidé de poursuivre ce projet dans l'entreprise Ar{\texte
 	\item \textbf{pair-à-pair}: Le pair-à-pair est un modèle de réseau informatique similaire au modèle client-serveur mais où chaque client est aussi un serveur.
 	\item \textbf{point individuel de défaillance}: Un point individuel de défaillance, appelée single point of failure en anglais, est un point d'un système informatique dont le reste du système est dépendant et dont une panne entraîne l'arrêt complet du système.
 	\item \textbf{scrum meeting}: Un scrum meeting, communément appelé mêlée en français, est une réunion courte et énergique faisant partie de la méthodologie Scrum, qui permet à l'équipe de discuter de l'avancée d'un sprint et de lever les points bloquants du projet.
-	\item \textbf{smart contract}: Les smart contracts, appelés contrats intelligents en français, permettent d'échanger de l'argent, des biens, des parts ou n'importe quel actif de manière transparente, sans conflit et en évitant tout service intermédiaire.
+	\item \textbf{smart contract}: Les smart contracts, appelés contrats intelligents en français, permettent d'échanger de l'argent, des biens, des parts ou n'importe quel actif de manière transparente, sans conflits et en évitant tout service intermédiaire.
 	\item \textbf{sprint}: Un sprint est une période sur laquelle sont réalisées des tâches définies.
 	\item \textbf{timestamping}: Le timestamping, appelé horodatage en français, est un mécanisme qui consiste à associer une date et une heure à un événement, une information ou une donnée informatique.
 	\item \textbf{Uber}: Uber est l'entreprise qui déclencha ce qu'on appelle l'ubérisation.
